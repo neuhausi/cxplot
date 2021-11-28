@@ -263,7 +263,7 @@ gg_data_summary <- function(gg) {
   for (g in gg$geoms) {
     for (i in c('colour', 'fill')) {
       if (i %in% names(gg[[g]])) {
-        if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric))) && !is.null(gg$dataCols)) {
+        if (!is.null(gg$dataCols) && gg[[g]][[i]] %in% colnames(gg$data) && !all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
           a = append(a, gg[[g]][[i]])
           r$dataColor = gg[[g]][[i]]
           r$dataColorType = i
@@ -324,6 +324,16 @@ cxplot <- function (o) {
       cx = gg_append(cx, cx_geom_boxplot(gg, cx))   
     } else if (g == "GeomPoint") {
       cx = gg_append(cx, cx_geom_point(gg, cx))
+    } else if (g == "GeomContour") {
+      cx = gg_append(cx, cx_geom_contour(gg, cx))
+    } else if (g == "GeomContourFilled") {
+      cx = gg_append(cx, cx_geom_contour_filled(gg, cx)) 
+    } else if (g == "GeomDensity") {
+      #cx = gg_append(cx, cx_geom_density(gg, cx))
+    } else if (g == "GeomDensity2d") {
+      cx = gg_append(cx, cx_geom_density_2d(gg, cx))
+    } else if (g == "GeomDensity2dFilled") {
+      cx = gg_append(cx, cx_geom_density_2d_filled(gg, cx))    
     }
   }
   cx = gg_append(cx, cx_data(gg, cx))
