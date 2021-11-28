@@ -227,6 +227,7 @@ gg_data_summary <- function(gg) {
   s = "raw"
   v = FALSE
   r = list()
+  a = as.vector(NULL)
   for (i in n) {
     if (i %in% names(gg)) {
       if (!all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
@@ -236,12 +237,12 @@ gg_data_summary <- function(gg) {
               s = "sum"
               v = gg[[g]]$weight
               r$dataCols = c(v)
-              r$dataGrouping = gg[[i]]
+              a = append(a, gg[[i]])
               break
             } else {
               s = "count"
               v = gg[[i]]
-              r$dataGrouping = gg[[i]]
+              a = append(a, gg[[i]])
             }
           }
         }
@@ -254,13 +255,31 @@ gg_data_summary <- function(gg) {
         if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
           s = "count"
           v = gg[[g]][[i]]
-          r$dataGrouping = gg[[g]][[i]]
+          a = append(a, gg[[g]][[i]])
+        }
+      }
+    }
+  }
+  for (g in gg$geoms) {
+    for (i in c('colour', 'fill')) {
+      if (i %in% names(gg[[g]])) {
+        if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric))) && !is.null(gg$dataCols)) {
+          a = append(a, gg[[g]][[i]])
+          r$dataColor = gg[[g]][[i]]
+          r$dataColorType = i
         }
       }
     }
   }
   if (s == "sum" || s == "count") {
-    r$dataColsSummary = v
+    if (is.null(gg$dataCols)) {
+      r$dataColsSummary = v
+    } else {
+      s = "raw"
+    }
+  }
+  if (length(a) > 0) {
+    r$dataGrouping = a
   }
   r$dataSummary = s
   r
@@ -301,6 +320,8 @@ cxplot <- function (o) {
       cx = gg_append(cx, cx_geom_xline(gg, g))
     } else if (g == "GeomBar" || g == "GeomCol") {
       cx = gg_append(cx, cx_geom_bar(gg, cx))    
+    } else if (g == "GeomBoxplot") {
+      cx = gg_append(cx, cx_geom_boxplot(gg, cx))   
     } else if (g == "GeomPoint") {
       cx = gg_append(cx, cx_geom_point(gg, cx))
     }

@@ -25,10 +25,23 @@ cx_data <- function(gg, cx) {
       smpAnnot = t(annot)
     )
   }
+  ## Grouping of data
   if (!is.null(gg$dataGrouping)) {
-    r$groupingFactors = list(gg$dataGrouping)
+    a = list()
+    for (i in 1:length(gg$dataGrouping)) {
+      a[[i]] = gg$dataGrouping[i]
+    }
+    r$groupingFactors = a
     r$sortOnGrouping = TRUE
   }
+  ## Attributes: Color, Shape, Size, Pattern
+  if (!is.null(gg$dataColor)) {
+    r$colorBy = gg$dataColor
+    if (gg$dataColorType == 'colour') {
+      r$useOpenShapes = TRUE
+    }
+  }
+  ## Data Summary Type
   r$summaryType = gg$dataSummary
   r
 }
