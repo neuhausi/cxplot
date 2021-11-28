@@ -5,12 +5,12 @@ output: geom_lines
  https://ggplot2.tidyverse.org/reference/geom_abline.html
  
 ```{r}
-source('~/RStudio/cxplot/cxplot.r')
-source('~/RStudio/cxplot/cx_data.r')
-source('~/RStudio/cxplot/cx_axes.r')
-source('~/RStudio/cxplot/cx_facet.r')
-source('~/RStudio/cxplot/cx_geom_xline.r')
-source('~/RStudio/cxplot/cx_geom_point.r')
+source('cxplot.r')
+source('cx_data.r')
+source('cx_axes.r')
+source('cx_facet.r')
+source('cx_geom_xline.r')
+source('cx_geom_point.r')
 library(ggplot2)
 library(dplyr)
 library(canvasXpress)

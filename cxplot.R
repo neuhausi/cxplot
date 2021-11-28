@@ -202,18 +202,21 @@ gg_data_cols <- function(gg) {
 gg_data_rows <- function(gg) {
   n = c('x', 'y', 'z', 'weight')
   d = NULL
+  l = NULL
   r = list()
   for (i in n) {
     if (i %in% names(gg)) {
       if (!all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
         if (dim(gg$data[,c(gg[[i]]), drop = FALSE])[1] == dim(unique(gg$data[,c(gg[[i]]), drop = FALSE]))[1]) {
           d = gg$data[,c(gg[[i]])]
+          l = gg[[i]]
         }
       }
     }
   }
   if (!is.null(r)) {
-    r$dataRows = d 
+    r$dataRows = d
+    r$dataRowsName = l
   }
   r
 }
