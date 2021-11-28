@@ -1,0 +1,60 @@
+---
+title: "Geom Lines Decorations"
+output: geom_lines
+---
+ https://ggplot2.tidyverse.org/reference/geom_abline.html
+ 
+```{r}
+source('~/RStudio/cxplot/cxplot.r')
+source('~/RStudio/cxplot/cx_data.r')
+source('~/RStudio/cxplot/cx_axes.r')
+source('~/RStudio/cxplot/cx_facet.r')
+source('~/RStudio/cxplot/cx_geom_xline.r')
+source('~/RStudio/cxplot/cx_geom_point.r')
+library(ggplot2)
+library(dplyr)
+library(canvasXpress)
+``` 
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 5)
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 5))
+```
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 1:5)
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 1:5))
+```
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_hline(yintercept = 20)
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_hline(yintercept = 20))
+```
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_abline(intercept = 37, slope = -5)
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_abline(intercept = 37, slope = -5))
+```
+
+```{r}
+mean_wt <- data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
+ggplot(mtcars, aes(mpg, wt)) + geom_point() + geom_hline(aes(yintercept = wt), mean_wt) + facet_wrap(~ cyl)
+```
+
+```{r}
+mean_wt <- data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
+cxplot(ggplot(mtcars, aes(mpg, wt)) + geom_point() + geom_hline(aes(yintercept = wt), mean_wt) + facet_wrap(~ cyl))
+```
+
