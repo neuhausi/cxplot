@@ -155,7 +155,7 @@ gg_layers <- function(o) {
 
 ## Mappings in a layers
 gg_proc_layer <- function (l) {
-  atts = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust', 'bins', 'binwidth', 'breaks',
+  atts = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'shape', 'size', 'alpha', 'linetype', 'label', 'vjust', 'bins', 'binwidth', 'breaks',
         'bw', 'adjust', 'kernel', 'intercept', 'xintercept', 'yintercept', 'notch')
   f = isFALSE(l$position$fill) || is.null(l$position$fill)
   v = isFALSE(l$position$vjust) || is.null(l$position$vjust)
@@ -186,16 +186,33 @@ gg_proc_layer <- function (l) {
 gg_data_cols <- function(gg) {
   n = c('x', 'y', 'z', 'weight')
   d = as.vector(NULL)
+  l = NULL
   for (i in n) {
     if (i %in% names(gg)) {
-      if (all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
-        d = append(d, gg[[i]]);
-      } 
+      if (gg[[i]] %in% colnames(gg$data)) {
+        if (all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
+          d = append(d, gg[[i]]);
+        }
+      }
     }
   }
-  list(
+  if (length(d) < 1) {
+    for (g in gg$geoms) {
+      for (i in n) {
+        if (i %in% names(gg[[g]])) {
+          if (gg[[g]][[i]] %in% colnames(gg$data)) {
+            if (all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
+              d = append(d, gg[[g]][[i]]);
+            }
+          }
+        }
+      }
+    }
+  }
+  r = list(
     dataCols = d
   )
+  r
 }
 
 ## Data Rows
@@ -206,10 +223,12 @@ gg_data_rows <- function(gg) {
   r = list()
   for (i in n) {
     if (i %in% names(gg)) {
-      if (!all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
-        if (dim(gg$data[,c(gg[[i]]), drop = FALSE])[1] == dim(unique(gg$data[,c(gg[[i]]), drop = FALSE]))[1]) {
-          d = gg$data[,c(gg[[i]])]
-          l = gg[[i]]
+      if (gg[[i]] %in% colnames(gg$data)) {
+        if (!all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
+          if (dim(gg$data[,c(gg[[i]]), drop = FALSE])[1] == dim(unique(gg$data[,c(gg[[i]]), drop = FALSE]))[1]) {
+            d = gg$data[,c(gg[[i]])]
+            l = gg[[i]]
+          }
         }
       }
     }
@@ -230,19 +249,21 @@ gg_data_summary <- function(gg) {
   a = as.vector(NULL)
   for (i in n) {
     if (i %in% names(gg)) {
-      if (!all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
-        if (dim(gg$data[,c(gg[[i]]), drop = FALSE])[1] != dim(unique(gg$data[,c(gg[[i]]), drop = FALSE]))[1]) {
-          for (g in gg$geoms) {
-            if ('weight' %in% names(gg[[g]])) {
-              s = "sum"
-              v = gg[[g]]$weight
-              r$dataCols = c(v)
-              a = append(a, gg[[i]])
-              break
-            } else {
-              s = "count"
-              v = gg[[i]]
-              a = append(a, gg[[i]])
+      if (gg[[i]] %in% colnames(gg$data)) {
+        if (!all(unlist(lapply(gg$data[,c(gg[[i]]), drop = FALSE],is.numeric)))) {
+          if (dim(gg$data[,c(gg[[i]]), drop = FALSE])[1] != dim(unique(gg$data[,c(gg[[i]]), drop = FALSE]))[1]) {
+            for (g in gg$geoms) {
+              if ('weight' %in% names(gg[[g]])) {
+                s = "sum"
+                v = gg[[g]]$weight
+                r$dataCols = c(v)
+                a = append(a, gg[[i]])
+                break
+              } else {
+                s = "count"
+                v = gg[[i]]
+                a = append(a, gg[[i]])
+              }
             }
           }
         }
@@ -252,10 +273,12 @@ gg_data_summary <- function(gg) {
   for (g in gg$geoms) {
     for (i in n) {
       if (i %in% names(gg[[g]])) {
-        if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
-          s = "count"
-          v = gg[[g]][[i]]
-          a = append(a, gg[[g]][[i]])
+        if (gg[[g]][[i]] %in% colnames(gg$data)) {
+          if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
+            s = "count"
+            v = gg[[g]][[i]]
+            a = append(a, gg[[g]][[i]])
+          }
         }
       }
     }
@@ -329,7 +352,7 @@ cxplot <- function (o) {
     } else if (g == "GeomContourFilled") {
       cx = gg_append(cx, cx_geom_contour_filled(gg, cx)) 
     } else if (g == "GeomDensity") {
-      #cx = gg_append(cx, cx_geom_density(gg, cx))
+      cx = gg_append(cx, cx_geom_density(gg, cx))
     } else if (g == "GeomDensity2d") {
       cx = gg_append(cx, cx_geom_density_2d(gg, cx))
     } else if (g == "GeomDensity2dFilled") {

@@ -34,7 +34,7 @@ cx_data <- function(gg, cx) {
     r$groupingFactors = a
     r$sortOnGrouping = TRUE
   }
-  ## Attributes: Color, Shape, Size, Pattern
+  ## Color - Other attributes are set in cxplot and geom_point
   if (!is.null(gg$dataColor)) {
     r$colorBy = gg$dataColor
     if (gg$dataColorType == 'colour') {
