@@ -6,26 +6,13 @@ output: geom_lines
  
 ```{r}
 source('cxplot.r')
-source('cx_data.r')
-source('cx_axes.r')
-source('cx_facet.r')
-source('cx_geom_xline.r')
-source('cx_geom_point.r')
 library(ggplot2)
 library(dplyr)
 library(canvasXpress)
 ``` 
 
 ```{r}
-ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 5)
-```
-
-```{r}
 cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 5))
-```
-
-```{r}
-ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 1:5)
 ```
 
 ```{r}
@@ -33,24 +20,11 @@ cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_vline(xintercept = 1:5
 ```
 
 ```{r}
-ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_hline(yintercept = 20)
-```
-
-```{r}
 cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_hline(yintercept = 20))
 ```
 
 ```{r}
-ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_abline(intercept = 37, slope = -5)
-```
-
-```{r}
 cxplot(ggplot(mtcars, aes(wt, mpg)) + geom_point() + geom_abline(intercept = 37, slope = -5))
-```
-
-```{r}
-mean_wt <- data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
-ggplot(mtcars, aes(mpg, wt)) + geom_point() + geom_hline(aes(yintercept = wt), mean_wt) + facet_wrap(~ cyl)
 ```
 
 ```{r}

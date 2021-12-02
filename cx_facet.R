@@ -9,7 +9,7 @@ cx_facet <- function (gg, cx) {
         segregateSamplesBy = gg$facet
       )
     }
-    r$layoutTopology = paste('1X', length(gg$facetLevels), sep = '')
+    r$layoutTopology = gg$facetTopology
   } else {
     r = list()
   }

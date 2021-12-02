@@ -7,29 +7,13 @@ output: geom_boxplot
 
 ```{r}
 source('cxplot.r')
-source('cx_data.r')
-source('cx_axes.r')
-source('cx_facet.r')
-source('cx_geom_xline.r')
-source('cx_geom_bar.r')
-source('cx_geom_boxplot.r')
-source('cx_geom_point.r')
 library(ggplot2)
 library(dplyr)
 library(canvasXpress)
 ``` 
 
-
-```{r}
-ggplot(mpg, aes(class, hwy)) + geom_boxplot()
-```
-
 ```{r}
 cxplot(ggplot(mpg, aes(class, hwy)) + geom_boxplot())
-```
-
-```{r}
-ggplot(mpg, aes(hwy, class)) + geom_boxplot()
 ```
 
 ```{r}
@@ -37,23 +21,11 @@ cxplot(ggplot(mpg, aes(hwy, class)) + geom_boxplot())
 ```
 
 ```{r}
-ggplot(mpg, aes(hwy, class)) + geom_boxplot(notch = TRUE)
-```
-
-```{r}
 cxplot(ggplot(mpg, aes(hwy, class)) + geom_boxplot(notch = TRUE))
 ```
 
 ```{r}
-ggplot(mpg, aes(class, hwy)) + geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
-```
-
-```{r}
 cxplot(ggplot(mpg, aes(class, hwy)) + geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2))
-```
-
-```{r}
-ggplot(mpg, aes(class, hwy)) + geom_boxplot(aes(colour = drv))
 ```
 
 ```{r}

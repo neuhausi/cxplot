@@ -6,27 +6,13 @@ output: geom_bar
 
 ```{r}
 source('cxplot.r')
-source('cx_data.r')
-source('cx_axes.r')
-source('cx_facet.r')
-source('cx_geom_xline.r')
-source('cx_geom_bar.r')
-source('cx_geom_point.r')
 library(ggplot2)
 library(dplyr)
 library(canvasXpress)
 ``` 
 
 ```{r}
-ggplot(mpg, aes(class)) + geom_bar()
-```
-
-```{r}
 cxplot(ggplot(mpg, aes(class)) + geom_bar())
-```
-
-```{r}
-ggplot(mpg, aes(class)) + geom_bar(aes(weight = displ))
 ```
 
 ```{r}
@@ -34,15 +20,7 @@ cxplot(ggplot(mpg, aes(class)) + geom_bar(aes(weight = displ)))
 ```
 
 ```{r}
-ggplot(mpg) + geom_bar(aes(y = class))
-```
-
-```{r}
 cxplot(ggplot(mpg) + geom_bar(aes(y = class)))
-```
- 
-```{r}
-ggplot(mpg, aes(class)) + geom_bar(aes(fill = drv))
 ```
 
 ```{r}
@@ -51,27 +29,12 @@ cxplot(ggplot(mpg, aes(class)) + geom_bar(aes(fill = drv)))
 
 ```{r}
 df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
-ggplot(mpg, aes(y = class)) + geom_bar(aes(fill = drv), position = position_stack(reverse = TRUE)) + theme(legend.position = "top")
-```
-
-```{r}
-df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
 cxplot(ggplot(mpg, aes(y = class)) + geom_bar(aes(fill = drv), position = position_stack(reverse = TRUE)) + theme(legend.position = "top"))
-```
- 
-```{r}
-df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
-ggplot(df, aes(trt, outcome)) + geom_col()
 ```
 
 ```{r}
 df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
 cxplot(ggplot(df, aes(trt, outcome)) + geom_col())
-```
-   
-```{r}
-df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
-ggplot(df, aes(trt, outcome)) + geom_point()
 ```
 
 ```{r}

@@ -16,8 +16,42 @@ gg_facet <- function (o) {
       facet = ls(f),
       facetLevels = sort(unique(o$data[[ls(f)]]))
     )
+    if (!is.null(o$facet$params$ncol) && !is.null(o$facet$params$nrow)) {
+      f$facetCols = o$facet$params$ncol
+      f$facetRows = o$facet$params$nrow
+    } else if (is.null(o$facet$params$ncol) && !is.null(o$facet$params$nrow)) {
+      f$facetRows = o$facet$params$nrow
+      f$facetCols = ceiling(length(f$facetLevels) / f$facetRows)
+    } else if (!is.null(o$facet$params$ncol) && is.null(o$facet$params$nrow)) {
+      f$facetCols = o$facet$params$ncol
+      f$facetRows = ceiling(length(f$facetLevels) / f$facetCols)
+    } else {
+      if (length(f$facetLevels) < 4) {
+        f$facetRows = 1
+        f$facetCols = length(f$facetLevels)
+      } else {
+        f$facetCols = ceiling(sqrt(length(f$facetLevels)))
+        f$facetRows = ceiling(length(f$facetLevels) / f$facetCols)
+      }
+    }
+    f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
   }
   f
+}
+
+## Theme
+gg_theme <- function(o) {
+  if (missing(o)) {
+    o = last_plot()
+  }
+  t = list()
+  atts = ls(o$theme)
+  if (length(atts) > 0) {
+    for (a in atts) {
+      t[[a]] = o$theme[[a]]
+    }
+  }
+  t
 }
 
 ## Data Limits
@@ -155,24 +189,31 @@ gg_layers <- function(o) {
 
 ## Mappings in a layers
 gg_proc_layer <- function (l) {
-  atts = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'shape', 'size', 'alpha', 'linetype', 'label', 'vjust', 'bins', 'binwidth', 'breaks',
-        'bw', 'adjust', 'kernel', 'intercept', 'xintercept', 'yintercept', 'notch')
   f = isFALSE(l$position$fill) || is.null(l$position$fill)
   v = isFALSE(l$position$vjust) || is.null(l$position$vjust)
   w = !is.null(l$position$width)
   r = list()
-  for (a in atts) {
-    if (!is.null(l$mapping[[a]])) {
-      r[[a]] = as_label(l$mapping[[a]])
+  if (!is.null(l$mapping)) {
+    atts = ls(l$mapping)
+    if (length(atts) > 0) {
+      for (a in atts) {
+        b = as_label(l$mapping[[a]])
+        r[[a]] = b
+      }
     }
-    if (!is.null(l$aes_params[[a]])) {
-      r[[a]] = l$aes_params[[a]]
-    }
-    if (!is.null(l$geom_params[[a]])) {
-      r[[a]] = l$geom_params[[a]]
-    }
-    if (!is.null(l$stat_params[[a]])) {
-      r[[a]] = l$stat_params[[a]]
+  }
+  prps = c('aes_params', 'geom_params', 'stat_params')
+  for (p in prps) {
+    if (!is.null(l[[p]])) {
+      atts = ls(l[[p]])
+      if (length(atts) > 0) {
+        for (a in atts) {
+          if (a == 'position') {
+            next
+          }
+          r[[a]] = l[[p]][[a]]
+        }
+      }
     }
   }
   r$position = ifelse(!is.null(l$position$width), 'jitter', ifelse(f == TRUE & v == TRUE, "normal", ifelse(f == FALSE, 'filled', 'stacked')))
@@ -270,14 +311,16 @@ gg_data_summary <- function(gg) {
       }
     }
   }
-  for (g in gg$geoms) {
-    for (i in n) {
-      if (i %in% names(gg[[g]])) {
-        if (gg[[g]][[i]] %in% colnames(gg$data)) {
-          if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
-            s = "count"
-            v = gg[[g]][[i]]
-            a = append(a, gg[[g]][[i]])
+  if (s == "raw" && is.null(gg$dataCols)) {
+    for (g in gg$geoms) {
+      for (i in n) {
+        if (i %in% names(gg[[g]])) {
+          if (gg[[g]][[i]] %in% colnames(gg$data)) {
+            if (!all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
+              s = "count"
+              v = gg[[g]][[i]]
+              a = append(a, gg[[g]][[i]])
+            }
           }
         }
       }
@@ -288,21 +331,19 @@ gg_data_summary <- function(gg) {
       if (i %in% names(gg[[g]])) {
         if (!is.null(gg$dataCols) && gg[[g]][[i]] %in% colnames(gg$data) && !all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
           a = append(a, gg[[g]][[i]])
-          r$dataColor = gg[[g]][[i]]
-          r$dataColorType = i
         }
       }
     }
   }
   if (s == "sum" || s == "count") {
-    if (is.null(gg$dataCols)) {
+    if (!isFALSE(v)) {
       r$dataColsSummary = v
     } else {
       s = "raw"
     }
   }
   if (length(a) > 0) {
-    r$dataGrouping = a
+    r$dataGrouping = unique(a)
   }
   r$dataSummary = s
   r
@@ -313,6 +354,18 @@ cxplot <- function (o) {
   library(ggplot2)
   library(dplyr)
   library(canvasXpress)
+  source('cx_data.r')
+  source('cx_axes.r')
+  source('cx_theme.r')
+  source('cx_facet.r')
+  source('cx_geom_bar.r')
+  source('cx_geom_boxplot.r')
+  source('cx_geom_contour.r')
+  source('cx_geom_density.r')
+  source('cx_geom_line.r')
+  source('cx_geom_point.r')
+  source('cx_geom_text.r')
+  source('cx_geom_xline.r')
   
   if (missing(o)) {
     o = last_plot()
@@ -327,6 +380,7 @@ cxplot <- function (o) {
     data = o$data
   )
   gg = gg_append(gg, gg_facet(o))
+  gg = gg_append(gg, gg_theme(o))
   gg = gg_append(gg, gg_scales(o))
   gg = gg_append(gg, gg_labels(o))
   gg = gg_append(gg, gg_mapping(o))
@@ -345,8 +399,6 @@ cxplot <- function (o) {
       cx = gg_append(cx, cx_geom_bar(gg, cx))    
     } else if (g == "GeomBoxplot") {
       cx = gg_append(cx, cx_geom_boxplot(gg, cx))   
-    } else if (g == "GeomPoint") {
-      cx = gg_append(cx, cx_geom_point(gg, cx))
     } else if (g == "GeomContour") {
       cx = gg_append(cx, cx_geom_contour(gg, cx))
     } else if (g == "GeomContourFilled") {
@@ -357,10 +409,19 @@ cxplot <- function (o) {
       cx = gg_append(cx, cx_geom_density_2d(gg, cx))
     } else if (g == "GeomDensity2dFilled") {
       cx = gg_append(cx, cx_geom_density_2d_filled(gg, cx))    
+    } else if (g == "GeomLine") {
+      cx = gg_append(cx, cx_geom_line(gg, cx))
+    } else if (g == "GeomPoint") {
+      cx = gg_append(cx, cx_geom_point(gg, cx))
+    } else if (g == "GeomRaster") {
+      cx = gg_append(cx, cx_geom_raster(gg, cx))  
+    } else if (g == "GeomText") {
+      cx = gg_append(cx, cx_geom_text(gg, cx))
     }
   }
   cx = gg_append(cx, cx_data(gg, cx))
   cx = gg_append(cx, cx_axes(gg, cx))
+  cx = gg_append(cx, cx_theme(gg, cx))
   cx = gg_append(cx, cx_facet(gg, cx))
   #print(cx)
   

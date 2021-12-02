@@ -9,6 +9,9 @@ cx_axes <- function (gg, cx) {
         xAxis2Title = gg$xAxisTitle,
         xAxisShow = FALSE
       )
+      if (!is.null(cx$groupingFactors)) {
+        r$sortOnGrouping = "descending"
+      }
     } else {
       r = list(
         graphOrientation = graphOrientation,

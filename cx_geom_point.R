@@ -1,47 +1,57 @@
 cx_geom_point <- function(gg, cx) {
-  r = list()
-  if ('graphType' %in% names(cx)) {
-    
-  } else if (length(gg$dataCols) == 1) {
-    r$graphType = 'Dotplot'
+  if (!is.null(gg$GeomPoint$contour) || !is.null(gg$GeomPoint$contour_var)) {
+    cx_geom_contour(gg, cx, "GeomPoint")
   } else {
-    r$graphType = 'Scatter2D'
-  }
-  if ("GeomContour" %in% gg$geoms || "GeomContourFilled" %in% gg$geoms) {
-    if (is.data.frame(gg$GeomPoint$data)) {
-      r$decorations = cx_decoration_points(gg$GeomPoint$data)
+    r = list()
+    if (length(gg$dataCols) == 1) {
+      g = 'Dotplot'
     } else {
-      r$showContourDataPoints = TRUE
+      g = 'Scatter2D'
     }
-  }
-  if (!is.null(gg$GeomPoint$colour) || !is.null(gg$GeomPoint$fill)) {
-    if (!is.null(gg$GeomPoint$colour)) {
-      if (gg$GeomPoint$colour %in% names(gg$data)) {
-        r$colorBy = gg$GeomPoint$colour
+    if ("GeomContour" %in% gg$geoms || "GeomContourFilled" %in% gg$geoms || "GeomDensity2d" %in% gg$geoms || "GeomDensity2dFilled" %in% gg$geoms) {
+      if (is.data.frame(gg$GeomPoint$data)) {
+        r$decorations = cx_decoration_points(gg$GeomPoint$data, 'x', 'y')
+      } else {
+        r$showContourDataPoints = TRUE
       }
+    } else if (is.data.frame(gg$GeomPoint$data)) {
+      if (g == 'Dotplot') {
+        if (!is.null(gg$GeomPoint$x)) {
+          r$decorations = cx_decoration_points(gg$GeomPoint$data, NULL, gg$GeomPoint$x, gg$y)
+        } else if (!is.null(gg$GeomPoint$y)) {
+          r$decorations = cx_decoration_points(gg$GeomPoint$data, NULL, gg$GeomPoint$y, gg$x)
+        }
+      } else {
+        r$decorations = cx_decoration_points(gg$GeomPoint$data, gg$GeomPoint$x, gg$GeomPoint$y)
+      }
+    }
+    if ('graphType' %in% names(cx)) {
+      
+    } else if (length(gg$dataCols) == 1) {
+      r$graphType = 'Dotplot'
     } else {
-      if (gg$GeomPoint$fill %in% names(gg$data)) {
-        r$colorBy = gg$GeomPoint$fill
-      }      
+      r$graphType = 'Scatter2D'
     }
+    r
   }
-  if (!is.null(gg$GeomPoint$shape)) {
-    if (gg$GeomPoint$shape %in% names(gg$data)) {
-      r$shapeBy = gg$GeomPoint$shape
-    }
-  }
-  if (!is.null(gg$GeomPoint$size)) {
-    if (gg$GeomPoint$size %in% names(gg$data)) {
-      r$sizeBy = gg$GeomPoint$size
-    }
-  }
-  r
 }
 
-cx_decoration_points <- function (d) {
+cx_decoration_points <- function (d, x = NULL, y = NULL, v = NULL) {
   p = as.vector(NULL)
   for (i in 1:dim(d)[1]) {
-    p = append(p, list(list(x = d[i,]$x, y = d[i,]$y)))
+    if (!is.null(x) && !is.null(y)) {
+      p = append(p, list(list(x = d[i,][[x]], y = d[i,][[y]])))
+    } else if (!is.null(y) && !is.null(v)) {
+      if (i > 1) {
+        if (d[i - 1,][[y]] == d[i,][[y]] && d[i - 1,][[v]] == d[i,][[v]]) {
+          next
+        } else {
+          p = append(p, list(list(value = d[i,][[y]], smp = d[i,][[v]])))
+        }
+      } else {
+        p = append(p, list(list(value = d[i,][[y]], smp = d[i,][[v]])))
+      }
+    }
   }
   p = list(point = as.list(p))
   p
