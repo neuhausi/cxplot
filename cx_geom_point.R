@@ -8,6 +8,12 @@ cx_geom_point <- function(gg, cx) {
     } else {
       g = 'Scatter2D'
     }
+    if (gg$GeomPoint$position == "jitter") {
+      r$jitter = TRUE
+      if (!is.null(gg$GeomPoint$width)) {
+        r$jitterFactor = gg$GeomPoint$width
+      }
+    }
     if ("GeomContour" %in% gg$geoms || "GeomContourFilled" %in% gg$geoms || "GeomDensity2d" %in% gg$geoms || "GeomDensity2dFilled" %in% gg$geoms) {
       if (is.data.frame(gg$GeomPoint$data)) {
         r$decorations = cx_decoration_points(gg$GeomPoint$data, 'x', 'y')

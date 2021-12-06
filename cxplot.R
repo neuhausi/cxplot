@@ -8,7 +8,7 @@ gg_append <- function (a, b) {
 ## Facet
 gg_facet <- function (o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   f = o$facet$params$facets
   if(!is.null(f)) {
@@ -42,7 +42,7 @@ gg_facet <- function (o) {
 ## Theme
 gg_theme <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   t = list()
   atts = ls(o$theme)
@@ -57,7 +57,7 @@ gg_theme <- function(o) {
 ## Data Limits
 gg_datalimits <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   gb = ggplot_build(o)
   xmin = gb$layout$panel_scales_x[[1]]$range$range[1]
@@ -74,7 +74,7 @@ gg_datalimits <- function(o) {
 ## Look at this o$scales$scales
 gg_scalelimits <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   gb = ggplot_build(o)
   xmin = gb$layout$panel_params[[1]]$x.range[1]
@@ -90,7 +90,7 @@ gg_scalelimits <- function(o) {
 # X scale
 gg_xscale <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   n = length(o$scales$scales)
   r = FALSE
@@ -106,7 +106,7 @@ gg_xscale <- function(o) {
 # Y scale
 gg_yscale <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   n = length(o$scales$scales)
   r = FALSE
@@ -122,7 +122,7 @@ gg_yscale <- function(o) {
 ## Scales
 gg_scales <- function (o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   r = list();
   x = gg_xscale(o)
@@ -141,7 +141,7 @@ gg_scales <- function (o) {
 ## Labels
 gg_labels <- function (o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   r = list();
   l = c('x', 'y', 'z', 'title', 'subtitle')
@@ -160,7 +160,7 @@ gg_labels <- function (o) {
 ## Mapping
 gg_mapping <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   r = list();
   m = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust')
@@ -175,7 +175,7 @@ gg_mapping <- function(o) {
 ## Layers
 gg_layers <- function(o) {
   if (missing(o)) {
-    o = last_plot()
+    o = ggplot2::last_plot()
   }
   layers = sapply(o$layers, function(x) class(x$geom)[1])
   r = list(
@@ -189,9 +189,6 @@ gg_layers <- function(o) {
 
 ## Mappings in a layers
 gg_proc_layer <- function (l) {
-  f = isFALSE(l$position$fill) || is.null(l$position$fill)
-  v = isFALSE(l$position$vjust) || is.null(l$position$vjust)
-  w = !is.null(l$position$width)
   r = list()
   if (!is.null(l$mapping)) {
     atts = ls(l$mapping)
@@ -202,21 +199,23 @@ gg_proc_layer <- function (l) {
       }
     }
   }
-  prps = c('aes_params', 'geom_params', 'stat_params')
+  prps = c('aes_params', 'geom_params', 'stat_params', 'position')
   for (p in prps) {
     if (!is.null(l[[p]])) {
       atts = ls(l[[p]])
       if (length(atts) > 0) {
         for (a in atts) {
-          if (a == 'position') {
+          if (a == 'super') {
             next
           }
           r[[a]] = l[[p]][[a]]
         }
       }
+      r$geomHistogram = ifelse('binwidth' %in% atts, TRUE, FALSE)
     }
   }
-  r$position = ifelse(!is.null(l$position$width), 'jitter', ifelse(f == TRUE & v == TRUE, "normal", ifelse(f == FALSE, 'filled', 'stacked')))
+  pos = class(l$position)[1]
+  r$position = ifelse(pos == 'PositionJitter', 'jitter', ifelse(pos == 'PositionFill', "filled", ifelse(pos == "PositionStack", 'stacked', 'normal')))
   if (is.data.frame(l$data)) {
     r$data = l$data
   }
@@ -349,7 +348,7 @@ gg_data_summary <- function(gg) {
   r
 }
 
-cxplot <- function (o) {
+cxplot <- function (o = ggplot2::last_plot()) {
   
   library(ggplot2)
   library(dplyr)
@@ -362,9 +361,11 @@ cxplot <- function (o) {
   source('cx_geom_boxplot.r')
   source('cx_geom_contour.r')
   source('cx_geom_density.r')
+  source('cx_geom_histogram.r')
   source('cx_geom_line.r')
   source('cx_geom_point.r')
   source('cx_geom_text.r')
+  source('cx_geom_smooth.r')
   source('cx_geom_xline.r')
   
   if (missing(o)) {
@@ -409,12 +410,18 @@ cxplot <- function (o) {
       cx = gg_append(cx, cx_geom_density_2d(gg, cx))
     } else if (g == "GeomDensity2dFilled") {
       cx = gg_append(cx, cx_geom_density_2d_filled(gg, cx))    
+    } else if (g == "GeomHistogram") {
+      cx = gg_append(cx, cx_geom_histogram(gg, cx))
     } else if (g == "GeomLine") {
       cx = gg_append(cx, cx_geom_line(gg, cx))
-    } else if (g == "GeomPoint") {
+    } else if (g == "GeomPath") {
+      cx = gg_append(cx, cx_geom_path(gg, cx))      
+    } else if (g == "GeomPoint" || g == "GeomJitter") {
       cx = gg_append(cx, cx_geom_point(gg, cx))
     } else if (g == "GeomRaster") {
-      cx = gg_append(cx, cx_geom_raster(gg, cx))  
+      cx = gg_append(cx, cx_geom_raster(gg, cx))
+    } else if (g == 'GeomSmooth') {
+      cx = gg_append(cx, cx_geom_smooth(gg, cx))
     } else if (g == "GeomText") {
       cx = gg_append(cx, cx_geom_text(gg, cx))
     }
