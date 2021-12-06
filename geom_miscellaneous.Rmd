@@ -1,0 +1,67 @@
+---
+title: "Geom Miscellaneous"
+output: geom_miscellaneous
+---
+
+```{r}
+source('cxplot.r')
+library(ggplot2)
+library(dplyr)
+library(canvasXpress)
+```
+
+https://www.datanovia.com/en/blog/ggplot-aes-how-to-assign-aesthetics-in-ggplot2/
+  
+```{r}
+cxplot(ggplot(ToothGrowth, aes(x = supp, y = len)) + geom_boxplot())
+```
+  
+#ggplot(mtcars, aes(x = mpg ^ 2, y = wt / cyl)) + geom_point()
+  
+```{r}
+cxplot(ggplot(ToothGrowth, aes(x = supp, y = len)) + geom_boxplot(width = 0.5) + geom_jitter(width = 0.1))
+```
+
+```{r}
+cxplot(ggplot(mpg, aes(displ, hwy)) + geom_point())
+```
+
+```{r}
+cxplot(ggplot(mpg) + geom_point(aes(displ, hwy)))
+```
+
+```{r}
+cxplot(ggplot(ToothGrowth, aes(supp, len)) + geom_boxplot(aes(color = supp)))
+```
+
+```{r}
+cxplot(ggplot(ToothGrowth, aes(supp, len)) + geom_boxplot(aes(fill = supp)))
+```
+
+```{r}
+cxplot(ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point(aes(shape = Species)))
+```
+
+```{r}
+df2 <- data.frame(supp=rep(c("VC", "OJ"), each=3), dose=rep(c("D0.5", "D1", "D2"),2), len=c(6.8, 15, 33, 4.2, 10, 29.5))
+cxplot(ggplot(df2, aes(dose, len, group = supp)) + geom_line() + geom_point())
+```
+
+```{r}
+df2 <- data.frame(supp=rep(c("VC", "OJ"), each=3), dose=rep(c("D0.5", "D1", "D2"),2), len=c(6.8, 15, 33, 4.2, 10, 29.5))
+cxplot(ggplot(df2, aes(dose, len, group = supp)) + geom_line(aes(linetype = supp)) + geom_point())
+```
+
+```{r}
+df2 <- data.frame(supp=rep(c("VC", "OJ"), each=3), dose=rep(c("D0.5", "D1", "D2"),2), len=c(6.8, 15, 33, 4.2, 10, 29.5))
+cxplot(ggplot(df2, aes(dose, len, group = supp)) + geom_line() + geom_point() + geom_text(aes(label = len, vjust = -0.5)))
+```
+  
+https://ggplot2.tidyverse.org/reference/ggplot.html
+
+```{r}
+df3 <- data.frame(gp = factor(rep(letters[1:3], each = 10)), y = rnorm(30))
+ds <- do.call(rbind, lapply(split(df3, df3$gp), function(d) {data.frame(mean = mean(d$y), sd = sd(d$y), gp = d$gp)}))
+cxplot(ggplot(df3, aes(gp, y)) + geom_point() + geom_point(data = ds, aes(y = mean), colour = 'red', size = 3))
+```
+

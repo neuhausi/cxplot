@@ -1,0 +1,64 @@
+---
+title: "Geom Density 2d"
+output: geom_density_2d
+---
+ https://ggplot2.tidyverse.org/reference/geom_density_2d.html
+
+```{r}
+source('cxplot.r')
+library(ggplot2)
+library(dplyr)
+library(canvasXpress)
+``` 
+
+```{r}
+cxplot(ggplot(faithful, aes(x = eruptions, y = waiting)) + geom_point() + xlim(0.5, 6) + ylim(40, 110) + geom_density_2d())
+```
+
+```{r}
+cxplot(ggplot(faithful, aes(x = eruptions, y = waiting)) + geom_point() + xlim(0.5, 6) + ylim(40, 110) + geom_density_2d_filled(alpha = 0.5))
+```
+
+```{r}
+set.seed(4393)
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+cxplot(ggplot(dsmall, aes(x, y)) + geom_density_2d(aes(colour = cut)))
+```
+
+```{r}
+set.seed(4393)
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+cxplot(ggplot(dsmall, aes(x, y)) + geom_density_2d_filled() + facet_wrap(vars(cut)))
+```
+
+```{r}
+set.seed(4393)
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+cxplot(ggplot(dsmall, aes(x, y)) + geom_density_2d_filled(contour_var = "ndensity") + facet_wrap(vars(cut)))
+```
+
+```{r}
+set.seed(4393)
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+cxplot(ggplot(dsmall, aes(x, y)) + geom_density_2d_filled(contour_var = "count") + facet_wrap(vars(cut)))
+```
+
+```{r}
+set.seed(4393)
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+cxplot(ggplot(dsmall, aes(x, y)) + stat_density_2d(geom = "raster", aes(fill = after_stat(density)), contour = FALSE) + scale_fill_viridis_c())
+```
+
+```{r}
+set.seed(4393)
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+cxplot(ggplot(dsmall, aes(x, y)) + stat_density_2d(geom = "point", aes(size = after_stat(density)), n = 20, contour = FALSE))
+```
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
