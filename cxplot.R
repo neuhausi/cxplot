@@ -364,8 +364,9 @@ cxplot <- function (o = ggplot2::last_plot()) {
   source('cx_geom_histogram.r')
   source('cx_geom_line.r')
   source('cx_geom_point.r')
-  source('cx_geom_text.r')
+  source('cx_geom_rug.r')
   source('cx_geom_smooth.r')
+  source('cx_geom_text.r')
   source('cx_geom_xline.r')
   
   if (missing(o)) {
@@ -420,6 +421,8 @@ cxplot <- function (o = ggplot2::last_plot()) {
       cx = gg_append(cx, cx_geom_point(gg, cx))
     } else if (g == "GeomRaster") {
       cx = gg_append(cx, cx_geom_raster(gg, cx))
+    } else if (g == "GeomRug") {
+      cx = gg_append(cx, cx_geom_rug(gg, cx))
     } else if (g == 'GeomSmooth') {
       cx = gg_append(cx, cx_geom_smooth(gg, cx))
     } else if (g == "GeomText") {
