@@ -1,0 +1,72 @@
+---
+title: "Geom Violin"
+output: geom_violin
+---
+
+ https://ggplot2.tidyverse.org/reference/geom_violin.html
+
+```{r}
+source('cxplot.r')
+library(ggplot2)
+library(dplyr)
+library(canvasXpress)
+``` 
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin())
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(mpg, factor(cyl))) + geom_violin())
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin() + geom_jitter(height = 0, width = 0.1))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(scale = "count"))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(scale = "width"))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(trim = FALSE))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(adjust = .5))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(aes(fill = cyl)))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(aes(fill = factor(cyl))))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(aes(fill = factor(vs))))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(aes(fill = factor(am))))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(fill = "grey80", colour = "#3366FF"))
+```
+
+```{r}
+cxplot(ggplot(mtcars, aes(factor(cyl), mpg)) + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)))
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+

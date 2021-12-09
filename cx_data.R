@@ -28,13 +28,14 @@ cx_data <- function(gg, cx) {
       smpAnnot = t(annot)
     )
   }
+  ## String Factors
+  if (!is.null(gg$stringFactors)) {
+    r$stringSampleFactors = as.list(gg$stringFactors)
+    r$sortOnGrouping = "ascending"
+  }
   ## Grouping of data
   if (!is.null(gg$dataGrouping)) {
-    a = list()
-    for (i in 1:length(gg$dataGrouping)) {
-      a[[i]] = gg$dataGrouping[i]
-    }
-    r$groupingFactors = a
+    r$groupingFactors = as.list(gg$dataGrouping)
     r$sortOnGrouping = "ascending"
   }
   ## Color, Shape, Size attributes

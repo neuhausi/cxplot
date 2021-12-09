@@ -1,9 +1,7 @@
 cx_theme <- function(gg, cx) {
   t = list(
-    axisAlgorithm = "rPretty",
     widthFactor = 2,
-    theme = "GGPlot",
-    objectBorderColor = "rgba(0,0,0,0)"
+    theme = "GGPlot"
   )
   ## Legend
   if (!is.null(gg$legend.position)) {
@@ -24,7 +22,8 @@ cx_theme <- function(gg, cx) {
       t$legendPosition = gg$legend.position
     }
   }
-  if (is.null(gg$dataCols) && is.null(cx$colorBy) && is.null(cx$shapeBy) && is.null(cx$sizeBy) && is.null(cx$stackBy) && is.null(cx$lineBy)) {
+  #if (is.null(gg$dataCols) && is.null(cx$colorBy) && is.null(cx$shapeBy) && is.null(cx$sizeBy) && is.null(cx$stackBy) && is.null(cx$lineBy)) {
+  if (is.null(cx$colorBy) && is.null(cx$shapeBy) && is.null(cx$sizeBy) && is.null(cx$stackBy) && is.null(cx$lineBy)) {
     t$showLegend = FALSE
   }
   t

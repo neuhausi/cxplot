@@ -164,10 +164,30 @@ gg_mapping <- function(o) {
   }
   r = list();
   m = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust')
+  a = as.vector(NULL)
+  s = as.vector(NULL)
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
-      r[[i]] = as_label(o$mapping[[i]])
+      l = as_label(o$mapping[[i]])
+      f = regexpr("factor", l)[1]
+      if (f > 0) {
+        l = str_replace(str_replace(l, "factor\\(", ""), "\\)", "")
+        s = append(s , l)
+        if (!(i %in% c('x', 'y', 'z'))) {
+          r[[i]] = l
+        } else {
+          a = append(a, l)
+        }
+      } else {
+        r[[i]] = l
+      }
     }
+  }
+  if (length(a) > 0) {
+    r$dataGrouping = unique(a)
+  }
+  if (length(s) > 0) {
+    r$stringFactors = unique(s)
   }
   r  
 }
@@ -190,25 +210,49 @@ gg_layers <- function(o) {
 ## Mappings in a layers
 gg_proc_layer <- function (l) {
   r = list()
+  g = as.vector(NULL)
+  s = as.vector(NULL)
   if (!is.null(l$mapping)) {
     atts = ls(l$mapping)
     if (length(atts) > 0) {
       for (a in atts) {
         b = as_label(l$mapping[[a]])
-        r[[a]] = b
+        f = regexpr("factor", b)[1]
+        if (f > 0) {
+          b = str_replace(str_replace(b, "factor\\(", ""), "\\)", "")
+          s = append(s , b)
+          if (!(a %in% c('x', 'y', 'z'))) {
+            r[[a]] = b
+          }
+          g = append(g, b)
+        } else {
+          r[[a]] = b
+        }
       }
     }
   }
   prps = c('aes_params', 'geom_params', 'stat_params', 'position')
+  skip = c('compute_panel', 'preserve', 'setup_data', 'setup_params', 'super')
   for (p in prps) {
     if (!is.null(l[[p]])) {
       atts = ls(l[[p]])
       if (length(atts) > 0) {
         for (a in atts) {
-          if (a == 'super') {
+          if (a %in% skip) {
             next
           }
-          r[[a]] = l[[p]][[a]]
+          b = l[[p]][[a]]
+          f = regexpr("factor", b)[1]
+          if (is.character(f) && f > 0) {
+            b = str_replace(str_replace(b, "factor\\(", ""), "\\)", "")
+            s = append(s , b)
+            r[[a]] = b
+            if (a %in% c('colour', 'fill')) {
+              g = append(g, b)
+            }
+          } else {
+            r[[a]] = b
+          }          
         }
       }
       r$geomHistogram = ifelse('binwidth' %in% atts, TRUE, FALSE)
@@ -218,6 +262,12 @@ gg_proc_layer <- function (l) {
   r$position = ifelse(pos == 'PositionJitter', 'jitter', ifelse(pos == 'PositionFill', "filled", ifelse(pos == "PositionStack", 'stacked', 'normal')))
   if (is.data.frame(l$data)) {
     r$data = l$data
+  }
+  if (length(g) > 0) {
+    r$dataGrouping = unique(g)
+  }
+  if (length(s) > 0) {
+    r$stringFactors = unique(s)
   }
   r
 }
@@ -286,7 +336,16 @@ gg_data_summary <- function(gg) {
   s = "raw"
   v = FALSE
   r = list()
-  a = as.vector(NULL)
+  if(!is.null(gg$dataGrouping)) {
+    a = as.vector(gg$dataGrouping)
+  } else {
+    a = as.vector(NULL)
+  }
+  if(!is.null(gg$stringFactors)) {
+    q = as.vector(gg$stringFactors)
+  } else {
+    q = as.vector(NULL)
+  }  
   for (i in n) {
     if (i %in% names(gg)) {
       if (gg[[i]] %in% colnames(gg$data)) {
@@ -326,9 +385,15 @@ gg_data_summary <- function(gg) {
     }
   }
   for (g in gg$geoms) {
+    if (!is.null(gg[[g]]$stringFactors)) {
+      q = append(q, gg[[g]]$stringFactors)
+    }
+  }
+  for (g in gg$geoms) {
     for (i in c('colour', 'fill')) {
       if (i %in% names(gg[[g]])) {
-        if (!is.null(gg$dataCols) && gg[[g]][[i]] %in% colnames(gg$data) && !all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
+        if (!is.null(gg$dataCols) && gg[[g]][[i]] %in% colnames(gg$data)) {
+        #if (!is.null(gg$dataCols) && gg[[g]][[i]] %in% colnames(gg$data) && !all(unlist(lapply(gg$data[,c(gg[[g]][[i]]), drop = FALSE],is.numeric)))) {
           a = append(a, gg[[g]][[i]])
         }
       }
@@ -344,6 +409,9 @@ gg_data_summary <- function(gg) {
   if (length(a) > 0) {
     r$dataGrouping = unique(a)
   }
+  if (length(q) > 0) {
+    r$stringFactors = unique(q)
+  }
   r$dataSummary = s
   r
 }
@@ -352,6 +420,7 @@ cxplot <- function (o = ggplot2::last_plot()) {
   
   library(ggplot2)
   library(dplyr)
+  library(stringr)
   library(canvasXpress)
   source('cx_data.r')
   source('cx_axes.r')
@@ -367,6 +436,7 @@ cxplot <- function (o = ggplot2::last_plot()) {
   source('cx_geom_rug.r')
   source('cx_geom_smooth.r')
   source('cx_geom_text.r')
+  source('cx_geom_violin.r')
   source('cx_geom_xline.r')
   
   if (missing(o)) {
@@ -427,6 +497,8 @@ cxplot <- function (o = ggplot2::last_plot()) {
       cx = gg_append(cx, cx_geom_smooth(gg, cx))
     } else if (g == "GeomText") {
       cx = gg_append(cx, cx_geom_text(gg, cx))
+    } else if (g == "GeomViolin") {
+      cx = gg_append(cx, cx_geom_violin(gg, cx))
     }
   }
   cx = gg_append(cx, cx_data(gg, cx))
