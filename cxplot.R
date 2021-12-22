@@ -232,7 +232,7 @@ gg_proc_layer <- function (l) {
     }
   }
   prps = c('aes_params', 'geom_params', 'stat_params', 'position')
-  skip = c('compute_panel', 'preserve', 'setup_data', 'setup_params', 'super')
+  skip = c('compute_panel', 'preserve', 'setup_data', 'setup_params', 'super', 'compute_layer')
   for (p in prps) {
     if (!is.null(l[[p]])) {
       atts = ls(l[[p]])
@@ -446,7 +446,7 @@ cxplot <- function (o = ggplot2::last_plot()) {
   if (!("ggplot") %in% class(o)) {
     stop("Not a ggplot object")  
   }
-  
+
   ## CanvasXpress Parameters
   gg = list(
     data = o$data
