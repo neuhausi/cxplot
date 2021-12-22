@@ -1,0 +1,37 @@
+---
+title: "Geom Quantile"
+output: geom_quantile
+---
+
+ https://ggplot2.tidyverse.org/reference/geom_quantile.html
+
+```{r}
+source('cxplot.r')
+library(ggplot2)
+library(dplyr)
+library(canvasXpress)
+``` 
+
+```{r}
+cxplot(ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_quantile())
+```
+
+```{r}
+cxplot(ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_quantile(quantiles = 0.5))
+```
+
+```{r}
+q10 <- seq(0.05, 0.95, by = 0.05)
+cxplot(ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_quantile(quantiles = q10))
+```
+
+```{r}
+cxplot(ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_quantile(colour = "red", size = 2, alpha = 0.5))
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+

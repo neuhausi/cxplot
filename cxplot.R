@@ -433,6 +433,7 @@ cxplot <- function (o = ggplot2::last_plot()) {
   source('cx_geom_histogram.r')
   source('cx_geom_line.r')
   source('cx_geom_point.r')
+  source('cx_geom_quantile.r')
   source('cx_geom_rug.r')
   source('cx_geom_smooth.r')
   source('cx_geom_text.r')
@@ -489,6 +490,8 @@ cxplot <- function (o = ggplot2::last_plot()) {
       cx = gg_append(cx, cx_geom_path(gg, cx))      
     } else if (g == "GeomPoint" || g == "GeomJitter") {
       cx = gg_append(cx, cx_geom_point(gg, cx))
+    } else if (g == "GeomQuantile") {
+      cx = gg_append(cx, cx_geom_quantile(gg, cx))
     } else if (g == "GeomRaster") {
       cx = gg_append(cx, cx_geom_raster(gg, cx))
     } else if (g == "GeomRug") {
