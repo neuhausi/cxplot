@@ -18,9 +18,6 @@ cx_geom_histogram <- function(gg, cx, path) {
   if (is.null(r$histogramBins)) {
     r$histogramBins = 30
   }
-  if (is.null(r$histogramBins)) {
-    r$histogramBins = 30
-  }
   r
 }
 
