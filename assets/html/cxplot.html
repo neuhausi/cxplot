@@ -5,14 +5,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create a new ggplot — ggplot • ggplot2</title>
+  <title>Create a new cxplot - cxplot • cxplot</title>
   <!-- favicons -->
-  <link rel="icon" type="image/png" sizes="16x16" href="https://cxplot.com/assets/images/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://cxplot.com/assets/images/favicon-32x32.png">
-  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cxplot.com/assets/images/apple-touch-icon.png">
-  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="https://cxplot.com/assets/images/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="https://cxplot.com/assets/images/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="https://cxplot.com/assets/images/apple-touch-icon-60x60.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
   <!-- jquery -->
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -33,12 +33,12 @@
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>  
   <!--optional theme-->
-  <meta property="og:title" content="Create a new ggplot — ggplot">
+  <meta property="og:title" content="Create a new cxplot — cxplot">
   <meta property="og:description" content="cxplot() initializes a cxplot object. It can be used to
 declare the input data frame for a graphic and to specify the
 set of plot aesthetics intended to be common throughout all
 subsequent layers unless specifically overridden.">
-  <meta property="og:image" content="https://cxplot.com/assets/images/logo.png">
+  <meta property="og:image" content="/assets/images/logo.png">
   <meta name="twitter:card" content="summary">
 </head>
 
@@ -165,18 +165,18 @@ subsequent layers unless specifically overridden.">
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
 <pre class="sourceCode r"><code>
-<span class="r-in"><span class="co"># Get the data froma a csv delimited file.</span></span>
+<span class="r-in"><span class="co">// Get the data froma a csv delimited file.</span></span>
 <span class="r-in"></span>
-<span class="r-in">var <span class="va">df</span> <span class="op">=</span> <span class="st">"https://cxplot.com/data/mtcars.csv"</span>;</span>
-<span class="r-in">var <span class="va">cxp</span> <span class="op">=</span> <span class="fu">cxplot</span><span class="op">(</span><span class="st">"canvasId"</span>, <span class="va">df, </span><span class='fu'><a href='./aes.html'>aes</a></span><span class='op'>(</span><span class='st'>"wt"</span>, <span class='st'>"mpg"</span><span class='op'>)</span><span class='op'>)</span>;</span>
+<span class="r-in">var <span class="va">df</span> <span class="op">=</span> <a href="https://www.cxplot.com/assets/data/mtcars.csv" class="external-link">"https://www.cxplot.com/assets/data/mtcars.csv"</a>;</span>
+<span class="r-in">var <span class="va">cxp</span> <span class="op">=</span> <span class="fu">new</span> <span class="fu">cxplot</span><span class="op">(</span><span class="st">"canvasId"</span>, <span class="va">df, </span><span class='fu'><a href='./aes.html'>aes</a></span><span class='op'>(</span><span class='st'>"wt"</span>, <span class='st'>"mpg"</span><span class='op'>)</span><span class='op'>)</span>;</span>
 <span class="r-in"><span class="va">cxp</span>.<span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"></span>
 <span class="r-plt"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var df = 'http://localhost:8001/assets/data/mtcars.csv';var cxp = new cxplot('canvas1', df, aes('wt', 'mpg'));cxp.geom_point();</script></span>
-<span class="r-in"><span class="co"># Get the data froma a 2D array (R - dataframe).</span></span>
+<span class="r-in"><span class="co">// Get the data froma a 2D array (like an R dataframe).</span></span>
 <span class="r-in"></span>
 <span class="r-in">var <span class="va">df</span> <span class="op">=</span> <span class="op">[</span><span class="op">[</span><span class="st">"height"</span>, <span class="st">"weight"</span><span class="op">]</span>, <span class="op">[</span><span class="fl">5.2</span>, <span class="fl">130</span><span class="op">]</span>, <span class="op">[</span><span class="fl">5.6</span>, <span class="fl">150</span><span class="op">]</span>, <span class="op">[</span><span class="fl">6.0</span>, <span class="fl">200</span><span class="op">]</span>, 
           <span class="op">[</span><span class="fl">5.8</span>, <span class="fl">180</span><span class="op">]</span>, <span class="op">[</span><span class="fl">5.9</span>, <span class="fl">170</span><span class="op">]</span>, <span class="op">[</span><span class="fl">5.5</span>, <span class="fl">160</span><span class="op">]</span>, <span class="op">[</span><span class="fl">5.7</span>, <span class="fl">175</span><span class="op">]</span><span class="op">]</span>;</span>
-<span class="r-in">var <span class="va">cxp</span> <span class="op">=</span> <span class="fu">cxplot</span><span class="op">(</span><span class="st">"canvasId"</span>, <span class="va">df, </span><span class='fu'><a href='./aes.html'>aes</a></span><span class='op'>(</span><span class='st'>"weight"</span>, <span class='st'>"height"</span><span class='op'>)</span><span class='op'>)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> <span class="op">=</span> <span class="fu"><span class="fu">new</span> cxplot</span><span class="op">(</span><span class="st">"canvasId"</span>, <span class="va">df, </span><span class='fu'><a href='./aes.html'>aes</a></span><span class='op'>(</span><span class='st'>"weight"</span>, <span class='st'>"height"</span><span class='op'>)</span><span class='op'>)</span>;</span>
 <span class="r-in"><span class="va">cxp</span>.<span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"></span>
 <span class="r-plt"><div><canvas id="canvas2" width="700" height="433"></canvas></div><script>var df = [["height", "weight"], [5.2, 130], [5.6, 150], [6.0, 200], [5.8, 180], [5.9, 170], [5.5, 160], [5.7, 175]];var cxp = new cxplot("canvas2", df, aes("weight", "height"));cxp.geom_point();</script></span>
@@ -187,9 +187,9 @@ subsequent layers unless specifically overridden.">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/ggplot.html#arguments">Arguments</a></li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/ggplot.html#details">Details</a></li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/ggplot.html#examples">Examples</a></li>
+            <li class=""><a href="#arguments">Arguments</a></li>
+            <li class=""><a href="#details">Details</a></li>
+            <li class=""><a href="#examples">Examples</a></li>
           </ul>
         </nav>
       </div>
@@ -197,13 +197,13 @@ subsequent layers unless specifically overridden.">
 
     <footer>
       <div class="tidyverse">
-        <p>cxplot is a part of the <strong>CanvasXpress</strong>, a Javascript library for data analytics.
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
           Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
       </div>
 
       <div class="author">
         <p>
-          Developed by Isaac Neuhaus.
+          Developed by CanvasXpress
         </p>
       </div>
 
