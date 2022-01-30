@@ -78,17 +78,12 @@
       <div class="col-md-9 contents">
         <div class="page-header">
           <h1>Violin plot</h1>
-          <small class="dont-index">Source: <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/geom-violin.r"><code>R/geom-violin.r</code></a>,
-            <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/stat-ydensity.r"><code>R/stat-ydensity.r</code></a></small>
-          <div class="hidden name"><code>geom_violin.Rd</code></div>
         </div>
 
         <div class="ref-description">
           <p>A violin plot is a compact display of a continuous distribution. It is a
-            blend of <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code>
-            and <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code>: a
+            blend of <code><a href="./geom_boxplot.html">geom_boxplot()</a></code>
+            and <code><a href="./geom_density.html">geom_density()</a></code>: a
             violin plot is a mirrored density plot displayed in the same way as a
             boxplot.</p>
         </div>
@@ -98,40 +93,40 @@
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
           <pre class="sourceCode r"><code><span class="fu">geom_violin</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   stat <span class="op">=</span> <span class="st">"ydensity"</span>,
   position <span class="op">=</span> <span class="st">"dodge"</span>,
   <span class="va">...</span>,
-  draw_quantiles <span class="op">=</span> <span class="cn">NULL</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
+  draw_quantiles <span class="op">=</span> <span class="cn">null</span>,
+  trim <span class="op">=</span> <span class="cn">true</span>,
   scale <span class="op">=</span> <span class="st">"area"</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   orientation <span class="op">=</span> <span class="cn">NA</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span>
 
 <span class="fu">stat_ydensity</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   geom <span class="op">=</span> <span class="st">"violin"</span>,
   position <span class="op">=</span> <span class="st">"dodge"</span>,
   <span class="va">...</span>,
   bw <span class="op">=</span> <span class="st">"nrd0"</span>,
   adjust <span class="op">=</span> <span class="fl">1</span>,
   kernel <span class="op">=</span> <span class="st">"gaussian"</span>,
-  trim <span class="op">=</span> <span class="cn">TRUE</span>,
+  trim <span class="op">=</span> <span class="cn">true</span>,
   scale <span class="op">=</span> <span class="st">"area"</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   orientation <span class="op">=</span> <span class="cn">NA</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span></code></pre>
         </div>
 
         <h2 class="hasAnchor" id="arguments"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#arguments"></a>Arguments</h2>
+            href="#arguments"></a>Arguments</h2>
         <table class="ref-arguments">
           <colgroup>
             <col class="name">
@@ -142,9 +137,9 @@
               <th>mapping</th>
               <td>
                 <p>Set of aesthetic mappings created by
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> or
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_()</a></code>. If specified and
-                  <code>inherit.aes = TRUE</code> (the
+                  <code><a href="./aes.html">aes()</a></code> or
+                  <code><a href="./aes_.html">aes_()</a></code>. If specified and
+                  <code>inherit.aes = true</code> (the
                   default), it is combined with the default mapping at the top level of the
                   plot. You must supply <code>mapping</code> if there is no plot mapping.
                 </p>
@@ -153,20 +148,10 @@
             <tr>
               <th>data</th>
               <td>
-                <p>The data to be displayed in this layer. There are three
-                  options:</p>
-                <p>If <code>NULL</code>, the default, the data is inherited from the plot
+                <p>The data to be displayed in this layer.</p>
+                <p>If <code>null</code>, the default, the data is inherited from the plot
                   data as specified in the call to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p>
-                <p>A <code>data.frame</code>, or other object, will override the plot
-                  data. All objects will be fortified to produce a data frame. See
-                  <code><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify()</a></code> for which
-                  variables will be created.
-                </p>
-                <p>A <code>function</code> will be called with a single argument,
-                  the plot data. The return value must be a <code>data.frame</code>, and
-                  will be used as the layer data. A <code>function</code> can be created
-                  from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p>
+                  <code><a href="./cxplot.html">cxplot()</a></code>.</p>
               </td>
             </tr>
             <tr>
@@ -180,7 +165,7 @@
               <th>...</th>
               <td>
                 <p>Other arguments passed on to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/layer.html">layer()</a></code>. These are
+                  <code><a href="./layer.html">layer()</a></code>. These are
                   often aesthetics, used to set an aesthetic to a fixed value, like
                   <code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
                   to the paired geom/stat.
@@ -190,15 +175,15 @@
             <tr>
               <th>draw_quantiles</th>
               <td>
-                <p>If <code>not(NULL)</code> (default), draw horizontal lines
+                <p>If <code>not(null)</code> (default), draw horizontal lines
                   at the given quantiles of the density estimate.</p>
               </td>
             </tr>
             <tr>
               <th>trim</th>
               <td>
-                <p>If <code>TRUE</code> (default), trim the tails of the violins
-                  to the range of the data. If <code>FALSE</code>, don't trim the tails.</p>
+                <p>If <code>true</code> (default), trim the tails of the violins
+                  to the range of the data. If <code>false</code>, don't trim the tails.</p>
               </td>
             </tr>
             <tr>
@@ -212,8 +197,8 @@
             <tr>
               <th>na.rm</th>
               <td>
-                <p>If <code>FALSE</code>, the default, missing values are removed with
-                  a warning. If <code>TRUE</code>, missing values are silently removed.</p>
+                <p>If <code>false</code>, the default, missing values are removed with
+                  a warning. If <code>true</code>, missing values are silently removed.</p>
               </td>
             </tr>
             <tr>
@@ -231,7 +216,7 @@
               <td>
                 <p>logical. Should this layer be included in the legends?
                   <code>NA</code>, the default, includes if any aesthetics are mapped.
-                  <code>FALSE</code> never includes, and <code>TRUE</code> always includes.
+                  <code>false</code> never includes, and <code>true</code> always includes.
                   It can also be a named logical vector to finely select the aesthetics to
                   display.
                 </p>
@@ -240,11 +225,11 @@
             <tr>
               <th>inherit.aes</th>
               <td>
-                <p>If <code>FALSE</code>, overrides the default aesthetics,
+                <p>If <code>false</code>, overrides the default aesthetics,
                   rather than combining with them. This is most useful for helper functions
                   that define both data and aesthetics and shouldn't inherit behaviour from
                   the default plot specification, e.g.
-                  <code><a href="https://ggplot2.tidyverse.org/reference/borders.html">borders()</a></code>.</p>
+                  <code><a href="./borders.html">borders()</a></code>.</p>
               </td>
             </tr>
             <tr>
@@ -284,21 +269,17 @@
         </table>
 
         <h2 class="hasAnchor" id="orientation"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#orientation"></a>Orientation</h2>
-
-
+            href="#orientation"></a>Orientation</h2>
 
         <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the orientation is
           easy to deduce from a combination of the given mappings and the types of positional scales in use. Thus,
-          ggplot2 will by default try to guess which orientation the layer should have. Under rare circumstances, the
+          cxplot2 will by default try to guess which orientation the layer should have. Under rare circumstances, the
           orientation is ambiguous and guessing may fail. In that case the orientation can be specified directly using
           the <code>orientation</code> parameter, which can be either <code>"x"</code> or <code>"y"</code>. The value
           gives the axis that the geom should run along, <code>"x"</code> being the default orientation you would expect
           for the geom.</p>
         <h2 class="hasAnchor" id="aesthetics"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#aesthetics"></a>Aesthetics</h2>
-
-
+            href="#aesthetics"></a>Aesthetics</h2>
 
         <p><code>geom_violin()</code> understands the following aesthetics (required aesthetics are in bold):</p>
         <ul>
@@ -330,14 +311,6 @@
             <p><code>weight</code></p>
           </li>
         </ul>
-        <p>Learn more about setting these aesthetics in
-          <code><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">vignette("ggplot2-specs")</a></code>.
-        </p>
-        <h2 class="hasAnchor" id="computed-variables"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#computed-variables"></a>Computed variables
-        </h2>
-
-
 
         <dl>
           <dt>density</dt>
@@ -369,102 +342,102 @@
         </dl>
 
         <h2 class="hasAnchor" id="references"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#references"></a>References</h2>
+            href="#references"></a>References</h2>
 
         <p>Hintze, J. L., Nelson, R. D. (1998) Violin Plots: A Box
           Plot-Density Trace Synergism. The American Statistician 52, 181-184.</p>
         <h2 class="hasAnchor" id="see-also"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#see-also"></a>See also</h2>
+            href="#see-also"></a>See also</h2>
 
         <div class="dont-index">
           <p><code>geom_violin()</code> for examples, and
-            <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">stat_density()</a></code>
+            <code><a href="./geom_density.html">stat_density()</a></code>
             for examples with data along the x axis.</p>
         </div>
 
         <h2 class="hasAnchor" id="examples"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_violin.html#examples"></a>Examples</h2>
+            href="#examples"></a>Examples</h2>
         <div class="ref-examples sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
             title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, <span class="va">mpg</span><span class="op">)</span><span class="op">)</span></span>
+          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, <span class="va">mpg</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Orientation follows the discrete axis</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Scale maximum width proportional to sample size:</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>scale <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Scale maximum width to 1 for all violins:</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>scale <span class="op">=</span> <span class="st">"width"</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Default is to trim violins to the range of the data. To disable:</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-6.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">false</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Use a smaller bandwidth for closer density fit (default is 1).</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>adjust <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-7.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Add aesthetic mappings</span></span>
 <span class="r-in"><span class="co"># Note that violins are automatically dodged when any aesthetic is</span></span>
 <span class="r-in"><span class="co"># a factor</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-8.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-9.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-8.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-9.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">vs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Groups with fewer than two data points have been dropped.</span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-10.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-11.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-10.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">am</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-11.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Set aesthetics to fixed value</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey80"</span>, colour <span class="op">=</span> <span class="st">"#3366FF"</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-12.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-12.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show quartiles</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span>draw_quantiles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-13.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-13.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Scales vs. coordinate transforms -------</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st">"ggplot2movies"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st">"cxplot2movies"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="co"># Scale transformations occur before the density statistics are computed.</span></span>
 <span class="r-in"><span class="co"># Coordinate transformations occur afterwards.  Observe the effect on the</span></span>
 <span class="r-in"><span class="co"># number of outliers.</span></span>
-<span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">movies</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">votes</span>, x <span class="op">=</span> <span class="va">rating</span>, group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">rating</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">movies</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">votes</span>, x <span class="op">=</span> <span class="va">rating</span>, group <span class="op">=</span> <span class="fu"><a href="./cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">rating</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">m</span> <span class="op">+</span> <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">m</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="./scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">m</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_trans.html">coord_trans</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="./coord_trans.html">coord_trans</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">m</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_trans.html">coord_trans</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="./scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="./coord_trans.html">coord_trans</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Violin plots with continuous x:</span></span>
 <span class="r-in"><span class="co"># Use the group aesthetic to group observations in violins</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">movies</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">budget</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">movies</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">budget</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">movies</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">budget</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>, scale <span class="op">=</span> <span class="st">"width"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">movies</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">budget</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="./cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>, scale <span class="op">=</span> <span class="st">"width"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 53573 rows containing non-finite values (stat_ydensity).</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Groups with fewer than two data points have been dropped.</span>
-<span class="r-plt"><img src="./Violin plot — geom_violin • ggplot2_files/geom_violin-14.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Violin plot — geom_violin • cxplot2_files/geom_violin-14.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre>
         </div>
@@ -473,14 +446,14 @@
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#arguments">Arguments</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#orientation">Orientation</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#aesthetics">Aesthetics</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#computed-variables">Computed
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#orientation">Orientation</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#computed-variables">Computed
                 variables</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#references">References</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#see-also">See also</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html#examples">Examples</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#see-also">See also</a></li>
+            <li><a href="#examples">Examples</a></li>
           </ul>
         </nav>
       </div>

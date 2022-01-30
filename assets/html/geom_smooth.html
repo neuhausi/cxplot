@@ -78,11 +78,6 @@
       <div class="col-md-9 contents">
         <div class="page-header">
           <h1>Smoothed conditional means</h1>
-          <small class="dont-index">Source: <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/geom-smooth.r"><code>R/geom-smooth.r</code></a>,
-            <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/stat-smooth.r"><code>R/stat-smooth.r</code></a></small>
-          <div class="hidden name"><code>geom_smooth.Rd</code></div>
         </div>
 
         <div class="ref-description">
@@ -98,43 +93,43 @@
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
           <pre class="sourceCode r"><code><span class="fu">geom_smooth</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   stat <span class="op">=</span> <span class="st">"smooth"</span>,
   position <span class="op">=</span> <span class="st">"identity"</span>,
   <span class="va">...</span>,
-  method <span class="op">=</span> <span class="cn">NULL</span>,
-  formula <span class="op">=</span> <span class="cn">NULL</span>,
-  se <span class="op">=</span> <span class="cn">TRUE</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  method <span class="op">=</span> <span class="cn">null</span>,
+  formula <span class="op">=</span> <span class="cn">null</span>,
+  se <span class="op">=</span> <span class="cn">true</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   orientation <span class="op">=</span> <span class="cn">NA</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span>
 
 <span class="fu">stat_smooth</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   geom <span class="op">=</span> <span class="st">"smooth"</span>,
   position <span class="op">=</span> <span class="st">"identity"</span>,
   <span class="va">...</span>,
-  method <span class="op">=</span> <span class="cn">NULL</span>,
-  formula <span class="op">=</span> <span class="cn">NULL</span>,
-  se <span class="op">=</span> <span class="cn">TRUE</span>,
+  method <span class="op">=</span> <span class="cn">null</span>,
+  formula <span class="op">=</span> <span class="cn">null</span>,
+  se <span class="op">=</span> <span class="cn">true</span>,
   n <span class="op">=</span> <span class="fl">80</span>,
   span <span class="op">=</span> <span class="fl">0.75</span>,
-  fullrange <span class="op">=</span> <span class="cn">FALSE</span>,
+  fullrange <span class="op">=</span> <span class="cn">false</span>,
   level <span class="op">=</span> <span class="fl">0.95</span>,
   method.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   orientation <span class="op">=</span> <span class="cn">NA</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span></code></pre>
         </div>
 
         <h2 class="hasAnchor" id="arguments"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#arguments"></a>Arguments</h2>
+            href="#arguments"></a>Arguments</h2>
         <table class="ref-arguments">
           <colgroup>
             <col class="name">
@@ -145,9 +140,9 @@
               <th>mapping</th>
               <td>
                 <p>Set of aesthetic mappings created by
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> or
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_()</a></code>.
-                  If specified and <code>inherit.aes = TRUE</code> (the
+                  <code><a href="./aes.html">aes()</a></code> or
+                  <code><a href="./aes_.html">aes_()</a></code>.
+                  If specified and <code>inherit.aes = true</code> (the
                   default), it is combined with the default mapping at the top level of the
                   plot. You must supply <code>mapping</code> if there is no plot mapping.
                 </p>
@@ -156,21 +151,11 @@
             <tr>
               <th>data</th>
               <td>
-                <p>The data to be displayed in this layer. There are three
-                  options:</p>
-                <p>If <code>NULL</code>, the default, the data is inherited from the plot
+                <p>The data to be displayed in this layer.</p>
+                <p>If <code>null</code>, the default, the data is inherited from the plot
                   data as specified in the call to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.
+                  <code><a href="./cxplot.html">cxplot()</a></code>.
                 </p>
-                <p>A <code>data.frame</code>, or other object, will override the plot
-                  data. All objects will be fortified to produce a data frame. See
-                  <code><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify()</a></code>
-                  for which variables will be created.
-                </p>
-                <p>A <code>function</code> will be called with a single argument,
-                  the plot data. The return value must be a <code>data.frame</code>, and
-                  will be used as the layer data. A <code>function</code> can be created
-                  from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p>
               </td>
             </tr>
             <tr>
@@ -184,10 +169,10 @@
               <th>...</th>
               <td>
                 <p>Other arguments passed on to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/layer.html">layer()</a></code>.
+                  <code><a href="./layer.html">layer()</a></code>.
                   These are
                   often aesthetics, used to set an aesthetic to a fixed value, like
-                  <code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
+                  <code>color = "red"</code> or <code>size = 3</code>. They may also be parameters
                   to the paired geom/stat.
                 </p>
               </td>
@@ -196,7 +181,7 @@
               <th>method</th>
               <td>
                 <p>Smoothing method (function) to use, accepts either
-                  <code>NULL</code> or a character vector, e.g. <code>"lm"</code>, <code>"glm"</code>,
+                  <code>null</code> or a character vector, e.g. <code>"lm"</code>, <code>"glm"</code>,
                   <code>"gam"</code>, <code>"loess"</code>
                   or a function, e.g.
                   <code><a href="https://rdrr.io/pkg/MASS/man/rlm.html">MASS::rlm</a></code> or
@@ -205,9 +190,9 @@
                   <code><a href="https://rdrr.io/r/stats/loess.html">stats::loess</a></code>.
                   <code>"auto"</code> is also accepted for backwards compatibility. It is equivalent
                   to
-                  <code>NULL</code>.
+                  <code>null</code>.
                 </p>
-                <p>For <code>method = NULL</code> the smoothing method is chosen based on the
+                <p>For <code>method = null</code> the smoothing method is chosen based on the
                   size of the largest group (across all panels).
                   <code><a href="https://rdrr.io/r/stats/loess.html">stats::loess()</a></code> is
                   used for less than 1,000 observations; otherwise
@@ -257,7 +242,7 @@
                   so does not work for larger datasets.
                 </p>
                 <p>If you have fewer than 1,000 observations but want to use the same <code>gam()</code>
-                  model that <code>method = NULL</code> would use, then set
+                  model that <code>method = null</code> would use, then set
                   <code>method = "gam", formula = y ~ s(x, bs = "cs")</code>.
                 </p>
               </td>
@@ -266,9 +251,9 @@
               <th>formula</th>
               <td>
                 <p>Formula to use in smoothing function, eg. <code>y ~ x</code>,
-                  <code>y ~ poly(x, 2)</code>, <code>y ~ log(x)</code>. <code>NULL</code> by default,
+                  <code>y ~ poly(x, 2)</code>, <code>y ~ log(x)</code>. <code>null</code> by default,
                   in which case
-                  <code>method = NULL</code> implies <code>formula = y ~ x</code> when there are fewer
+                  <code>method = null</code> implies <code>formula = y ~ x</code> when there are fewer
                   than 1,000
                   observations and <code>formula = y ~ s(x, bs = "cs")</code> otherwise.
                 </p>
@@ -277,7 +262,7 @@
             <tr>
               <th>se</th>
               <td>
-                <p>Display confidence interval around smooth? (<code>TRUE</code> by default, see
+                <p>Display confidence interval around smooth? (<code>true</code> by default, see
                   <code>level</code> to control.)
                 </p>
               </td>
@@ -285,8 +270,8 @@
             <tr>
               <th>na.rm</th>
               <td>
-                <p>If <code>FALSE</code>, the default, missing values are removed with
-                  a warning. If <code>TRUE</code>, missing values are silently removed.</p>
+                <p>If <code>false</code>, the default, missing values are removed with
+                  a warning. If <code>true</code>, missing values are silently removed.</p>
               </td>
             </tr>
             <tr>
@@ -306,7 +291,7 @@
               <td>
                 <p>logical. Should this layer be included in the legends?
                   <code>NA</code>, the default, includes if any aesthetics are mapped.
-                  <code>FALSE</code> never includes, and <code>TRUE</code> always includes.
+                  <code>false</code> never includes, and <code>true</code> always includes.
                   It can also be a named logical vector to finely select the aesthetics to
                   display.
                 </p>
@@ -315,11 +300,11 @@
             <tr>
               <th>inherit.aes</th>
               <td>
-                <p>If <code>FALSE</code>, overrides the default aesthetics,
+                <p>If <code>false</code>, overrides the default aesthetics,
                   rather than combining with them. This is most useful for helper functions
                   that define both data and aesthetics and shouldn't inherit behaviour from
                   the default plot specification, e.g.
-                  <code><a href="https://ggplot2.tidyverse.org/reference/borders.html">borders()</a></code>.
+                  <code><a href="./borders.html">borders()</a></code>.
                 </p>
               </td>
             </tr>
@@ -343,7 +328,7 @@
                 <p>Controls the amount of smoothing for the default loess smoother.
                   Smaller numbers produce wigglier lines, larger numbers produce smoother
                   lines. Only used with loess, i.e. when <code>method = "loess"</code>,
-                  or when <code>method = NULL</code> (the default) and there are fewer than 1,000
+                  or when <code>method = null</code> (the default) and there are fewer than 1,000
                   observations.</p>
               </td>
             </tr>
@@ -371,7 +356,7 @@
         </table>
 
         <h2 class="hasAnchor" id="details"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#details"></a>Details</h2>
+            href="#details"></a>Details</h2>
 
         <p>Calculation is performed by the (currently undocumented)
           <code>predictdf()</code> generic and its methods. For most methods the standard
@@ -384,19 +369,19 @@
           scale and then back-transformed to the response scale.
         </p>
         <h2 class="hasAnchor" id="orientation"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#orientation"></a>Orientation</h2>
+            href="#orientation"></a>Orientation</h2>
 
 
 
         <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the
           orientation is easy to deduce from a combination of the given mappings and the types of positional
-          scales in use. Thus, ggplot2 will by default try to guess which orientation the layer should have.
+          scales in use. Thus, cxplot2 will by default try to guess which orientation the layer should have.
           Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the
           orientation can be specified directly using the <code>orientation</code> parameter, which can be
           either <code>"x"</code> or <code>"y"</code>. The value gives the axis that the geom should run
           along, <code>"x"</code> being the default orientation you would expect for the geom.</p>
         <h2 class="hasAnchor" id="aesthetics"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#aesthetics"></a>Aesthetics</h2>
+            href="#aesthetics"></a>Aesthetics</h2>
 
 
 
@@ -413,7 +398,7 @@
             <p><code>alpha</code></p>
           </li>
           <li>
-            <p><code>colour</code></p>
+            <p><code>color</code></p>
           </li>
           <li>
             <p><code>fill</code></p>
@@ -438,10 +423,10 @@
           </li>
         </ul>
         <p>Learn more about setting these aesthetics in
-          <code><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">vignette("ggplot2-specs")</a></code>.
+          <code><a href="https://cxplot2.tidyverse.org/articles/cxplot2-specs.html">vignette("cxplot2-specs")</a></code>.
         </p>
         <h2 class="hasAnchor" id="computed-variables"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#computed-variables"></a>Computed
+            href="#computed-variables"></a>Computed
           variables</h2>
 
 
@@ -469,7 +454,7 @@
         </dl>
 
         <h2 class="hasAnchor" id="see-also"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#see-also"></a>See also</h2>
+            href="#see-also"></a>See also</h2>
 
         <div class="dont-index">
           <p>See individual modelling functions for more details:
@@ -481,88 +466,88 @@
         </div>
 
         <h2 class="hasAnchor" id="examples"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#examples"></a>Examples</h2>
+            href="#examples"></a>Examples</h2>
         <div class="ref-examples sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
             title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+          <pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-1.png" alt="" width="700" height="433"></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># If you need the fitting to be done along the y-axis set the orientation</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="co">// If you need the fitting to be done along the y-axis set the orientation</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>orientation <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-2.png" alt="" width="700" height="433"></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Use span to control the "wiggliness" of the default loess smoother.</span></span>
-<span class="r-in"><span class="co"># The span is the fraction of points used to fit each local regression:</span></span>
-<span class="r-in"><span class="co"># small numbers make a wigglier curve, larger numbers make a smoother curve.</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="co">// Use span to control the "wiggliness" of the default loess smoother.</span></span>
+<span class="r-in"><span class="co">// The span is the fraction of points used to fit each local regression:</span></span>
+<span class="r-in"><span class="co">// small numbers make a wigglier curve, larger numbers make a smoother curve.</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>span <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-3.png" alt="" width="700" height="433"></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Instead of a loess smooth, you can use any other modelling function:</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Instead of a loess smooth, you can use any other modelling function:</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">false</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-5.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span>, se <span class="op">=</span> <span class="cn">false</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Smooths are automatically fit to each group (defined by categorical</span></span>
-<span class="r-in"><span class="co"># aesthetics or the group aesthetic) and for each facet.</span></span>
+<span class="r-in"><span class="co">// Smooths are automatically fit to each group (defined by categorical</span></span>
+<span class="r-in"><span class="co">// aesthetics or the group aesthetic) and for each facet.</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span>, colour <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span>, method <span class="op">=</span> <span class="va">lm</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span>, color <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>se <span class="op">=</span> <span class="cn">false</span>, method <span class="op">=</span> <span class="va">lm</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-6.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>span <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">drv</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-7.png" alt="" width="700" height="433"></span>
+<span class="r-in">  <span class="fu"><a href="./facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">drv</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
+<span class="r-in"><span class="co">// \donttest{</span></span>
 <span class="r-in"><span class="va">binomial_smooth</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"glm"</span>, method.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="co"># To fit a logistic regression, you need to coerce the values to</span></span>
-<span class="r-in"><span class="co"># a numeric vector lying between 0 and 1.</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="va">Kyphosis</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="co">// To fit a logistic regression, you need to coerce the values to</span></span>
+<span class="r-in"><span class="co">// a numeric vector lying between 0 and 1.</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="va">Kyphosis</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">binomial_smooth</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Computation failed in `stat_smooth()`:</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> y values must be 0 &lt;= y &lt;= 1</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-8.png" alt="" width="700" height="433"></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
+<span class="r-wrn co"><span class="r-pr">//&gt;</span> <span class="warning">Warning: </span>Computation failed in `stat_smooth()`:</span>
+<span class="r-wrn co"><span class="r-pr">//&gt;</span> y values must be 0 &lt;= y &lt;= 1</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-8.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Kyphosis</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Kyphosis</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">binomial_smooth</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-9.png" alt="" width="700" height="433"></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-9.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Kyphosis</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Kyphosis</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">binomial_smooth</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/ns.html">ns</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • ggplot2_files/geom_smooth-10.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-10.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># But in this case, it's probably better to fit the model yourself</span></span>
-<span class="r-in"><span class="co"># so you can exercise more control and see whether or not it's a good model.</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span class="co">// But in this case, it's probably better to fit the model yourself</span></span>
+<span class="r-in"><span class="co">// so you can exercise more control and see whether or not it's a good model.</span></span>
+<span class="r-in"><span class="co">// }</span></span>
 </code></pre>
         </div>
       </div>
@@ -570,18 +555,18 @@
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#arguments">Arguments</a>
+            <li><a href="#arguments">Arguments</a>
             </li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#details">Details</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#orientation">Orientation</a>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#orientation">Orientation</a>
             </li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#aesthetics">Aesthetics</a>
+            <li><a href="#aesthetics">Aesthetics</a>
             </li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#computed-variables">Computed
+            <li><a href="#computed-variables">Computed
                 variables</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#see-also">See also</a>
+            <li><a href="#see-also">See also</a>
             </li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html#examples">Examples</a>
+            <li><a href="#examples">Examples</a>
             </li>
           </ul>
         </nav>

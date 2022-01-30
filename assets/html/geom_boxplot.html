@@ -77,11 +77,6 @@
       <div class="col-md-9 contents">
         <div class="page-header">
           <h1>A box and whiskers plot (in the style of Tukey)</h1>
-          <small class="dont-index">Source: <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/geom-boxplot.r"><code>R/geom-boxplot.r</code></a>,
-            <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/stat-boxplot.r"><code>R/stat-boxplot.r</code></a></small>
-          <div class="hidden name"><code>geom_boxplot.Rd</code></div>
         </div>
 
         <div class="ref-description">
@@ -95,43 +90,43 @@
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
           <pre class="sourceCode r"><code><span class="fu">geom_boxplot</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   stat <span class="op">=</span> <span class="st">"boxplot"</span>,
   position <span class="op">=</span> <span class="st">"dodge2"</span>,
   <span class="va">...</span>,
-  outlier.colour <span class="op">=</span> <span class="cn">NULL</span>,
-  outlier.color <span class="op">=</span> <span class="cn">NULL</span>,
-  outlier.fill <span class="op">=</span> <span class="cn">NULL</span>,
+  outlier.color <span class="op">=</span> <span class="cn">null</span>,
+  outlier.color <span class="op">=</span> <span class="cn">null</span>,
+  outlier.fill <span class="op">=</span> <span class="cn">null</span>,
   outlier.shape <span class="op">=</span> <span class="fl">19</span>,
   outlier.size <span class="op">=</span> <span class="fl">1.5</span>,
   outlier.stroke <span class="op">=</span> <span class="fl">0.5</span>,
-  outlier.alpha <span class="op">=</span> <span class="cn">NULL</span>,
-  notch <span class="op">=</span> <span class="cn">FALSE</span>,
+  outlier.alpha <span class="op">=</span> <span class="cn">null</span>,
+  notch <span class="op">=</span> <span class="cn">false</span>,
   notchwidth <span class="op">=</span> <span class="fl">0.5</span>,
-  varwidth <span class="op">=</span> <span class="cn">FALSE</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  varwidth <span class="op">=</span> <span class="cn">false</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   orientation <span class="op">=</span> <span class="cn">NA</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span>
 
 <span class="fu">stat_boxplot</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   geom <span class="op">=</span> <span class="st">"boxplot"</span>,
   position <span class="op">=</span> <span class="st">"dodge2"</span>,
   <span class="va">...</span>,
   coef <span class="op">=</span> <span class="fl">1.5</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   orientation <span class="op">=</span> <span class="cn">NA</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span></code></pre>
         </div>
 
         <h2 class="hasAnchor" id="arguments"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#arguments"></a>Arguments</h2>
+            href="#arguments"></a>Arguments</h2>
         <table class="ref-arguments">
           <colgroup>
             <col class="name">
@@ -142,9 +137,9 @@
               <th>mapping</th>
               <td>
                 <p>Set of aesthetic mappings created by
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> or
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_()</a></code>.
-                  If specified and <code>inherit.aes = TRUE</code> (the
+                  <code><a href="./aes.html">aes()</a></code> or
+                  <code><a href="./aes_.html">aes_()</a></code>.
+                  If specified and <code>inherit.aes = true</code> (the
                   default), it is combined with the default mapping at the top level of the
                   plot. You must supply <code>mapping</code> if there is no plot mapping.
                 </p>
@@ -153,21 +148,11 @@
             <tr>
               <th>data</th>
               <td>
-                <p>The data to be displayed in this layer. There are three
-                  options:</p>
-                <p>If <code>NULL</code>, the default, the data is inherited from the plot
+                <p>The data to be displayed in this layer.</p>
+                <p>If <code>null</code>, the default, the data is inherited from the plot
                   data as specified in the call to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.
+                  <code><a href="./cxplot.html">cxplot()</a></code>.
                 </p>
-                <p>A <code>data.frame</code>, or other object, will override the plot
-                  data. All objects will be fortified to produce a data frame. See
-                  <code><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify()</a></code>
-                  for which variables will be created.
-                </p>
-                <p>A <code>function</code> will be called with a single argument,
-                  the plot data. The return value must be a <code>data.frame</code>, and
-                  will be used as the layer data. A <code>function</code> can be created
-                  from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p>
               </td>
             </tr>
             <tr>
@@ -181,21 +166,21 @@
               <th>...</th>
               <td>
                 <p>Other arguments passed on to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/layer.html">layer()</a></code>.
+                  <code><a href="./layer.html">layer()</a></code>.
                   These are
                   often aesthetics, used to set an aesthetic to a fixed value, like
-                  <code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
+                  <code>color = "red"</code> or <code>size = 3</code>. They may also be parameters
                   to the paired geom/stat.
                 </p>
               </td>
             </tr>
             <tr>
-              <th>outlier.colour, outlier.color, outlier.fill, outlier.shape, outlier.size,
+              <th>outlier.color, outlier.color, outlier.fill, outlier.shape, outlier.size,
                 outlier.stroke, outlier.alpha</th>
               <td>
-                <p>Default aesthetics for outliers. Set to <code>NULL</code> to inherit from the
+                <p>Default aesthetics for outliers. Set to <code>null</code> to inherit from the
                   aesthetics used for the box.</p>
-                <p>In the unlikely event you specify both US and UK spellings of colour, the
+                <p>In the unlikely event you specify both US and UK spellings of color, the
                   US spelling will take precedence.</p>
                 <p>Sometimes it can be useful to hide the outliers, for example when overlaying
                   the raw data points on top of the boxplot. Hiding the outliers can be achieved
@@ -208,8 +193,8 @@
             <tr>
               <th>notch</th>
               <td>
-                <p>If <code>FALSE</code> (default) make a standard box plot. If
-                  <code>TRUE</code>, make a notched box plot. Notches are used to compare groups;
+                <p>If <code>false</code> (default) make a standard box plot. If
+                  <code>true</code>, make a notched box plot. Notches are used to compare groups;
                   if the notches of two boxes do not overlap, this suggests that the medians
                   are significantly different.
                 </p>
@@ -225,8 +210,8 @@
             <tr>
               <th>varwidth</th>
               <td>
-                <p>If <code>FALSE</code> (default) make a standard box plot. If
-                  <code>TRUE</code>, boxes are drawn with widths proportional to the
+                <p>If <code>false</code> (default) make a standard box plot. If
+                  <code>true</code>, boxes are drawn with widths proportional to the
                   square-roots of the number of observations in the groups (possibly
                   weighted, using the <code>weight</code> aesthetic).
                 </p>
@@ -235,8 +220,8 @@
             <tr>
               <th>na.rm</th>
               <td>
-                <p>If <code>FALSE</code>, the default, missing values are removed with
-                  a warning. If <code>TRUE</code>, missing values are silently removed.</p>
+                <p>If <code>false</code>, the default, missing values are removed with
+                  a warning. If <code>true</code>, missing values are silently removed.</p>
               </td>
             </tr>
             <tr>
@@ -256,7 +241,7 @@
               <td>
                 <p>logical. Should this layer be included in the legends?
                   <code>NA</code>, the default, includes if any aesthetics are mapped.
-                  <code>FALSE</code> never includes, and <code>TRUE</code> always includes.
+                  <code>false</code> never includes, and <code>true</code> always includes.
                   It can also be a named logical vector to finely select the aesthetics to
                   display.
                 </p>
@@ -265,11 +250,11 @@
             <tr>
               <th>inherit.aes</th>
               <td>
-                <p>If <code>FALSE</code>, overrides the default aesthetics,
+                <p>If <code>false</code>, overrides the default aesthetics,
                   rather than combining with them. This is most useful for helper functions
                   that define both data and aesthetics and shouldn't inherit behaviour from
                   the default plot specification, e.g.
-                  <code><a href="https://ggplot2.tidyverse.org/reference/borders.html">borders()</a></code>.
+                  <code><a href="./borders.html">borders()</a></code>.
                 </p>
               </td>
             </tr>
@@ -291,18 +276,18 @@
         </table>
 
         <h2 class="hasAnchor" id="orientation"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#orientation"></a>Orientation
+            href="#orientation"></a>Orientation
         </h2>
 
         <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the
           orientation is easy to deduce from a combination of the given mappings and the types of positional
-          scales in use. Thus, ggplot2 will by default try to guess which orientation the layer should have.
+          scales in use. Thus, cxplot2 will by default try to guess which orientation the layer should have.
           Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the
           orientation can be specified directly using the <code>orientation</code> parameter, which can be
           either <code>"x"</code> or <code>"y"</code>. The value gives the axis that the geom should run
           along, <code>"x"</code> being the default orientation you would expect for the geom.</p>
         <h2 class="hasAnchor" id="summary-statistics"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#summary-statistics"></a>Summary
+            href="#summary-statistics"></a>Summary
           statistics</h2>
 
 
@@ -326,7 +311,7 @@
           This gives a roughly 95% confidence interval for comparing medians.
           See McGill et al. (1978) for more details.</p>
         <h2 class="hasAnchor" id="aesthetics"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#aesthetics"></a>Aesthetics</h2>
+            href="#aesthetics"></a>Aesthetics</h2>
 
 
 
@@ -355,7 +340,7 @@
             <p><code>alpha</code></p>
           </li>
           <li>
-            <p><code>colour</code></p>
+            <p><code>color</code></p>
           </li>
           <li>
             <p><code>fill</code></p>
@@ -377,10 +362,10 @@
           </li>
         </ul>
         <p>Learn more about setting these aesthetics in
-          <code><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">vignette("ggplot2-specs")</a></code>.
+          <code><a href="https://cxplot2.tidyverse.org/articles/cxplot2-specs.html">vignette("cxplot2-specs")</a></code>.
         </p>
         <h2 class="hasAnchor" id="computed-variables"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#computed-variables"></a>Computed
+            href="#computed-variables"></a>Computed
           variables</h2>
 
 
@@ -424,73 +409,73 @@
         </dl>
 
         <h2 class="hasAnchor" id="references"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#references"></a>References</h2>
+            href="#references"></a>References</h2>
 
         <p>McGill, R., Tukey, J. W. and Larsen, W. A. (1978) Variations of
           box plots. The American Statistician 32, 12-16.</p>
         <h2 class="hasAnchor" id="see-also"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#see-also"></a>See also</h2>
+            href="#see-also"></a>See also</h2>
 
         <div class="dont-index">
-          <p><code><a href="https://ggplot2.tidyverse.org/reference/geom_quantile.html">geom_quantile()</a></code>
+          <p><code><a href="./geom_quantile.html">geom_quantile()</a></code>
             for continuous <code>x</code>,
-            <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code>
+            <code><a href="./geom_violin.html">geom_violin()</a></code>
             for a richer display of the distribution, and
-            <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>
+            <code><a href="./geom_jitter.html">geom_jitter()</a></code>
             for a useful technique for small data.
           </p>
         </div>
 
         <h2 class="hasAnchor" id="examples"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#examples"></a>Examples</h2>
+            href="#examples"></a>Examples</h2>
         <div class="ref-examples sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
             title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span></span>
+          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># Orientation follows the discrete axis</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Orientation follows the discrete axis</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> notch went outside hinges. Try setting notch=FALSE.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> notch went outside hinges. Try setting notch=FALSE.</span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>varwidth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, colour <span class="op">=</span> <span class="st">"#3366FF"</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># By default, outlier points match the colour of the box. Use</span></span>
-<span class="r-in"><span class="co"># outlier.colour to override</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.colour <span class="op">=</span> <span class="st">"red"</span>, outlier.shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># Remove outliers when overlaying boxplot with original data points</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-7.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">true</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> notch went outside hinges. Try setting notch=false.</span>
+<span class="r-msg co"><span class="r-pr">//&gt;</span> notch went outside hinges. Try setting notch=false.</span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>varwidth <span class="op">=</span> <span class="cn">true</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, color <span class="op">=</span> <span class="st">"#3366FF"</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-5.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// By default, outlier points match the color of the box. Use</span></span>
+<span class="r-in"><span class="co">// outlier.color to override</span></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.color <span class="op">=</span> <span class="st">"red"</span>, outlier.shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-6.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Remove outliers when overlaying boxplot with original data points</span></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Boxplots are automatically dodged when any aesthetic is a factor</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">drv</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-8.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Boxplots are automatically dodged when any aesthetic is a factor</span></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">drv</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-8.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># You can also use boxplots with continuous x, as long as you supply</span></span>
-<span class="r-in"><span class="co"># a grouping variable. cut_width is particularly useful</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="co">// You can also use boxplots with continuous x, as long as you supply</span></span>
+<span class="r-in"><span class="co">// a grouping variable. cut_width is particularly useful</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Continuous x aesthetic -- did you forget aes(group=...)?</span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-9.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-10.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># Adjust the transparency of outliers using outlier.alpha</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span>, outlier.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-11.png" alt="" width="700" height="433"></span>
+<span class="r-wrn co"><span class="r-pr">//&gt;</span> <span class="warning">Warning: </span>Continuous x aesthetic -- did you forget aes(group=...)?</span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-9.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="./cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-10.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Adjust the transparency of outliers using outlier.alpha</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="./cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span>, outlier.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-11.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># It's possible to draw a boxplot with your own computations if you</span></span>
-<span class="r-in"><span class="co"># use stat = "identity":</span></span>
+<span class="r-in"><span class="co">// \donttest{</span></span>
+<span class="r-in"><span class="co">// It's possible to draw a boxplot with your own computations if you</span></span>
+<span class="r-in"><span class="co">// use stat = "identity":</span></span>
 <span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span class="r-in">  x <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -500,13 +485,13 @@
 <span class="r-in">  y75 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.75</span><span class="op">)</span>,</span>
 <span class="r-in">  y100 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span></span>
-<span class="r-in">   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">y0</span>, lower <span class="op">=</span> <span class="va">y25</span>, middle <span class="op">=</span> <span class="va">y50</span>, upper <span class="op">=</span> <span class="va">y75</span>, ymax <span class="op">=</span> <span class="va">y100</span><span class="op">)</span>,</span>
+<span class="r-in">   <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">y0</span>, lower <span class="op">=</span> <span class="va">y25</span>, middle <span class="op">=</span> <span class="va">y50</span>, upper <span class="op">=</span> <span class="va">y75</span>, ymax <span class="op">=</span> <span class="va">y100</span><span class="op">)</span>,</span>
 <span class="r-in">   stat <span class="op">=</span> <span class="st">"identity"</span></span>
 <span class="r-in"> <span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • ggplot2_files/geom_boxplot-12.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-12.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// }</span></span>
 </code></pre>
         </div>
       </div>
@@ -514,21 +499,21 @@
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#arguments">Arguments</a>
+            <li class=""><a href="#arguments">Arguments</a>
             </li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#orientation">Orientation</a>
+            <li class=""><a href="#orientation">Orientation</a>
             </li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#summary-statistics">Summary
+            <li class=""><a href="#summary-statistics">Summary
                 statistics</a></li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#aesthetics">Aesthetics</a>
+            <li class=""><a href="#aesthetics">Aesthetics</a>
             </li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#computed-variables">Computed
+            <li class=""><a href="#computed-variables">Computed
                 variables</a></li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#references">References</a>
+            <li class=""><a href="#references">References</a>
             </li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#see-also">See also</a>
+            <li><a href="#see-also">See also</a>
             </li>
-            <li class=""><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html#examples">Examples</a>
+            <li class=""><a href="#examples">Examples</a>
             </li>
           </ul>
         </nav>

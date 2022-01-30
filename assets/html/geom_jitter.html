@@ -78,9 +78,6 @@
       <div class="col-md-9 contents">
         <div class="page-header">
           <h1>Jittered points</h1>
-          <small class="dont-index">Source: <a
-              href="https://github.com/tidyverse/ggplot2/blob/master/R/geom-jitter.r"><code>R/geom-jitter.r</code></a></small>
-          <div class="hidden name"><code>geom_jitter.Rd</code></div>
         </div>
 
         <div class="ref-description">
@@ -96,21 +93,21 @@
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
           <pre class="sourceCode r"><code><span class="fu">geom_jitter</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">NULL</span>,
-  data <span class="op">=</span> <span class="cn">NULL</span>,
+  mapping <span class="op">=</span> <span class="cn">null</span>,
+  data <span class="op">=</span> <span class="cn">null</span>,
   stat <span class="op">=</span> <span class="st">"identity"</span>,
   position <span class="op">=</span> <span class="st">"jitter"</span>,
   <span class="va">...</span>,
-  width <span class="op">=</span> <span class="cn">NULL</span>,
-  height <span class="op">=</span> <span class="cn">NULL</span>,
-  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,
+  width <span class="op">=</span> <span class="cn">null</span>,
+  height <span class="op">=</span> <span class="cn">null</span>,
+  na.rm <span class="op">=</span> <span class="cn">false</span>,
   show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span>
+  inherit.aes <span class="op">=</span> <span class="cn">true</span>
 <span class="op">)</span></code></pre>
         </div>
 
         <h2 class="hasAnchor" id="arguments"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#arguments"></a>Arguments</h2>
+            href="#arguments"></a>Arguments</h2>
         <table class="ref-arguments">
           <colgroup>
             <col class="name">
@@ -121,9 +118,9 @@
               <th>mapping</th>
               <td>
                 <p>Set of aesthetic mappings created by
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> or
-                  <code><a href="https://ggplot2.tidyverse.org/reference/aes_.html">aes_()</a></code>. If specified and
-                  <code>inherit.aes = TRUE</code> (the
+                  <code><a href="./aes.html">aes()</a></code> or
+                  <code><a href="./aes_.html">aes_()</a></code>. If specified and
+                  <code>inherit.aes = true</code> (the
                   default), it is combined with the default mapping at the top level of the
                   plot. You must supply <code>mapping</code> if there is no plot mapping.
                 </p>
@@ -132,20 +129,10 @@
             <tr>
               <th>data</th>
               <td>
-                <p>The data to be displayed in this layer. There are three
-                  options:</p>
-                <p>If <code>NULL</code>, the default, the data is inherited from the plot
+                <p>The data to be displayed in this layer.</p>
+                <p>If <code>null</code>, the default, the data is inherited from the plot
                   data as specified in the call to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>.</p>
-                <p>A <code>data.frame</code>, or other object, will override the plot
-                  data. All objects will be fortified to produce a data frame. See
-                  <code><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify()</a></code> for which
-                  variables will be created.
-                </p>
-                <p>A <code>function</code> will be called with a single argument,
-                  the plot data. The return value must be a <code>data.frame</code>, and
-                  will be used as the layer data. A <code>function</code> can be created
-                  from a <code>formula</code> (e.g. <code>~ head(.x, 10)</code>).</p>
+                  <code><a href="./cxplot.html">cxplot()</a></code>.</p>
               </td>
             </tr>
             <tr>
@@ -166,9 +153,9 @@
               <th>...</th>
               <td>
                 <p>Other arguments passed on to
-                  <code><a href="https://ggplot2.tidyverse.org/reference/layer.html">layer()</a></code>. These are
+                  <code><a href="./layer.html">layer()</a></code>. These are
                   often aesthetics, used to set an aesthetic to a fixed value, like
-                  <code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
+                  <code>color = "red"</code> or <code>size = 3</code>. They may also be parameters
                   to the paired geom/stat.
                 </p>
               </td>
@@ -200,8 +187,8 @@
             <tr>
               <th>na.rm</th>
               <td>
-                <p>If <code>FALSE</code>, the default, missing values are removed with
-                  a warning. If <code>TRUE</code>, missing values are silently removed.</p>
+                <p>If <code>false</code>, the default, missing values are removed with
+                  a warning. If <code>true</code>, missing values are silently removed.</p>
               </td>
             </tr>
             <tr>
@@ -209,7 +196,7 @@
               <td>
                 <p>logical. Should this layer be included in the legends?
                   <code>NA</code>, the default, includes if any aesthetics are mapped.
-                  <code>FALSE</code> never includes, and <code>TRUE</code> always includes.
+                  <code>false</code> never includes, and <code>true</code> always includes.
                   It can also be a named logical vector to finely select the aesthetics to
                   display.
                 </p>
@@ -218,20 +205,20 @@
             <tr>
               <th>inherit.aes</th>
               <td>
-                <p>If <code>FALSE</code>, overrides the default aesthetics,
+                <p>If <code>false</code>, overrides the default aesthetics,
                   rather than combining with them. This is most useful for helper functions
                   that define both data and aesthetics and shouldn't inherit behaviour from
                   the default plot specification, e.g.
-                  <code><a href="https://ggplot2.tidyverse.org/reference/borders.html">borders()</a></code>.</p>
+                  <code><a href="./borders.html">borders()</a></code>.</p>
               </td>
             </tr>
           </tbody>
         </table>
 
         <h2 class="hasAnchor" id="aesthetics"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#aesthetics"></a>Aesthetics</h2>
+            href="#aesthetics"></a>Aesthetics</h2>
 
-        <p><code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> understands
+        <p><code><a href="./geom_point.html">geom_point()</a></code> understands
           the following aesthetics (required aesthetics are in bold):</p>
         <ul>
           <li>
@@ -244,7 +231,7 @@
             <p><code>alpha</code></p>
           </li>
           <li>
-            <p><code>colour</code></p>
+            <p><code>color</code></p>
           </li>
           <li>
             <p><code>fill</code></p>
@@ -263,51 +250,51 @@
           </li>
         </ul>
         <p>Learn more about setting these aesthetics in
-          <code><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">vignette("ggplot2-specs")</a></code>.
+          <code><a href="https://cxplot2.tidyverse.org/articles/cxplot2-specs.html">vignette("cxplot2-specs")</a></code>.
         </p>
         <h2 class="hasAnchor" id="see-also"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#see-also"></a>See also</h2>
+            href="#see-also"></a>See also</h2>
 
         <div class="dont-index">
-          <p><code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> for
+          <p><code><a href="./geom_point.html">geom_point()</a></code> for
             regular, unjittered points,
-            <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code> for
+            <code><a href="./geom_boxplot.html">geom_boxplot()</a></code> for
             another way of looking at the conditional
             distribution of a variable
           </p>
         </div>
 
         <h2 class="hasAnchor" id="examples"><a class="anchor"
-            href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#examples"></a>Examples</h2>
+            href="#examples"></a>Examples</h2>
         <div class="ref-examples sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
             title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
             data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
               class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-1.png" alt="" width="700" height="433"></span>
+          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_jitter</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Add aesthetic mappings</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Add aesthetic mappings</span></span>
+<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Use smaller width/height to emphasise categories</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="co">// Use smaller width/height to emphasise categories</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_jitter</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Use larger width/height to completely smooth away discreteness</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"><span class="co">// Use larger width/height to completely smooth away discreteness</span></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_jitter</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-6.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">  <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span>, height <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Jittered points — geom_jitter • ggplot2_files/geom_jitter-7.png" alt="" width="700" height="433"></span>
+<span class="r-plt"><img src="./Jittered points — geom_jitter • cxplot2_files/geom_jitter-7.png" alt="" width="700" height="433"></span>
 </code></pre>
         </div>
       </div>
@@ -315,10 +302,10 @@
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#arguments">Arguments</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#aesthetics">Aesthetics</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#see-also">See also</a></li>
-            <li><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html#examples">Examples</a></li>
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#see-also">See also</a></li>
+            <li><a href="#examples">Examples</a></li>
           </ul>
         </nav>
       </div>
