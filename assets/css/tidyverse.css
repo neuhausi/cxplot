@@ -5835,11 +5835,11 @@ button.close {
     font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
     font-weight: normal;
     font-size: 32px;
-    padding: 0 0 0 54px;
+    padding: 0 0 0 88px;
     height: 50px;
     line-height: 50px;
-    background-image: url(logo.png);
-    background-size: 32px auto;
+    background-image: url(logo.svg);
+    background-size: 80px auto;
     background-repeat: no-repeat;
     background-position: 15px center; }
   .navbar-nav li a {

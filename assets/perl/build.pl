@@ -401,7 +401,7 @@ sub head {
   <!--optional theme-->
   <meta property="og:title" content="$TITLE">
   <meta property="og:description" content="$DESC">
-  <meta property="og:image" content="/assets/images/logo.png">
+  <meta property="og:image" content="/assets/images/logo.svg">
   <meta name="twitter:card" content="summary">
 </head>
 
