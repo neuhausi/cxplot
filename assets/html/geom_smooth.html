@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smoothed conditional means — geom_smooth • cxplot</title>
+  <title>Smoothed conditional means • cxplot</title>
   <!-- favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
@@ -13,6 +12,8 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/mpg.js"></script>
   <!-- jquery -->
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -33,11 +34,8 @@
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
   <!--optional theme-->
-  <meta property="og:title" content="Smoothed conditional means — geom_smooth">
-  <meta property="og:description" content="Aids the eye in seeing patterns in the presence of overplotting.
-  geom_smooth() and stat_smooth() are effectively aliases: they
-  both use the same arguments. Use stat_smooth() if you want to
-  display the results with a non-standard geom.">
+  <meta property="og:title" content="Smoothed conditional means">
+  <meta property="og:description" content="Aids the eye in seeing patterns in the presence of overplotting. geom_smooth() and stat_smooth() are effectively aliases: they both use the same arguments. Use stat_smooth() if you want to display the results with a non-standard geom.">
   <meta property="og:image" content="/assets/images/logo.png">
   <meta name="twitter:card" content="summary">
 </head>
@@ -75,506 +73,228 @@
     </header>
 
     <div class="row">
+
       <div class="col-md-9 contents">
+
         <div class="page-header">
           <h1>Smoothed conditional means</h1>
         </div>
 
         <div class="ref-description">
-          <p>Aids the eye in seeing patterns in the presence of overplotting.
-            <code>geom_smooth()</code> and <code>stat_smooth()</code> are effectively aliases: they
-            both use the same arguments. Use <code>stat_smooth()</code> if you want to
-            display the results with a non-standard geom.
-          </p>
+          <p>Aids the eye in seeing patterns in the presence of overplotting. geom_smooth() and stat_smooth() are effectively aliases: they both use the same arguments. Use stat_smooth() if you want to display the results with a non-standard geom.</p>
         </div>
 
-        <div class="ref-usage sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
-            title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
-            data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
-              class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="fu">geom_smooth</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">null</span>,
-  data <span class="op">=</span> <span class="cn">null</span>,
-  stat <span class="op">=</span> <span class="st">"smooth"</span>,
-  position <span class="op">=</span> <span class="st">"identity"</span>,
-  <span class="va">...</span>,
-  method <span class="op">=</span> <span class="cn">null</span>,
-  formula <span class="op">=</span> <span class="cn">null</span>,
-  se <span class="op">=</span> <span class="cn">true</span>,
-  na.rm <span class="op">=</span> <span class="cn">false</span>,
-  orientation <span class="op">=</span> <span class="cn">NA</span>,
-  show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">true</span>
-<span class="op">)</span>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+<span class="fu">geom_smooth</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"smooth"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"method"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"formula"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"se"</span> <span class="op">=</span> <span class="cn">true</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"orientation"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
 
-<span class="fu">stat_smooth</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">null</span>,
-  data <span class="op">=</span> <span class="cn">null</span>,
-  geom <span class="op">=</span> <span class="st">"smooth"</span>,
-  position <span class="op">=</span> <span class="st">"identity"</span>,
-  <span class="va">...</span>,
-  method <span class="op">=</span> <span class="cn">null</span>,
-  formula <span class="op">=</span> <span class="cn">null</span>,
-  se <span class="op">=</span> <span class="cn">true</span>,
-  n <span class="op">=</span> <span class="fl">80</span>,
-  span <span class="op">=</span> <span class="fl">0.75</span>,
-  fullrange <span class="op">=</span> <span class="cn">false</span>,
-  level <span class="op">=</span> <span class="fl">0.95</span>,
-  method.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>,
-  na.rm <span class="op">=</span> <span class="cn">false</span>,
-  orientation <span class="op">=</span> <span class="cn">NA</span>,
-  show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">true</span>
-<span class="op">)</span></code></pre>
+<span class="fu">stat_smooth</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"geom"</span> <span class="op">=</span> <span class="st">"smooth"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"method"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"formula"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"se"</span> <span class="op">=</span> <span class="cn">true</span>,
+  n =<span class="va">"80"</span>,
+ <span class="st">"span"</span> <span class="op">=</span> <span class="fl">0</span>.75,
+ <span class="st">"fullrange"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"level"</span> <span class="op">=</span> <span class="fl">0</span>.95,
+<span class="fu">  method.args = list</span><span class="op">(</span><span class="op">{</span><span class="op">}</span><span class="op">)</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"orientation"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
         </div>
 
-        <h2 class="hasAnchor" id="arguments"><a class="anchor"
-            href="#arguments"></a>Arguments</h2>
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
         <table class="ref-arguments">
-          <colgroup>
-            <col class="name">
-            <col class="desc">
-          </colgroup>
           <tbody>
             <tr>
               <th>mapping</th>
               <td>
-                <p>Set of aesthetic mappings created by
-                  <code><a href="./aes.html">aes()</a></code> or
-                  <code><a href="./aes_.html">aes_()</a></code>.
-                  If specified and <code>inherit.aes = true</code> (the
-                  default), it is combined with the default mapping at the top level of the
-                  plot. You must supply <code>mapping</code> if there is no plot mapping.
-                </p>
-              </td>
+                <p>Set of aesthetic mappings created by <a href="./aes.html"><code>aes()</code></a> or <a href="./aes.html"><code>aes_()</code></a>. If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.</p>
+              <td>
             </tr>
             <tr>
               <th>data</th>
               <td>
-                <p>The data to be displayed in this layer.</p>
-                <p>If <code>null</code>, the default, the data is inherited from the plot
-                  data as specified in the call to
-                  <code><a href="./cxplot.html">cxplot()</a></code>.
-                </p>
-              </td>
+                <p>The data to be displayed in this layer. There are three options:</p>
+                <p>If NULL, the default, the data is inherited from the plot data as specified in the call to <a href="./cxplot.html"><code>cxplot()</code></a>.</p>
+                <p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
+                <p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p>
+              <td>
             </tr>
             <tr>
               <th>position</th>
               <td>
-                <p>Position adjustment, either as a string, or the result of
-                  a call to a position adjustment function.</p>
-              </td>
+                <p>Position adjustment, either as a string, or the result of a call to a position adjustment function.</p>
+              <td>
             </tr>
             <tr>
               <th>...</th>
               <td>
-                <p>Other arguments passed on to
-                  <code><a href="./layer.html">layer()</a></code>.
-                  These are
-                  often aesthetics, used to set an aesthetic to a fixed value, like
-                  <code>color = "red"</code> or <code>size = 3</code>. They may also be parameters
-                  to the paired geom/stat.
-                </p>
-              </td>
+                <p>Other arguments passed on to <code>layer()</code>. These are often aesthetics, used to set an aesthetic to a fixed value, like <code>color</code> = "red" or <code>size</code> = 3. They may also be parameters to the paired geom/stat.</p>
+              <td>
             </tr>
             <tr>
               <th>method</th>
               <td>
-                <p>Smoothing method (function) to use, accepts either
-                  <code>null</code> or a character vector, e.g. <code>"lm"</code>, <code>"glm"</code>,
-                  <code>"gam"</code>, <code>"loess"</code>
-                  or a function, e.g.
-                  <code><a href="https://rdrr.io/pkg/MASS/man/rlm.html">MASS::rlm</a></code> or
-                  <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">mgcv::gam</a></code>,
-                  <code><a href="https://rdrr.io/r/stats/lm.html">stats::lm</a></code>, or
-                  <code><a href="https://rdrr.io/r/stats/loess.html">stats::loess</a></code>.
-                  <code>"auto"</code> is also accepted for backwards compatibility. It is equivalent
-                  to
-                  <code>null</code>.
-                </p>
-                <p>For <code>method = null</code> the smoothing method is chosen based on the
-                  size of the largest group (across all panels).
-                  <code><a href="https://rdrr.io/r/stats/loess.html">stats::loess()</a></code> is
-                  used for less than 1,000 observations; otherwise
-                  <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">mgcv::gam()</a></code> is
-                  used with <code>formula = y ~ s(x, bs = "cs")</code> with
-                  <code>method = "REML"</code>. Somewhat anecdotally,
-                  <code>loess</code> gives a better appearance, but is <span class="MathJax_Preview"
-                    style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0"
-                    data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;"
-                    role="presentation" style="position: relative;">
-                    <nobr aria-hidden="true"><span class="math" id="MathJax-Span-1"
-                        style="width: 3.128em; display: inline-block;"><span
-                          style="display: inline-block; position: relative; width: 2.793em; height: 0px; font-size: 112%;"><span
-                            style="position: absolute; clip: rect(1.509em, 1002.74em, 2.849em, -999.997em); top: -2.508em; left: 0em;"><span
-                              class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3"
-                                style="font-family: STIXGeneral-Italic;">𝑂</span><span class="mo" id="MathJax-Span-4"
-                                style="font-family: STIXGeneral-Regular;">(</span><span class="msubsup"
-                                id="MathJax-Span-5"><span
-                                  style="display: inline-block; position: relative; width: 1.398em; height: 0px;"><span
-                                    style="position: absolute; clip: rect(3.184em, 1000.9em, 4.188em, -999.997em); top: -4.015em; left: 0em;"><span
-                                      class="mi" id="MathJax-Span-6" style="font-family: STIXGeneral-Italic;">𝑁<span
-                                        style="display: inline-block; overflow: hidden; height: 1px; width: 0.059em;"></span></span><span
-                                      style="display: inline-block; width: 0px; height: 4.021em;"></span></span><span
-                                    style="position: absolute; top: -4.406em; left: 0.951em;"><span class="texatom"
-                                      id="MathJax-Span-7"><span class="mrow" id="MathJax-Span-8"><span class="mn"
-                                          id="MathJax-Span-9"
-                                          style="font-size: 70.7%; font-family: STIXGeneral-Regular;">2</span></span></span><span
-                                      style="display: inline-block; width: 0px; height: 4.021em;"></span></span></span></span><span
-                                class="mo" id="MathJax-Span-10"
-                                style="font-family: STIXGeneral-Regular;">)</span></span><span
-                              style="display: inline-block; width: 0px; height: 2.514em;"></span></span></span><span
-                          style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span>
-                    </nobr><span class="MJX_Assistive_MathML" role="presentation"><math
-                        xmlns="http://www.w3.org/1998/Math/MathML">
-                        <mi>O</mi>
-                        <mo stretchy="false">(</mo>
-                        <msup>
-                          <mi>N</mi>
-                          <mrow class="MJX-TeXAtom-ORD">
-                            <mn>2</mn>
-                          </mrow>
-                        </msup>
-                        <mo stretchy="false">)</mo>
-                      </math></span>
-                  </span>
-                  <script type="math/tex" id="MathJax-Element-1">O(N^{2})</script> in memory,
-                  so does not work for larger datasets.
-                </p>
-                <p>If you have fewer than 1,000 observations but want to use the same <code>gam()</code>
-                  model that <code>method = null</code> would use, then set
-                  <code>method = "gam", formula = y ~ s(x, bs = "cs")</code>.
-                </p>
-              </td>
+                <p>Smoothing method (function) to use, accepts either NULL or a character vector, e.g. "lm", "glm", "gam", "loess" or a function, e.g. MASS::rlm or mgcv::gam, stats::lm, or stats::loess. "auto" is also accepted for backwards compatibility. It is equivalent to NULL.</p>
+                <p>For method = NULL the smoothing method is chosen based on the <code>size</code> of the largest group (across all panels). stats::loess() is used for less than 1,000 observations; otherwise mgcv::gam() is used with formula = y ~ s(x, bs = "cs") with method = "REML". Somewhat anecdotally, loess gives a better appearance, but is 𝑂(𝑁2) in memory, so does not work for larger datasets.</p>
+                <p>If you have fewer than 1,000 observations but want to use the same gam() model that method = NULL would use, then set method = "gam", formula = y ~ s(x, bs = "cs").</p>
+              <td>
             </tr>
             <tr>
               <th>formula</th>
               <td>
-                <p>Formula to use in smoothing function, eg. <code>y ~ x</code>,
-                  <code>y ~ poly(x, 2)</code>, <code>y ~ log(x)</code>. <code>null</code> by default,
-                  in which case
-                  <code>method = null</code> implies <code>formula = y ~ x</code> when there are fewer
-                  than 1,000
-                  observations and <code>formula = y ~ s(x, bs = "cs")</code> otherwise.
-                </p>
-              </td>
+                <p>Formula to use in smoothing function, eg. y ~ x, y ~ poly(x, 2), y ~ log(x). NULL by default, in which case method = NULL implies formula = y ~ x when there are fewer than 1,000 observations and formula = y ~ s(x, bs = "cs") otherwise.</p>
+              <td>
             </tr>
             <tr>
               <th>se</th>
               <td>
-                <p>Display confidence interval around smooth? (<code>true</code> by default, see
-                  <code>level</code> to control.)
-                </p>
-              </td>
+                <p>Display confidence interval around smooth? (TRUE by default, see level to control.)</p>
+              <td>
             </tr>
             <tr>
               <th>na.rm</th>
               <td>
-                <p>If <code>false</code>, the default, missing values are removed with
-                  a warning. If <code>true</code>, missing values are silently removed.</p>
-              </td>
+                <p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.</p>
+              <td>
             </tr>
             <tr>
               <th>orientation</th>
               <td>
-                <p>The orientation of the layer. The default (<code>NA</code>)
-                  automatically determines the orientation from the aesthetic mapping. In the
-                  rare event that this fails it can be given explicitly by setting
-                  <code>orientation</code>
-                  to either <code>"x"</code> or <code>"y"</code>. See the <em>Orientation</em> section
-                  for more detail.
-                </p>
-              </td>
+                <p>The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.</p>
+              <td>
             </tr>
             <tr>
               <th>show.legend</th>
               <td>
-                <p>logical. Should this layer be included in the legends?
-                  <code>NA</code>, the default, includes if any aesthetics are mapped.
-                  <code>false</code> never includes, and <code>true</code> always includes.
-                  It can also be a named logical vector to finely select the aesthetics to
-                  display.
-                </p>
-              </td>
+                <p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.</p>
+              <td>
             </tr>
             <tr>
               <th>inherit.aes</th>
               <td>
-                <p>If <code>false</code>, overrides the default aesthetics,
-                  rather than combining with them. This is most useful for helper functions
-                  that define both data and aesthetics and shouldn't inherit behaviour from
-                  the default plot specification, e.g.
-                  <code><a href="./borders.html">borders()</a></code>.
-                </p>
-              </td>
+                <p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().</p>
+              <td>
             </tr>
             <tr>
               <th>geom, stat</th>
               <td>
-                <p>Use to override the default connection between
-                  <code>geom_smooth()</code> and <code>stat_smooth()</code>.
-                </p>
-              </td>
+                <p>Use to override the default connection between <a href="./geom_smooth() and stat_smooth.html"><code>geom_smooth() and stat_smooth()</code></a>.</p>
+              <td>
             </tr>
             <tr>
               <th>n</th>
               <td>
                 <p>Number of points at which to evaluate smoother.</p>
-              </td>
+              <td>
             </tr>
             <tr>
               <th>span</th>
               <td>
-                <p>Controls the amount of smoothing for the default loess smoother.
-                  Smaller numbers produce wigglier lines, larger numbers produce smoother
-                  lines. Only used with loess, i.e. when <code>method = "loess"</code>,
-                  or when <code>method = null</code> (the default) and there are fewer than 1,000
-                  observations.</p>
-              </td>
+                <p>Controls the amount of smoothing for the default loess smoother. Smaller numbers produce wigglier lines, larger numbers produce smoother lines. Only used with loess, i.e. when method = "loess", or when method = NULL (the default) and there are fewer than 1,000 observations.</p>
+              <td>
             </tr>
             <tr>
               <th>fullrange</th>
               <td>
-                <p>Should the fit span the full range of the plot, or just
-                  the data?</p>
-              </td>
+                <p>Should the fit span the full range of the plot, or just the data?</p>
+              <td>
             </tr>
             <tr>
               <th>level</th>
               <td>
                 <p>Level of confidence interval to use (0.95 by default).</p>
-              </td>
+              <td>
             </tr>
             <tr>
               <th>method.args</th>
               <td>
-                <p>List of additional arguments passed on to the modelling
-                  function defined by <code>method</code>.</p>
-              </td>
+                <p>List of additional arguments passed on to the modelling function defined by method.</p>
+              <td>
             </tr>
           </tbody>
         </table>
 
-        <h2 class="hasAnchor" id="details"><a class="anchor"
-            href="#details"></a>Details</h2>
+        <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+        <p>Calculation is performed by the (currently undocumented) predictdf() generic and its methods. For most methods the standard error bounds are computed using the predict() method -- the exceptions are loess(), which uses a t-based approximation, and glm(), where the normal confidence interval is constructed on the link scale and then back-transformed to the response scale.</p>
 
-        <p>Calculation is performed by the (currently undocumented)
-          <code>predictdf()</code> generic and its methods. For most methods the standard
-          error bounds are computed using the
-          <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method -- the
-          exceptions are <code><a href="https://rdrr.io/r/stats/loess.html">loess()</a></code>, which uses a
-          t-based approximation, and
-          <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code>, where the normal confidence
-          interval is constructed on the link
-          scale and then back-transformed to the response scale.
-        </p>
-        <h2 class="hasAnchor" id="orientation"><a class="anchor"
-            href="#orientation"></a>Orientation</h2>
+        <h2 class="hasAnchor" id="orientation"><a class="anchor" href="#orientation"></a>Orientation</h2>
+        <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the orientation is easy to deduce from a combination of the given mappings and the types of positional scales in use. Thus, cxplot will by default try to guess which orientation the layer should have. Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the orientation can be specified directly using the orientation parameter, which can be either "x" or "y". The value gives the axis that the geom should run along, "x" being the default orientation you would expect for the geom.</p>
 
+        <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
+        <p><a href="./geom_smooth() understands the following aesthetics .html"><code>geom_smooth() understands the following aesthetics (required aesthetics are in bold)</code></a>:</p>
+        <p>x</p>
+        <p>y</p>
+        <p><code>alpha</code></p>
+        <p><code>color</code></p>
+        <p>fill</p>
+        <p>group</p>
+        <p><code>linetype</code></p>
+        <p><code>size</code></p>
+        <p>weight</p>
+        <p>ymax</p>
+        <p>ymin</p>
+        <p>Learn more about setting these aesthetics in vignette("cxplot-specs").</p>
 
+        <h2 class="hasAnchor" id="computed-variables"><a class="anchor" href="#computed-variables"></a>Computed variables</h2>
+        <p>stat_smooth() provides the following variables, some of which depend on the orientation:</p>
+        <p><b>y or x</b></p>
+        <p><b></b></p>
+        <p>lower pointwise confidence interval around the mean</p>
+        <p><b>ymax or xmax</b></p>
+        <p><b></b></p>
+        <p><b>standard error</b></p>
 
-        <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the
-          orientation is easy to deduce from a combination of the given mappings and the types of positional
-          scales in use. Thus, cxplot2 will by default try to guess which orientation the layer should have.
-          Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the
-          orientation can be specified directly using the <code>orientation</code> parameter, which can be
-          either <code>"x"</code> or <code>"y"</code>. The value gives the axis that the geom should run
-          along, <code>"x"</code> being the default orientation you would expect for the geom.</p>
-        <h2 class="hasAnchor" id="aesthetics"><a class="anchor"
-            href="#aesthetics"></a>Aesthetics</h2>
-
-
-
-        <p><code>geom_smooth()</code> understands the following aesthetics (required aesthetics are in bold):
-        </p>
-        <ul>
-          <li>
-            <p><strong><code>x</code></strong></p>
-          </li>
-          <li>
-            <p><strong><code>y</code></strong></p>
-          </li>
-          <li>
-            <p><code>alpha</code></p>
-          </li>
-          <li>
-            <p><code>color</code></p>
-          </li>
-          <li>
-            <p><code>fill</code></p>
-          </li>
-          <li>
-            <p><code>group</code></p>
-          </li>
-          <li>
-            <p><code>linetype</code></p>
-          </li>
-          <li>
-            <p><code>size</code></p>
-          </li>
-          <li>
-            <p><code>weight</code></p>
-          </li>
-          <li>
-            <p><code>ymax</code></p>
-          </li>
-          <li>
-            <p><code>ymin</code></p>
-          </li>
-        </ul>
-        <p>Learn more about setting these aesthetics in
-          <code><a href="https://cxplot2.tidyverse.org/articles/cxplot2-specs.html">vignette("cxplot2-specs")</a></code>.
-        </p>
-        <h2 class="hasAnchor" id="computed-variables"><a class="anchor"
-            href="#computed-variables"></a>Computed
-          variables</h2>
-
-
-
-        <p><code>stat_smooth()</code> provides the following variables, some of which depend on the orientation:
-        </p>
-        <dl>
-          <dt>y <em>or</em> x</dt>
-          <dd>
-            <p>predicted value</p>
-          </dd>
-          <dt>ymin <em>or</em> xmin</dt>
-          <dd>
-            <p>lower pointwise confidence interval around the mean</p>
-          </dd>
-          <dt>ymax <em>or</em> xmax</dt>
-          <dd>
-            <p>upper pointwise confidence interval around the mean</p>
-          </dd>
-          <dt>se</dt>
-          <dd>
-            <p>standard error</p>
-          </dd>
-
-        </dl>
-
-        <h2 class="hasAnchor" id="see-also"><a class="anchor"
-            href="#see-also"></a>See also</h2>
-
-        <div class="dont-index">
-          <p>See individual modelling functions for more details:
-            <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> for linear smooths,
-            <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> for generalised linear
-            smooths, and
-            <code><a href="https://rdrr.io/r/stats/loess.html">loess()</a></code> for local smooths.
-          </p>
-        </div>
-
-        <h2 class="hasAnchor" id="examples"><a class="anchor"
-            href="#examples"></a>Examples</h2>
-        <div class="ref-examples sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
-            title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
-            data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
-              class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// If you need the fitting to be done along the y-axis set the orientation</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>orientation <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// Use span to control the "wiggliness" of the default loess smoother.</span></span>
-<span class="r-in"><span class="co">// The span is the fraction of points used to fit each local regression:</span></span>
-<span class="r-in"><span class="co">// small numbers make a wigglier curve, larger numbers make a smoother curve.</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>span <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// Instead of a loess smooth, you can use any other modelling function:</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">false</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span>, se <span class="op">=</span> <span class="cn">false</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// Smooths are automatically fit to each group (defined by categorical</span></span>
-<span class="r-in"><span class="co">// aesthetics or the group aesthetic) and for each facet.</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span>, color <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>se <span class="op">=</span> <span class="cn">false</span>, method <span class="op">=</span> <span class="va">lm</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>span <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">drv</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-7.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// \donttest{</span></span>
-<span class="r-in"><span class="va">binomial_smooth</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"glm"</span>, method.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="co">// To fit a logistic regression, you need to coerce the values to</span></span>
-<span class="r-in"><span class="co">// a numeric vector lying between 0 and 1.</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="va">Kyphosis</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">binomial_smooth</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-wrn co"><span class="r-pr">//&gt;</span> <span class="warning">Warning: </span>Computation failed in `stat_smooth()`:</span>
-<span class="r-wrn co"><span class="r-pr">//&gt;</span> y values must be 0 &lt;= y &lt;= 1</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-8.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Kyphosis</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">binomial_smooth</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> `geom_smooth()` using formula 'y ~ x'</span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-9.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/kyphosis.html">kyphosis</a></span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">Age</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Kyphosis</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">binomial_smooth</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/ns.html">ns</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./Smoothed conditional means — geom_smooth • cxplot2_files/geom_smooth-10.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// But in this case, it's probably better to fit the model yourself</span></span>
-<span class="r-in"><span class="co">// so you can exercise more control and see whether or not it's a good model.</span></span>
-<span class="r-in"><span class="co">// }</span></span>
-</code></pre>
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"displ"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mpg)), aes("displ", "hwy"));cxp.geom_point();cxp.geom_smooth();</script></span>
+</span></code></pre>
         </div>
       </div>
+
       <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li><a href="#arguments">Arguments</a>
-            </li>
+            <li><a href="#arguments">Arguments</a></li>
             <li><a href="#details">Details</a></li>
-            <li><a href="#orientation">Orientation</a>
-            </li>
-            <li><a href="#aesthetics">Aesthetics</a>
-            </li>
-            <li><a href="#computed-variables">Computed
-                variables</a></li>
-            <li><a href="#see-also">See also</a>
-            </li>
-            <li><a href="#examples">Examples</a>
-            </li>
+            <li><a href="#orientation">Orientation</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#computed-variables">Computed variables</a></li>
+            <li><a href="#examples">Examples</a></li>
           </ul>
         </nav>
       </div>
+
     </div>
 
-
     <footer>
+
       <div class="tidyverse">
         <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
           Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
@@ -587,8 +307,8 @@
       </div>
 
     </footer>
-  </div>
 
+  </div>
 
 </body>
 

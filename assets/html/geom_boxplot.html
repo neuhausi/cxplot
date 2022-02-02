@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot</title>
+  <title>A box and whiskers plot (in the style of Tukey) • cxplot</title>
   <!-- favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
@@ -13,6 +12,8 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/mpg.js"></script>
   <!-- jquery -->
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -33,10 +34,8 @@
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
   <!--optional theme-->
-  <meta property="og:title" content="A box and whiskers plot (in the style of Tukey) — geom_boxplot">
-  <meta property="og:description" content="The boxplot compactly displays the distribution of a continuous variable.
-  It visualises five summary statistics (the median, two hinges
-  and two whiskers), and all &quot;outlying&quot; points individually.">
+  <meta property="og:title" content="A box and whiskers plot (in the style of Tukey)">
+  <meta property="og:description" content="The boxplot compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all "outlying" points individually.">
   <meta property="og:image" content="/assets/images/logo.png">
   <meta name="twitter:card" content="summary">
 </head>
@@ -74,454 +73,247 @@
     </header>
 
     <div class="row">
+
       <div class="col-md-9 contents">
+
         <div class="page-header">
           <h1>A box and whiskers plot (in the style of Tukey)</h1>
         </div>
 
         <div class="ref-description">
-          <p>The boxplot compactly displays the distribution of a continuous variable.
-            It visualises five summary statistics (the median, two hinges
-            and two whiskers), and all "outlying" points individually.</p>
+          <p>The boxplot compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all "outlying" points individually.</p>
         </div>
 
-        <div class="ref-usage sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
-            title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
-            data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
-              class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="fu">geom_boxplot</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">null</span>,
-  data <span class="op">=</span> <span class="cn">null</span>,
-  stat <span class="op">=</span> <span class="st">"boxplot"</span>,
-  position <span class="op">=</span> <span class="st">"dodge2"</span>,
-  <span class="va">...</span>,
-  outlier.color <span class="op">=</span> <span class="cn">null</span>,
-  outlier.color <span class="op">=</span> <span class="cn">null</span>,
-  outlier.fill <span class="op">=</span> <span class="cn">null</span>,
-  outlier.shape <span class="op">=</span> <span class="fl">19</span>,
-  outlier.size <span class="op">=</span> <span class="fl">1.5</span>,
-  outlier.stroke <span class="op">=</span> <span class="fl">0.5</span>,
-  outlier.alpha <span class="op">=</span> <span class="cn">null</span>,
-  notch <span class="op">=</span> <span class="cn">false</span>,
-  notchwidth <span class="op">=</span> <span class="fl">0.5</span>,
-  varwidth <span class="op">=</span> <span class="cn">false</span>,
-  na.rm <span class="op">=</span> <span class="cn">false</span>,
-  orientation <span class="op">=</span> <span class="cn">NA</span>,
-  show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">true</span>
-<span class="op">)</span>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+<span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"boxplot"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"dodge2"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"outlier.<code>color</code>"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"outlier.color"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"outlier.fill"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"outlier.shape"</span> <span class="op">=</span> <span class="fl">19</span>,
+ <span class="st">"outlier.<code>size</code>"</span> <span class="op">=</span> <span class="fl">1</span>.5,
+ <span class="st">"outlier.stroke"</span> <span class="op">=</span> <span class="fl">0</span>.5,
+ <span class="st">"outlier.<code>alpha</code>"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"notch"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"notchwidth"</span> <span class="op">=</span> <span class="fl">0</span>.5,
+ <span class="st">"varwidth"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"orientation"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
 
-<span class="fu">stat_boxplot</span><span class="op">(</span>
-  mapping <span class="op">=</span> <span class="cn">null</span>,
-  data <span class="op">=</span> <span class="cn">null</span>,
-  geom <span class="op">=</span> <span class="st">"boxplot"</span>,
-  position <span class="op">=</span> <span class="st">"dodge2"</span>,
-  <span class="va">...</span>,
-  coef <span class="op">=</span> <span class="fl">1.5</span>,
-  na.rm <span class="op">=</span> <span class="cn">false</span>,
-  orientation <span class="op">=</span> <span class="cn">NA</span>,
-  show.legend <span class="op">=</span> <span class="cn">NA</span>,
-  inherit.aes <span class="op">=</span> <span class="cn">true</span>
-<span class="op">)</span></code></pre>
+<span class="fu">stat_boxplot</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"geom"</span> <span class="op">=</span> <span class="st">"boxplot"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"dodge2"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"coef"</span> <span class="op">=</span> <span class="fl">1</span>.5,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"orientation"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
         </div>
 
-        <h2 class="hasAnchor" id="arguments"><a class="anchor"
-            href="#arguments"></a>Arguments</h2>
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
         <table class="ref-arguments">
-          <colgroup>
-            <col class="name">
-            <col class="desc">
-          </colgroup>
           <tbody>
             <tr>
               <th>mapping</th>
               <td>
-                <p>Set of aesthetic mappings created by
-                  <code><a href="./aes.html">aes()</a></code> or
-                  <code><a href="./aes_.html">aes_()</a></code>.
-                  If specified and <code>inherit.aes = true</code> (the
-                  default), it is combined with the default mapping at the top level of the
-                  plot. You must supply <code>mapping</code> if there is no plot mapping.
-                </p>
-              </td>
+                <p>Set of aesthetic mappings created by <a href="./aes.html"><code>aes()</code></a> or <a href="./aes.html"><code>aes_()</code></a>. If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.</p>
+              <td>
             </tr>
             <tr>
               <th>data</th>
               <td>
-                <p>The data to be displayed in this layer.</p>
-                <p>If <code>null</code>, the default, the data is inherited from the plot
-                  data as specified in the call to
-                  <code><a href="./cxplot.html">cxplot()</a></code>.
-                </p>
-              </td>
+                <p>The data to be displayed in this layer. There are three options:</p>
+                <p>If NULL, the default, the data is inherited from the plot data as specified in the call to <a href="./cxplot.html"><code>cxplot()</code></a>.</p>
+                <p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
+                <p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p>
+              <td>
             </tr>
             <tr>
               <th>position</th>
               <td>
-                <p>Position adjustment, either as a string, or the result of
-                  a call to a position adjustment function.</p>
-              </td>
+                <p>Position adjustment, either as a string, or the result of a call to a position adjustment function.</p>
+              <td>
             </tr>
             <tr>
               <th>...</th>
               <td>
-                <p>Other arguments passed on to
-                  <code><a href="./layer.html">layer()</a></code>.
-                  These are
-                  often aesthetics, used to set an aesthetic to a fixed value, like
-                  <code>color = "red"</code> or <code>size = 3</code>. They may also be parameters
-                  to the paired geom/stat.
-                </p>
-              </td>
+                <p>Other arguments passed on to <code>layer()</code>. These are often aesthetics, used to set an aesthetic to a fixed value, like <code>color</code> = "red" or <code>size</code> = 3. They may also be parameters to the paired geom/stat.</p>
+              <td>
             </tr>
             <tr>
-              <th>outlier.color, outlier.color, outlier.fill, outlier.shape, outlier.size,
-                outlier.stroke, outlier.alpha</th>
+              <th>outlier.<code>color</code>, outlier.color, outlier.fill, outlier.shape, outlier.<code>size</code>, outlier.stroke, outlier.<code>alpha</code></th>
               <td>
-                <p>Default aesthetics for outliers. Set to <code>null</code> to inherit from the
-                  aesthetics used for the box.</p>
-                <p>In the unlikely event you specify both US and UK spellings of color, the
-                  US spelling will take precedence.</p>
-                <p>Sometimes it can be useful to hide the outliers, for example when overlaying
-                  the raw data points on top of the boxplot. Hiding the outliers can be achieved
-                  by setting <code>outlier.shape = NA</code>. Importantly, this does not remove the
-                  outliers,
-                  it only hides them, so the range calculated for the y-axis will be the
-                  same with outliers shown and outliers hidden.</p>
-              </td>
+                <p>Default aesthetics for outliers. Set to NULL to inherit from the aesthetics used for the box.</p>
+                <p>In the unlikely event you specify both US and UK spellings of <code>color</code>, the US spelling will take precedence.</p>
+                <p>Sometimes it can be useful to hide the outliers, for example when overlaying the raw data points on top of the boxplot. Hiding the outliers can be achieved by setting outlier.shape = NA. Importantly, this does not remove the outliers, it only hides them, so the range calculated for the y-axis will be the same with outliers shown and outliers hidden.</p>
+              <td>
             </tr>
             <tr>
               <th>notch</th>
               <td>
-                <p>If <code>false</code> (default) make a standard box plot. If
-                  <code>true</code>, make a notched box plot. Notches are used to compare groups;
-                  if the notches of two boxes do not overlap, this suggests that the medians
-                  are significantly different.
-                </p>
-              </td>
+                <p>If FALSE (default) make a standard box plot. If TRUE, make a notched box plot. Notches are used to compare groups; if the notches of two boxes do not overlap, this suggests that the medians are significantly different.</p>
+              <td>
             </tr>
             <tr>
               <th>notchwidth</th>
               <td>
-                <p>For a notched box plot, width of the notch relative to
-                  the body (defaults to <code>notchwidth = 0.5</code>).</p>
-              </td>
+                <p>For a notched box plot, width of the notch relative to the body (defaults to notchwidth = 0.5).</p>
+              <td>
             </tr>
             <tr>
               <th>varwidth</th>
               <td>
-                <p>If <code>false</code> (default) make a standard box plot. If
-                  <code>true</code>, boxes are drawn with widths proportional to the
-                  square-roots of the number of observations in the groups (possibly
-                  weighted, using the <code>weight</code> aesthetic).
-                </p>
-              </td>
+                <p>If FALSE (default) make a standard box plot. If TRUE, boxes are drawn with widths proportional to the square-roots of the number of observations in the groups (possibly weighted, using the weight aesthetic).</p>
+              <td>
             </tr>
             <tr>
               <th>na.rm</th>
               <td>
-                <p>If <code>false</code>, the default, missing values are removed with
-                  a warning. If <code>true</code>, missing values are silently removed.</p>
-              </td>
+                <p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.</p>
+              <td>
             </tr>
             <tr>
               <th>orientation</th>
               <td>
-                <p>The orientation of the layer. The default (<code>NA</code>)
-                  automatically determines the orientation from the aesthetic mapping. In the
-                  rare event that this fails it can be given explicitly by setting
-                  <code>orientation</code>
-                  to either <code>"x"</code> or <code>"y"</code>. See the <em>Orientation</em> section
-                  for more detail.
-                </p>
-              </td>
+                <p>The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.</p>
+              <td>
             </tr>
             <tr>
               <th>show.legend</th>
               <td>
-                <p>logical. Should this layer be included in the legends?
-                  <code>NA</code>, the default, includes if any aesthetics are mapped.
-                  <code>false</code> never includes, and <code>true</code> always includes.
-                  It can also be a named logical vector to finely select the aesthetics to
-                  display.
-                </p>
-              </td>
+                <p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.</p>
+              <td>
             </tr>
             <tr>
               <th>inherit.aes</th>
               <td>
-                <p>If <code>false</code>, overrides the default aesthetics,
-                  rather than combining with them. This is most useful for helper functions
-                  that define both data and aesthetics and shouldn't inherit behaviour from
-                  the default plot specification, e.g.
-                  <code><a href="./borders.html">borders()</a></code>.
-                </p>
-              </td>
+                <p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().</p>
+              <td>
             </tr>
             <tr>
               <th>geom, stat</th>
               <td>
-                <p>Use to override the default connection between
-                  <code>geom_boxplot()</code> and <code>stat_boxplot()</code>.
-                </p>
-              </td>
+                <p>Use to override the default connection between <a href="./geom_boxplot() and stat_boxplot.html"><code>geom_boxplot() and stat_boxplot()</code></a>.</p>
+              <td>
             </tr>
             <tr>
               <th>coef</th>
               <td>
                 <p>Length of the whiskers as multiple of IQR. Defaults to 1.5.</p>
-              </td>
+              <td>
             </tr>
           </tbody>
         </table>
 
-        <h2 class="hasAnchor" id="orientation"><a class="anchor"
-            href="#orientation"></a>Orientation
-        </h2>
+        <h2 class="hasAnchor" id="orientation"><a class="anchor" href="#orientation"></a>Orientation</h2>
+        <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the orientation is easy to deduce from a combination of the given mappings and the types of positional scales in use. Thus, cxplot will by default try to guess which orientation the layer should have. Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the orientation can be specified directly using the orientation parameter, which can be either "x" or "y". The value gives the axis that the geom should run along, "x" being the default orientation you would expect for the geom.</p>
 
-        <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the
-          orientation is easy to deduce from a combination of the given mappings and the types of positional
-          scales in use. Thus, cxplot2 will by default try to guess which orientation the layer should have.
-          Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the
-          orientation can be specified directly using the <code>orientation</code> parameter, which can be
-          either <code>"x"</code> or <code>"y"</code>. The value gives the axis that the geom should run
-          along, <code>"x"</code> being the default orientation you would expect for the geom.</p>
-        <h2 class="hasAnchor" id="summary-statistics"><a class="anchor"
-            href="#summary-statistics"></a>Summary
-          statistics</h2>
+        <h2 class="hasAnchor" id="summary-statistics"><a class="anchor" href="#summary-statistics"></a>Summary Statistics</h2>
+        <p>The lower and upper hinges correspond to the first and third quartiles (the 25th and 75th percentiles). This differs slightly from the method used by the boxplot() function, and may be apparent with small samples. See boxplot.stats() for for more information on how hinge positions are calculated for boxplot().</p>
+        <p>The upper whisker extends from the hinge to the largest value no further than 1.5 * IQR from the hinge (where IQR is the inter-quartile range, or distance between the first and third quartiles). The lower whisker extends from the hinge to the smallest value at most 1.5 * IQR of the hinge. Data beyond the end of the whiskers are called "outlying" points and are plotted individually.</p>
+        <p>In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a roughly 95% confidence interval for comparing medians. See McGill et al. (1978) for more details.</p>
 
+        <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
+        <p><a href="./geom_boxplot() understands the following aesthetics .html"><code>geom_boxplot() understands the following aesthetics (required aesthetics are in bold)</code></a>:</p>
+        <p>x or y</p>
+        <p>lower or xlower</p>
+        <p>upper or xupper</p>
+        <p>middle or xmiddle</p>
+        <p>ymin or xmin</p>
+        <p>ymax or xmax</p>
+        <p><code>alpha</code></p>
+        <p><code>color</code></p>
+        <p>fill</p>
+        <p>group</p>
+        <p><code>linetype</code></p>
+        <p>shape</p>
+        <p><code>size</code></p>
+        <p>weight</p>
+        <p>Learn more about setting these aesthetics in vignette("cxplot-specs").</p>
 
+        <h2 class="hasAnchor" id="computed-variables"><a class="anchor" href="#computed-variables"></a>Computed variables</h2>
+        <p>stat_boxplot() provides the following variables, some of which depend on the orientation:</p>
+        <p><b>width</b></p>
+        <p><b></b></p>
+        <p>lower whisker = smallest observation greater than or equal to lower hinge - 1.5 * IQR</p>
+        <p><b>lower or xlower</b></p>
+        <p><b></b></p>
+        <p>lower edge of notch = median - 1.58 * IQR / sqrt(n)</p>
+        <p><b>middle or xmiddle</b></p>
+        <p><b></b></p>
+        <p>upper edge of notch = median + 1.58 * IQR / sqrt(n)</p>
+        <p><b>upper or xupper</b></p>
+        <p><b></b></p>
+        <p>upper whisker = largest observation less than or equal to upper hinge + 1.5 * IQR</p>
 
-        <p>The lower and upper hinges correspond to the first and third quartiles
-          (the 25th and 75th percentiles). This differs slightly from the method used
-          by the <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> function, and
-          may be apparent with small samples.
-          See <code><a href="https://rdrr.io/r/grDevices/boxplot.stats.html">boxplot.stats()</a></code> for
-          for more information on how hinge
-          positions are calculated for
-          <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>.
-        </p>
-        <p>The upper whisker extends from the hinge to the largest value no further than
-          1.5 * IQR from the hinge (where IQR is the inter-quartile range, or distance
-          between the first and third quartiles). The lower whisker extends from the
-          hinge to the smallest value at most 1.5 * IQR of the hinge. Data beyond the
-          end of the whiskers are called "outlying" points and are plotted
-          individually.</p>
-        <p>In a notched box plot, the notches extend <code>1.58 * IQR / sqrt(n)</code>.
-          This gives a roughly 95% confidence interval for comparing medians.
-          See McGill et al. (1978) for more details.</p>
-        <h2 class="hasAnchor" id="aesthetics"><a class="anchor"
-            href="#aesthetics"></a>Aesthetics</h2>
+        <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+        <p>McGill, R., Tukey, J. W. and Larsen, W. A. (1978) Variations of box plots. The American Statistician 32, 12-16.</p>
 
-
-
-        <p><code>geom_boxplot()</code> understands the following aesthetics (required aesthetics are in bold):
-        </p>
-        <ul>
-          <li>
-            <p><strong><code>x</code> <em>or</em> <code>y</code></strong></p>
-          </li>
-          <li>
-            <p><strong><code>lower</code> <em>or</em> <code>xlower</code></strong></p>
-          </li>
-          <li>
-            <p><strong><code>upper</code> <em>or</em> <code>xupper</code></strong></p>
-          </li>
-          <li>
-            <p><strong><code>middle</code> <em>or</em> <code>xmiddle</code></strong></p>
-          </li>
-          <li>
-            <p><strong><code>ymin</code> <em>or</em> <code>xmin</code></strong></p>
-          </li>
-          <li>
-            <p><strong><code>ymax</code> <em>or</em> <code>xmax</code></strong></p>
-          </li>
-          <li>
-            <p><code>alpha</code></p>
-          </li>
-          <li>
-            <p><code>color</code></p>
-          </li>
-          <li>
-            <p><code>fill</code></p>
-          </li>
-          <li>
-            <p><code>group</code></p>
-          </li>
-          <li>
-            <p><code>linetype</code></p>
-          </li>
-          <li>
-            <p><code>shape</code></p>
-          </li>
-          <li>
-            <p><code>size</code></p>
-          </li>
-          <li>
-            <p><code>weight</code></p>
-          </li>
-        </ul>
-        <p>Learn more about setting these aesthetics in
-          <code><a href="https://cxplot2.tidyverse.org/articles/cxplot2-specs.html">vignette("cxplot2-specs")</a></code>.
-        </p>
-        <h2 class="hasAnchor" id="computed-variables"><a class="anchor"
-            href="#computed-variables"></a>Computed
-          variables</h2>
-
-
-
-        <p><code>stat_boxplot()</code> provides the following variables, some of which depend on the
-          orientation:</p>
-        <dl>
-          <dt>width</dt>
-          <dd>
-            <p>width of boxplot</p>
-          </dd>
-          <dt>ymin <em>or</em> xmin</dt>
-          <dd>
-            <p>lower whisker = smallest observation greater than or equal to lower hinge - 1.5 * IQR</p>
-          </dd>
-          <dt>lower <em>or</em> xlower</dt>
-          <dd>
-            <p>lower hinge, 25% quantile</p>
-          </dd>
-          <dt>notchlower</dt>
-          <dd>
-            <p>lower edge of notch = median - 1.58 * IQR / sqrt(n)</p>
-          </dd>
-          <dt>middle <em>or</em> xmiddle</dt>
-          <dd>
-            <p>median, 50% quantile</p>
-          </dd>
-          <dt>notchupper</dt>
-          <dd>
-            <p>upper edge of notch = median + 1.58 * IQR / sqrt(n)</p>
-          </dd>
-          <dt>upper <em>or</em> xupper</dt>
-          <dd>
-            <p>upper hinge, 75% quantile</p>
-          </dd>
-          <dt>ymax <em>or</em> xmax</dt>
-          <dd>
-            <p>upper whisker = largest observation less than or equal to upper hinge + 1.5 * IQR</p>
-          </dd>
-
-        </dl>
-
-        <h2 class="hasAnchor" id="references"><a class="anchor"
-            href="#references"></a>References</h2>
-
-        <p>McGill, R., Tukey, J. W. and Larsen, W. A. (1978) Variations of
-          box plots. The American Statistician 32, 12-16.</p>
-        <h2 class="hasAnchor" id="see-also"><a class="anchor"
-            href="#see-also"></a>See also</h2>
-
-        <div class="dont-index">
-          <p><code><a href="./geom_quantile.html">geom_quantile()</a></code>
-            for continuous <code>x</code>,
-            <code><a href="./geom_violin.html">geom_violin()</a></code>
-            for a richer display of the distribution, and
-            <code><a href="./geom_jitter.html">geom_jitter()</a></code>
-            for a useful technique for small data.
-          </p>
-        </div>
-
-        <h2 class="hasAnchor" id="examples"><a class="anchor"
-            href="#examples"></a>Examples</h2>
-        <div class="ref-examples sourceCode hasCopyButton"><button type="button" class="btn btn-primary btn-copy-ex"
-            title="" aria-label="Copy to clipboard" data-toggle="tooltip" data-placement="left auto"
-            data-trigger="hover" data-clipboard-copy="" data-original-title="Copy to clipboard"><i
-              class="fa fa-copy"></i></button>
-          <pre class="sourceCode r"><code><span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co">// Orientation follows the discrete axis</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span>, <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-2.png" alt="" width="700" height="433"></span>
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot();</script></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>notch <span class="op">=</span> <span class="cn">true</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> notch went outside hinges. Try setting notch=false.</span>
-<span class="r-msg co"><span class="r-pr">//&gt;</span> notch went outside hinges. Try setting notch=false.</span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>varwidth <span class="op">=</span> <span class="cn">true</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, color <span class="op">=</span> <span class="st">"#3366FF"</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co">// By default, outlier points match the color of the box. Use</span></span>
-<span class="r-in"><span class="co">// outlier.color to override</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.color <span class="op">=</span> <span class="st">"red"</span>, outlier.shape <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co">// Remove outliers when overlaying boxplot with original data points</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-7.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co">// Orientation follows the discrete axis</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"hwy"</span>, <span class="st">"class"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas2" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(mpg)), aes("hwy", "class"));cxp.geom_boxplot();</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"notch"</span>: true<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas3" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"notch": true});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"fill"</span>: <span class="st">"white"</span>, <span class="st">"color"</span>: "#<span class="fl">3</span><span class="fl">3</span><span class="fl">6</span><span class="fl">6</span>FF"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas4" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"fill": "white", "color": "#3366FF"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">{</span><span class="st">"width"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas5" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot();cxp.geom_jitter({"width": 0.2});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Boxplots are automatically dodged when any aesthetic is a factor</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">drv</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-8.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// You can also use boxplots with continuous x, as long as you supply</span></span>
-<span class="r-in"><span class="co">// a grouping variable. cut_width is particularly useful</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">//&gt;</span> <span class="warning">Warning: </span>Continuous x aesthetic -- did you forget aes(group=...)?</span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-9.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="./cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-10.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co">// Adjust the transparency of outliers using outlier.alpha</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="./cut_interval.html">cut_width</a></span><span class="op">(</span><span class="va">carat</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span>, outlier.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-11.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">// \donttest{</span></span>
-<span class="r-in"><span class="co">// It's possible to draw a boxplot with your own computations if you</span></span>
-<span class="r-in"><span class="co">// use stat = "identity":</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">  x <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">  y0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
-<span class="r-in">  y25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.25</span><span class="op">)</span>,</span>
-<span class="r-in">  y50 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
-<span class="r-in">  y75 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.75</span><span class="op">)</span>,</span>
-<span class="r-in">  y100 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="./cxplot.html">cxplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">geom_boxplot</span><span class="op">(</span></span>
-<span class="r-in">   <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">y0</span>, lower <span class="op">=</span> <span class="va">y25</span>, middle <span class="op">=</span> <span class="va">y50</span>, upper <span class="op">=</span> <span class="va">y75</span>, ymax <span class="op">=</span> <span class="va">y100</span><span class="op">)</span>,</span>
-<span class="r-in">   stat <span class="op">=</span> <span class="st">"identity"</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-plt"><img src="./A box and whiskers plot (in the style of Tukey) — geom_boxplot • cxplot2_files/geom_boxplot-12.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co">// }</span></span>
-</code></pre>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"color"</span>: <span class="st">"drv"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas6" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot(aes({"color": "drv"}));</script></span>
+</span></code></pre>
         </div>
       </div>
+
       <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
-            <li class=""><a href="#arguments">Arguments</a>
-            </li>
-            <li class=""><a href="#orientation">Orientation</a>
-            </li>
-            <li class=""><a href="#summary-statistics">Summary
-                statistics</a></li>
-            <li class=""><a href="#aesthetics">Aesthetics</a>
-            </li>
-            <li class=""><a href="#computed-variables">Computed
-                variables</a></li>
-            <li class=""><a href="#references">References</a>
-            </li>
-            <li><a href="#see-also">See also</a>
-            </li>
-            <li class=""><a href="#examples">Examples</a>
-            </li>
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#orientation">Orientation</a></li>
+            <li><a href="#summary-statistics">Summary Statistics</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#computed-variables">Computed variables</a></li>
+            <li><a href="#references">Referances</a></li>
+            <li><a href="#examples">Examples</a></li>
           </ul>
         </nav>
       </div>
+
     </div>
 
-
     <footer>
+
       <div class="tidyverse">
         <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
           Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
@@ -534,8 +326,8 @@
       </div>
 
     </footer>
-  </div>
 
+  </div>
 
 </body>
 

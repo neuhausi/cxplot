@@ -74,46 +74,33 @@ See also
 See geom_segment() for a more general approach to adding straight line segments to a plot.
 
 Examples
-p <- cxplot(mtcars, aes(wt, mpg)) + geom_point()
 
-# Fixed values
-p + geom_vline(xintercept = 5)
+// Fixed values
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+cxp.geom_vline({"xintercept": 5})
 
-p + geom_vline(xintercept = 1:5)
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+cxp.geom_vline({"xintercept": [1, 2, 3, 4, 5]})
 
-p + geom_hline(yintercept = 20)
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+cxp.geom_hline({"yintercept": 20})
 
+// Calculate slope and intercept of line of best fit using your own function
+// (Intercept)          wt 
+//   37.285126   -5.344472 
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+cxp.geom_abline({"intercept": 37, "slope": -5})
 
-p + geom_abline() # Can't see it - outside the range of the data
-
-p + geom_abline(intercept = 20)
-
-
-# Calculate slope and intercept of line of best fit
-coef(lm(mpg ~ wt, data = mtcars))
-#> (Intercept)          wt 
-#>   37.285126   -5.344472 
-p + geom_abline(intercept = 37, slope = -5)
-
-# But this is easier to do with geom_smooth:
-p + geom_smooth(method = "lm", se = FALSE)
-#> `geom_smooth()` using formula 'y ~ x'
-
-
-# To show different lines in different facets, use aesthetics
-p <- cxplot(mtcars, aes(mpg, wt)) +
-  geom_point() +
-  facet_wrap(~ cyl)
-
-mean_wt <- data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
-p + geom_hline(aes(yintercept = wt), mean_wt)
-
-
-# You can also control other aesthetics
-cxplot(mtcars, aes(mpg, wt, colour = wt)) +
-  geom_point() +
-  geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
-  facet_wrap(~ cyl)
+// To show different lines in different facets, use aesthetics
+var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];
+var cxp = new cxplot("canvas", mtcars, aes({"x": "mpg", "y": "wt"}));
+cxp.geom_point();
+cxp.geom_hline(aes({"yintercept": "wt"}, mean_wt));
+cxp.facet_wrap("cyl");
 
 --
 geom_bar.html
@@ -266,50 +253,36 @@ geom_histogram() for continuous data, position_dodge() and position_dodge2() for
 stat_bin(), which bins data in ranges and counts the cases in each range. It differs from stat_count(), which counts the number of cases at each x position (without binning into ranges). stat_bin() requires continuous x data, whereas stat_count() can be used for both discrete and continuous x data.
 
 Examples
-# geom_bar is designed to make it easy to create bar charts that show
-# counts (or sums of weights)
-g <- cxplot(mpg, aes(class))
-# Number of cars in each class:
-g + geom_bar()
 
-# Total engine displacement of each class
-g + geom_bar(aes(weight = displ))
+// geom_bar is designed to make it easy to create bar charts that show
+// counts (or sums of weights)
+var cxp = new cxplot("canvas", mpg, aes("class"));
+// Number of cars in each class:
+cxp.geom_bar();
 
-# Map class to y instead to flip the orientation
-cxplot(mpg) + geom_bar(aes(y = class))
+// Total engine displacement of each class
+var cxp = new cxplot("canvas", mpg, aes("class"));
+// Number of cars in each class:
+cxp.geom_bar(aes({"weight": "displ"}));
 
+// Map class to y instead to flip the orientation
+var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
+// Number of cars in each class:
+cxp.geom_bar();
 
-# Bar charts are automatically stacked when multiple bars are placed
-# at the same location. The order of the fill is designed to match
-# the legend
-g + geom_bar(aes(fill = drv))
+// Bar charts are automatically stacked when multiple bars are placed
+// at the same location. The order of the fill is designed to match
+// the legend
+var cxp = new cxplot("canvas", mpg, aes("class"));
+// Number of cars in each class:
+cxp.geom_bar(aes({"fill": "drv"}));
 
-
-# If you need to flip the order (because you've flipped the orientation)
-# call position_stack() explicitly:
-cxplot(mpg, aes(y = class)) +
- geom_bar(aes(fill = drv), position = position_stack(reverse = TRUE)) +
- theme(legend.position = "top")
-
-
-# To show (e.g.) means, you need geom_col()
-df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
-cxplot(df, aes(trt, outcome)) +
-  geom_col()
-
-# But geom_point() displays exactly the same information and doesn't
-# require the y-axis to touch zero.
-cxplot(df, aes(trt, outcome)) +
-  geom_point()
-
-
-# You can also use geom_bar() with continuous data, in which case
-# it will show counts at unique locations
-df <- data.frame(x = rep(c(2.9, 3.1, 4.5), c(5, 10, 4)))
-cxplot(df, aes(x)) + geom_bar()
-
-# cf. a histogram of the same data
-cxplot(df, aes(x)) + geom_histogram(binwidth = 0.5)
+// If you need to flip the order (because you've flipped the orientation)
+// call position_stack() explicitly:
+var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
+// Number of cars in each class:
+cxp.geom_bar(aes({"fill": "drv", "position": "reverse"}));
+//cxp.theme({"legend.position": "top"});
 
 --
 geom_boxplot.html
@@ -481,66 +454,27 @@ See also
 geom_quantile() for continuous x, geom_violin() for a richer display of the distribution, and geom_jitter() for a useful technique for small data.
 
 Examples
-p <- cxplot(mpg, aes(class, hwy))
-p + geom_boxplot()
 
-# Orientation follows the discrete axis
-cxplot(mpg, aes(hwy, class)) + geom_boxplot()
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot();
 
+// Orientation follows the discrete axis
+var cxp = new cxplot("canvas", mpg, aes("hwy", "class"));
+cxp.geom_boxplot();
 
-p + geom_boxplot(notch = TRUE)
-#> notch went outside hinges. Try setting notch=FALSE.
-#> notch went outside hinges. Try setting notch=FALSE.
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot({"notch": true});
 
-p + geom_boxplot(varwidth = TRUE)
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot({"fill": "white", "color": "#3366FF"});
 
-p + geom_boxplot(fill = "white", colour = "#3366FF")
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot();
+cxp.geom_jitter({"width": 0.2});
 
-# By default, outlier points match the colour of the box. Use
-# outlier.colour to override
-p + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
-
-# Remove outliers when overlaying boxplot with original data points
-p + geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
-
-
-# Boxplots are automatically dodged when any aesthetic is a factor
-p + geom_boxplot(aes(colour = drv))
-
-
-# You can also use boxplots with continuous x, as long as you supply
-# a grouping variable. cut_width is particularly useful
-cxplot(diamonds, aes(carat, price)) +
-  geom_boxplot()
-#> Warning: Continuous x aesthetic -- did you forget aes(group=...)?
-
-cxplot(diamonds, aes(carat, price)) +
-  geom_boxplot(aes(group = cut_width(carat, 0.25)))
-
-# Adjust the transparency of outliers using outlier.alpha
-cxplot(diamonds, aes(carat, price)) +
-  geom_boxplot(aes(group = cut_width(carat, 0.25)), outlier.alpha = 0.1)
-
-
-# \donttest{
-# It's possible to draw a boxplot with your own computations if you
-# use stat = "identity":
-y <- rnorm(100)
-df <- data.frame(
-  x = 1,
-  y0 = min(y),
-  y25 = quantile(y, 0.25),
-  y50 = median(y),
-  y75 = quantile(y, 0.75),
-  y100 = max(y)
-)
-cxplot(df, aes(x)) +
-  geom_boxplot(
-   aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
-   stat = "identity"
- )
-
-# }
+// Boxplots are automatically dodged when any aesthetic is a factor
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot(aes({"color": "drv"}));
 
 --
 geom_contour.html
@@ -750,61 +684,35 @@ See also
 geom_density_2d(): 2d density contours
 
 Examples
-# Basic plot
-v <- cxplot(faithfuld, aes(waiting, eruptions, z = density))
-v + geom_contour()
 
+// Basic plot
+var cxp = new cxplot("canvas", faithfuld, aes("waiting", "eruptions", {"z": "density"}));
+cxp.geom_contour();
 
-# Or compute from raw data
-cxplot(faithful, aes(waiting, eruptions)) +
-  geom_density_2d()
+// Or compute from raw data
+var cxp = new cxplot("canvas", faithful, aes("waiting", "eruptions"));
+cxp.geom_density_2d();
 
+// use geom_contour_filled() for filled contours
+var cxp = new cxplot("canvas", faithfuld, aes("waiting", "eruptions", {"z": "density"}));
+cxp.geom_contour_filled();
 
-# \donttest{
-# use geom_contour_filled() for filled contours
-v + geom_contour_filled()
+// Setting bins creates evenly spaced contours in the range of the data
+var cxp = new cxplot("canvas", faithfuld, aes("waiting", "eruptions", {"z": "density"}));
+cxp.geom_contour({"bins": 3});
 
+// Setting bins creates evenly spaced contours in the range of the data
+var cxp = new cxplot("canvas", faithfuld, aes("waiting", "eruptions", {"z": "density"}));
+cxp.geom_contour({"binwidth": 0.001});
 
-# Setting bins creates evenly spaced contours in the range of the data
-v + geom_contour(bins = 3)
+// Other parameters
+var cxp = new cxplot("canvas", faithfuld, aes("waiting", "eruptions", {"z": "density"}));
+cxp.geom_contour({"color": "red"});
 
-v + geom_contour(bins = 5)
-
-
-# Setting binwidth does the same thing, parameterised by the distance
-# between contours
-v + geom_contour(binwidth = 0.01)
-
-v + geom_contour(binwidth = 0.001)
-
-
-# Other parameters
-v + geom_contour(aes(colour = after_stat(level)))
-
-v + geom_contour(colour = "red")
-
-v + geom_raster(aes(fill = density)) +
-  geom_contour(colour = "white")
-
-
-# Irregular data
-if (requireNamespace("interp")) {
-  # Use a dataset from the interp package
-  data(franke, package = "interp")
-  origdata <- as.data.frame(interp::franke.data(1, 1, franke))
-  grid <- with(origdata, interp::interp(x, y, z))
-  griddf <- subset(data.frame(x = rep(grid$x, nrow(grid$z)),
-                              y = rep(grid$y, each = ncol(grid$z)),
-                              z = as.numeric(grid$z)),
-                   !is.na(z))
-  cxplot(griddf, aes(x, y, z = z)) +
-    geom_contour_filled() +
-    geom_point(data = origdata)
-} else
-  message("Irregular data requires the 'interp' package")
-#> Loading required namespace: interp
-
-# }
+// Irregular data
+var cxp = new cxplot("canvas", griddf, aes("x", "y", "z"));
+cxp.geom_contour_filled();
+cxp.geom_point({"data": origdata})
 
 --
 geom_density.html
@@ -936,51 +844,39 @@ See also
 See geom_histogram(), geom_freqpoly() for other methods of displaying continuous distribution. See geom_violin() for a compact density display.
 
 Examples
-cxplot(diamonds, aes(carat)) +
-  geom_density()
 
-# Map the values to y to flip the orientation
-cxplot(diamonds, aes(y = carat)) +
-  geom_density()
+var cxp = new cxplot("canvas", dsmall, aes("carat"));
+cxp.geom_density();
 
+var cxp = new cxplot("canvas", dsmall, aes("carat"));
+cxp.geom_density({"adjust": 0.2});
 
-cxplot(diamonds, aes(carat)) +
-  geom_density(adjust = 1/5)
+var cxp = new cxplot("canvas", dsmall, aes("carat"));
+cxp.geom_density({"adjust": 5});
 
-cxplot(diamonds, aes(carat)) +
-  geom_density(adjust = 5)
+var cxp = new cxplot("canvas", dsmall, aes("depth", {"color": "cut"}));
+cxp.geom_density();
+cxp.xlim(55, 70);
 
+var cxp = new cxplot("canvas", dsmall, aes("depth", {"fill": "cut", "color": "cut"}));
+cxp.geom_density({"alpha": 0.1});
+cxp.xlim(55, 70);
 
-cxplot(diamonds, aes(depth, colour = cut)) +
-  geom_density() +
-  xlim(55, 70)
-#> Warning: Removed 45 rows containing non-finite values (stat_density).
+// Stacked density plots: if you want to create a stacked density plot, you
+// probably want to 'count' (density * n) variable instead of the default
+// density
 
-cxplot(diamonds, aes(depth, fill = cut, colour = cut)) +
-  geom_density(alpha = 0.1) +
-  xlim(55, 70)
-#> Warning: Removed 45 rows containing non-finite values (stat_density).
+// Loses marginal densities
+var cxp = new cxplot("canvas", dsmall, aes("carat", {"fill": "cut"}));
+cxp.geom_density({"position" : "stack"});
 
+// Preserves marginal densities
+var cxp = new cxplot("canvas", dsmall, aes("carat", {"after_stat": "count", "fill": "cut"}));
+cxp.geom_density({"position" : "stack"});
 
-# \donttest{
-# Stacked density plots: if you want to create a stacked density plot, you
-# probably want to 'count' (density * n) variable instead of the default
-# density
-
-# Loses marginal densities
-cxplot(diamonds, aes(carat, fill = cut)) +
-  geom_density(position = "stack")
-
-# Preserves marginal densities
-cxplot(diamonds, aes(carat, after_stat(count), fill = cut)) +
-  geom_density(position = "stack")
-
-
-# You can use position="fill" to produce a conditional density estimate
-cxplot(diamonds, aes(carat, after_stat(count), fill = cut)) +
-  geom_density(position = "fill")
-
-# }
+// You can use position="fill" to produce a conditional density estimate
+var cxp = new cxplot("canvas", dsmall, aes("carat", {"after_stat": "count", "fill": "cut"}));
+cxp.geom_density({"position" : "fill"});
 
 --
 geom_density_2d.html
@@ -1063,7 +959,7 @@ position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
 ...	
-Arguments passed on to geom_contour
+\Arguments passed on to geom_contour
 
 bins
 Number of contour bins. Overridden by binwidth.
@@ -1172,57 +1068,50 @@ See also
 geom_contour(), geom_contour_filled() for information about how contours are drawn; geom_bin2d() for another way of dealing with overplotting.
 
 Examples
-m <- cxplot(faithful, aes(x = eruptions, y = waiting)) +
- geom_point() +
- xlim(0.5, 6) +
- ylim(40, 110)
 
-# contour lines
-m + geom_density_2d()
+var cxp = new cxplot("canvas", faithful, aes({"x": "eruptions", "y": "waiting"}));
+cxp.geom_point();
+cxp.xlim(0.5, 6);
+cxp.ylim(40, 110);
+// contour lines
+cxp.geom_density_2d();
 
+// contour bands
+var cxp = new cxplot("canvas", faithful, aes({"x": "eruptions", "y": "waiting"}));
+cxp.geom_point();
+cxp.xlim(0.5, 6);
+cxp.ylim(40, 110);
+cxp.geom_density_2d_filled({"alpha" : 0.5});
 
-# \donttest{
-# contour bands
-m + geom_density_2d_filled(alpha = 0.5)
+// From R:
+// set.seed(4393)
+// dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
+// If you map an aesthetic to a categorical variable, you will get a
+// set of contours for each value of that variable
+cxp.geom_density_2d(aes({"color": "cut"}));
 
+// If you draw filled contours across multiple facets, the same bins are
+// used across all facets
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
+cxp.geom_density_2d_filled();
+cxp.facet_wrap("cut")
 
-# contour bands and contour lines
-m + geom_density_2d_filled(alpha = 0.5) +
-  geom_density_2d(size = 0.25, colour = "black")
+// If you want to make sure the peak intensity is the same in each facet,
+// use `contour_var = "ndensity"`.
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
+cxp.geom_density_2d_filled({"contour_var": "ndensity"});
+cxp.facet_wrap("cut");
 
+// If you want to scale intensity by the number of observations in each group,
+// use `contour_var = "count"`.
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
+cxp.geom_density_2d_filled({"contour_var": "count"});
+cxp.facet_wrap("cut");
 
-set.seed(4393)
-dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
-d <- cxplot(dsmall, aes(x, y))
-# If you map an aesthetic to a categorical variable, you will get a
-# set of contours for each value of that variable
-d + geom_density_2d(aes(colour = cut))
-
-
-# If you draw filled contours across multiple facets, the same bins are
-# used across all facets
-d + geom_density_2d_filled() + facet_wrap(vars(cut))
-
-# If you want to make sure the peak intensity is the same in each facet,
-# use `contour_var = "ndensity"`.
-d + geom_density_2d_filled(contour_var = "ndensity") + facet_wrap(vars(cut))
-
-# If you want to scale intensity by the number of observations in each group,
-# use `contour_var = "count"`.
-d + geom_density_2d_filled(contour_var = "count") + facet_wrap(vars(cut))
-
-
-# If we turn contouring off, we can use other geoms, such as tiles:
-d + stat_density_2d(
-  geom = "raster",
-  aes(fill = after_stat(density)),
-  contour = FALSE
-) + scale_fill_viridis_c()
-
-# Or points:
-d + stat_density_2d(geom = "point", aes(size = after_stat(density)), n = 20, contour = FALSE)
-
-# }
+// If we turn contouring off, we can use other geoms, such as tiles:
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
+cxp.geom_raster();
 
 --
 geom_histogram.html
@@ -1360,97 +1249,28 @@ See also
 stat_count(), which counts the number of cases at each x position, without binning. It is suitable for both discrete and continuous x data, whereas stat_bin() is suitable only for continuous x data.
 
 Examples
-cxplot(diamonds, aes(carat)) +
-  geom_histogram()
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-cxplot(diamonds, aes(carat)) +
-  geom_histogram(binwidth = 0.01)
+var cxp = new cxplot("canvas", dsmall, aes("carat"));
+cxp.geom_histogram();
 
-cxplot(diamonds, aes(carat)) +
-  geom_histogram(bins = 200)
+var cxp = new cxplot("canvas", dsmall, aes("carat"));
+cxp.geom_histogram({"binwidth": 0.01});
 
-# Map values to y to flip the orientation
-cxplot(diamonds, aes(y = carat)) +
-  geom_histogram()
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+var cxp = new cxplot("canvas", dsmall, aes("carat"));
+cxp.geom_histogram({"bins": 200});
 
+// Rather than stacking histograms, it's easier to compare frequency
+// polygons
+var cxp = new cxplot("canvas", dsmall, aes("price", {"fill": "cut"}));
+cxp.geom_histogram({"binwidth": 500});
 
-# For histograms with tick marks between each bin, use `geom_bar()` with
-# `scale_x_binned()`.
-cxplot(diamonds, aes(carat)) +
-  geom_bar() +
-  scale_x_binned()
+var cxp = new cxplot("canvas", dsmall, aes("price", {"color": "cut"}));
+cxp.geom_histogram({"binwidth": 500});
 
-
-# Rather than stacking histograms, it's easier to compare frequency
-# polygons
-cxplot(diamonds, aes(price, fill = cut)) +
-  geom_histogram(binwidth = 500)
-
-cxplot(diamonds, aes(price, colour = cut)) +
-  geom_freqpoly(binwidth = 500)
-
-
-# To make it easier to compare distributions with very different counts,
-# put density on the y axis instead of the default count
-cxplot(diamonds, aes(price, after_stat(density), colour = cut)) +
-  geom_freqpoly(binwidth = 500)
-
-
-if (require("cxplotmovies")) {
-# Often we don't want the height of the bar to represent the
-# count of observations, but the sum of some other variable.
-# For example, the following plot shows the number of movies
-# in each rating.
-m <- cxplot(movies, aes(rating))
-m + geom_histogram(binwidth = 0.1)
-
-# If, however, we want to see the number of votes cast in each
-# category, we need to weight by the votes variable
-m +
-  geom_histogram(aes(weight = votes), binwidth = 0.1) +
-  ylab("votes")
-
-# For transformed scales, binwidth applies to the transformed data.
-# The bins have constant width on the transformed scale.
-m +
- geom_histogram() +
- scale_x_log10()
-m +
-  geom_histogram(binwidth = 0.05) +
-  scale_x_log10()
-
-# For transformed coordinate systems, the binwidth applies to the
-# raw data. The bins have constant width on the original scale.
-
-# Using log scales does not work here, because the first
-# bar is anchored at zero, and so when transformed becomes negative
-# infinity. This is not a problem when transforming the scales, because
-# no observations have 0 ratings.
-m +
-  geom_histogram(boundary = 0) +
-  coord_trans(x = "log10")
-# Use boundary = 0, to make sure we don't take sqrt of negative values
-m +
-  geom_histogram(boundary = 0) +
-  coord_trans(x = "sqrt")
-
-# You can also transform the y axis.  Remember that the base of the bars
-# has value 0, so log transformations are not appropriate
-m <- cxplot(movies, aes(x = rating))
-m +
-  geom_histogram(binwidth = 0.5) +
-  scale_y_sqrt()
-}
-
-
-# You can specify a function for calculating binwidth, which is
-# particularly useful when faceting along variables with
-# different ranges because the function will be called once per facet
-cxplot(economics_long, aes(value)) +
-  facet_wrap(~variable, scales = 'free_x') +
-  geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1/3)))
+// To make it easier to compare distributions with very different counts,
+// put density on the y axis instead of the default count
+var cxp = new cxplot("canvas", dsmall, aes("price", {"after_stat": "density", "color": "cut"}));
+cxp.geom_histogram({"binwidth": 500});
 
 --
 geom_jitter.html
@@ -1538,30 +1358,18 @@ See also
 geom_point() for regular, unjittered points, geom_boxplot() for another way of looking at the conditional distribution of a variable
 
 Examples
-p <- cxplot(mpg, aes(cyl, hwy))
-p + geom_point()
 
-p + geom_jitter()
+var cxp = new cxplot("canvas", mpg, aes("cyl", "hwy"));
+cxp.geom_point();
 
+var cxp = new cxplot("canvas", mpg, aes("cyl", "hwy"));
+cxp.geom_point();
+cxp.geom_jitter();
 
-# Add aesthetic mappings
-p + geom_jitter(aes(colour = class))
-
-
-# Use smaller width/height to emphasise categories
-cxplot(mpg, aes(cyl, hwy)) +
-  geom_jitter()
-
-cxplot(mpg, aes(cyl, hwy)) +
-  geom_jitter(width = 0.25)
-
-
-# Use larger width/height to completely smooth away discreteness
-cxplot(mpg, aes(cty, hwy)) +
-  geom_jitter()
-
-cxplot(mpg, aes(cty, hwy)) +
-  geom_jitter(width = 0.5, height = 0.5)
+// Add aesthetic mappings
+var cxp = new cxplot("canvas", mpg, aes("cyl", "hwy"));
+cxp.geom_point();
+cxp.geom_jitter(aes({"color": "class"}));
 
 --
 geom_path.html
@@ -1694,87 +1502,17 @@ See also
 geom_polygon(): Filled paths (polygons); geom_segment(): Line segments
 
 Examples
-# geom_line() is suitable for time series
-cxplot(economics, aes(date, unemploy)) + geom_line()
 
-cxplot(economics_long, aes(date, value01, colour = variable)) +
-  geom_line()
+var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
+var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
+cxp.geom_point();
+cxp.geom_line();
 
+var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
+var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
+cxp.geom_point();
+cxp.geom_line(aes({"linetype" : "supp"}));
 
-# You can get a timeseries that run vertically by setting the orientation
-cxplot(economics, aes(unemploy, date)) + geom_line(orientation = "y")
-
-
-# geom_step() is useful when you want to highlight exactly when
-# the y value changes
-recent <- economics[economics$date > as.Date("2013-01-01"), ]
-cxplot(recent, aes(date, unemploy)) + geom_line()
-
-cxplot(recent, aes(date, unemploy)) + geom_step()
-
-
-# geom_path lets you explore how two variables are related over time,
-# e.g. unemployment and personal savings rate
-m <- cxplot(economics, aes(unemploy/pop, psavert))
-m + geom_path()
-
-m + geom_path(aes(colour = as.numeric(date)))
-
-
-# Changing parameters ----------------------------------------------
-cxplot(economics, aes(date, unemploy)) +
-  geom_line(colour = "red")
-
-
-# Use the arrow parameter to add an arrow to the line
-# See ?arrow for more details
-c <- cxplot(economics, aes(x = date, y = pop))
-c + geom_line(arrow = arrow())
-
-c + geom_line(
-  arrow = arrow(angle = 15, ends = "both", type = "closed")
-)
-
-
-# Control line join parameters
-df <- data.frame(x = 1:3, y = c(4, 1, 9))
-base <- cxplot(df, aes(x, y))
-base + geom_path(size = 10)
-
-base + geom_path(size = 10, lineend = "round")
-
-base + geom_path(size = 10, linejoin = "mitre", lineend = "butt")
-
-
-# You can use NAs to break the line.
-df <- data.frame(x = 1:5, y = c(1, 2, NA, 4, 5))
-cxplot(df, aes(x, y)) + geom_point() + geom_line()
-#> Warning: Removed 1 rows containing missing values (geom_point).
-
-
-# \donttest{
-# Setting line type vs colour/size
-# Line type needs to be applied to a line as a whole, so it can
-# not be used with colour or size that vary across a line
-x <- seq(0.01, .99, length.out = 100)
-df <- data.frame(
-  x = rep(x, 2),
-  y = c(qlogis(x), 2 * qlogis(x)),
-  group = rep(c("a","b"),
-  each = 100)
-)
-p <- cxplot(df, aes(x=x, y=y, group=group))
-# These work
-p + geom_line(linetype = 2)
-
-p + geom_line(aes(colour = group), linetype = 2)
-
-p + geom_line(aes(colour = x))
-
-# But this doesn't
-should_stop(p + geom_line(aes(colour = x), linetype=2))
-
-# }
 
 --
 geom_point.html
@@ -1854,66 +1592,20 @@ stroke
 Learn more about setting these aesthetics in vignette("cxplot-specs").
 
 Examples
-p <- cxplot(mtcars, aes(wt, mpg))
-p + geom_point()
 
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
 
-# Add aesthetic mappings
-p + geom_point(aes(colour = factor(cyl)))
+// Add aesthetic mappings
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point(aes({"color": {"factor": "cyl"}}));
 
-p + geom_point(aes(shape = factor(cyl)))
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point(aes({"shape": {"factor": "cyl"}}));
 
-# A "bubblechart":
-p + geom_point(aes(size = qsec))
-
-
-# Set aesthetics to fixed value
-cxplot(mtcars, aes(wt, mpg)) + geom_point(colour = "red", size = 3)
-
-
-# \donttest{
-# Varying alpha is useful for large datasets
-d <- cxplot(diamonds, aes(carat, price))
-d + geom_point(alpha = 1/10)
-
-d + geom_point(alpha = 1/20)
-
-d + geom_point(alpha = 1/100)
-
-# }
-
-# For shapes that have a border (like 21), you can colour the inside and
-# outside separately. Use the stroke aesthetic to modify the width of the
-# border
-cxplot(mtcars, aes(wt, mpg)) +
-  geom_point(shape = 21, colour = "black", fill = "white", size = 5, stroke = 5)
-
-
-# \donttest{
-# You can create interesting shapes by layering multiple points of
-# different sizes
-p <- cxplot(mtcars, aes(mpg, wt, shape = factor(cyl)))
-p +
-  geom_point(aes(colour = factor(cyl)), size = 4) +
-  geom_point(colour = "grey90", size = 1.5)
-
-p +
-  geom_point(colour = "black", size = 4.5) +
-  geom_point(colour = "pink", size = 4) +
-  geom_point(aes(shape = factor(cyl)))
-
-
-# geom_point warns when missing values have been dropped from the data set
-# and not plotted, you can turn this off by setting na.rm = TRUE
-mtcars2 <- transform(mtcars, mpg = ifelse(runif(32) < 0.2, NA, mpg))
-cxplot(mtcars2, aes(wt, mpg)) +
-  geom_point()
-#> Warning: Removed 7 rows containing missing values (geom_point).
-
-cxplot(mtcars2, aes(wt, mpg)) +
-  geom_point(na.rm = TRUE)
-
-# }
+// A "bubblechart":
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point(aes({"size": "qsec"}));
 
 --
 geom_quantile.html
@@ -2027,33 +1719,18 @@ quantile
 quantile of distribution
 
 Examples
-m <-
-  cxplot(mpg, aes(displ, 1 / hwy)) +
-  geom_point()
-m + geom_quantile()
-#> Smoothing formula not specified. Using: y ~ x
 
-m + geom_quantile(quantiles = 0.5)
-#> Smoothing formula not specified. Using: y ~ x
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
+cxp.geom_point();
+cxp.geom_quantile();
 
-q10 <- seq(0.05, 0.95, by = 0.05)
-m + geom_quantile(quantiles = q10)
-#> Smoothing formula not specified. Using: y ~ x
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
+cxp.geom_point();
+cxp.geom_quantile({"quantiles": [0.5]});
 
-
-# You can also use rqss to fit smooth quantiles
-m + geom_quantile(method = "rqss")
-#> Smoothing formula not specified. Using: y ~ qss(x, lambda = 1)
-
-# Note that rqss doesn't pick a smoothing constant automatically, so
-# you'll need to tweak lambda yourself
-m + geom_quantile(method = "rqss", lambda = 0.1)
-#> Smoothing formula not specified. Using: y ~ qss(x, lambda = 0.1)
-
-
-# Set aesthetics to fixed value
-m + geom_quantile(colour = "red", size = 2, alpha = 0.5)
-#> Smoothing formula not specified. Using: y ~ x
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
+cxp.geom_point();
+cxp.geom_quantile({"quantiles": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]});
 
 --
 geom_rug.html
@@ -2137,47 +1814,23 @@ y
 Learn more about setting these aesthetics in vignette("cxplot-specs").
 
 Examples
-p <- cxplot(mtcars, aes(wt, mpg)) +
-  geom_point()
-p
 
-p + geom_rug()
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
 
-p + geom_rug(sides="b")    # Rug on bottom only
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+cxp.geom_rug();
 
-p + geom_rug(sides="trbl") # All four sides
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+// Rug on bottom only
+cxp.geom_rug({"sides": "b"});
 
-
-# Use jittering to avoid overplotting for smaller datasets
-cxplot(mpg, aes(displ, cty)) +
-  geom_point() +
-  geom_rug()
-
-
-cxplot(mpg, aes(displ, cty)) +
-  geom_jitter() +
-  geom_rug(alpha = 1/2, position = "jitter")
-
-
-# move the rug tassels to outside the plot
-# remember to set clip = "off".
-p +
-  geom_rug(outside = TRUE) +
-  coord_cartesian(clip = "off")
-
-
-# set sides to top right, and then move the margins
-p +
-  geom_rug(outside = TRUE, sides = "tr") +
-  coord_cartesian(clip = "off") +
-  theme(plot.margin = margin(1, 1, 1, 1, "cm"))
-
-
-# increase the line length and
-# expand axis to avoid overplotting
-p +
-  geom_rug(length = unit(0.05, "npc")) +
-  scale_y_continuous(expand = c(0.1, 0.1))
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point();
+// All four sides
+cxp.geom_rug({"sides": "trbl"});
 
 --
 geom_smooth.html
@@ -2333,83 +1986,10 @@ See also
 See individual modelling functions for more details: lm() for linear smooths, glm() for generalised linear smooths, and loess() for local smooths.
 
 Examples
-cxplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth()
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
-
-# If you need the fitting to be done along the y-axis set the orientation
-cxplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth(orientation = "y")
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-
-
-# Use span to control the "wiggliness" of the default loess smoother.
-# The span is the fraction of points used to fit each local regression:
-# small numbers make a wigglier curve, larger numbers make a smoother curve.
-cxplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth(span = 0.3)
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-
-
-# Instead of a loess smooth, you can use any other modelling function:
-cxplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth(method = lm, se = FALSE)
-#> `geom_smooth()` using formula 'y ~ x'
-
-
-cxplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth(method = lm, formula = y ~ splines::bs(x, 3), se = FALSE)
-
-
-# Smooths are automatically fit to each group (defined by categorical
-# aesthetics or the group aesthetic) and for each facet.
-
-cxplot(mpg, aes(displ, hwy, colour = class)) +
-  geom_point() +
-  geom_smooth(se = FALSE, method = lm)
-#> `geom_smooth()` using formula 'y ~ x'
-
-cxplot(mpg, aes(displ, hwy)) +
-  geom_point() +
-  geom_smooth(span = 0.8) +
-  facet_wrap(~drv)
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-
-
-# \donttest{
-binomial_smooth <- function(...) {
-  geom_smooth(method = "glm", method.args = list(family = "binomial"), ...)
-}
-# To fit a logistic regression, you need to coerce the values to
-# a numeric vector lying between 0 and 1.
-cxplot(rpart::kyphosis, aes(Age, Kyphosis)) +
-  geom_jitter(height = 0.05) +
-  binomial_smooth()
-#> `geom_smooth()` using formula 'y ~ x'
-#> Warning: Computation failed in `stat_smooth()`:
-#> y values must be 0 <= y <= 1
-
-
-cxplot(rpart::kyphosis, aes(Age, as.numeric(Kyphosis) - 1)) +
-  geom_jitter(height = 0.05) +
-  binomial_smooth()
-#> `geom_smooth()` using formula 'y ~ x'
-
-
-cxplot(rpart::kyphosis, aes(Age, as.numeric(Kyphosis) - 1)) +
-  geom_jitter(height = 0.05) +
-  binomial_smooth(formula = y ~ splines::ns(x, 2))
-
-
-# But in this case, it's probably better to fit the model yourself
-# so you can exercise more control and see whether or not it's a good model.
-# }
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
+cxp.geom_point();
+cxp.geom_smooth();
 
 --
 geom_text.html
@@ -2542,125 +2122,12 @@ Alignment
 You can modify text alignment with the vjust and hjust aesthetics. These can either be a number between 0 (right/bottom) and 1 (top/left) or a character ("left", "middle", "right", "bottom", "center", "top"). There are two special alignments: "inward" and "outward". Inward always aligns text towards the center, and outward aligns it away from the center.
 
 Examples
-p <- cxplot(mtcars, aes(wt, mpg, label = rownames(mtcars)))
 
-p + geom_text()
-
-# Avoid overlaps
-p + geom_text(check_overlap = TRUE)
-
-# Labels with background
-p + geom_label()
-
-# Change size of the label
-p + geom_text(size = 10)
-
-
-# Set aesthetics to fixed value
-p +
-  geom_point() +
-  geom_text(hjust = 0, nudge_x = 0.05)
-
-p +
-  geom_point() +
-  geom_text(vjust = 0, nudge_y = 0.5)
-
-p +
-  geom_point() +
-  geom_text(angle = 45)
-
-if (FALSE) {
-# Doesn't work on all systems
-p +
-  geom_text(family = "Times New Roman")
-}
-
-# Add aesthetic mappings
-p + geom_text(aes(colour = factor(cyl)))
-
-p + geom_text(aes(colour = factor(cyl))) +
-  scale_colour_discrete(l = 40)
-
-p + geom_label(aes(fill = factor(cyl)), colour = "white", fontface = "bold")
-
-
-p + geom_text(aes(size = wt))
-
-# Scale height of text, rather than sqrt(height)
-p +
-  geom_text(aes(size = wt)) +
-  scale_radius(range = c(3,6))
-
-
-# You can display expressions by setting parse = TRUE.  The
-# details of the display are described in ?plotmath, but note that
-# geom_text uses strings, not expressions.
-p +
-  geom_text(
-    aes(label = paste(wt, "^(", cyl, ")", sep = "")),
-    parse = TRUE
-  )
-
-
-# Add a text annotation
-p +
-  geom_text() +
-  annotate(
-    "text", label = "plot mpg vs. wt",
-    x = 2, y = 15, size = 8, colour = "red"
-  )
-
-
-# \donttest{
-# Aligning labels and bars --------------------------------------------------
-df <- data.frame(
-  x = factor(c(1, 1, 2, 2)),
-  y = c(1, 3, 2, 1),
-  grp = c("a", "b", "a", "b")
-)
-
-# cxplot doesn't know you want to give the labels the same virtual width
-# as the bars:
-cxplot(data = df, aes(x, y, group = grp)) +
-  geom_col(aes(fill = grp), position = "dodge") +
-  geom_text(aes(label = y), position = "dodge")
-#> Warning: Width not defined. Set with `position_dodge(width = ?)`
-
-# So tell it:
-cxplot(data = df, aes(x, y, group = grp)) +
-  geom_col(aes(fill = grp), position = "dodge") +
-  geom_text(aes(label = y), position = position_dodge(0.9))
-
-# Use you can't nudge and dodge text, so instead adjust the y position
-cxplot(data = df, aes(x, y, group = grp)) +
-  geom_col(aes(fill = grp), position = "dodge") +
-  geom_text(
-    aes(label = y, y = y + 0.05),
-    position = position_dodge(0.9),
-    vjust = 0
-  )
-
-
-# To place text in the middle of each bar in a stacked barplot, you
-# need to set the vjust parameter of position_stack()
-cxplot(data = df, aes(x, y, group = grp)) +
- geom_col(aes(fill = grp)) +
- geom_text(aes(label = y), position = position_stack(vjust = 0.5))
-
-
-# Justification -------------------------------------------------------------
-df <- data.frame(
-  x = c(1, 1, 2, 2, 1.5),
-  y = c(1, 2, 1, 2, 1.5),
-  text = c("bottom-left", "bottom-right", "top-left", "top-right", "center")
-)
-cxplot(df, aes(x, y)) +
-  geom_text(aes(label = text))
-
-cxplot(df, aes(x, y)) +
-  geom_text(aes(label = text), vjust = "inward", hjust = "inward")
-
-# }
+var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
+var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
+cxp.geom_point();
+cxp.geom_line();
+cxp.geom_text(aes({"label": "len", "vjust": -0.5}));
 
 --
 geom_tile.html
@@ -2771,72 +2238,6 @@ width
 Learn more about setting these aesthetics in vignette("cxplot-specs").
 
 Examples
-# The most common use for rectangles is to draw a surface. You always want
-# to use geom_raster here because it's so much faster, and produces
-# smaller output when saving to PDF
-cxplot(faithfuld, aes(waiting, eruptions)) +
- geom_raster(aes(fill = density))
-
-
-# Interpolation smooths the surface & is most helpful when rendering images.
-cxplot(faithfuld, aes(waiting, eruptions)) +
- geom_raster(aes(fill = density), interpolate = TRUE)
-
-
-# If you want to draw arbitrary rectangles, use geom_tile() or geom_rect()
-df <- data.frame(
-  x = rep(c(2, 5, 7, 9, 12), 2),
-  y = rep(c(1, 2), each = 5),
-  z = factor(rep(1:5, each = 2)),
-  w = rep(diff(c(0, 4, 6, 8, 10, 14)), 2)
-)
-cxplot(df, aes(x, y)) +
-  geom_tile(aes(fill = z), colour = "grey50")
-
-cxplot(df, aes(x, y, width = w)) +
-  geom_tile(aes(fill = z), colour = "grey50")
-
-cxplot(df, aes(xmin = x - w / 2, xmax = x + w / 2, ymin = y, ymax = y + 1)) +
-  geom_rect(aes(fill = z), colour = "grey50")
-
-
-# \donttest{
-# Justification controls where the cells are anchored
-df <- expand.grid(x = 0:5, y = 0:5)
-df$z <- runif(nrow(df))
-# default is compatible with geom_tile()
-cxplot(df, aes(x, y, fill = z)) +
-  geom_raster()
-
-# zero padding
-cxplot(df, aes(x, y, fill = z)) +
-  geom_raster(hjust = 0, vjust = 0)
-
-
-# Inspired by the image-density plots of Ken Knoblauch
-cars <- cxplot(mtcars, aes(mpg, factor(cyl)))
-cars + geom_point()
-
-cars + stat_bin2d(aes(fill = after_stat(count)), binwidth = c(3,1))
-
-cars + stat_bin2d(aes(fill = after_stat(density)), binwidth = c(3,1))
-
-
-cars +
-  stat_density(
-    aes(fill = after_stat(density)),
-    geom = "raster",
-    position = "identity"
-   )
-
-cars +
-  stat_density(
-    aes(fill = after_stat(count)),
-    geom = "raster",
-    position = "identity"
-  )
-
-# }
 
 --
 geom_violin.html
@@ -2979,235 +2380,49 @@ See also
 geom_violin() for examples, and stat_density() for examples with data along the x axis.
 
 Examples
-p <- cxplot(mtcars, aes(factor(cyl), mpg))
-p + geom_violin()
 
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin();
 
-# Orientation follows the discrete axis
-cxplot(mtcars, aes(mpg, factor(cyl))) +
-  geom_violin()
+// Orientation follows the discrete axis
+var cxp = new cxplot("canvas", mtcars, aes("mpg", {"factor": "cyl"}));
+cxp.geom_violin();
 
+// Scale maximum width proportional to sample size:
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin({"scale": "count"});
 
-# \donttest{
-p + geom_violin() + geom_jitter(height = 0, width = 0.1)
+// Scale maximum width to 1 for all violins:
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin({"scale": "width"});
 
+// Default is to trim violins to the range of the data. To disable:
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin({"trim": false});
 
-# Scale maximum width proportional to sample size:
-p + geom_violin(scale = "count")
+// Use a smaller bandwidth for closer density fit (default is 1).
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin({"adjust": 0.5});
 
+// Add aesthetic mappings
+// Note that violins are automatically dodged when any aesthetic is
+// a factor
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin(aes({"fill": "cyl"}));
 
-# Scale maximum width to 1 for all violins:
-p + geom_violin(scale = "width")
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin(aes({"fill": {"factor": "vs"}}));
 
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin(aes({"fill": {"factor": "am"}}));
 
-# Default is to trim violins to the range of the data. To disable:
-p + geom_violin(trim = FALSE)
+// Set aesthetics to fixed value
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin(aes({"fill": "grey", "color": "#3366FF"}));
 
-
-# Use a smaller bandwidth for closer density fit (default is 1).
-p + geom_violin(adjust = .5)
-
-
-# Add aesthetic mappings
-# Note that violins are automatically dodged when any aesthetic is
-# a factor
-p + geom_violin(aes(fill = cyl))
-
-p + geom_violin(aes(fill = factor(cyl)))
-
-p + geom_violin(aes(fill = factor(vs)))
-#> Warning: Groups with fewer than two data points have been dropped.
-
-p + geom_violin(aes(fill = factor(am)))
-
-
-# Set aesthetics to fixed value
-p + geom_violin(fill = "grey80", colour = "#3366FF")
-
-
-# Show quartiles
-p + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
-
-
-# Scales vs. coordinate transforms -------
-if (require("cxplotmovies")) {
-# Scale transformations occur before the density statistics are computed.
-# Coordinate transformations occur afterwards.  Observe the effect on the
-# number of outliers.
-m <- cxplot(movies, aes(y = votes, x = rating, group = cut_width(rating, 0.5)))
-m + geom_violin()
-m +
-  geom_violin() +
-  scale_y_log10()
-m +
-  geom_violin() +
-  coord_trans(y = "log10")
-m +
-  geom_violin() +
-  scale_y_log10() + coord_trans(y = "log10")
-
-# Violin plots with continuous x:
-# Use the group aesthetic to group observations in violins
-cxplot(movies, aes(year, budget)) +
-  geom_violin()
-cxplot(movies, aes(year, budget)) +
-  geom_violin(aes(group = cut_width(year, 10)), scale = "width")
-}
-#> Warning: Removed 53573 rows containing non-finite values (stat_ydensity).
-#> Warning: Groups with fewer than two data points have been dropped.
-
-# }
+// Show quartiles
+var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
+cxp.geom_violin({draw_quantiles: [0.25, 0.5, 0.75]});
 
 --
-cxplot.html
-Create a new cxplot
-Source: R/plot.r
-cxplot() initializes a cxplot object. It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.
-
-cxplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
-Arguments
-data	
-Default dataset to use for plot. If not already a data.frame, will be converted to one by fortify(). If not specified, must be supplied in each layer added to the plot.
-
-mapping	
-Default list of aesthetic mappings to use for plot. If not specified, must be supplied in each layer added to the plot.
-
-Details
-cxplot() is used to construct the initial plot object, and is almost always followed by + to add component to the plot. There are three common ways to invoke cxplot():
-
-cxplot(df, aes(x, y, other aesthetics))
-
-cxplot(df)
-
-cxplot()
-
-The first method is recommended if all layers use the same data and the same set of aesthetics, although this method can also be used to add a layer using data from another data frame. See the first example below. The second method specifies the default data frame to use for the plot, but no aesthetics are defined up front. This is useful when one data frame is used predominantly as layers are added, but the aesthetics may vary from one layer to another. The third method initializes a skeleton cxplot object which is fleshed out as layers are added. This method is useful when multiple data frames are used to produce different layers, as is often the case in complex graphics.
-
-Examples
-# Generate some sample data, then compute mean and standard deviation
-# in each group
-df <- data.frame(
-  gp = factor(rep(letters[1:3], each = 10)),
-  y = rnorm(30)
-)
-ds <- do.call(rbind, lapply(split(df, df$gp), function(d) {
-  data.frame(mean = mean(d$y), sd = sd(d$y), gp = d$gp)
-}))
-
-# The summary data frame ds is used to plot larger red points on top
-# of the raw data. Note that we don't need to supply `data` or `mapping`
-# in each layer because the defaults from cxplot() are used.
-cxplot(df, aes(gp, y)) +
-  geom_point() +
-  geom_point(data = ds, aes(y = mean), colour = 'red', size = 3)
-
-
-# Same plot as above, declaring only the data frame in cxplot().
-# Note how the x and y aesthetics must now be declared in
-# each geom_point() layer.
-cxplot(df) +
-  geom_point(aes(gp, y)) +
-  geom_point(data = ds, aes(gp, mean), colour = 'red', size = 3)
-
-
-# Alternatively we can fully specify the plot in each layer. This
-# is not useful here, but can be more clear when working with complex
-# mult-dataset graphics
-cxplot() +
-  geom_point(data = df, aes(gp, y)) +
-  geom_point(data = ds, aes(gp, mean), colour = 'red', size = 3) +
-  geom_errorbar(
-    data = ds,
-    aes(gp, mean, ymin = mean - sd, ymax = mean + sd),
-    colour = 'red',
-    width = 0.4
-  )
-
---
-aes.html
-Construct aesthetic mappings
-Source: R/aes.r
-Aesthetic mappings describe how variables in the data are mapped to visual properties (aesthetics) of geoms. Aesthetic mappings can be set in cxplot() and in individual layers.
-
-aes(x, y, ...)
-Arguments
-x, y, ...	
-List of name-value pairs in the form aesthetic = variable describing which variables in the layer data should be mapped to which aesthetics used by the paired geom/stat. The expression variable is evaluated within the layer data, so there is no need to refer to the original dataset (i.e., use cxplot(df, aes(variable)) instead of cxplot(df, aes(df$variable))). The names for x and y aesthetics are typically omitted because they are so common; all other aesthetics must be named.
-
-Value
-A list with class uneval. Components of the list are either quosures or constants.
-
-Details
-This function also standardises aesthetic names by converting color to colour (also in substrings, e.g., point_color to point_colour) and translating old style R names to cxplot names (e.g., pch to shape and cex to size).
-
-See also
-vars() for another quoting function designed for faceting specifications.
-
-Examples
-aes(x = mpg, y = wt)
-#> Aesthetic mapping: 
-#> * `x` -> `mpg`
-#> * `y` -> `wt`
-aes(mpg, wt)
-#> Aesthetic mapping: 
-#> * `x` -> `mpg`
-#> * `y` -> `wt`
-
-# You can also map aesthetics to functions of variables
-aes(x = mpg ^ 2, y = wt / cyl)
-#> Aesthetic mapping: 
-#> * `x` -> `mpg^2`
-#> * `y` -> `wt/cyl`
-
-# Or to constants
-aes(x = 1, colour = "smooth")
-#> Aesthetic mapping: 
-#> * `x`      -> 1
-#> * `colour` -> "smooth"
-
-# Aesthetic names are automatically standardised
-aes(col = x)
-#> Aesthetic mapping: 
-#> * `colour` -> `x`
-aes(fg = x)
-#> Aesthetic mapping: 
-#> * `colour` -> `x`
-aes(color = x)
-#> Aesthetic mapping: 
-#> * `colour` -> `x`
-aes(colour = x)
-#> Aesthetic mapping: 
-#> * `colour` -> `x`
-
-# aes() is passed to either cxplot() or specific layer. Aesthetics supplied
-# to cxplot() are used as defaults for every layer.
-cxplot(mpg, aes(displ, hwy)) + geom_point()
-
-cxplot(mpg) + geom_point(aes(displ, hwy))
-
-
-# Tidy evaluation ----------------------------------------------------
-# aes() automatically quotes all its arguments, so you need to use tidy
-# evaluation to create wrappers around cxplot pipelines. The
-# simplest case occurs when your wrapper takes dots:
-scatter_by <- function(data, ...) {
-  cxplot(data) + geom_point(aes(...))
-}
-scatter_by(mtcars, disp, drat)
-
-
-# If your wrapper has a more specific interface with named arguments,
-# you need "enquote and unquote":
-scatter_by <- function(data, x, y) {
-  x <- enquo(x)
-  y <- enquo(y)
-
-  cxplot(data) + geom_point(aes(!!x, !!y))
-}
-scatter_by(mtcars, disp, drat)
-
-
-# Note that users of your wrapper can use their own functions in the
-# quoted expressions and all will resolve as it should!
-cut3 <- function(x) cut_number(x, 3)
-scatter_by(mtcars, cut3(disp), drat)
+END
