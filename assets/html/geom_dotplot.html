@@ -1,0 +1,362 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dot plot • cxplot</title>
+  <!-- favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/mtcars.js"></script>
+  <!-- jquery -->
+  <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link href="/assets/css/tidyverse.css" rel="stylesheet">
+  <script src="/assets/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="/assets/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/v4-shims.min.css" crossorigin="anonymous">
+  <!-- clipboard.js -->
+  <script src="/assets/js/clipboard.min.js" crossorigin="anonymous"></script>
+  <!-- headroom.js -->
+  <script src="/assets/js/headroom.min.js" crossorigin="anonymous"></script>
+  <script src="/assets/js/jQuery.headroom.min.js" crossorigin="anonymous"></script>
+  <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
+  <!-- pkgdown -->
+  <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
+  <!-- Google -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWN5F9X8DS');
+  </script>
+  <!--optional theme-->
+  <meta property="og:title" content="Dot plot">
+  <meta property="og:description" content="In a dot plot, the width of a dot corresponds to the bin width (or maximum width, depending on the binning algorithm), and dots are stacked, with each dot representing one observation.">
+  <meta property="og:image" content="/assets/images/logo.svg">
+  <meta name="twitter:card" content="summary">
+</head>
+
+<body data-spy="scroll" data-target="#toc" style="padding-top: 60px;">
+
+  <div class="container template-reference-topic">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand-container">
+              <a class="navbar-brand" href="/index.html">cxplot</a>
+            </div>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="https://github.com/neuhausi/cxplot" class="external-link">
+                  <span class="fab fa-github fa-lg"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-9 contents">
+
+        <div class="page-header">
+          <h1>Dot plot</h1>
+        </div>
+
+        <div class="ref-description">
+          <p>In a dot plot, the width of a dot corresponds to the bin width (or maximum width, depending on the binning algorithm), and dots are stacked, with each dot representing one observation.</p>
+        </div>
+
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+<span class="fu">geom_dotplot</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"binwidth"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"binaxis"</span> <span class="op">=</span> <span class="st">"x"</span>,
+ <span class="st">"method"</span> <span class="op">=</span> <span class="st">"dotdensity"</span>,
+ <span class="st">"binpositions"</span> <span class="op">=</span> <span class="st">"bygroup"</span>,
+ <span class="st">"stackdir"</span> <span class="op">=</span> <span class="st">"up"</span>,
+ <span class="st">"stackratio"</span> <span class="op">=</span> <span class="fl">1</span>,
+ <span class="st">"dot<code>size</code>"</span> <span class="op">=</span> <span class="fl">1</span>,
+ <span class="st">"stackgroups"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"origin"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"right"</span> <span class="op">=</span> <span class="cn">true</span>,
+ <span class="st">"width"</span> <span class="op">=</span> <span class="fl">0</span>.9,
+ <span class="st">"drop"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
+        </div>
+
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+        <table class="ref-arguments">
+          <tbody>
+            <tr>
+              <th>mapping</th>
+              <td>
+                <p>Set of aesthetic mappings created by <a href="./aes.html"><code>aes()</code></a> or <a href="./aes.html"><code>aes_()</code></a>. If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>data</th>
+              <td>
+                <p>The data to be displayed in this layer. There are three options:</p>
+                <p>If NULL, the default, the data is inherited from the plot data as specified in the call to <a href="./cxplot.html"><code>cxplot()</code></a>.</p>
+                <p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
+                <p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p>
+              <td>
+            </tr>
+            <tr>
+              <th>position</th>
+              <td>
+                <p>Position adjustment, either as a string, or the result of a call to a position adjustment function.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>...</th>
+              <td>
+                <p>Other arguments passed on to <code>layer()</code>. These are often aesthetics, used to set an aesthetic to a fixed value, like <code>color</code> = "red" or <code>size</code> = 3. They may also be parameters to the paired geom/stat.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>binwidth</th>
+              <td>
+                <p>When method is "dotdensity", this specifies maximum bin width. When method is "histodot", this specifies bin width. Defaults to 1/30 of the range of the data</p>
+              <td>
+            </tr>
+            <tr>
+              <th>binaxis</th>
+              <td>
+                <p>The axis to bin along, "x" (default) or "y"</p>
+              <td>
+            </tr>
+            <tr>
+              <th>method</th>
+              <td>
+                <p>"dotdensity" (default) for dot-density binning, or "histodot" for fixed bin widths (like stat_bin)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>binpositions</th>
+              <td>
+                <p>When method is "dotdensity", "bygroup" (default) determines positions of the bins for each group separately. "all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>stackdir</th>
+              <td>
+                <p>which direction to stack the dots. "up" (default), "down", "center", "centerwhole" (centered, but with dots aligned)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>stackratio</th>
+              <td>
+                <p>how close to stack the dots. Default is 1, where dots just touch. Use smaller values for closer, overlapping dots.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>dot<code>size</code></th>
+              <td>
+                <p>The diameter of the dots relative to binwidth, default 1.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>stackgroups</th>
+              <td>
+                <p>should dots be stacked across groups? This has the effect that position = "stack" should have, but can't (because this geom has some odd properties).</p>
+              <td>
+            </tr>
+            <tr>
+              <th>origin</th>
+              <td>
+                <p>When method is "histodot", origin of first bin</p>
+              <td>
+            </tr>
+            <tr>
+              <th>right</th>
+              <td>
+                <p>When method is "histodot", should intervals be closed on the right (a, b], or not [a, b)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>width</th>
+              <td>
+                <p>When binaxis is "y", the spacing of the dot stacks for dodging.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>drop</th>
+              <td>
+                <p>If TRUE, remove all bins with zero counts</p>
+              <td>
+            </tr>
+            <tr>
+              <th>na.rm</th>
+              <td>
+                <p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>show.legend</th>
+              <td>
+                <p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>inherit.aes</th>
+              <td>
+                <p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().</p>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+        <p>There are two basic approaches: dot-density and histodot. With dot-density binning, the bin positions are determined by the data and binwidth, which is the maximum width of each bin. See Wilkinson (1999) for details on the dot-density binning algorithm. With histodot binning, the bins have fixed positions and fixed widths, much like a histogram.</p>
+        <p>When binning along the x axis and stacking along the y axis, the numbers on y axis are not meaningful, due to technical limitations of cxplot. You can hide the y axis, as in one of the examples, or manually scale it to match the number of dots.</p>
+
+        <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
+        <p><a href="./geom_dotplot() understands the following aesthetics .html"><code>geom_dotplot() understands the following aesthetics (required aesthetics are in bold)</code></a>:</p>
+        <p>x</p>
+        <p>y</p>
+        <p><code>alpha</code></p>
+        <p><code>color</code></p>
+        <p>fill</p>
+        <p>group</p>
+        <p><code>linetype</code></p>
+        <p>stroke</p>
+        <p>Learn more about setting these aesthetics in vignette("cxplot-specs").</p>
+
+        <h2 class="hasAnchor" id="computed-variables"><a class="anchor" href="#computed-variables"></a>Computed variables</h2>
+        <p><b>x</b></p>
+        <p><b></b></p>
+        <p>center of each bin, if binaxis is "x"</p>
+        <p><b>binwidth</b></p>
+        <p><b></b></p>
+        <p>number of points in bin</p>
+        <p><b>ncount</b></p>
+        <p><b></b></p>
+        <p>density of points in bin, scaled to integrate to 1, if method is "histodot"</p>
+        <p><b>ndensity</b></p>
+        <p><b></b></p>
+
+        <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+        <p>Wilkinson, L. (1999) Dot plots. The American Statistician, 53(3), 276-281.</p>
+
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mtcars)), aes({"x" : "mpg"}));cxp.geom_dotplot();</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span> : <span class="fl">1</span><span class="fl">.</span><span class="fl">5</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas2" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(mtcars)), aes({"x" : "mpg"}));cxp.geom_dotplot({"binwidth" : 1.5});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Some other stacking methods</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span> : <span class="fl">1</span><span class="fl">.</span><span class="fl">5</span>, <span class="st">"stackdir"</span> : <span class="st">"center"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas3" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mtcars)), aes({"x" : "mpg"}));cxp.geom_dotplot({"binwidth" : 1.5, "stackdir" : "center"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span> : <span class="fl">1</span><span class="fl">.</span><span class="fl">5</span>, <span class="st">"stackdir"</span> : <span class="st">"centerwhole"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas4" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mtcars)), aes({"x" : "mpg"}));cxp.geom_dotplot({"binwidth" : 1.5, "stackdir" : "centerwhole"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Overlap dots vertically</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span> : <span class="fl">1</span><span class="fl">.</span><span class="fl">5</span>, <span class="st">"stackratio"</span> : <span class="fl">0</span><span class="fl">.</span><span class="fl">7</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas5" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mtcars)), aes({"x" : "mpg"}));cxp.geom_dotplot({"binwidth" : 1.5, "stackratio" : 0.7});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Examples with stacking along y axis instead of x</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"y"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binaxis"</span> : <span class="st">"y"</span>, <span class="st">"stackdir"</span> : <span class="st">"center"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas6" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(mtcars)), aes({"x": {"factor": "cyl"}, "y" : "mpg"}));cxp.geom_dotplot({"binaxis" : "y", "stackdir" : "center"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"y"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binaxis"</span> : <span class="st">"y"</span>, <span class="st">"stackdir"</span> : <span class="st">"centerwhole"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas7" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas7", JSON.parse(JSON.stringify(mtcars)), aes({"x": {"factor": "cyl"}, "y" : "mpg"}));cxp.geom_dotplot({"binaxis" : "y", "stackdir" : "centerwhole"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas8"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"vs"</span><span class="op">}</span>, <span class="st">"fill"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"y"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binaxis"</span> : <span class="st">"y"</span>, <span class="st">"stackdir"</span> : <span class="st">"center"</span>, <span class="st">"position"</span>: <span class="st">"dodge"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas8" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas8", JSON.parse(JSON.stringify(mtcars)), aes({"x": {"factor": "vs"}, "fill": {"factor": "cyl"}, "y" : "mpg"}));cxp.geom_dotplot({"binaxis" : "y", "stackdir" : "center", "position": "dodge"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas9"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"am"</span><span class="op">}</span>, <span class="st">"y"</span> : <span class="st">"mpg"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binaxis"</span> : <span class="st">"y"</span>, <span class="st">"stackdir"</span> : <span class="st">"center"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas9" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas9", JSON.parse(JSON.stringify(mtcars)), aes({"x": {"factor": "am"}, "y" : "mpg"}));cxp.geom_dotplot({"binaxis" : "y", "stackdir" : "center"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Stacking multiple groups, with different fill</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas10"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span> : <span class="st">"mpg"</span>, <span class="st">"fill"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"cyl"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span> : <span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas10" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas10", JSON.parse(JSON.stringify(mtcars)), aes({"x" : "mpg", "fill": {"factor": "cyl"}}));cxp.geom_dotplot({"binwidth" : 1});</script></span>
+</span></code></pre>
+        </div>
+      </div>
+
+      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+        <nav id="toc" data-toggle="toc" class="sticky-top">
+          <h2 data-toc-skip="">Contents</h2>
+          <ul class="nav">
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#computed-variables">Computed variables</a></li>
+            <li><a href="#references">Referances</a></li>
+            <li><a href="#examples">Examples</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+
+    <footer>
+
+      <div class="tidyverse">
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
+          Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
+      </div>
+
+      <div class="author">
+        <p>
+          Developed by CanvasXpress
+        </p>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
