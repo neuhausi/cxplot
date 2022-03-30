@@ -1,0 +1,293 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text • cxplot</title>
+  <!-- favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  __DATA__
+  <!-- jquery -->
+  <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link href="/assets/css/tidyverse.css" rel="stylesheet">
+  <script src="/assets/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="/assets/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/v4-shims.min.css" crossorigin="anonymous">
+  <!-- clipboard.js -->
+  <script src="/assets/js/clipboard.min.js" crossorigin="anonymous"></script>
+  <!-- headroom.js -->
+  <script src="/assets/js/headroom.min.js" crossorigin="anonymous"></script>
+  <script src="/assets/js/jQuery.headroom.min.js" crossorigin="anonymous"></script>
+  <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
+  <!-- pkgdown -->
+  <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
+  <!-- Google -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWN5F9X8DS');
+  </script>
+  <!--optional theme-->
+  <meta property="og:title" content="Text">
+  <meta property="og:description" content="Text geoms are useful for labeling plots. They can be used by themselves as scatterplots or in combination with other geoms, for example, for labeling points or for annotating the height of bars. geom_text() adds only text to the plot. geom_label() draws a rectangle behind the text, making it easier to read.">
+  <meta property="og:image" content="/assets/images/logo.svg">
+  <meta name="twitter:card" content="summary">
+</head>
+
+<body data-spy="scroll" data-target="#toc" style="padding-top: 60px;">
+
+  <div class="container template-reference-topic">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand-container">
+              <a class="navbar-brand" href="/index.html">cxplot</a>
+            </div>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="https://github.com/neuhausi/cxplot" class="external-link">
+                  <span class="fab fa-github fa-lg"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-9 contents">
+
+        <div class="page-header">
+          <h1>Text</h1>
+        </div>
+
+        <div class="ref-description">
+          <p>Text geoms are useful for labeling plots. They can be used by themselves as scatterplots or in combination with other geoms, for example, for labeling points or for annotating the height of bars. geom_text() adds only text to the plot. geom_label() draws a rectangle behind the text, making it easier to read.</p>
+        </div>
+
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+<span class="fu">geom_label</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"parse"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"nudge_x"</span> <span class="op">=</span> <span class="fl">0</span>,
+ <span class="st">"nudge_y"</span> <span class="op">=</span> <span class="fl">0</span>,
+<span class="fu">  label.padding = unit</span><span class="op">(</span><span class="op">{</span>0.25, "lines"<span class="op">}</span><span class="op">)</span>,
+<span class="fu">  label.r = unit</span><span class="op">(</span><span class="op">{</span>0.15, "lines"<span class="op">}</span><span class="op">)</span>,
+ <span class="st">"label.<code>size</code>"</span> <span class="op">=</span> <span class="fl">0</span>.25,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+
+<span class="fu">geom_text</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"parse"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"nudge_x"</span> <span class="op">=</span> <span class="fl">0</span>,
+ <span class="st">"nudge_y"</span> <span class="op">=</span> <span class="fl">0</span>,
+ <span class="st">"check_overlap"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
+        </div>
+
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+        <table class="ref-arguments">
+          <tbody>
+            <tr>
+              <th>mapping</th>
+              <td>
+                <p>Set of aesthetic mappings created by <a href="./aes.html"><code>aes()</code></a> or <a href="./aes.html"><code>aes_()</code></a>. If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>data</th>
+              <td>
+                <p>The data to be displayed in this layer. There are three options:</p>
+                <p>If NULL, the default, the data is inherited from the plot data as specified in the call to <a href="./cxplot.html"><code>cxplot()</code></a>.</p>
+                <p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
+                <p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p>
+              <td>
+            </tr>
+            <tr>
+              <th>stat</th>
+              <td>
+                <p>The statistical transformation to use on the data for this layer, as a string.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>position</th>
+              <td>
+                <p>Position adjustment, either as a string, or the result of a call to a position adjustment function. Cannot be jointy specified with nudge_x or nudge_y.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>...</th>
+              <td>
+                <p>Other arguments passed on to <code>layer()</code>. These are often aesthetics, used to set an aesthetic to a fixed value, like <code>color</code> = "red" or <code>size</code> = 3. They may also be parameters to the paired geom/stat.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>parse</th>
+              <td>
+                <p>If TRUE, the labels will be parsed into expressions and displayed as described in ?plotmath.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>nudge_x, nudge_y</th>
+              <td>
+                <p>Horizontal and vertical adjustment to nudge labels by. Useful for offsetting text from points, particularly on discrete scales. Cannot be jointly specified with position.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>label.padding</th>
+              <td>
+                <p>Amount of padding around label. Defaults to 0.25 lines.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>label.r</th>
+              <td>
+                <p>Radius of rounded corners. Defaults to 0.15 lines.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>label.<code>size</code></th>
+              <td>
+                <p>Size of label border, in mm.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>na.rm</th>
+              <td>
+                <p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>show.legend</th>
+              <td>
+                <p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>inherit.aes</th>
+              <td>
+                <p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().</p>
+              <td>
+            </tr>
+            <tr>
+              <th>check_overlap</th>
+              <td>
+                <p>If TRUE, text that overlaps previous text in the same layer will not be plotted. check_overlap happens at draw time and in the order of the data. Therefore data should be arranged by the label column before calling <a href="./geom_text(). Note that this argument is not supported by geom_label.html"><code>geom_text(). Note that this argument is not supported by geom_label()</code></a>.</p>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+        <p>Note that when you re<code>size</code> a plot, text labels stay the same size, even though the size of the plot area changes. This happens because the "width" and "height" of a text element are 0. Obviously, text labels do have height and width, but they are physical units, not data units. For the same reason, stacking and dodging text will not work by default, and axis limits are not automatically expanded to include all text.</p>
+        <p><a href="./geom_text() and geom_label() add labels for each row in the data, even if coordinates x, y are set to single values in the call to geom_label() or geom_text(). To add labels at specified points use annotate.html"><code>geom_text() and geom_label() add labels for each row in the data, even if coordinates x, y are set to single values in the call to geom_label() or geom_text(). To add labels at specified points use annotate()</code></a> with annotate(geom = "text", ...) or annotate(geom = "label", ...).</p>
+        <p>To automatically position non-overlapping text labels see the ggrepel package.</p>
+
+        <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
+        <p><a href="./geom_text() understands the following aesthetics .html"><code>geom_text() understands the following aesthetics (required aesthetics are in bold)</code></a>:</p>
+        <p>x</p>
+        <p>y</p>
+        <p>label</p>
+        <p><code>alpha</code></p>
+        <p>angle</p>
+        <p><code>color</code></p>
+        <p>family</p>
+        <p>fontface</p>
+        <p>group</p>
+        <p>hjust</p>
+        <p>lineheight</p>
+        <p><code>size</code></p>
+        <p>vjust</p>
+        <p>Learn more about setting these aesthetics in vignette("cxplot-specs").</p>
+
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var df = <span class="op">[</span><span class="op">[</span><span class="st">"supp"</span>, <span class="st">"dose"</span>, <span class="st">"len"</span><span class="op">]</span>, <span class="op">[</span><span class="st">"VC"</span>, "D<span class="fl">0</span><span class="fl">.</span><span class="fl">5</span>", <span class="fl">6</span><span class="fl">.</span><span class="fl">8</span><span class="op">]</span>, <span class="op">[</span><span class="st">"VC"</span>, <span class="st">"D<span class="fl">1</span>"</span>, <span class="fl">1</span><span class="fl">5</span><span class="fl">.</span><span class="fl">0</span><span class="op">]</span>, <span class="op">[</span><span class="st">"VC"</span>, <span class="st">"D<span class="fl">2</span>"</span>, <span class="fl">3</span><span class="fl">3</span><span class="op">]</span>, <span class="op">[</span><span class="st">"OJ"</span>, "D<span class="fl">0</span><span class="fl">.</span><span class="fl">5</span>", <span class="fl">4</span><span class="fl">.</span><span class="fl">2</span><span class="op">]</span>, <span class="op">[</span><span class="st">"OJ"</span>, <span class="st">"D<span class="fl">1</span>"</span>, <span class="fl">1</span><span class="fl">0</span><span class="fl">.</span><span class="fl">0</span><span class="op">]</span>, <span class="op">[</span><span class="st">"OJ"</span>, <span class="st">"D<span class="fl">2</span>"</span>, <span class="fl">2</span><span class="fl">9</span><span class="fl">.</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = cxplot<span class="op">(</span><span class="st">"canvas1"</span>, df, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"dose"</span>, <span class="st">"len"</span>, <span class="op">{</span><span class="st">"group"</span>: <span class="st">"supp"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_line.html">geom_line</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"label"</span>: <span class="st">"len"</span>, <span class="st">"vjust"</span>: <span class="fl">-</span><span class="fl">0</span><span class="fl">.</span><span class="fl">5</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];var cxp = cxplot("canvas1", df, aes("dose", "len", {"group": "supp"}));cxp.geom_point();cxp.geom_line();cxp.geom_text(aes({"label": "len", "vjust": -0.5}));</script></span>
+</span></code></pre>
+        </div>
+      </div>
+
+      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+        <nav id="toc" data-toggle="toc" class="sticky-top">
+          <h2 data-toc-skip="">Contents</h2>
+          <ul class="nav">
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#examples">Examples</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+
+    <footer>
+
+      <div class="tidyverse">
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
+          Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
+      </div>
+
+      <div class="author">
+        <p>
+          Developed by CanvasXpress
+        </p>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>

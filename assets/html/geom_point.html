@@ -1,0 +1,237 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Points • cxplot</title>
+  <!-- favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/mtcars.js"></script>
+  <!-- jquery -->
+  <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link href="/assets/css/tidyverse.css" rel="stylesheet">
+  <script src="/assets/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="/assets/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/v4-shims.min.css" crossorigin="anonymous">
+  <!-- clipboard.js -->
+  <script src="/assets/js/clipboard.min.js" crossorigin="anonymous"></script>
+  <!-- headroom.js -->
+  <script src="/assets/js/headroom.min.js" crossorigin="anonymous"></script>
+  <script src="/assets/js/jQuery.headroom.min.js" crossorigin="anonymous"></script>
+  <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
+  <!-- pkgdown -->
+  <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
+  <!-- Google -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWN5F9X8DS');
+  </script>
+  <!--optional theme-->
+  <meta property="og:title" content="Points">
+  <meta property="og:description" content="The point geom is used to create scatterplots. The scatterplot is most useful for displaying the relationship between two continuous variables. It can be used to compare one continuous and one categorical variable, or two categorical variables, but a variation like geom_jitter(), geom_count(), or geom_bin2d() is usually more appropriate. A bubblechart is a scatterplot with a third variable mapped to the size of points.">
+  <meta property="og:image" content="/assets/images/logo.svg">
+  <meta name="twitter:card" content="summary">
+</head>
+
+<body data-spy="scroll" data-target="#toc" style="padding-top: 60px;">
+
+  <div class="container template-reference-topic">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand-container">
+              <a class="navbar-brand" href="/index.html">cxplot</a>
+            </div>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="https://github.com/neuhausi/cxplot" class="external-link">
+                  <span class="fab fa-github fa-lg"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-9 contents">
+
+        <div class="page-header">
+          <h1>Points</h1>
+        </div>
+
+        <div class="ref-description">
+          <p>The point geom is used to create scatterplots. The scatterplot is most useful for displaying the relationship between two continuous variables. It can be used to compare one continuous and one categorical variable, or two categorical variables, but a variation like geom_jitter(), geom_count(), or geom_bin2d() is usually more appropriate. A bubblechart is a scatterplot with a third variable mapped to the size of points.</p>
+        </div>
+
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+<span class="fu">geom_point</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
+        </div>
+
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+        <table class="ref-arguments">
+          <tbody>
+            <tr>
+              <th>mapping</th>
+              <td>
+                <p>Set of aesthetic mappings created by <a href="./aes.html"><code>aes()</code></a> or <a href="./aes.html"><code>aes_()</code></a>. If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>data</th>
+              <td>
+                <p>The data to be displayed in this layer. There are three options:</p>
+                <p>If NULL, the default, the data is inherited from the plot data as specified in the call to <a href="./cxplot.html"><code>cxplot()</code></a>.</p>
+                <p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
+                <p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p>
+              <td>
+            </tr>
+            <tr>
+              <th>stat</th>
+              <td>
+                <p>The statistical transformation to use on the data for this layer, as a string.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>position</th>
+              <td>
+                <p>Position adjustment, either as a string, or the result of a call to a position adjustment function.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>...</th>
+              <td>
+                <p>Other arguments passed on to <code>layer()</code>. These are often aesthetics, used to set an aesthetic to a fixed value, like <code>color</code> = "red" or <code>size</code> = 3. They may also be parameters to the paired geom/stat.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>na.rm</th>
+              <td>
+                <p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>show.legend</th>
+              <td>
+                <p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>inherit.aes</th>
+              <td>
+                <p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().</p>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
+        <p><a href="./geom_point() understands the following aesthetics .html"><code>geom_point() understands the following aesthetics (required aesthetics are in bold)</code></a>:</p>
+        <p>x</p>
+        <p>y</p>
+        <p><code>alpha</code></p>
+        <p><code>color</code></p>
+        <p>fill</p>
+        <p>group</p>
+        <p>shape</p>
+        <p><code>size</code></p>
+        <p>stroke</p>
+        <p>Learn more about setting these aesthetics in vignette("cxplot-specs").</p>
+
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Add aesthetic mappings</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"color"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"cyl"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas2" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"color": {"factor": "cyl"}}));</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"shape"</span>: <span class="op">{</span><span class="st">"factor"</span>: <span class="st">"cyl"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas3" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"shape": {"factor": "cyl"}}));</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// A "bubblechart":</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"size"</span>: <span class="st">"qsec"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas4" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"size": "qsec"}));</script></span>
+</span></code></pre>
+        </div>
+      </div>
+
+      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+        <nav id="toc" data-toggle="toc" class="sticky-top">
+          <h2 data-toc-skip="">Contents</h2>
+          <ul class="nav">
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#examples">Examples</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+
+    <footer>
+
+      <div class="tidyverse">
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
+          Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
+      </div>
+
+      <div class="author">
+        <p>
+          Developed by CanvasXpress
+        </p>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>

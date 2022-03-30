@@ -1,0 +1,334 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histograms and frequency polygons • cxplot</title>
+  <!-- favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/dsmall.js"></script>
+  <!-- jquery -->
+  <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link href="/assets/css/tidyverse.css" rel="stylesheet">
+  <script src="/assets/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="/assets/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/v4-shims.min.css" crossorigin="anonymous">
+  <!-- clipboard.js -->
+  <script src="/assets/js/clipboard.min.js" crossorigin="anonymous"></script>
+  <!-- headroom.js -->
+  <script src="/assets/js/headroom.min.js" crossorigin="anonymous"></script>
+  <script src="/assets/js/jQuery.headroom.min.js" crossorigin="anonymous"></script>
+  <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
+  <!-- pkgdown -->
+  <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
+  <!-- Google -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWN5F9X8DS');
+  </script>
+  <!--optional theme-->
+  <meta property="og:title" content="Histograms and frequency polygons">
+  <meta property="og:description" content="Visualise the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars; frequency polygons (geom_freqpoly()) display the counts with lines. Frequency polygons are more suitable when you want to compare the distribution across the levels of a categorical variable.">
+  <meta property="og:image" content="/assets/images/logo.svg">
+  <meta name="twitter:card" content="summary">
+</head>
+
+<body data-spy="scroll" data-target="#toc" style="padding-top: 60px;">
+
+  <div class="container template-reference-topic">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand-container">
+              <a class="navbar-brand" href="/index.html">cxplot</a>
+            </div>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="https://github.com/neuhausi/cxplot" class="external-link">
+                  <span class="fab fa-github fa-lg"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-9 contents">
+
+        <div class="page-header">
+          <h1>Histograms and frequency polygons</h1>
+        </div>
+
+        <div class="ref-description">
+          <p>Visualise the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram()) display the counts with bars; frequency polygons (geom_freqpoly()) display the counts with lines. Frequency polygons are more suitable when you want to compare the distribution across the levels of a categorical variable.</p>
+        </div>
+
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+<span class="fu">geom_freqpoly</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"bin"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"identity"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+
+<span class="fu">geom_histogram</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"stat"</span> <span class="op">=</span> <span class="st">"bin"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"stack"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"binwidth"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"bins"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"orientation"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+
+<span class="fu">stat_bin</span><span class="op">(</span><span class="op">{</span>
+ <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"data"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"geom"</span> <span class="op">=</span> <span class="st">"bar"</span>,
+ <span class="st">"position"</span> <span class="op">=</span> <span class="st">"stack"</span>,
+ <span class="va">"..."</span>,
+ <span class="st">"binwidth"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"bins"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"center"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"boundary"</span> <span class="op">=</span> <span class="cn">null</span>,
+ <span class="st">"breaks"</span> <span class="op">=</span> <span class="cn">null</span>,
+<span class="fu">  closed = c</span><span class="op">(</span><span class="op">{</span>"right", "left"<span class="op">}</span><span class="op">)</span>,
+ <span class="st">"pad"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"na.rm"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"orientation"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"show.legend"</span> <span class="op">=</span> <span class="cn">NA</span>,
+ <span class="st">"inherit.aes"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
+        </div>
+
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+        <table class="ref-arguments">
+          <tbody>
+            <tr>
+              <th>mapping</th>
+              <td>
+                <p>Set of aesthetic mappings created by <a href="./aes.html"><code>aes()</code></a> or <a href="./aes.html"><code>aes_()</code></a>. If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>data</th>
+              <td>
+                <p>The data to be displayed in this layer. There are three options:</p>
+                <p>If NULL, the default, the data is inherited from the plot data as specified in the call to <a href="./cxplot.html"><code>cxplot()</code></a>.</p>
+                <p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
+                <p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p>
+              <td>
+            </tr>
+            <tr>
+              <th>position</th>
+              <td>
+                <p>Position adjustment, either as a string, or the result of a call to a position adjustment function.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>...</th>
+              <td>
+                <p>Other arguments passed on to <code>layer()</code>. These are often aesthetics, used to set an aesthetic to a fixed value, like <code>color</code> = "red" or <code>size</code> = 3. They may also be parameters to the paired geom/stat.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>na.rm</th>
+              <td>
+                <p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>show.legend</th>
+              <td>
+                <p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>inherit.aes</th>
+              <td>
+                <p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().</p>
+              <td>
+            </tr>
+            <tr>
+              <th>binwidth</th>
+              <td>
+                <p>The width of the bins. Can be specified as a numeric value or as a function that calculates width from unscaled x. Here, "unscaled x" refers to the original x values in the data, before application of any scale transformation. When specifying a function along with a grouping structure, the function will be called once per group. The default is to use the number of bins in bins, covering the range of the data. You should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.</p>
+                <p>The bin width of a date variable is the number of days in each time; the bin width of a time variable is the number of seconds.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>bins</th>
+              <td>
+                <p>Number of bins. Overridden by binwidth. Defaults to 30.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>orientation</th>
+              <td>
+                <p>The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>geom, stat</th>
+              <td>
+                <p>Use to override the default connection between <a href="./geom_histogram()/geom_freqpoly() and stat_bin.html"><code>geom_histogram()/geom_freqpoly() and stat_bin()</code></a>.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>center, boundary</th>
+              <td>
+                <p>bin position specifiers. Only one, center or boundary, may be specified for a single plot. center specifies the center of one of the bins. boundary specifies the boundary between two bins. Note that if either is above or below the range of the data, things will be shifted by the appropriate integer multiple of binwidth. For example, to center on integers use binwidth = 1 and center = 0, even if 0 is outside the range of the data. Alternatively, this same alignment can be specified with binwidth = 1 and boundary = 0.5, even if 0.5 is outside the range of the data.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>breaks</th>
+              <td>
+                <p>Alternatively, you can supply a numeric vector giving the bin boundaries. Overrides binwidth, bins, center, and boundary.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>closed</th>
+              <td>
+                <p>One of "right" or "left" indicating whether right or left edges of bins are included in the bin.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>pad</th>
+              <td>
+                <p>If TRUE, adds empty bins at either end of x. This ensures frequency polygons touch 0. Defaults to FALSE.</p>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+        <p>stat_bin() is suitable only for continuous x data. If your x data is discrete, you probably want to use stat_count().</p>
+        <p>By default, the underlying computation (stat_bin()) uses 30 bins; this is not a good default, but the idea is to get you experimenting with different number of bins. You can also experiment modifying the binwidth with center or boundary arguments. binwidth overrides bins so you should do one change at a time. You may need to look at a few options to uncover the full story behind your data.</p>
+        <p>In addition to <a href="./geom_histogram(), you can create a histogram plot by using scale_x_binned() with geom_bar.html"><code>geom_histogram(), you can create a histogram plot by using scale_x_binned() with geom_bar()</code></a>. This method by default plots tick marks in between each bar.</p>
+
+        <h2 class="hasAnchor" id="orientation"><a class="anchor" href="#orientation"></a>Orientation</h2>
+        <p>This geom treats each axis differently and, thus, can thus have two orientations. Often the orientation is easy to deduce from a combination of the given mappings and the types of positional scales in use. Thus, cxplot will by default try to guess which orientation the layer should have. Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the orientation can be specified directly using the orientation parameter, which can be either "x" or "y". The value gives the axis that the geom should run along, "x" being the default orientation you would expect for the geom.</p>
+
+        <h2 class="hasAnchor" id="aesthetics"><a class="anchor" href="#aesthetics"></a>Aesthetics</h2>
+        <p><a href="./geom_histogram() uses the same aesthetics as geom_bar(); geom_freqpoly() uses the same aesthetics as geom_line.html"><code>geom_histogram() uses the same aesthetics as geom_bar(); geom_freqpoly() uses the same aesthetics as geom_line()</code></a>.</p>
+
+        <h2 class="hasAnchor" id="computed-variables"><a class="anchor" href="#computed-variables"></a>Computed variables</h2>
+        <p><b>count</b></p>
+        <p><b></b></p>
+        <p>density of points in bin, scaled to integrate to 1</p>
+        <p><b>ncount</b></p>
+        <p><b></b></p>
+        <p>density, scaled to maximum of 1</p>
+        <p><b>width</b></p>
+        <p><b></b></p>
+
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_histogram();</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">0</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas2" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_histogram({"binwidth": 0.01});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"bins"</span>: <span class="fl">2</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas3" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_histogram({"bins": 200});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Rather than stacking histograms, it's easier to compare frequency</span></span>
+<span class="r-in"><span class="co">// polygons</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas4" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(dsmall)), aes("price", {"fill": "cut"}));cxp.geom_histogram({"binwidth": 500});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas5" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(dsmall)), aes("price", {"color": "cut"}));cxp.geom_histogram({"binwidth": 500});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// To make it easier to compare distributions with very different counts,</span></span>
+<span class="r-in"><span class="co">// put density on the y axis instead of the default count</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"density"</span>, <span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div><canvas id="canvas6" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(dsmall)), aes("price", {"after_stat": "density", "color": "cut"}));cxp.geom_histogram({"binwidth": 500});</script></span>
+</span></code></pre>
+        </div>
+      </div>
+
+      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+        <nav id="toc" data-toggle="toc" class="sticky-top">
+          <h2 data-toc-skip="">Contents</h2>
+          <ul class="nav">
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#orientation">Orientation</a></li>
+            <li><a href="#aesthetics">Aesthetics</a></li>
+            <li><a href="#computed-variables">Computed variables</a></li>
+            <li><a href="#examples">Examples</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+
+    <footer>
+
+      <div class="tidyverse">
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
+          Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
+      </div>
+
+      <div class="author">
+        <p>
+          Developed by CanvasXpress
+        </p>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
