@@ -1,0 +1,62 @@
+---
+title: "Geom Histogram"
+author: "Isaac Neuhaus"
+date: "`r Sys.Date()`"
+output: 
+    rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{geom histogram}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+ https://ggplot2.tidyverse.org/reference/geom_histogram.html
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(canvasXpress)
+library(cxplot)
+``` 
+
+```{r}
+cxplot(ggplot(diamonds, aes(carat)) + geom_histogram())
+```
+
+```{r}
+cxplot(ggplot(diamonds, aes(carat)) + geom_histogram(binwidth = 0.01))
+```
+
+```{r}
+cxplot(ggplot(diamonds, aes(carat)) + geom_histogram(bins = 200))
+```
+
+```{r}
+cxplot(ggplot(diamonds, aes(price, fill = cut)) + geom_histogram(binwidth = 500))
+```
+
+```{r}
+cxplot(ggplot(diamonds, aes(price, colour = cut)) + geom_freqpoly(binwidth = 500))
+```
+
+```{r}
+cxplot(ggplot(diamonds, aes(price, after_stat(density), colour = cut)) + geom_freqpoly(binwidth = 500))
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
