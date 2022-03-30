@@ -12,6 +12,7 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
   __DATA__
   <!-- jquery -->
@@ -30,6 +31,18 @@
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <script>
+    $( document ).ready(function() {
+      $('#R-code').click(function(){
+        $(".r-in.r-code").css('display', 'contents');
+        $(".r-in.js-code").css('display', 'table-column-group');
+      });
+      $('#JS-code').click(function(){
+        $(".r-in.js-code").css('display', 'contents');
+        $(".r-in.r-code").css('display', 'table-column-group');
+      });
+    });
+  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -83,7 +96,7 @@
 
     <div class="row">
 
-      <div class="col-md-9 contents">
+      <div class="col-md-10 contents">
 
         <div class="page-header">
           <h1>Rectangles</h1>
@@ -224,13 +237,15 @@
         <p>width</p>
         <p>Learn more about setting these aesthetics in vignette("cxplot-specs").</p>
 
-        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div style="display:flex;"><h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        &nbsp;&nbsp;&nbsp;<h3 style="float:right;" id="R-code"><a>R</a></h3>&nbsp;&nbsp;&nbsp;
+        <h3 style="float:right;" id="JS-code"><a>JS</a></h3></div>
         <div class="ref-usage sourceCode">
           <pre class="sourceCode r"><code></span></code></pre>
         </div>
       </div>
 
-      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+      <div class="col-md-2 hidden-xs hidden-sm" id="pkgdown-sidebar">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">

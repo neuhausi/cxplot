@@ -76,26 +76,49 @@ See geom_segment() for a more general approach to adding straight line segments 
 Examples
 
 // Fixed values
+/p = ggplot(mtcars, aes(wt, mpg)) +
+/ geom_point() +
+/ geom_vline(xintercept = 5)
+/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_vline({"xintercept": 5})
 
+/p = ggplot(mtcars, aes(wt, mpg)) +
+/ geom_point() +
+/ geom_vline(xintercept = 1:5)
+/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_vline({"xintercept": [1, 2, 3, 4, 5]})
 
+/p = ggplot(mtcars, aes(wt, mpg)) +
+/ geom_point() +
+/ geom_hline(yintercept = 20)
+/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_hline({"yintercept": 20})
 
 // Calculate slope and intercept of line of best fit using your own function
 // (Intercept)          wt 
-//   37.285126   -5.344472 
+//   37.285126   -5.344472
+/coef(lm(mpg ~ wt, data = mtcars))
+/p = ggplot(mtcars, aes(wt, mpg)) +
+/ geom_point() +
+/ geom_abline(intercept = 37, slope = -5)
+/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_abline({"intercept": 37, "slope": -5})
 
 // To show different lines in different facets, use aesthetics
+/mean_wt <- data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
+/p <- ggplot(mtcars, aes(mpg, wt)) +
+/ geom_point() +
+/ geom_hline(aes(yintercept = wt), mean_wt) +
+/ facet_wrap(~ cyl)
+/cxplot(p)
 var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];
 var cxp = new cxplot("canvas", mtcars, aes({"x": "mpg", "y": "wt"}));
 cxp.geom_point();
@@ -259,16 +282,25 @@ Examples
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
 cxp.geom_bar();
+/g <- ggplot(mpg, aes(class)) +
+/ geom_bar() 
+/cxplot(g)
 
 // Total engine displacement of each class
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
 cxp.geom_bar(aes({"weight": "displ"}));
+/g <- ggplot(mpg, aes(class)) +
+/ geom_bar(aes(weight = displ)) 
+/cxplot(g)
 
 // Map class to y instead to flip the orientation
 var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
 // Number of cars in each class:
 cxp.geom_bar();
+/g <- ggplot(mpg) +
+/ geom_bar(aes(y = class)) 
+/cxplot(g)
 
 // Bar charts are automatically stacked when multiple bars are placed
 // at the same location. The order of the fill is designed to match
@@ -276,6 +308,9 @@ cxp.geom_bar();
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
 cxp.geom_bar(aes({"fill": "drv"}));
+/g <- ggplot(mpg, aes(class)) +
+/ geom_bar(aes(fill = drv)) 
+/cxplot(g)
 
 // If you need to flip the order (because you've flipped the orientation)
 // call position_stack() explicitly:
@@ -283,6 +318,10 @@ var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
 // Number of cars in each class:
 cxp.geom_bar(aes({"fill": "drv", "position": "reverse"}));
 //cxp.theme({"legend.position": "top"});
+/g <- ggplot(mpg, aes(y = class)) +
+/ geom_bar(aes(fill = drv), position = position_stack(reverse = TRUE)) +
+/ theme(legend.position = "top")
+/cxplot(g)
 
 --
 geom_bin_2d.html
@@ -2308,6 +2347,108 @@ cxp.geom_quantile({"quantiles": [0.5]});
 var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
 cxp.geom_point();
 cxp.geom_quantile({"quantiles": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]});
+
+--
+geom_ribbon.html
+Ribbons and area plots
+Source: R/geom-ribbon.r
+For each x value, geom_ribbon() displays a y interval defined by ymin and ymax. geom_area() is a special case of geom_ribbon(), where the ymin is fixed to 0 and y is used instead of ymax.
+
+geom_ribbon(
+  mapping = NULL,
+  data = NULL,
+  stat = "identity",
+  position = "identity",
+  ...,
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  outline.type = "both"
+)
+
+geom_area(
+  mapping = NULL,
+  data = NULL,
+  stat = "identity",
+  position = "stack",
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...,
+  outline.type = "upper"
+)
+Arguments
+mapping
+Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
+
+data
+The data to be displayed in this layer. There are three options:
+
+If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
+
+A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.
+
+A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
+
+stat
+The statistical transformation to use on the data for this layer, as a string.
+
+position
+Position adjustment, either as a string, or the result of a call to a position adjustment function.
+
+...
+Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
+
+na.rm
+If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
+
+orientation
+The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
+
+show.legend
+logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
+
+inherit.aes
+If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
+
+outline.type
+Type of the outline of the area; "both" draws both the upper and lower lines, "upper"/"lower" draws the respective lines only. "full" draws a closed polygon around the area.
+
+Details
+An area plot is the continuous analogue of a stacked bar chart (see geom_bar()), and can be used to show how composition of the whole varies over the range of x. Choosing the order in which different components is stacked is very important, as it becomes increasing hard to see the individual pattern as you move up the stack. See position_stack() for the details of stacking algorithm.
+
+Orientation
+This geom treats each axis differently and, thus, can thus have two orientations. Often the orientation is easy to deduce from a combination of the given mappings and the types of positional scales in use. Thus, cxplot2 will by default try to guess which orientation the layer should have. Under rare circumstances, the orientation is ambiguous and guessing may fail. In that case the orientation can be specified directly using the orientation parameter, which can be either "x" or "y". The value gives the axis that the geom should run along, "x" being the default orientation you would expect for the geom.
+
+Aesthetics
+geom_ribbon() understands the following aesthetics (required aesthetics are in bold):
+
+x or y
+
+ymin or xmin
+
+ymax or xmax
+
+alpha
+
+colour
+
+fill
+
+group
+
+linetype
+
+size
+
+Learn more about setting these aesthetics in vignette("cxplot2-specs").
+
+See also
+geom_bar() for discrete intervals (bars), geom_linerange() for discrete intervals (lines), geom_polygon() for general polygons
+
+Examples
 
 --
 geom_rug.html

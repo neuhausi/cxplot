@@ -12,6 +12,7 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
   <script type="text/javascript" src="/assets/data/dsmall.js"></script>
   <!-- jquery -->
@@ -30,6 +31,18 @@
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <script>
+    $( document ).ready(function() {
+      $('#R-code').click(function(){
+        $(".r-in.r-code").css('display', 'contents');
+        $(".r-in.js-code").css('display', 'table-column-group');
+      });
+      $('#JS-code').click(function(){
+        $(".r-in.js-code").css('display', 'contents');
+        $(".r-in.r-code").css('display', 'table-column-group');
+      });
+    });
+  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -83,7 +96,7 @@
 
     <div class="row">
 
-      <div class="col-md-9 contents">
+      <div class="col-md-10 contents">
 
         <div class="page-header">
           <h1>Smoothed density estimates</h1>
@@ -250,54 +263,56 @@
         <p><b></b></p>
         <p>alias for scaled, to mirror the syntax of stat_bin()</p>
 
-        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div style="display:flex;"><h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        &nbsp;&nbsp;&nbsp;<h3 style="float:right;" id="R-code"><a>R</a></h3>&nbsp;&nbsp;&nbsp;
+        <h3 style="float:right;" id="JS-code"><a>JS</a></h3></div>
         <div class="ref-usage sourceCode">
           <pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas1" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_density();</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas1" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_density();</script></span>
 <span class="r-in"></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"adjust"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas2" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_density({"adjust": 0.2});</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"adjust"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas2" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_density({"adjust": 0.2});</script></span>
 <span class="r-in"></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"adjust"</span>: <span class="fl">5</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas3" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_density({"adjust": 5});</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"adjust"</span>: <span class="fl">5</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_density({"adjust": 5});</script></span>
 <span class="r-in"></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"depth"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">5</span><span class="fl">5</span>, <span class="fl">7</span><span class="fl">0</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas4" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(dsmall)), aes("depth", {"color": "cut"}));cxp.geom_density();cxp.xlim(55, 70);</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"depth"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">5</span><span class="fl">5</span>, <span class="fl">7</span><span class="fl">0</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(dsmall)), aes("depth", {"color": "cut"}));cxp.geom_density();cxp.xlim(55, 70);</script></span>
 <span class="r-in"></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"depth"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span>, <span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"alpha"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">5</span><span class="fl">5</span>, <span class="fl">7</span><span class="fl">0</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas5" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(dsmall)), aes("depth", {"fill": "cut", "color": "cut"}));cxp.geom_density({"alpha": 0.1});cxp.xlim(55, 70);</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"depth"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span>, <span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"alpha"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">5</span><span class="fl">5</span>, <span class="fl">7</span><span class="fl">0</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(dsmall)), aes("depth", {"fill": "cut", "color": "cut"}));cxp.geom_density({"alpha": 0.1});cxp.xlim(55, 70);</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Stacked density plots: if you want to create a stacked density plot, you</span></span>
 <span class="r-in"><span class="co">// probably want to 'count' (density * n) variable instead of the default</span></span>
 <span class="r-in"><span class="co">// density</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Loses marginal densities</span></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"position"</span> : <span class="st">"stack"</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas6" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(dsmall)), aes("carat", {"fill": "cut"}));cxp.geom_density({"position" : "stack"});</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"position"</span> : <span class="st">"stack"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(dsmall)), aes("carat", {"fill": "cut"}));cxp.geom_density({"position" : "stack"});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Preserves marginal densities</span></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"count"</span>, <span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"position"</span> : <span class="st">"stack"</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas7" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas7", JSON.parse(JSON.stringify(dsmall)), aes("carat", {"after_stat": "count", "fill": "cut"}));cxp.geom_density({"position" : "stack"});</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"count"</span>, <span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"position"</span> : <span class="st">"stack"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas7" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas7", JSON.parse(JSON.stringify(dsmall)), aes("carat", {"after_stat": "count", "fill": "cut"}));cxp.geom_density({"position" : "stack"});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// You can use position="fill" to produce a conditional density estimate</span></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas8"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"count"</span>, <span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"position"</span> : <span class="st">"fill"</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div><canvas id="canvas8" width="700" height="433"></canvas></div><script>var cxp = new cxplot("canvas8", JSON.parse(JSON.stringify(dsmall)), aes("carat", {"after_stat": "count", "fill": "cut"}));cxp.geom_density({"position" : "fill"});</script></span>
+<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas8"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"count"</span>, <span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">{</span><span class="st">"position"</span> : <span class="st">"fill"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas8" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas8", JSON.parse(JSON.stringify(dsmall)), aes("carat", {"after_stat": "count", "fill": "cut"}));cxp.geom_density({"position" : "fill"});</script></span>
 </span></code></pre>
         </div>
       </div>
 
-      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+      <div class="col-md-2 hidden-xs hidden-sm" id="pkgdown-sidebar">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">

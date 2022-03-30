@@ -7,6 +7,8 @@ my $TITLE = "";
 my $DESC = "";
 my $NAME = "";
 my $TOC = "";
+my $HEIGHT = 672;
+my $WIDTH = 480;
 my $DATA = {};
 
 &main;
@@ -24,8 +26,10 @@ sub main {
       &reset();
       $NAME = <RAW>;
       if ($NAME eq 'END') {
+        &copy_cx();
         return;
       }
+      print "\nParsing raw $NAME";
       chomp($NAME);
       $TITLE = <RAW>;
       chomp($TITLE);
@@ -106,11 +110,20 @@ sub main {
 
 }
 
+sub copy_cx {
+
+  print "\nCopying files ...\n";
+  `cp ../../../canvas/js/canvasXpress.min.js ../js/canvasXpress.min.js`;
+  `cp ../../../canvas/css/canvasXpress.css ../css/canvasXpress.css`;
+}
+
 sub process_buffer {
 
   my ($buffer, $current) = @_;
 
-  my ($line, $name, $desc, $arg, $det, $aes, $sin, $ori, $sum, $ref, $cmp, $cnt, $scr, $cid, $dat);
+  print "Processing $current ...\n" if $current;
+
+  my ($line, $name, $desc, $arg, $det, $aes, $sin, $ori, $sum, $ref, $cmp, $cnt, $scr, $cid, $dat, $typ);
 
   if ($buffer) {
 
@@ -190,23 +203,35 @@ sub process_buffer {
     } elsif ($current =~ /^See also/) { 
   
     } elsif ($current =~ /^Examples/) { 
-      $PAGE .= "        <h2 class=\"hasAnchor\" id=\"examples\"><a class=\"anchor\" href=\"\#examples\"></a>Examples</h2>\n";
+      $PAGE .= "        <div style=\"display:flex;\"><h2 class=\"hasAnchor\" id=\"examples\"><a class=\"anchor\" href=\"\#examples\"></a>Examples</h2>\n";
+      $PAGE .= "        &nbsp;&nbsp;&nbsp;<h3 style=\"float:right;\" id=\"R-code\"><a>R</a></h3>&nbsp;&nbsp;&nbsp;\n";
+      $PAGE .= "        <h3 style=\"float:right;\" id=\"JS-code\"><a>JS</a></h3></div>\n";
       $PAGE .= "        <div class=\"ref-usage sourceCode\">\n          <pre class=\"sourceCode r\"><code>";
       $line = shift(@$buffer);
       $cnt = 1;
       $scr = "";
       while (scalar @$buffer > 0) {
+        $typ = "";
         if ($line =~ /^\s*$/) {
           if ($scr ne "") {
             $scr =~ s/(canvas)/$cid/;
-            $PAGE .= "<span class=\"r-in\"><div><canvas id=\"$cid\" width=\"700\" height=\"433\"><\/canvas><\/div><script>$scr<\/script><\/span>\n";
+            $PAGE .= "<span class=\"r-in\"><div class=\"cnv-cont\"><canvas id=\"$cid\" width=\"$HEIGHT\" height=\"$WIDTH\"><\/canvas><\/div><script>$scr<\/script><\/span>\n";
+            #$PAGE .= "<\/code>\n<div class=\"cnv-cont\"><canvas id=\"$cid\" width=\"$HEIGHT\" height=\"$WIDTH\"><\/canvas><\/div><script>$scr<\/script>\n<code>\n";
             $scr = "";
           }
           $PAGE .= "<span class=\"r-in\"><\/span>\n"; 
         } else {
           if ($line =~ /(^\/\/.+)/) {
-            $line = "<span class=\"co\">$1<\/span>";            
+            $line = "<span class=\"co\">$1<\/span>";
+          } elsif ($line =~ /^\/(.+)/) {
+            $typ = " r-code";
+            $line = $1;
+            $line =~ s/([\{\}\(\)\[\]])/\<span class="op"\>$1\<\/span\>/g;
+            $line =~ s/([\-*\d*\.*\d*])/\<span class="fl"\>$1\<\/span\>/g;
+            $line =~ s/(geom_\w*)/<span class="fu"><a href=".\/$1.html">$1<\/a><\/span>/;
+            $line =~ s/(aes)/<span class="fu"><a href=".\/aes.html">$1<\/a><\/span>/;                 
           } else {
+            $typ = " js-code";
             $scr .= $line;
             if ($line =~ /"canvas", (\w*),/) {
               $dat = $1;
@@ -231,13 +256,14 @@ sub process_buffer {
               $cnt++;
             }
           }
-          $PAGE .= "<span class=\"r-in\">$line<\/span>\n";
+          $PAGE .= "<span class=\"r-in$typ\">$line<\/span>\n";
         }
         $line = shift(@$buffer);
       }
       if ($scr ne "") {
         $scr =~ s/(canvas)/$cid/;
-        $PAGE .= "<span class=\"r-in\"><div><canvas id=\"$cid\" width=\"700\" height=\"433\"><\/canvas><\/div><script>$scr<\/script><\/span>\n";
+        $PAGE .= "<span class=\"r-in\"><div class=\"cnv-cont\"><canvas id=\"$cid\" width=\"$HEIGHT\" height=\"$WIDTH\"><\/canvas><\/div><script>$scr<\/script><\/span>\n";
+        #$PAGE .= "<\/code>\n<div class=\"cnv-cont\"><canvas id=\"$cid\" width=\"$HEIGHT\" height=\"$WIDTH\"><\/canvas><\/div><script>$scr<\/script>\n<code>\n";
       }
       $PAGE .= "</span></code></pre>\n        </div>\n\n";
       $TOC .= "            <li><a href=\"#examples\">Examples</a></li>\n";
@@ -377,6 +403,7 @@ sub head {
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
   __DATA__
   <!-- jquery -->
@@ -395,6 +422,18 @@ sub head {
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <script>
+    \$( document ).ready(function() {
+      \$('#R-code').click(function(){
+        \$(".r-in.r-code").css('display', 'contents');
+        \$(".r-in.js-code").css('display', 'table-column-group');
+      });
+      \$('#JS-code').click(function(){
+        \$(".r-in.js-code").css('display', 'contents');
+        \$(".r-in.r-code").css('display', 'table-column-group');
+      });
+    });
+  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -448,7 +487,7 @@ sub head {
 
     <div class="row">
 
-      <div class="col-md-9 contents">
+      <div class="col-md-10 contents">
 
         <div class="page-header">
           <h1>$TITLE</h1>
@@ -477,7 +516,7 @@ sub foot {
   my $foot = <<FOOT;
       </div>
 
-      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+      <div class="col-md-2 hidden-xs hidden-sm" id="pkgdown-sidebar">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
