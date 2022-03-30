@@ -14,7 +14,7 @@ You can install the development version of cxplot from [GitHub](https://github.c
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("agenius-lisa/cxplot")
+devtools::install_github("neuhausi/cxplot")
 ```
 
 ## Reference
