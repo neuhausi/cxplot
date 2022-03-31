@@ -12,10 +12,9 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
-  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
-  <script type="text/javascript" src="/assets/data/dsmall.js"></script>
   <script type="text/javascript" src="/assets/data/faithful.js"></script>
+  <script type="text/javascript" src="/assets/data/dsmall.js"></script>
   <!-- jquery -->
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -32,18 +31,6 @@
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
-  <script>
-    $( document ).ready(function() {
-      $('#R-code').click(function(){
-        $(".r-in.r-code").css('display', 'contents');
-        $(".r-in.js-code").css('display', 'table-column-group');
-      });
-      $('#JS-code').click(function(){
-        $(".r-in.js-code").css('display', 'contents');
-        $(".r-in.r-code").css('display', 'table-column-group');
-      });
-    });
-  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -325,60 +312,58 @@
         <p>Number of observations in each group.</p>
         <p>With contouring on (contour = TRUE), either stat_contour() or stat_contour_filled() (for contour lines or contour bands, respectively) is run after the density estimate has been obtained, and the computed variables are determined by these stats. Contours are calculated for one of the three types of density estimates obtained before contouring, density, ndensity, and count. Which of those should be used is determined by the contour_var parameter.</p>
 
-        <div style="display:flex;"><h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-        &nbsp;&nbsp;&nbsp;<h3 style="float:right;" id="R-code"><a>R</a></h3>&nbsp;&nbsp;&nbsp;
-        <h3 style="float:right;" id="JS-code"><a>JS</a></h3></div>
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
         <div class="ref-usage sourceCode">
           <pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, faithful, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"eruptions"</span>, <span class="st">"y"</span>: <span class="st">"waiting"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">0</span><span class="fl">.</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>ylim<span class="op">(</span><span class="fl">4</span><span class="fl">0</span>, <span class="fl">1</span><span class="fl">1</span><span class="fl">0</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, faithful, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"eruptions"</span>, <span class="st">"y"</span>: <span class="st">"waiting"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">0</span><span class="fl">.</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>ylim<span class="op">(</span><span class="fl">4</span><span class="fl">0</span>, <span class="fl">1</span><span class="fl">1</span><span class="fl">0</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="co">// contour lines</span></span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d<span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d<span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas1" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(faithful)), aes({"x": "eruptions", "y": "waiting"}));cxp.geom_point();cxp.xlim(0.5, 6);cxp.ylim(40, 110);cxp.geom_density_2d();</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// contour bands</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, faithful, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"eruptions"</span>, <span class="st">"y"</span>: <span class="st">"waiting"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">0</span><span class="fl">.</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>ylim<span class="op">(</span><span class="fl">4</span><span class="fl">0</span>, <span class="fl">1</span><span class="fl">1</span><span class="fl">0</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">{</span><span class="st">"alpha"</span> : <span class="fl">0</span><span class="fl">.</span><span class="fl">5</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, faithful, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"eruptions"</span>, <span class="st">"y"</span>: <span class="st">"waiting"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>xlim<span class="op">(</span><span class="fl">0</span><span class="fl">.</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>ylim<span class="op">(</span><span class="fl">4</span><span class="fl">0</span>, <span class="fl">1</span><span class="fl">1</span><span class="fl">0</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">{</span><span class="st">"alpha"</span> : <span class="fl">0</span><span class="fl">.</span><span class="fl">5</span><span class="op">}</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas2" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(faithful)), aes({"x": "eruptions", "y": "waiting"}));cxp.geom_point();cxp.xlim(0.5, 6);cxp.ylim(40, 110);cxp.geom_density_2d_filled({"alpha" : 0.5});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// From R:</span></span>
 <span class="r-in"><span class="co">// set.seed(4393)</span></span>
 <span class="r-in"><span class="co">// dsmall <- diamonds[sample(nrow(diamonds), 1000), ]</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="co">// If you map an aesthetic to a categorical variable, you will get a</span></span>
 <span class="r-in"><span class="co">// set of contours for each value of that variable</span></span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d<span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d<span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(dsmall)), aes("x", "y"));cxp.geom_density_2d(aes({"color": "cut"}));</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// If you draw filled contours across multiple facets, the same bins are</span></span>
 <span class="r-in"><span class="co">// used across all facets</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cut"</span><span class="op">)</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cut"</span><span class="op">)</span></span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(dsmall)), aes("x", "y"));cxp.geom_density_2d_filled();cxp.facet_wrap("cut")</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// If you want to make sure the peak intensity is the same in each facet,</span></span>
 <span class="r-in"><span class="co">// use `contour_var = "ndensity"`.</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">{</span><span class="st">"contour_var"</span>: <span class="st">"ndensity"</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cut"</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">{</span><span class="st">"contour_var"</span>: <span class="st">"ndensity"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cut"</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(dsmall)), aes("x", "y"));cxp.geom_density_2d_filled({"contour_var": "ndensity"});cxp.facet_wrap("cut");</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// If you want to scale intensity by the number of observations in each group,</span></span>
 <span class="r-in"><span class="co">// use `contour_var = "count"`.</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">{</span><span class="st">"contour_var"</span>: <span class="st">"count"</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cut"</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_density_.html">geom_density_</a></span><span class="fl">2</span>d_filled<span class="op">(</span><span class="op">{</span><span class="st">"contour_var"</span>: <span class="st">"count"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cut"</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(dsmall)), aes("x", "y"));cxp.geom_density_2d_filled({"contour_var": "count"});cxp.facet_wrap("cut");</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// If we turn contouring off, we can use other geoms, such as tiles:</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_raster.html">geom_raster</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_raster.html">geom_raster</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas7" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas7", JSON.parse(JSON.stringify(dsmall)), aes("x", "y"));cxp.geom_raster();</script></span>
 </span></code></pre>
         </div>

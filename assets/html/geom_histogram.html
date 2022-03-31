@@ -12,7 +12,6 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
-  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
   <script type="text/javascript" src="/assets/data/dsmall.js"></script>
   <!-- jquery -->
@@ -31,18 +30,6 @@
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
-  <script>
-    $( document ).ready(function() {
-      $('#R-code').click(function(){
-        $(".r-in.r-code").css('display', 'contents');
-        $(".r-in.js-code").css('display', 'table-column-group');
-      });
-      $('#JS-code').click(function(){
-        $(".r-in.js-code").css('display', 'contents');
-        $(".r-in.r-code").css('display', 'table-column-group');
-      });
-    });
-  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -275,37 +262,35 @@
         <p><b>width</b></p>
         <p><b></b></p>
 
-        <div style="display:flex;"><h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-        &nbsp;&nbsp;&nbsp;<h3 style="float:right;" id="R-code"><a>R</a></h3>&nbsp;&nbsp;&nbsp;
-        <h3 style="float:right;" id="JS-code"><a>JS</a></h3></div>
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
         <div class="ref-usage sourceCode">
           <pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas1" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_histogram();</script></span>
 <span class="r-in"></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">0</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">0</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas2" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_histogram({"binwidth": 0.01});</script></span>
 <span class="r-in"></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"bins"</span>: <span class="fl">2</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"bins"</span>: <span class="fl">2</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(dsmall)), aes("carat"));cxp.geom_histogram({"bins": 200});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Rather than stacking histograms, it's easier to compare frequency</span></span>
 <span class="r-in"><span class="co">// polygons</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(dsmall)), aes("price", {"fill": "cut"}));cxp.geom_histogram({"binwidth": 500});</script></span>
 <span class="r-in"></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(dsmall)), aes("price", {"color": "cut"}));cxp.geom_histogram({"binwidth": 500});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// To make it easier to compare distributions with very different counts,</span></span>
 <span class="r-in"><span class="co">// put density on the y axis instead of the default count</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"density"</span>, <span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"price"</span>, <span class="op">{</span><span class="st">"after_stat"</span>: <span class="st">"density"</span>, <span class="st">"color"</span>: <span class="st">"cut"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">{</span><span class="st">"binwidth"</span>: <span class="fl">5</span><span class="fl">0</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(dsmall)), aes("price", {"after_stat": "density", "color": "cut"}));cxp.geom_histogram({"binwidth": 500});</script></span>
 </span></code></pre>
         </div>

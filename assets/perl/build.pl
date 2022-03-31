@@ -123,7 +123,7 @@ sub process_buffer {
 
   print "Processing $current ...\n" if $current;
 
-  my ($line, $name, $desc, $arg, $det, $aes, $sin, $ori, $sum, $ref, $cmp, $cnt, $scr, $cid, $dat, $typ);
+  my ($line, $name, $desc, $arg, $det, $aes, $sin, $ori, $sum, $ref, $cmp, $cnt, $scr, $cid, $dat);
 
   if ($buffer) {
 
@@ -203,15 +203,12 @@ sub process_buffer {
     } elsif ($current =~ /^See also/) { 
   
     } elsif ($current =~ /^Examples/) { 
-      $PAGE .= "        <div style=\"display:flex;\"><h2 class=\"hasAnchor\" id=\"examples\"><a class=\"anchor\" href=\"\#examples\"></a>Examples</h2>\n";
-      $PAGE .= "        &nbsp;&nbsp;&nbsp;<h3 style=\"float:right;\" id=\"R-code\"><a>R</a></h3>&nbsp;&nbsp;&nbsp;\n";
-      $PAGE .= "        <h3 style=\"float:right;\" id=\"JS-code\"><a>JS</a></h3></div>\n";
+      $PAGE .= "        <h2 class=\"hasAnchor\" id=\"examples\"><a class=\"anchor\" href=\"\#examples\"></a>Examples</h2>\n";
       $PAGE .= "        <div class=\"ref-usage sourceCode\">\n          <pre class=\"sourceCode r\"><code>";
       $line = shift(@$buffer);
       $cnt = 1;
       $scr = "";
       while (scalar @$buffer > 0) {
-        $typ = "";
         if ($line =~ /^\s*$/) {
           if ($scr ne "") {
             $scr =~ s/(canvas)/$cid/;
@@ -222,16 +219,8 @@ sub process_buffer {
           $PAGE .= "<span class=\"r-in\"><\/span>\n"; 
         } else {
           if ($line =~ /(^\/\/.+)/) {
-            $line = "<span class=\"co\">$1<\/span>";
-          } elsif ($line =~ /^\/(.+)/) {
-            $typ = " r-code";
-            $line = $1;
-            $line =~ s/([\{\}\(\)\[\]])/\<span class="op"\>$1\<\/span\>/g;
-            $line =~ s/([\-*\d*\.*\d*])/\<span class="fl"\>$1\<\/span\>/g;
-            $line =~ s/(geom_\w*)/<span class="fu"><a href=".\/$1.html">$1<\/a><\/span>/;
-            $line =~ s/(aes)/<span class="fu"><a href=".\/aes.html">$1<\/a><\/span>/;                 
+            $line = "<span class=\"co\">$1<\/span>";              
           } else {
-            $typ = " js-code";
             $scr .= $line;
             if ($line =~ /"canvas", (\w*),/) {
               $dat = $1;
@@ -256,7 +245,7 @@ sub process_buffer {
               $cnt++;
             }
           }
-          $PAGE .= "<span class=\"r-in$typ\">$line<\/span>\n";
+          $PAGE .= "<span class=\"r-in\">$line<\/span>\n";
         }
         $line = shift(@$buffer);
       }
@@ -403,7 +392,6 @@ sub head {
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
-  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
   __DATA__
   <!-- jquery -->
@@ -422,18 +410,6 @@ sub head {
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
-  <script>
-    \$( document ).ready(function() {
-      \$('#R-code').click(function(){
-        \$(".r-in.r-code").css('display', 'contents');
-        \$(".r-in.js-code").css('display', 'table-column-group');
-      });
-      \$('#JS-code').click(function(){
-        \$(".r-in.js-code").css('display', 'contents');
-        \$(".r-in.r-code").css('display', 'table-column-group');
-      });
-    });
-  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -505,6 +481,8 @@ HEAD
   if ($s) {
     $s = join("\n  ", @$s);
     $head =~ s/__DATA__/$s/;
+  } else {
+    $head =~ s/__DATA__//;
   }
 
   return $head;

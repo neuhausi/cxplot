@@ -76,26 +76,14 @@ See geom_segment() for a more general approach to adding straight line segments 
 Examples
 
 // Fixed values
-/p = ggplot(mtcars, aes(wt, mpg)) +
-/ geom_point() +
-/ geom_vline(xintercept = 5)
-/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_vline({"xintercept": 5})
 
-/p = ggplot(mtcars, aes(wt, mpg)) +
-/ geom_point() +
-/ geom_vline(xintercept = 1:5)
-/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_vline({"xintercept": [1, 2, 3, 4, 5]})
 
-/p = ggplot(mtcars, aes(wt, mpg)) +
-/ geom_point() +
-/ geom_hline(yintercept = 20)
-/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_hline({"yintercept": 20})
@@ -103,22 +91,11 @@ cxp.geom_hline({"yintercept": 20})
 // Calculate slope and intercept of line of best fit using your own function
 // (Intercept)          wt 
 //   37.285126   -5.344472
-/coef(lm(mpg ~ wt, data = mtcars))
-/p = ggplot(mtcars, aes(wt, mpg)) +
-/ geom_point() +
-/ geom_abline(intercept = 37, slope = -5)
-/cxplot(p)
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
 cxp.geom_abline({"intercept": 37, "slope": -5})
 
 // To show different lines in different facets, use aesthetics
-/mean_wt <- data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
-/p <- ggplot(mtcars, aes(mpg, wt)) +
-/ geom_point() +
-/ geom_hline(aes(yintercept = wt), mean_wt) +
-/ facet_wrap(~ cyl)
-/cxplot(p)
 var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];
 var cxp = new cxplot("canvas", mtcars, aes({"x": "mpg", "y": "wt"}));
 cxp.geom_point();
@@ -282,25 +259,16 @@ Examples
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
 cxp.geom_bar();
-/g <- ggplot(mpg, aes(class)) +
-/ geom_bar() 
-/cxplot(g)
 
 // Total engine displacement of each class
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
 cxp.geom_bar(aes({"weight": "displ"}));
-/g <- ggplot(mpg, aes(class)) +
-/ geom_bar(aes(weight = displ)) 
-/cxplot(g)
 
 // Map class to y instead to flip the orientation
 var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
 // Number of cars in each class:
 cxp.geom_bar();
-/g <- ggplot(mpg) +
-/ geom_bar(aes(y = class)) 
-/cxplot(g)
 
 // Bar charts are automatically stacked when multiple bars are placed
 // at the same location. The order of the fill is designed to match
@@ -308,9 +276,6 @@ cxp.geom_bar();
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
 cxp.geom_bar(aes({"fill": "drv"}));
-/g <- ggplot(mpg, aes(class)) +
-/ geom_bar(aes(fill = drv)) 
-/cxplot(g)
 
 // If you need to flip the order (because you've flipped the orientation)
 // call position_stack() explicitly:
@@ -318,10 +283,6 @@ var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
 // Number of cars in each class:
 cxp.geom_bar(aes({"fill": "drv", "position": "reverse"}));
 //cxp.theme({"legend.position": "top"});
-/g <- ggplot(mpg, aes(y = class)) +
-/ geom_bar(aes(fill = drv), position = position_stack(reverse = TRUE)) +
-/ theme(legend.position = "top")
-/cxplot(g)
 
 --
 geom_bin_2d.html
@@ -1972,6 +1933,11 @@ var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
 cxp.geom_point();
 cxp.geom_line(aes({"linetype" : "supp"}));
 
+var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
+cxp.geom_line();
+
+var cxp = new cxplot("canvas", ecosmall, aes("Date", "unemploy"));
+cxp.geom_step();
 
 --
 geom_point.html
@@ -2449,6 +2415,10 @@ See also
 geom_bar() for discrete intervals (bars), geom_linerange() for discrete intervals (lines), geom_polygon() for general polygons
 
 Examples
+
+var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
+cxp.geom_line();
+cxp.geom_ribbon(aes({"ymin": "ulow", "ymax": "uhigh"}), {"fill": "blue"});
 
 --
 geom_rug.html
@@ -2957,6 +2927,9 @@ Learn more about setting these aesthetics in vignette("cxplot-specs").
 
 Examples
 
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
+cxp.geom_raster();
+
 --
 geom_violin.html
 Violin plot
@@ -3141,6 +3114,73 @@ cxp.geom_violin(aes({"fill": "grey", "color": "#3366FF"}));
 // Show quartiles
 var cxp = new cxplot("canvas", mtcars, aes({"factor": "cyl"}, "mpg"));
 cxp.geom_violin({draw_quantiles: [0.25, 0.5, 0.75]});
+
+--
+labs.html
+Modify axis, legend, and plot labels
+Source: R/labels.r
+Good labels are critical for making your plots accessible to a wider audience. Always ensure the axis and legend labels display the full variable name. Use the plot title and subtitle to explain the main findings. It's common to use the caption to provide information about the data source. tag can be used for adding identification tags to differentiate between multiple plots.
+
+Usage
+labs(
+  ...,
+  title = waiver(),
+  subtitle = waiver(),
+  caption = waiver(),
+  tag = waiver(),
+  alt = waiver(),
+  alt_insight = waiver()
+)
+
+xlab(label)
+
+ylab(label)
+
+ggtitle(label, subtitle = waiver())
+Arguments
+...
+A list of new name-value pairs. The name should be an aesthetic.
+
+title
+The text for the title.
+
+subtitle
+The text for the subtitle for the plot which will be displayed below the title.
+
+caption
+The text for the caption which will be displayed in the bottom-right of the plot by default.
+
+tag
+The text for the tag label which will be displayed at the top-left of the plot by default.
+
+alt, alt_insight
+Text used for the generation of alt-text for the plot. See get_alt_text for examples.
+
+label
+The title of the respective axis (for xlab() or ylab()) or of the plot (for ggtitle()).
+
+Details
+You can also set axis and legend labels in the individual scales (using the first argument, the name). If you're changing other scale options, this is recommended.
+
+If a plot already has a title, subtitle, caption, etc., and you want to remove it, you can do so by setting the respective argument to NULL. For example, if plot p has a subtitle, then p + labs(subtitle = NULL) will remove the subtitle from the plot.
+
+Examples
+
+var cxp = new cxplot("canvas", mtcars, aes("mpg", "wt", {"color": "cyl"}));
+cxp.geom_point();
+cxp.labs({"x": "New x label"});
+
+// The plot title appears at the top, with the subtitle
+// display in smaller text underneath it
+var cxp = new cxplot("canvas", mtcars, aes("mpg", "wt", {"color": "cyl"}));
+cxp.geom_point();
+cxp.labs({"title" : "New plot title", "subtitle" : "A subtitle"});
+
+// The caption appears in the bottom-right, and is often used for
+// sources, notes or copyright
+var cxp = new cxplot("canvas", mtcars, aes("mpg", "wt", {"color": "cyl"}));
+cxp.geom_point();
+cxp.labs({"caption": "(based on data from ...)"});
 
 --
 END

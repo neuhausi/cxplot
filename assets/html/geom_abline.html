@@ -12,7 +12,6 @@
   <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
-  <style>.r-in.r-code {display:table-column-group;}</style>
   <!-- data -->
   <script type="text/javascript" src="/assets/data/mtcars.js"></script>
   <!-- jquery -->
@@ -31,18 +30,6 @@
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
-  <script>
-    $( document ).ready(function() {
-      $('#R-code').click(function(){
-        $(".r-in.r-code").css('display', 'contents');
-        $(".r-in.js-code").css('display', 'table-column-group');
-      });
-      $('#JS-code').click(function(){
-        $(".r-in.js-code").css('display', 'contents');
-        $(".r-in.r-code").css('display', 'table-column-group');
-      });
-    });
-  </script>
   <!-- CanvasXpress -->
   <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
   <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
@@ -193,64 +180,39 @@
         <p><a href="./geom_hline.html"><code>geom_hline()</code></a>: <code>yintercept</code></p>
         <p><a href="./geom_abline.html"><code>geom_abline()</code></a>: <code>slope</code> and <code>intercept</code></p>
 
-        <div style="display:flex;"><h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-        &nbsp;&nbsp;&nbsp;<h3 style="float:right;" id="R-code"><a>R</a></h3>&nbsp;&nbsp;&nbsp;
-        <h3 style="float:right;" id="JS-code"><a>JS</a></h3></div>
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
         <div class="ref-usage sourceCode">
           <pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="co">// Fixed values</span></span>
-<span class="r-in r-code">p = ggplot<span class="op">(</span>mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>wt, mpg<span class="op">)</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_vline.html">geom_vline</a></span><span class="op">(</span>xintercept = <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in r-code">cxplot<span class="op">(</span>p<span class="op">)</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_vline.html">geom_vline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"xintercept"</span>: <span class="fl">5</span><span class="op">}</span><span class="op">)</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_vline.html">geom_vline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"xintercept"</span>: <span class="fl">5</span><span class="op">}</span><span class="op">)</span></span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas1" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.geom_vline({"xintercept": 5})</script></span>
 <span class="r-in"></span>
-<span class="r-in r-code">p = ggplot<span class="op">(</span>mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>wt, mpg<span class="op">)</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_vline.html">geom_vline</a></span><span class="op">(</span>xintercept = <span class="fl">1</span>:<span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in r-code">cxplot<span class="op">(</span>p<span class="op">)</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_vline.html">geom_vline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"xintercept"</span>: <span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">]</span><span class="op">}</span><span class="op">)</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_vline.html">geom_vline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"xintercept"</span>: <span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">]</span><span class="op">}</span><span class="op">)</span></span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas2" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.geom_vline({"xintercept": [1, 2, 3, 4, 5]})</script></span>
 <span class="r-in"></span>
-<span class="r-in r-code">p = ggplot<span class="op">(</span>mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>wt, mpg<span class="op">)</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span>yintercept = <span class="fl">2</span><span class="fl">0</span><span class="op">)</span></span>
-<span class="r-in r-code">cxplot<span class="op">(</span>p<span class="op">)</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"yintercept"</span>: <span class="fl">2</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"yintercept"</span>: <span class="fl">2</span><span class="fl">0</span><span class="op">}</span><span class="op">)</span></span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.geom_hline({"yintercept": 20})</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Calculate slope and intercept of line of best fit using your own function</span></span>
 <span class="r-in"><span class="co">// (Intercept)          wt </span></span>
 <span class="r-in"><span class="co">//   37.285126   -5.344472</span></span>
-<span class="r-in r-code">coef<span class="op">(</span>lm<span class="op">(</span>mpg ~ wt, data = mtcars<span class="op">)</span><span class="op">)</span></span>
-<span class="r-in r-code">p = ggplot<span class="op">(</span>mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>wt, mpg<span class="op">)</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_abline.html">geom_abline</a></span><span class="op">(</span>intercept = <span class="fl">3</span><span class="fl">7</span>, slope = <span class="fl">-</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in r-code">cxplot<span class="op">(</span>p<span class="op">)</span></span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_abline.html">geom_abline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"intercept"</span>: <span class="fl">3</span><span class="fl">7</span>, <span class="st">"slope"</span>: <span class="fl">-</span><span class="fl">5</span><span class="op">}</span><span class="op">)</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_abline.html">geom_abline</a></span><span class="op">(</span><span class="op">{</span><span class="st">"intercept"</span>: <span class="fl">3</span><span class="fl">7</span>, <span class="st">"slope"</span>: <span class="fl">-</span><span class="fl">5</span><span class="op">}</span><span class="op">)</span></span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.geom_abline({"intercept": 37, "slope": -5})</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// To show different lines in different facets, use aesthetics</span></span>
-<span class="r-in r-code">mean_wt <<span class="fl">-</span> data<span class="fl">.</span>frame<span class="op">(</span>cyl = c<span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span>, wt = c<span class="op">(</span><span class="fl">2</span><span class="fl">.</span><span class="fl">2</span><span class="fl">8</span>, <span class="fl">3</span><span class="fl">.</span><span class="fl">1</span><span class="fl">1</span>, <span class="fl">4</span><span class="fl">.</span><span class="fl">0</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in r-code">p <<span class="fl">-</span> ggplot<span class="op">(</span>mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>mpg, wt<span class="op">)</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> +</span>
-<span class="r-in r-code"> <span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span>yintercept = wt<span class="op">)</span>, mean_wt<span class="op">)</span> +</span>
-<span class="r-in r-code"> facet_wrap<span class="op">(</span>~ cyl<span class="op">)</span></span>
-<span class="r-in r-code">cxplot<span class="op">(</span>p<span class="op">)</span></span>
-<span class="r-in js-code">var mean_wt = <span class="op">[</span><span class="op">[</span><span class="st">"cyl"</span>, <span class="st">"wt"</span><span class="op">]</span>, <span class="op">[</span><span class="fl">4</span>, <span class="fl">2</span><span class="fl">.</span><span class="fl">2</span><span class="fl">8</span><span class="op">]</span>, <span class="op">[</span><span class="fl">6</span>, <span class="fl">3</span><span class="fl">.</span><span class="fl">1</span><span class="fl">1</span><span class="op">]</span>, <span class="op">[</span><span class="fl">8</span>, <span class="fl">4</span><span class="op">]</span><span class="op">]</span>;</span>
-<span class="r-in js-code">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"mpg"</span>, <span class="st">"y"</span>: <span class="st">"wt"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"yintercept"</span>: <span class="st">"wt"</span><span class="op">}</span>, mean_wt<span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in js-code"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cyl"</span><span class="op">)</span>;</span>
+<span class="r-in">var mean_wt = <span class="op">[</span><span class="op">[</span><span class="st">"cyl"</span>, <span class="st">"wt"</span><span class="op">]</span>, <span class="op">[</span><span class="fl">4</span>, <span class="fl">2</span><span class="fl">.</span><span class="fl">2</span><span class="fl">8</span><span class="op">]</span>, <span class="op">[</span><span class="fl">6</span>, <span class="fl">3</span><span class="fl">.</span><span class="fl">1</span><span class="fl">1</span><span class="op">]</span>, <span class="op">[</span><span class="fl">8</span>, <span class="fl">4</span><span class="op">]</span><span class="op">]</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"mpg"</span>, <span class="st">"y"</span>: <span class="st">"wt"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"yintercept"</span>: <span class="st">"wt"</span><span class="op">}</span>, mean_wt<span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cyl"</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mtcars)), aes({"x": "mpg", "y": "wt"}));cxp.geom_point();cxp.geom_hline(aes({"yintercept": "wt"}, mean_wt));cxp.facet_wrap("cyl");</script></span>
 </span></code></pre>
         </div>
