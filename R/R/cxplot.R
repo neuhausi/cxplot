@@ -655,3 +655,97 @@ cxplot <- function (o = ggplot2::last_plot()) {
   print(o)
   print (do.call(canvasXpress::canvasXpress, cx))
 }
+
+ggplotcx <- function (o = ggplot2::last_plot()) {
+  
+  if (missing(o)) {
+    o = last_plot()
+  }
+  
+  if (!("ggplot") %in% class(o)) {
+    stop("Not a ggplot object")
+  }
+  
+  ## CanvasXpress Parameters
+  gg = list(
+    data = o$data
+  )
+  gg = gg_append(gg, gg_facet(o))
+  gg = gg_append(gg, gg_theme(o))
+  gg = gg_append(gg, gg_scales(o))
+  gg = gg_append(gg, gg_labels(o))
+  gg = gg_append(gg, gg_mapping(o))
+  gg = gg_append(gg, gg_layers(o))
+  gg = gg_append(gg, gg_data_cols(gg))
+  gg = gg_append(gg, gg_data_rows(gg))
+  gg = gg_append(gg, gg_data_summary(gg))
+  #print(gg)
+  
+  cx = list()
+  for (i in 1:length(gg$geoms)) {
+    g = gg$geoms[i]
+    if (g == "GeomHline" || g == "GeomVline" || g == "GeomAbline") {
+      
+    } else if (g == "GeomBar") {
+      
+    } else if (g == "GeomBlank") {
+      stop("GeomBlank not implemented yet!")
+    } else if (g == "GeomBoxplot") {
+
+    } else if (g == "GeomCol") {
+      
+    } else if (g == "GeomContour") {
+      
+    } else if (g == "GeomContourFilled") {
+      
+    } else if (g == "GeomCount") {
+      stop("GeomCount not implemented yet!")
+    } else if (g == "GeomDensity") {
+      
+    } else if (g == "GeomDensity2d") {
+      
+    } else if (g == "GeomDensity2dFilled") {
+    
+    } else if (g == "GeomDotplot") {
+      
+    } else if (g == "GeomErrorbarh") {
+      stop("GeomErrorbarh not implemented yet!")
+    } else if (g == "GeomFunction") {
+      stop("GeomFunction not implemented yet!")
+    } else if (g == "GeomHex") {
+      
+    } else if (g == "GeomHistogram") {
+      
+    } else if (g == "GeomLine") {
+      
+    } else if (g == "GeomPath") {
+      
+    } else if (g == "GeomPoint" || g == "GeomJitter") {
+      
+    } else if (g == "GeomQuantile") {
+      
+    } else if (g == "GeomRaster") {
+      
+    } else if (g == "GeomRug") {
+      
+    } else if (g == 'GeomSmooth') {
+      
+    } else if (g == "GeomText") {
+      
+    } else if (g == "GeomTile") {
+      ##geom_bin_2d
+    } else if (g == "GeomViolin") {
+      
+    }
+  }
+  cx = gg_append(cx, cx_data(gg, cx))
+  cx = gg_append(cx, cx_axes(gg, cx))
+  cx = gg_append(cx, cx_theme(gg, cx))
+  cx = gg_append(cx, cx_facet(gg, cx))
+  #print(cx)
+  
+  print(o)
+  print (do.call(canvasXpress::canvasXpress, cx))
+}
+
+
