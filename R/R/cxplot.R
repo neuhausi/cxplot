@@ -77,7 +77,20 @@ gg_theme <- function(o) {
   atts = ls(o$theme)
   if (length(atts) > 0) {
     for (a in atts) {
-      t[[a]] = o$theme[[a]]
+      if (is.list(o$theme[[a]])) {
+        atts2 = ls(o$theme[[a]])
+        for (b in atts2) {
+          v = as.character(o$theme[[a]][[b]])
+          if (length(v) > 0) {
+            t[[paste(a,b,sep=".")]] = v
+          }
+        }
+      } else {
+        v = as.character(o$theme[[a]])
+        if (length(v) > 0) {
+          t[[a]] = v
+        }
+      }
     }
   }
   t
@@ -713,8 +726,39 @@ ggplotcx <- function (o = ggplot2::last_plot()) {
     } else if (g == "GeomFunction") {
       stop("GeomFunction not implemented yet!")
     } else if (g == "GeomHex") {
-      
+
+    } else if (g == "GeomCrossbar") {
+      stop("GeomCrossbar not implemented yet!")
+    } else if (g == "GeomErrorbar") {
+      stop("GeomErrorbar not implemented yet!")
+    } else if (g == "GeomLinerange") {
+      stop("GeomLinerange not implemented yet!")
+    } else if (g == "GeomPointrange") {
+      stop("GeomPointrange not implemented yet!")
+    } else if (g == "GeomMap") {
+      stop("Geom not implemented yet!")
+    } else if (g == "GeomMap") {
+      stop("Geom not implemented yet!")
+    } else if (g == "GeomStep") {
+    } else if (g == "GeomPolygon") {
+      stop("GeomPolygon not implemented yet!")
+    } else if (g == "GeomSegment") {
+      stop("GeomSegment not implemented yet!")
+    } else if (g == "GeomCurve") {
+      stop("GeomCurve not implemented yet!")
+    } else if (g == "GeomSpoke") {
+      stop("GeomSpoke not implemented yet!")      
     } else if (g == "GeomHistogram") {
+      
+    } else if (g == "GeomQQLine") {
+
+    } else if (g == "GeomQQ") {
+
+    } else if (g == "GeomQuantile") {
+    
+    } else if (g == "GeomRibbon") {
+      
+    } else if (g == "GeomArea") {
       
     } else if (g == "GeomLine") {
       
