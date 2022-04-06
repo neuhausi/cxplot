@@ -1,0 +1,677 @@
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modify components of a theme • cxplot</title>
+  <!-- favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/mtcars.js"></script>
+  <!-- jquery -->
+  <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link href="/assets/css/tidyverse.css" rel="stylesheet">
+  <script src="/assets/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="/assets/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/v4-shims.min.css" crossorigin="anonymous">
+  <!-- clipboard.js -->
+  <script src="/assets/js/clipboard.min.js" crossorigin="anonymous"></script>
+  <!-- headroom.js -->
+  <script src="/assets/js/headroom.min.js" crossorigin="anonymous"></script>
+  <script src="/assets/js/jQuery.headroom.min.js" crossorigin="anonymous"></script>
+  <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
+  <!-- pkgdown -->
+  <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
+  <!-- Google -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XWN5F9X8DS');
+  </script>
+  <!--optional theme-->
+  <meta property="og:title" content="Modify components of a theme">
+  <meta property="og:description" content="Themes are a powerful way to customize the non-data components of your plots: i.e. titles, labels, fonts, background, gridlines, and legends. Themes can be used to give plots a consistent customized look. Modify a single plot's theme using theme(); see theme_update() if you want modify the active theme, to affect all subsequent plots. Use the themes available in complete themes if you would like to use a complete theme such as theme_bw(), theme_minimal(), and more. Theme elements are documented together according to inheritance, read more about theme inheritance below.">
+  <meta property="og:image" content="/assets/images/logo.svg">
+  <meta name="twitter:card" content="summary">
+</head>
+
+<body data-spy="scroll" data-target="#toc" style="padding-top: 60px;">
+
+  <div class="container template-reference-topic">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand-container">
+              <a class="navbar-brand" href="/index.html">cxplot</a>
+            </div>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="https://github.com/neuhausi/cxplot" class="external-link">
+                  <span class="fab fa-github fa-lg"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-10 contents">
+
+        <div class="page-header">
+          <h1>Modify components of a theme</h1>
+        </div>
+
+        <div class="ref-description">
+          <p>Themes are a powerful way to customize the non-data components of your plots: i.e. titles, labels, fonts, background, gridlines, and legends. Themes can be used to give plots a consistent customized look. Modify a single plot's theme using theme(); see theme_update() if you want modify the active theme, to affect all subsequent plots. Use the themes available in complete themes if you would like to use a complete theme such as theme_bw(), theme_minimal(), and more. Theme elements are documented together according to inheritance, read more about theme inheritance below.</p>
+        </div>
+
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code>
+Usage
+<span class="fu">gg_theme</span><span class="op">(</span><span class="op">{</span>
+ <span class="va">"line"</span>,
+ <span class="va">"rect"</span>,
+ <span class="va">"text"</span>,
+ <span class="va">"title"</span>,
+  aspect.ratio,
+  axis.title,
+  axis.title.x,
+  axis.title.x.top,
+  axis.title.x.bottom,
+  axis.title.y,
+  axis.title.y.left,
+  axis.title.y.right,
+  axis.text,
+  axis.text.x,
+  axis.text.x.top,
+  axis.text.x.bottom,
+  axis.text.y,
+  axis.text.y.left,
+  axis.text.y.right,
+  axis.ticks,
+  axis.ticks.x,
+  axis.ticks.x.top,
+  axis.ticks.x.bottom,
+  axis.ticks.y,
+  axis.ticks.y.left,
+  axis.ticks.y.right,
+  axis.ticks.length,
+  axis.ticks.length.x,
+  axis.ticks.length.x.top,
+  axis.ticks.length.x.bottom,
+  axis.ticks.length.y,
+  axis.ticks.length.y.left,
+  axis.ticks.length.y.right,
+  axis.line,
+  axis.line.x,
+  axis.line.x.top,
+  axis.line.x.bottom,
+  axis.line.y,
+  axis.line.y.left,
+  axis.line.y.right,
+  legend.background,
+  legend.margin,
+  legend.spacing,
+  legend.spacing.x,
+  legend.spacing.y,
+  legend.key,
+  legend.key.<code>size</code>,
+  legend.key.height,
+  legend.key.width,
+  legend.text,
+  legend.text.align,
+  legend.title,
+  legend.title.align,
+  legend.position,
+  legend.direction,
+  legend.justification,
+  legend.box,
+  legend.box.just,
+  legend.box.margin,
+  legend.box.background,
+  legend.box.spacing,
+  panel.background,
+  panel.border,
+  panel.spacing,
+  panel.spacing.x,
+  panel.spacing.y,
+  panel.grid,
+  panel.grid.major,
+  panel.grid.minor,
+  panel.grid.major.x,
+  panel.grid.major.y,
+  panel.grid.minor.x,
+  panel.grid.minor.y,
+  panel.ontop,
+  plot.background,
+  plot.title,
+  plot.title.position,
+  plot.subtitle,
+  plot.caption,
+  plot.caption.position,
+  plot.tag,
+  plot.tag.position,
+  plot.margin,
+  strip.background,
+  strip.background.x,
+  strip.background.y,
+  strip.placement,
+  strip.text,
+  strip.text.x,
+  strip.text.y,
+  strip.switch.pad.grid,
+  strip.switch.pad.wrap,
+ <span class="va">"..."</span>,
+ <span class="st">"complete"</span> <span class="op">=</span> <span class="cn">false</span>,
+ <span class="st">"validate"</span> <span class="op">=</span> <span class="cn">true</span>
+<span class="op">}</span><span class="op">)</span>
+</span></code></pre>
+        </div>
+
+        <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+        <table class="ref-arguments">
+          <tbody>
+            <tr>
+              <th>line</th>
+              <td>
+                <p>all line elements (element_line())</p>
+              <td>
+            </tr>
+            <tr>
+              <th>rect</th>
+              <td>
+                <p>all rectangular elements (element_rect())</p>
+              <td>
+            </tr>
+            <tr>
+              <th>text</th>
+              <td>
+                <p>all text elements (element_text())</p>
+              <td>
+            </tr>
+            <tr>
+              <th>title</th>
+              <td>
+                <p>all title elements: plot, axes, legends (element_text(); inherits from text)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>aspect.ratio</th>
+              <td>
+                <p>aspect ratio of the panel</p>
+              <td>
+            </tr>
+            <tr>
+              <th>axis.title, axis.title.x, axis.title.y, axis.title.x.top, axis.title.x.bottom, axis.title.y.left, axis.title.y.right</th>
+              <td>
+                <p>labels of axes (element_text()). Specify all axes' labels (axis.title), labels by plane (using axis.title.x or axis.title.y), or individually for each axis (using axis.title.x.bottom, axis.title.x.top, axis.title.y.left, axis.title.y.right). axis.title.*.* inherits from axis.title.* which inherits from axis.title, which in turn inherits from text</p>
+              <td>
+            </tr>
+            <tr>
+              <th>axis.text, axis.text.x, axis.text.y, axis.text.x.top, axis.text.x.bottom, axis.text.y.left, axis.text.y.right</th>
+              <td>
+                <p>tick labels along axes (element_text()). Specify all axis tick labels (axis.text), tick labels by plane (using axis.text.x or axis.text.y), or individually for each axis (using axis.text.x.bottom, axis.text.x.top, axis.text.y.left, axis.text.y.right). axis.text.*.* inherits from axis.text.* which inherits from axis.text, which in turn inherits from text</p>
+              <td>
+            </tr>
+            <tr>
+              <th>axis.ticks, axis.ticks.x, axis.ticks.x.top, axis.ticks.x.bottom, axis.ticks.y, axis.ticks.y.left, axis.ticks.y.right</th>
+              <td>
+                <p>tick marks along axes (element_line()). Specify all tick marks (axis.ticks), ticks by plane (using axis.ticks.x or axis.ticks.y), or individually for each axis (using axis.ticks.x.bottom, axis.ticks.x.top, axis.ticks.y.left, axis.ticks.y.right). axis.ticks.*.* inherits from axis.ticks.* which inherits from axis.ticks, which in turn inherits from line</p>
+              <td>
+            </tr>
+            <tr>
+              <th>axis.ticks.length, axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right</th>
+              <td>
+                <p>length of tick marks (unit)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>axis.line, axis.line.x, axis.line.x.top, axis.line.x.bottom, axis.line.y, axis.line.y.left, axis.line.y.right</th>
+              <td>
+                <p>lines along axes (element_line()). Specify lines along all axes (axis.line), lines for each plane (using axis.line.x or axis.line.y), or individually for each axis (using axis.line.x.bottom, axis.line.x.top, axis.line.y.left, axis.line.y.right). axis.line.*.* inherits from axis.line.* which inherits from axis.line, which in turn inherits from line</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.background</th>
+              <td>
+                <p>background of legend (element_rect(); inherits from rect)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.margin</th>
+              <td>
+                <p>the margin around each legend (margin())</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.spacing, legend.spacing.x, legend.spacing.y</th>
+              <td>
+                <p>the spacing between legends (unit). legend.spacing.x & legend.spacing.y inherit from legend.spacing or can be specified separately</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.key</th>
+              <td>
+                <p>background underneath legend keys (element_rect(); inherits from rect)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.key.<code>size</code>, legend.key.height, legend.key.width</th>
+              <td>
+                <p><code>size</code> of legend keys (unit); key background height & width inherit from legend.key.size or can be specified separately</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.text</th>
+              <td>
+                <p>legend item labels (element_text(); inherits from text)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.text.align</th>
+              <td>
+                <p>alignment of legend labels (number from 0 (left) to 1 (right))</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.title</th>
+              <td>
+                <p>title of legend (element_text(); inherits from title)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.title.align</th>
+              <td>
+                <p>alignment of legend title (number from 0 (left) to 1 (right))</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.position</th>
+              <td>
+                <p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.direction</th>
+              <td>
+                <p>layout of items in legends ("horizontal" or "vertical")</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.justification</th>
+              <td>
+                <p>anchor point for positioning legend inside plot ("center" or two-element numeric vector) or the justification according to the plot area when positioned outside the plot</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.box</th>
+              <td>
+                <p>arrangement of multiple legends ("horizontal" or "vertical")</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.box.just</th>
+              <td>
+                <p>justification of each legend within the overall bounding box, when there are multiple legends ("top", "bottom", "left", or "right")</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.box.margin</th>
+              <td>
+                <p>margins around the full legend area, as specified using margin()</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.box.background</th>
+              <td>
+                <p>background of legend area (element_rect(); inherits from rect)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>legend.box.spacing</th>
+              <td>
+                <p>The spacing between the plotting area and the legend box (unit)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>panel.background</th>
+              <td>
+                <p>background of plotting area, drawn underneath plot (element_rect(); inherits from rect)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>panel.border</th>
+              <td>
+                <p>border around plotting area, drawn on top of plot so that it covers tick marks and grid lines. This should be used with fill = NA (element_rect(); inherits from rect)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>panel.spacing, panel.spacing.x, panel.spacing.y</th>
+              <td>
+                <p>spacing between facet panels (unit). panel.spacing.x & panel.spacing.y inherit from panel.spacing or can be specified separately.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>panel.grid, panel.grid.major, panel.grid.minor, panel.grid.major.x, panel.grid.major.y, panel.grid.minor.x, panel.grid.minor.y</th>
+              <td>
+                <p>grid lines (element_line()). Specify major grid lines, or minor grid lines separately (using panel.grid.major or panel.grid.minor) or individually for each axis (using panel.grid.major.x, panel.grid.minor.x, panel.grid.major.y, panel.grid.minor.y). Y axis grid lines are horizontal and x axis grid lines are vertical. panel.grid.*.* inherits from panel.grid.* which inherits from panel.grid, which in turn inherits from line</p>
+              <td>
+            </tr>
+            <tr>
+              <th>panel.ontop</th>
+              <td>
+                <p>option to place the panel (background, gridlines) over the data layers (logical). Usually used with a transparent or blank panel.background.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.background</th>
+              <td>
+                <p>background of the entire plot (element_rect(); inherits from rect)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.title</th>
+              <td>
+                <p>plot title (text appearance) (element_text(); inherits from title) left-aligned by default</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.title.position, plot.caption.position</th>
+              <td>
+                <p>Alignment of the plot title/subtitle and caption. The setting for plot.title.position applies to both the title and the subtitle. A value of "panel" (the default) means that titles and/or caption are aligned to the plot panels. A value of "plot" means that titles and/or caption are aligned to the entire plot (minus any space for margins and plot tag).</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.subtitle</th>
+              <td>
+                <p>plot subtitle (text appearance) (element_text(); inherits from title) left-aligned by default</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.caption</th>
+              <td>
+                <p>caption below the plot (text appearance) (element_text(); inherits from title) right-aligned by default</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.tag</th>
+              <td>
+                <p>upper-left label to identify a plot (text appearance) (element_text(); inherits from title) left-aligned by default</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.tag.position</th>
+              <td>
+                <p>The position of the tag as a string ("topleft", "top", "topright", "left", "right", "bottomleft", "bottom", "bottomright) or a coordinate. If a string, extra space will be added to accommodate the tag.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>plot.margin</th>
+              <td>
+                <p>margin around entire plot (unit with the <code>size</code>s of the top, right, bottom, and left margins)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>strip.background, strip.background.x, strip.background.y</th>
+              <td>
+                <p>background of facet labels (element_rect(); inherits from rect). Horizontal facet background (strip.background.x) & vertical facet background (strip.background.y) inherit from strip.background or can be specified separately</p>
+              <td>
+            </tr>
+            <tr>
+              <th>strip.placement</th>
+              <td>
+                <p>placement of strip with respect to axes, either "inside" or "outside". Only important when axes and strips are on the same side of the plot.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>strip.text, strip.text.x, strip.text.y</th>
+              <td>
+                <p>facet labels (element_text(); inherits from text). Horizontal facet labels (strip.text.x) & vertical facet labels (strip.text.y) inherit from strip.text or can be specified separately</p>
+              <td>
+            </tr>
+            <tr>
+              <th>strip.switch.pad.grid</th>
+              <td>
+                <p>space between strips and axes when strips are switched (unit)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>strip.switch.pad.wrap</th>
+              <td>
+                <p>space between strips and axes when strips are switched (unit)</p>
+              <td>
+            </tr>
+            <tr>
+              <th>...</th>
+              <td>
+                <p>additional element specifications not part of base cxplot2. In general, these should also be defined in the element tree argument.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>complete</th>
+              <td>
+                <p>set this to TRUE if this is a complete theme, such as the one returned by theme_grey(). Complete themes behave differently when added to a cxplot object. Also, when setting complete = TRUE all elements will be set to inherit from blank elements.</p>
+              <td>
+            </tr>
+            <tr>
+              <th>validate</th>
+              <td>
+                <p>TRUE to run validate_element(), FALSE to bypass checks.</p>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+        <div class="ref-usage sourceCode">
+          <pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas1" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Plot ---------------------------------------------------------------------</span></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"plot<span class="fl">.</span>title" : <span class="op">{</span><span class="st">"size"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">5</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas2" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"plot.title" : {"size": 0.5}});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"plot<span class="fl">.</span>background" : <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"green"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"plot.background" : {"fill": "green"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Panels --------------------------------------------------------------------</span></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"panel<span class="fl">.</span>background" : <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"white"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"panel.background" : {"fill": "white"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"panel<span class="fl">.</span>border" : <span class="op">{</span><span class="st">"fill"</span>: <span class="st">"red"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"panel.border" : {"fill": "red"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Axes ----------------------------------------------------------------------</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Change styles of axes texts and lines</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"axis<span class="fl">.</span>line" : <span class="op">{</span><span class="st">"size"</span> : <span class="fl">3</span>, <span class="st">"colour"</span> : <span class="st">"grey"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"axis.line" : {"size" : 3, "colour" : "grey"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"axis<span class="fl">.</span>text" : <span class="op">{</span><span class="st">"colour"</span> : <span class="st">"blue"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas7" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas7", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"axis.text" : {"colour" : "blue"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas8"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"axis<span class="fl">.</span>tick" : <span class="op">{</span><span class="st">"size"</span> : <span class="fl">2</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas8" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas8", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"axis.tick" : {"size" : 2}});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Change the appearance of the y-axis title</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas9"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"title"</span>: "Fuel economy declines as weight increases"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"axis<span class="fl">.</span>title<span class="fl">.</span>y" : <span class="op">{</span><span class="st">"size"</span> : <span class="fl">1</span><span class="fl">.</span><span class="fl">5</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas9" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas9", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.labs({"title": "Fuel economy declines as weight increases"});cxp.gg_theme({"axis.title.y" : {"size" : 1.5}});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Legend --------------------------------------------------------------------</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Change the appearance of the y-axis title</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas10"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span>: <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas10" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas10", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape": {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Position</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas11"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"legend<span class="fl">.</span>position" : <span class="st">"none"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas11" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas11", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape" : {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});cxp.gg_theme({"legend.position" : "none"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas12"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"legend<span class="fl">.</span>position" : <span class="st">"right"</span>, "legend<span class="fl">.</span>justification" : <span class="st">"top"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas12" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas12", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape" : {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});cxp.gg_theme({"legend.position" : "right", "legend.justification" : "top"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas13"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"legend<span class="fl">.</span>position" : <span class="st">"bottom"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas13" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas13", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape" : {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});cxp.gg_theme({"legend.position" : "bottom"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Or place legends inside the plot using relative coordinates between 0 and 1</span></span>
+<span class="r-in"><span class="co">// legend.justification sets the corner that the position refers to</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas14"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"legend<span class="fl">.</span>position" : <span class="op">[</span><span class="fl">0</span><span class="fl">.</span><span class="fl">9</span><span class="fl">5</span>, <span class="fl">0</span><span class="fl">.</span><span class="fl">9</span><span class="fl">5</span><span class="op">]</span>,</span>
+<span class="r-in">              "legend<span class="fl">.</span>justification" : <span class="op">[</span><span class="st">"right"</span>, <span class="st">"top"</span><span class="op">]</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas14" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas14", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape" : {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});cxp.gg_theme({"legend.position" : [0.95, 0.95],              "legend.justification" : ["right", "top"]});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// You can also control the display of the keys</span></span>
+<span class="r-in"><span class="co">// and the justification related to the plot area can be set</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas15"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"legend<span class="fl">.</span>text" : <span class="op">{</span><span class="st">"size"</span> : <span class="fl">2</span>, <span class="st">"color"</span>: <span class="st">"red"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas15" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas15", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape" : {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});cxp.gg_theme({"legend.text" : {"size" : 2, "color": "red"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas16"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"colour"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"cyl"</span><span class="op">}</span>, <span class="st">"shape"</span> : <span class="op">{</span><span class="st">"factor"</span> : <span class="st">"vs"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>labs<span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: "Weight <span class="op">(</span><span class="fl">1</span><span class="fl">0</span><span class="fl">0</span><span class="fl">0</span> lbs<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"y"</span>: "Fuel economy <span class="op">(</span>mpg<span class="op">)</span>",</span>
+<span class="r-in">          <span class="st">"colour"</span>: <span class="st">"Cylinders"</span>,</span>
+<span class="r-in">          <span class="st">"shape"</span>: <span class="st">"Transmission"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"legend<span class="fl">.</span>title" : <span class="op">{</span><span class="st">"face"</span> : <span class="st">"bold"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas16" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas16", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point(aes({"colour" : {"factor" : "cyl"}, "shape" : {"factor" : "vs"}}));cxp.labs({"x": "Weight (1000 lbs)",          "y": "Fuel economy (mpg)",          "colour": "Cylinders",          "shape": "Transmission"});cxp.gg_theme({"legend.title" : {"face" : "bold"}});</script></span>
+<span class="r-in"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Strips --------------------------------------------------------------------</span></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas17"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cyl"</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas17" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas17", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.facet_wrap("cyl");</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas18"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cyl"</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>gg_theme<span class="op">(</span><span class="op">{</span>"strip<span class="fl">.</span>background" : <span class="op">{</span><span class="st">"fill"</span> : <span class="st">"grey"</span><span class="op">}</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas18" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas18", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.facet_wrap("cyl");cxp.gg_theme({"strip.background" : {"fill" : "grey"}});</script></span>
+</span></code></pre>
+        </div>
+      </div>
+
+      <div class="col-md-2 hidden-xs hidden-sm" id="pkgdown-sidebar">
+        <nav id="toc" data-toggle="toc" class="sticky-top">
+          <h2 data-toc-skip="">Contents</h2>
+          <ul class="nav">
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#examples">Examples</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+
+    <footer>
+
+      <div class="tidyverse">
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics.
+          Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
+      </div>
+
+      <div class="author">
+        <p>
+          Developed by CanvasXpress
+        </p>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
