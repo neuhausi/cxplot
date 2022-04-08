@@ -1,22 +1,3 @@
-#' gg_append
-#'
-#' @param list
-#' @param list
-#' 
-#' Combine parameters from two lists and overwrite parameters in the first one
-#' 
-#' @return list
-#' @export
-#'
-#' @import ggplot2
-#'
-#' @examples
-#'
-gg_append <- function (a, b) {
-  l = c(a[setdiff(names(a), names(b))], b)
-  l
-}
-
 ## gg_facet
 #'
 #' @param ggplot object
@@ -91,54 +72,6 @@ gg_theme <- function(o) {
     }
   }
   t
-}
-
-#' gg_datalimits
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
-gg_datalimits <- function(o) {
-  if (missing(o)) {
-    o = ggplot2::last_plot()
-  }
-  gb = ggplot_build(o)
-  xmin = gb$layout$panel_scales_x[[1]]$range$range[1]
-  xmax = gb$layout$panel_scales_x[[1]]$range$range[2]
-  ymin = gb$layout$panel_scales_y[[1]]$range$range[1]
-  ymax = gb$layout$panel_scales_y[[1]]$range$range[2]
-  list(xmin = xmin,
-       xmax = xmax,
-       ymin = ymin,
-       ymax = ymax)
-}
-
-#' gg_scalelimits
-#'
-#' @param ggplot object
-#' 
-#' User defined limits. Look at this o$scales$scales
-#' 
-#' @return list
-#' @export
-#'
-#' @examples
-gg_scalelimits <- function(o) {
-  if (missing(o)) {
-    o = ggplot2::last_plot()
-  }
-  gb = ggplot_build(o)
-  xmin = gb$layout$panel_params[[1]]$x.range[1]
-  xmax = gb$layout$panel_params[[1]]$x.range[2]
-  ymin = gb$layout$panel_params[[1]]$y.range[1]
-  ymax = gb$layout$panel_params[[1]]$y.range[2]
-  list(xmin = xmin,
-       xmax = xmax,
-       ymin = ymin,
-       ymax = ymax)
 }
 
 #' gg_xscale
@@ -280,28 +213,6 @@ gg_mapping <- function(o) {
   r
 }
 
-#' gg_layers
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
-gg_layers <- function(o) {
-  if (missing(o)) {
-    o = ggplot2::last_plot()
-  }
-  layers = sapply(o$layers, function(x) class(x$geom)[1])
-  r = list(
-    geoms = layers
-  )
-  for (i in 1:length(layers)) {
-    r[[layers[i]]] = gg_proc_layer(o$layers[[i]])
-  }
-  r
-}
-
 #' gg_proc_layer
 #'
 #' @param layer
@@ -390,9 +301,8 @@ gg_proc_layer <- function (l) {
 #'
 #' @examples
 data_to_matrix <- function(d) {
-  library(tibble)
   nd = rbind(colnames(d), d)
-  nd = add_column(nd, Id = row.names(nd), .before = 1)
+  nd = tibble::add_column(nd, Id = row.names(nd), .before = 1)
   #nd[1,1] = "Id"
   as.matrix(nd)
 }
@@ -408,15 +318,19 @@ data_to_matrix <- function(d) {
 #'
 #' @examples
 
-ggplot.as.list <- function (o = ggplot2::last_plot()) {
+ggplot.as.list <- function (o = ggplot2::last_plot(), target) {
 
   if (!("ggplot") %in% class(o)) {
     stop("Not a ggplot object")
+  }
+  if(missing(target)) {
+    target = "canvas"
   }
 
   ## Convert ggplot object to list
 
   cx = list(
+    renderTo = target,
     data = data_to_matrix(o$data),
     aes = gg_mapping(o),
     scales = gg_scales(o),  
@@ -435,95 +349,11 @@ ggplot.as.list <- function (o = ggplot2::last_plot()) {
     l = gg_proc_layer(o$layers[[i]])
     q = list()
     q[[g]] = l
-    if (g == "GeomHline" || g == "GeomVline" || g == "GeomAbline") {
-      
-    } else if (g == "GeomBar") {
-      
-    } else if (g == "GeomBlank") {
-      stop("GeomBlank not implemented yet!")
-    } else if (g == "GeomBoxplot") {
-      
-    } else if (g == "GeomCol") {
-      
-    } else if (g == "GeomContour") {
-      
-    } else if (g == "GeomContourFilled") {
-      
-    } else if (g == "GeomCount") {
-      stop("GeomCount not implemented yet!")
-    } else if (g == "GeomDensity") {
-      
-    } else if (g == "GeomDensity2d") {
-      
-    } else if (g == "GeomDensity2dFilled") {
-      
-    } else if (g == "GeomDotplot") {
-      
-    } else if (g == "GeomErrorbarh") {
-      stop("GeomErrorbarh not implemented yet!")
-    } else if (g == "GeomFunction") {
-      stop("GeomFunction not implemented yet!")
-    } else if (g == "GeomHex") {
-      
-    } else if (g == "GeomCrossbar") {
-      stop("GeomCrossbar not implemented yet!")
-    } else if (g == "GeomErrorbar") {
-      stop("GeomErrorbar not implemented yet!")
-    } else if (g == "GeomLinerange") {
-      stop("GeomLinerange not implemented yet!")
-    } else if (g == "GeomPointrange") {
-      stop("GeomPointrange not implemented yet!")
-    } else if (g == "GeomMap") {
-      stop("Geom not implemented yet!")
-    } else if (g == "GeomMap") {
-      stop("Geom not implemented yet!")
-    } else if (g == "GeomStep") {
-    } else if (g == "GeomPolygon") {
-      stop("GeomPolygon not implemented yet!")
-    } else if (g == "GeomSegment") {
-      stop("GeomSegment not implemented yet!")
-    } else if (g == "GeomCurve") {
-      stop("GeomCurve not implemented yet!")
-    } else if (g == "GeomSpoke") {
-      stop("GeomSpoke not implemented yet!")      
-    } else if (g == "GeomHistogram") {
-      
-    } else if (g == "GeomQQLine") {
-      
-    } else if (g == "GeomQQ") {
-      
-    } else if (g == "GeomQuantile") {
-      
-    } else if (g == "GeomRibbon") {
-      
-    } else if (g == "GeomArea") {
-      
-    } else if (g == "GeomLine") {
-      
-    } else if (g == "GeomPath") {
-      
-    } else if (g == "GeomPoint" || g == "GeomJitter") {
-      
-    } else if (g == "GeomQuantile") {
-      
-    } else if (g == "GeomRaster") {
-      
-    } else if (g == "GeomRug") {
-      
-    } else if (g == 'GeomSmooth') {
-      
-    } else if (g == "GeomText") {
-      
-    } else if (g == "GeomTile") {
-      ##geom_bin_2d
-    } else if (g == "GeomViolin") {
-
-    }
     cx$geoms = append(cx$geoms, g)
     cx$layers = append(cx$layers, q)
   }
-  #cx
-  jsonlite::toJSON(cx)
+  cx
+  #jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
 
 }
 
