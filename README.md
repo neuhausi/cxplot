@@ -4,7 +4,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-cxplot is wrapper for CanvasXpress that implements the grammar of the R ggplot2 package written completely in Javascript. 
+cxplot is wrapper for CanvasXpress. This library implements the grammar of the R ggplot2 package
+written completely in Javascript. Please beware that these pages are not updated often but the
+library is continuously updated and currently being developed. These pages show just a few examples
+of the way the library is used. Please report bugs and features request through the github repo
+https://github.com/neuhausi/canvasxpress
 
 Learn more at canvasxpress.org.
 
