@@ -13,10 +13,10 @@
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
   <!-- data -->
-  <script type="text/javascript" src="/assets/data/griddf.js"></script>
   <script type="text/javascript" src="/assets/data/faithfuld.js"></script>
   <script type="text/javascript" src="/assets/data/origdata.js"></script>
   <script type="text/javascript" src="/assets/data/faithful.js"></script>
+  <script type="text/javascript" src="/assets/data/griddf.js"></script>
   <!-- jquery -->
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -96,7 +96,7 @@
           <p>cxplot can not draw true 3D surfaces, but you can use geom_contour(), geom_contour_filled(), and geom_tile() to visualise 3D surfaces in 2D. To specify a valid surface, the data must contain x, y, and z coordinates, and each unique combination of x and y can appear at most once. Contouring requires that the points can be rearranged so that the z values form a matrix, with rows corresponding to unique x values, and columns corresponding to unique y values. Missing entries are allowed, but contouring will only be done on cells of the grid with all four z values present. If your data is irregular, you can interpolate to a grid before visualising using the interp::interp() function from the interp package (or one of the interpolating functions from the akima package.)</p>
         </div>
 
-        <div class="ref-usage sourceCode">
+        <div class="ref-usage sourceCode" style="width: 700px !important;">
           <pre class="sourceCode r"><code>
 <span class="fu">geom_contour</span><span class="op">(</span><span class="op">{</span>
  <span class="st">"mapping"</span> <span class="op">=</span> <span class="cn">null</span>,
@@ -306,7 +306,7 @@
         <p>Contour piece (an integer).</p>
 
         <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-        <div class="ref-usage sourceCode">
+        <div class="ref-usage sourceCode" style="width: 700px !important;">
           <pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="co">// Basic plot</span></span>
 <span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, faithfuld, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"waiting"</span>, <span class="st">"eruptions"</span>, <span class="op">{</span><span class="st">"z"</span>: <span class="st">"density"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>

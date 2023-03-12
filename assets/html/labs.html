@@ -93,7 +93,7 @@
           <p>Good labels are critical for making your plots accessible to a wider audience. Always ensure the axis and legend labels display the full variable name. Use the plot title and subtitle to explain the main findings. It's common to use the caption to provide information about the data source. tag can be used for adding identification tags to differentiate between multiple plots.</p>
         </div>
 
-        <div class="ref-usage sourceCode">
+        <div class="ref-usage sourceCode" style="width: 700px !important;">
           <pre class="sourceCode r"><code>
 Usage
 <span class="fu">labs</span><span class="op">(</span><span class="op">{</span>
@@ -167,7 +167,7 @@ Usage
         <p>If a plot already has a title, subtitle, caption, etc., and you want to remove it, you can do so by setting the respective argument to NULL. For example, if plot p has a subtitle, then p + labs(subtitle = NULL) will remove the subtitle from the plot.</p>
 
         <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-        <div class="ref-usage sourceCode">
+        <div class="ref-usage sourceCode" style="width: 700px !important;">
           <pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas1"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"mpg"</span>, <span class="st">"wt"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"cyl"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>

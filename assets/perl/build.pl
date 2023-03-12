@@ -128,7 +128,7 @@ sub process_buffer {
   if ($buffer) {
 
     if ($current =~ /^Usage/) {
-      $PAGE .= "        <div class=\"ref-usage sourceCode\">\n          <pre class=\"sourceCode r\"><code>";
+      $PAGE .= "        <div class=\"ref-usage sourceCode\" style=\"width: 700px !important;\">\n          <pre class=\"sourceCode r\"><code>";
       foreach $line (@$buffer ) {
         $line =~ s/ (\.\.\.)/\<span class="va"\>"$1"\<\/span\>/; 
         $line =~ s/ ([^\s].+) = NA/\<span class="st"\>"$1"\<\/span\> \<span class="op"\>=\<\/span\> \<span class="cn"\>NA\<\/span\>/; 
@@ -204,7 +204,7 @@ sub process_buffer {
   
     } elsif ($current =~ /^Examples/) { 
       $PAGE .= "        <h2 class=\"hasAnchor\" id=\"examples\"><a class=\"anchor\" href=\"\#examples\"></a>Examples</h2>\n";
-      $PAGE .= "        <div class=\"ref-usage sourceCode\">\n          <pre class=\"sourceCode r\"><code>";
+      $PAGE .= "        <div class=\"ref-usage sourceCode\" style=\"width: 700px !important;\">\n          <pre class=\"sourceCode r\"><code>";
       $line = shift(@$buffer);
       $cnt = 1;
       $scr = "";
