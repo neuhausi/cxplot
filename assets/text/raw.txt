@@ -275,14 +275,14 @@ cxp.geom_bar();
 // the legend
 var cxp = new cxplot("canvas", mpg, aes("class"));
 // Number of cars in each class:
-cxp.geom_bar(aes({"fill": "drv"}));
+cxp.geom_bar({"fill": "drv"});
 
 // If you need to flip the order (because you've flipped the orientation)
 // call position_stack() explicitly:
 var cxp = new cxplot("canvas", mpg, aes({"y": "class"}));
 // Number of cars in each class:
-cxp.geom_bar(aes({"fill": "drv", "position": "reverse"}));
-//cxp.theme({"legend.position": "top"});
+cxp.geom_bar(aes({"fill": "drv", "position": "position_stack(reverse=true)"}));
+cxp.gg_theme({"legend.position": "top"});
 
 --
 geom_bin_2d.html

@@ -58,11 +58,11 @@ sub main {
       &process_buffer($buffer, $current);
       $current = $_;
       $buffer = [];
-    } elsif (/^See also/) { 
+    } elsif (/^See also/) {
       &process_buffer($buffer, $current);
       $current = $_;
       $buffer = [];
-    } elsif (/^Examples/) { 
+    } elsif (/^Examples/) {
       &process_buffer($buffer, $current);
       $current = $_;
       $buffer = [];
@@ -70,7 +70,7 @@ sub main {
       &process_buffer($buffer, $current);
       $current = $_;
       $buffer = [];
-    } elsif (/^Computed variables/) { 
+    } elsif (/^Computed variables/) {
       &process_buffer($buffer, $current);
       $current = $_;
       $buffer = [];
@@ -98,10 +98,10 @@ sub main {
       &process_buffer($buffer, $current);
       $current = $_;
       $buffer = [];
-    } elsif (/^Theme inheritance/) {   
+    } elsif (/^Theme inheritance/) {
       &process_buffer($buffer, $current);
       $current = $_;
-      $buffer = [];           
+      $buffer = [];
     } else {
       push @$buffer, $_;
     }
@@ -130,7 +130,7 @@ sub process_buffer {
     if ($current =~ /^Usage/) {
       $PAGE .= "        <div class=\"ref-usage sourceCode\" style=\"width: 700px !important;\">\n          <pre class=\"sourceCode r\"><code>";
       foreach $line (@$buffer ) {
-        $line =~ s/ (\.\.\.)/\<span class="va"\>"$1"\<\/span\>/; 
+        $line =~ s/ (\.\.\.)/\<span class="va"\>"$1"\<\/span\>/;
         $line =~ s/ ([^\s].+) = NA/\<span class="st"\>"$1"\<\/span\> \<span class="op"\>=\<\/span\> \<span class="cn"\>NA\<\/span\>/; 
         $line =~ s/ ([^\s].+) = NULL/\<span class="st"\>"$1"\<\/span\> \<span class="op"\>=\<\/span\> \<span class="cn"\>null\<\/span\>/; 
         $line =~ s/ ([^\s].+) = FALSE/\<span class="st"\>"$1"\<\/span\> \<span class="op"\>=\<\/span\> \<span class="cn"\>false\<\/span\>/; 
@@ -140,7 +140,7 @@ sub process_buffer {
         $line =~ s/(.+)\(/\<span class="fu"\>$1\<\/span\>\<span class="op"\>\(\<\/span\>\<span class="op"\>\{\<\/span\>/; 
         $line =~ s/\)/\<span class="op"\>\}\<\/span\>\<span class="op"\>\)\<\/span\>/;
         $line =~ s/ ([^\s="]\w*),/\<span class="va"\>"$1"\<\/span\>,/;
-        $PAGE .= "$line\n"; 
+        $PAGE .= "$line\n";
       }
       $PAGE .= "</span></code></pre>\n        </div>\n\n";
     } elsif ($current =~ /^Arguments/) {
@@ -186,7 +186,7 @@ sub process_buffer {
       $PAGE .= "\n";
       $TOC .= "            <li><a href=\"#details\">Details</a></li>\n";
     } elsif ($current =~ /^Value/) {
-  
+
     } elsif ($current =~ /^Aesthetics/) {
       $PAGE .= "        <h2 class=\"hasAnchor\" id=\"aesthetics\"><a class=\"anchor\" href=\"\#aesthetics\"></a>Aesthetics</h2>\n";
       while (scalar @$buffer > 0) {
@@ -199,10 +199,10 @@ sub process_buffer {
       $PAGE .= "\n";
       $TOC .= "            <li><a href=\"#aesthetics\">Aesthetics</a></li>\n";
     } elsif ($current =~ /^Quasiquotation/) {
-  
-    } elsif ($current =~ /^See also/) { 
-  
-    } elsif ($current =~ /^Examples/) { 
+
+    } elsif ($current =~ /^See also/) {
+
+    } elsif ($current =~ /^Examples/) {
       $PAGE .= "        <h2 class=\"hasAnchor\" id=\"examples\"><a class=\"anchor\" href=\"\#examples\"></a>Examples</h2>\n";
       $PAGE .= "        <div class=\"ref-usage sourceCode\" style=\"width: 700px !important;\">\n          <pre class=\"sourceCode r\"><code>";
       $line = shift(@$buffer);
@@ -216,10 +216,10 @@ sub process_buffer {
             #$PAGE .= "<\/code>\n<div class=\"cnv-cont\"><canvas id=\"$cid\" width=\"$HEIGHT\" height=\"$WIDTH\"><\/canvas><\/div><script>$scr<\/script>\n<code>\n";
             $scr = "";
           }
-          $PAGE .= "<span class=\"r-in\"><\/span>\n"; 
+          $PAGE .= "<span class=\"r-in\"><\/span>\n";
         } else {
           if ($line =~ /(^\/\/.+)/) {
-            $line = "<span class=\"co\">$1<\/span>";              
+            $line = "<span class=\"co\">$1<\/span>";
           } else {
             $scr .= $line;
             if ($line =~ /"canvas", (\w*),/) {
@@ -266,8 +266,8 @@ sub process_buffer {
         $PAGE .= $ori;
       }
       $PAGE .= "\n";
-      $TOC .= "            <li><a href=\"#orientation\">Orientation</a></li>\n";  
-    } elsif ($current =~ /^Computed variables/) { 
+      $TOC .= "            <li><a href=\"#orientation\">Orientation</a></li>\n";
+    } elsif ($current =~ /^Computed variables/) {
       $PAGE .= "        <h2 class=\"hasAnchor\" id=\"computed-variables\"><a class=\"anchor\" href=\"\#computed-variables\"></a>Computed variables</h2>\n";
       while (scalar @$buffer > 0) {
         $line = shift(@$buffer);
@@ -293,7 +293,7 @@ sub process_buffer {
         $PAGE .= $sum;
       }
       $PAGE .= "\n";
-      $TOC .= "            <li><a href=\"#summary-statistics\">Summary Statistics</a></li>\n";   
+      $TOC .= "            <li><a href=\"#summary-statistics\">Summary Statistics</a></li>\n";
     } elsif ($current =~ /^References/) {
       $PAGE .= "        <h2 class=\"hasAnchor\" id=\"references\"><a class=\"anchor\" href=\"\#references\"></a>References</h2>\n";
       while (scalar @$buffer > 0) {
@@ -304,17 +304,17 @@ sub process_buffer {
         $PAGE .= $ref;
       }
       $PAGE .= "\n";
-      $TOC .= "            <li><a href=\"#references\">Referances</a></li>\n";  
+      $TOC .= "            <li><a href=\"#references\">Referances</a></li>\n";
     } elsif ($current =~ /^Missing value handling/) {
-  
+
     } elsif ($current =~ /^Overplotting/) {
-  
+
     } elsif ($current =~ /^geom_label\(\)/) {
-  
+
     } elsif ($current =~ /^Summary functions/) {
-  
-    } elsif ($current =~ /^Theme inheritance/) {   
-           
+
+    } elsif ($current =~ /^Theme inheritance/) {
+
     }
 
   }
