@@ -282,6 +282,25 @@
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas1" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas1", JSON.parse(JSON.stringify(mpg)), aes("displ", "hwy"));cxp.geom_point();cxp.geom_smooth();</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Instead of a loess smooth, you can use any other modelling function</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas2"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"displ"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">{</span><span class="st">"se"</span>:false, <span class="st">"method"</span>:<span class="st">"lm"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas2" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas2", JSON.parse(JSON.stringify(mpg)), aes("displ", "hwy"));cxp.geom_point();cxp.geom_smooth({"se":false, "method":"lm"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// Smooths are automatically fit to each group (defined by categorical</span></span>
+<span class="r-in"><span class="co">// aesthetics or the group aesthetic) and for each facet.</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas3"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"displ"</span>, <span class="st">"hwy"</span>, <span class="op">{</span><span class="st">"color"</span>: <span class="st">"class"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">{</span><span class="st">"se"</span>:false, <span class="st">"method"</span>:<span class="st">"lm"</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mpg)), aes("displ", "hwy", {"color": "class"}));cxp.geom_point();cxp.geom_smooth({"se":false, "method":"lm"});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"displ"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"drv"</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mpg)), aes("displ", "hwy"));cxp.geom_point();cxp.geom_smooth();cxp.facet_wrap("drv");</script></span>
 </span></code></pre>
         </div>
       </div>

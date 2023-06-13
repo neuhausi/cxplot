@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
   <!-- data -->
-  <script type="text/javascript" src="/assets/data/dsmall.js"></script>
   <script type="text/javascript" src="/assets/data/mpg.js"></script>
+  <script type="text/javascript" src="/assets/data/dsmall.js"></script>
   <!-- jquery -->
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -289,22 +289,32 @@
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"notch": true});</script></span>
 <span class="r-in"></span>
 <span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"fill"</span>: <span class="st">"white"</span>, <span class="st">"color"</span>: "#<span class="fl">3</span><span class="fl">3</span><span class="fl">6</span><span class="fl">6</span>FF"<span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"fill": "white", "color": "#3366FF"});</script></span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"varwidth"</span>: true<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas4" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas4", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"varwidth": true});</script></span>
 <span class="r-in"></span>
 <span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas5"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">{</span><span class="st">"fill"</span>: <span class="st">"white"</span>, <span class="st">"color"</span>: "#<span class="fl">3</span><span class="fl">3</span><span class="fl">6</span><span class="fl">6</span>FF"<span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"fill": "white", "color": "#3366FF"});</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// By default, outlier points match the colour of the box. Use</span></span>
+<span class="r-in"><span class="co">// outlier.colour to override</span></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">{</span>"outlier<span class="fl">.</span>colour" : <span class="st">"red"</span>, "outlier<span class="fl">.</span>shape" : <span class="fl">1</span><span class="op">}</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot({"outlier.colour" : "red", "outlier.shape" : 1});</script></span>
+<span class="r-in"></span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas7"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">{</span><span class="st">"width"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span>;</span>
-<span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot();cxp.geom_jitter({"width": 0.2});</script></span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas7" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas7", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot();cxp.geom_jitter({"width": 0.2});</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Boxplots are automatically dodged when any aesthetic is a factor</span></span>
-<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas8"</span>, mpg, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"class"</span>, <span class="st">"hwy"</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"color"</span>: <span class="st">"drv"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot(aes({"color": "drv"}));</script></span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas8" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas8", JSON.parse(JSON.stringify(mpg)), aes("class", "hwy"));cxp.geom_boxplot(aes({"color": "drv"}));</script></span>
 <span class="r-in"></span>
-<span class="r-in">var <span class="va">cxp</span> = cxplot<span class="op">(</span><span class="st">"canvas7"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="st">"price"</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas9"</span>, dsmall, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"carat"</span>, <span class="st">"price"</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"group"</span>: <span class="op">{</span><span class="st">"cut_width"</span>: <span class="op">{</span><span class="st">"carat"</span>: <span class="fl">0</span><span class="fl">.</span><span class="fl">2</span><span class="fl">5</span><span class="op">}</span><span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
-<span class="r-in"><div class="cnv-cont"><canvas id="canvas7" width="672" height="480"></canvas></div><script>var cxp = cxplot("canvas7", JSON.parse(JSON.stringify(dsmall)), aes("carat", "price"));cxp.geom_boxplot(aes({"group": {"cut_width": {"carat": 0.25}}}));</script></span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas9" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas9", JSON.parse(JSON.stringify(dsmall)), aes("carat", "price"));cxp.geom_boxplot(aes({"group": {"cut_width": {"carat": 0.25}}}));</script></span>
 </span></code></pre>
         </div>
       </div>

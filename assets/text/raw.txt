@@ -32,10 +32,10 @@ geom_vline(
   show.legend = NA
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_().
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -44,16 +44,16 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-xintercept, yintercept, slope, intercept	
+xintercept, yintercept, slope, intercept
 Parameters that control the position of the line. If these are set, data, mapping and show.legend are overridden.
 
 Details
@@ -89,7 +89,7 @@ cxp.geom_point();
 cxp.geom_hline({"yintercept": 20})
 
 // Calculate slope and intercept of line of best fit using your own function
-// (Intercept)          wt 
+// (Intercept)          wt
 //   37.285126   -5.344472
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point();
@@ -100,6 +100,13 @@ var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];
 var cxp = new cxplot("canvas", mtcars, aes({"x": "mpg", "y": "wt"}));
 cxp.geom_point();
 cxp.geom_hline(aes({"yintercept": "wt"}, mean_wt));
+cxp.facet_wrap("cyl");
+
+// You can also control other aesthetics
+var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];
+var cxp = new cxplot("canvas", mtcars, aes({"x": "mpg", "y": "wt"}));
+cxp.geom_point();
+cxp.geom_hline(aes({"yintercept": "wt", "color": "wt"}, mean_wt));
 cxp.facet_wrap("cyl");
 
 --
@@ -145,10 +152,10 @@ stat_count(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -157,28 +164,28 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-width	
+width
 Bar width. By default, set to 90% of the resolution of the data.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Override the default connection between geom_bar() and stat_count().
 
 Details
@@ -315,10 +322,10 @@ stat_bin_2d(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -327,31 +334,31 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_bin_2d() and stat_bin_2d().
 
-bins	
+bins
 numeric vector giving number of bins in both vertical and horizontal directions. Set to 30 by default.
 
-binwidth	
+binwidth
 Numeric vector giving bin width in both vertical and horizontal directions. Overrides bins if both set.
 
-drop	
+drop
 if TRUE removes all cells with 0 counts.
 
 Aesthetics
@@ -385,20 +392,20 @@ stat_binhex() for hexagonal binning
 
 Examples
 
-var cxp = cxplot("canvas", dsmall, aes("x", "y"));
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
 cxp.xlim(4, 10);
 cxp.ylim(4, 10);
 cxp.geom_bin_2d({"bins": 30});
 
 // You can control the size of the bins by specifying the number of
 // bins in each direction:
-var cxp = cxplot("canvas", dsmall, aes("x", "y"));
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
 cxp.xlim(4, 10);
 cxp.ylim(4, 10);
 cxp.geom_bin_2d({"bins": 10});
 
 // Or by specifying the width of the bins
-var cxp = cxplot("canvas", dsmall, aes("x", "y"));
+var cxp = new cxplot("canvas", dsmall, aes("x", "y"));
 cxp.xlim(4, 10);
 cxp.ylim(4, 10);
 cxp.geom_bin_2d({"binwidth": [0.1, 0.1]});
@@ -444,10 +451,10 @@ stat_boxplot(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -456,44 +463,44 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-outlier.colour, outlier.color, outlier.fill, outlier.shape, outlier.size, outlier.stroke, outlier.alpha	
+outlier.colour, outlier.color, outlier.fill, outlier.shape, outlier.size, outlier.stroke, outlier.alpha
 Default aesthetics for outliers. Set to NULL to inherit from the aesthetics used for the box.
 
 In the unlikely event you specify both US and UK spellings of colour, the US spelling will take precedence.
 
 Sometimes it can be useful to hide the outliers, for example when overlaying the raw data points on top of the boxplot. Hiding the outliers can be achieved by setting outlier.shape = NA. Importantly, this does not remove the outliers, it only hides them, so the range calculated for the y-axis will be the same with outliers shown and outliers hidden.
 
-notch	
+notch
 If FALSE (default) make a standard box plot. If TRUE, make a notched box plot. Notches are used to compare groups; if the notches of two boxes do not overlap, this suggests that the medians are significantly different.
 
-notchwidth	
+notchwidth
 For a notched box plot, width of the notch relative to the body (defaults to notchwidth = 0.5).
 
-varwidth	
+varwidth
 If FALSE (default) make a standard box plot. If TRUE, boxes are drawn with widths proportional to the square-roots of the number of observations in the groups (possibly weighted, using the weight aesthetic).
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_boxplot() and stat_boxplot().
 
-coef	
+coef
 Length of the whiskers as multiple of IQR. Defaults to 1.5.
 
 Orientation
@@ -585,7 +592,15 @@ var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
 cxp.geom_boxplot({"notch": true});
 
 var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot({"varwidth": true});
+
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
 cxp.geom_boxplot({"fill": "white", "color": "#3366FF"});
+
+// By default, outlier points match the colour of the box. Use
+// outlier.colour to override
+var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
+cxp.geom_boxplot({"outlier.colour" : "red", "outlier.shape" : 1});
 
 var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
 cxp.geom_boxplot();
@@ -595,7 +610,7 @@ cxp.geom_jitter({"width": 0.2});
 var cxp = new cxplot("canvas", mpg, aes("class", "hwy"));
 cxp.geom_boxplot(aes({"color": "drv"}));
 
-var cxp = cxplot("canvas", dsmall, aes("carat", "price"));
+var cxp = new cxplot("canvas", dsmall, aes("carat", "price"));
 cxp.geom_boxplot(aes({"group": {"cut_width": {"carat": 0.25}}}));
 
 --
@@ -663,10 +678,10 @@ stat_contour_filled(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -675,43 +690,43 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-bins	
+bins
 Number of contour bins. Overridden by binwidth.
 
-binwidth	
+binwidth
 The width of the contour bins. Overridden by breaks.
 
-breaks	
+breaks
 Numeric vector to set the contour breaks. Overrides binwidth and bins. By default, this is a vector of length ten with pretty() breaks.
 
-lineend	
+lineend
 Line end style (round, butt, square).
 
-linejoin	
+linejoin
 Line join style (round, mitre, bevel).
 
-linemitre	
+linemitre
 Line mitre limit (number greater than 1).
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom	
+geom
 The geometric object to use display the data
 
 Aesthetics
@@ -872,10 +887,10 @@ stat_density(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -884,43 +899,43 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-outline.type	
+outline.type
 Type of the outline of the area; "both" draws both the upper and lower lines, "upper"/"lower" draws the respective lines only. "full" draws a closed polygon around the area.
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_density() and stat_density().
 
-bw	
+bw
 The smoothing bandwidth to be used. If numeric, the standard deviation of the smoothing kernel. If character, a rule to choose the bandwidth, as listed in stats::bw.nrd().
 
-adjust	
+adjust
 A multiplicate bandwidth adjustment. This makes it possible to adjust the bandwidth while still using the a bandwidth estimator. For example, adjust = 1/2 means use half of the default bandwidth.
 
-kernel	
+kernel
 Kernel. See list of available kernels in density().
 
-n	
+n
 number of equally spaced points at which the density is to be estimated, should be a power of two, see density() for details
 
-trim	
+trim
 If FALSE, the default, each density is computed on the full range of the data. If TRUE, each density is computed over the range of that group: this typically means the estimated x values will not line-up, and hence you won't be able to stack density values. This parameter only matters if you are displaying multiple densities in one plot or if you are manually adjusting the scale limits.
 
 Orientation
@@ -1065,10 +1080,10 @@ stat_density_2d_filled(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1077,10 +1092,10 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 \Arguments passed on to geom_contour
 
 bins
@@ -1092,40 +1107,40 @@ The width of the contour bins. Overridden by breaks.
 breaks
 Numeric vector to set the contour breaks. Overrides binwidth and bins. By default, this is a vector of length ten with pretty() breaks.
 
-contour_var	
+contour_var
 Character string identifying the variable to contour by. Can be one of "density", "ndensity", or "count". See the section on computed variables for details.
 
-lineend	
+lineend
 Line end style (round, butt, square).
 
-linejoin	
+linejoin
 Line join style (round, mitre, bevel).
 
-linemitre	
+linemitre
 Line mitre limit (number greater than 1).
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_density_2d() and stat_density_2d().
 
-contour	
+contour
 If TRUE, contour the results of the 2d density estimation.
 
-n	
+n
 Number of grid points in each direction.
 
-h	
+h
 Bandwidth (vector of length two). If NULL, estimated using MASS::bandwidth.nrd().
 
-adjust	
+adjust
 A multiplicative bandwidth adjustment to be used if 'h' is 'NULL'. This makes it possible to adjust the bandwidth while still using the a bandwidth estimator. For example, adjust = 1/2 means use half of the default bandwidth.
 
 Aesthetics
@@ -1263,10 +1278,10 @@ geom_dotplot(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1275,55 +1290,55 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-binwidth	
+binwidth
 When method is "dotdensity", this specifies maximum bin width. When method is "histodot", this specifies bin width. Defaults to 1/30 of the range of the data
 
-binaxis	
+binaxis
 The axis to bin along, "x" (default) or "y"
 
-method	
+method
 "dotdensity" (default) for dot-density binning, or "histodot" for fixed bin widths (like stat_bin)
 
-binpositions	
+binpositions
 When method is "dotdensity", "bygroup" (default) determines positions of the bins for each group separately. "all" determines positions of the bins with all the data taken together; this is used for aligning dot stacks across multiple groups.
 
-stackdir	
+stackdir
 which direction to stack the dots. "up" (default), "down", "center", "centerwhole" (centered, but with dots aligned)
 
-stackratio	
+stackratio
 how close to stack the dots. Default is 1, where dots just touch. Use smaller values for closer, overlapping dots.
 
-dotsize	
+dotsize
 The diameter of the dots relative to binwidth, default 1.
 
-stackgroups	
+stackgroups
 should dots be stacked across groups? This has the effect that position = "stack" should have, but can't (because this geom has some odd properties).
 
-origin	
+origin
 When method is "histodot", origin of first bin
 
-right	
+right
 When method is "histodot", should intervals be closed on the right (a, b], or not [a, b)
 
-width	
+width
 When binaxis is "y", the spacing of the dot stacks for dodging.
 
-drop	
+drop
 If TRUE, remove all bins with zero counts
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
 Details
@@ -1396,6 +1411,10 @@ cxp.geom_dotplot({"binwidth" : 1.5, "stackdir" : "centerwhole"});
 var cxp = new cxplot("canvas", mtcars, aes({"x" : "mpg"}));
 cxp.geom_dotplot({"binwidth" : 1.5, "stackratio" : 0.7});
 
+// Change dot fill colour, stroke width
+var cxp = new cxplot("canvas", mtcars, aes({"x" : "mpg"}));
+cxp.geom_dotplot({"binwidth" : 1.5, "fill" : "white", "stroke" : 2});
+
 // Examples with stacking along y axis instead of x
 var cxp = new cxplot("canvas", mtcars, aes({"x": {"factor": "cyl"}, "y" : "mpg"}));
 cxp.geom_dotplot({"binaxis" : "y", "stackdir" : "center"});
@@ -1443,10 +1462,10 @@ stat_bin_hex(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1455,28 +1474,28 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Override the default connection between geom_hex() and stat_binhex().
 
-bins	
+bins
 numeric vector giving number of bins in both vertical and horizontal directions. Set to 30 by default.
 
-binwidth	
+binwidth
 Numeric vector giving bin width in both vertical and horizontal directions. Overrides bins if both set.
 
 Aesthetics
@@ -1520,17 +1539,17 @@ Examples
 
 // You can control the size of the bins by specifying the number of
 // bins in each direction:
-var cxp = cxplot("canvas", dsmall, aes("carat", "price"));
+var cxp = new cxplot("canvas", dsmall, aes("carat", "price"));
 cxp.geom_hex({"bins":  10});
 
-var cxp = cxplot("canvas", dsmall, aes("carat", "price"));
+var cxp = new cxplot("canvas", dsmall, aes("carat", "price"));
 cxp.geom_hex({"bins":  30});
 
 // Or by specifying the width of the bins
-var cxp = cxplot("canvas", dsmall, aes("carat", "price"));
+var cxp = new cxplot("canvas", dsmall, aes("carat", "price"));
 cxp.geom_hex({"binwidth":  [1, 1000]});
 
-var cxp = cxplot("canvas", dsmall, aes("carat", "price"));
+var cxp = new cxplot("canvas", dsmall, aes("carat", "price"));
 cxp.geom_hex({"binwidth":  [0.1, 500]});
 
 --
@@ -1583,10 +1602,10 @@ stat_bin(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1595,45 +1614,45 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-binwidth	
+binwidth
 The width of the bins. Can be specified as a numeric value or as a function that calculates width from unscaled x. Here, "unscaled x" refers to the original x values in the data, before application of any scale transformation. When specifying a function along with a grouping structure, the function will be called once per group. The default is to use the number of bins in bins, covering the range of the data. You should always override this value, exploring multiple widths to find the best to illustrate the stories in your data.
 
 The bin width of a date variable is the number of days in each time; the bin width of a time variable is the number of seconds.
 
-bins	
+bins
 Number of bins. Overridden by binwidth. Defaults to 30.
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_histogram()/geom_freqpoly() and stat_bin().
 
-center, boundary	
+center, boundary
 bin position specifiers. Only one, center or boundary, may be specified for a single plot. center specifies the center of one of the bins. boundary specifies the boundary between two bins. Note that if either is above or below the range of the data, things will be shifted by the appropriate integer multiple of binwidth. For example, to center on integers use binwidth = 1 and center = 0, even if 0 is outside the range of the data. Alternatively, this same alignment can be specified with binwidth = 1 and boundary = 0.5, even if 0.5 is outside the range of the data.
 
-breaks	
+breaks
 Alternatively, you can supply a numeric vector giving the bin boundaries. Overrides binwidth, bins, center, and boundary.
 
-closed	
+closed
 One of "right" or "left" indicating whether right or left edges of bins are included in the bin.
 
-pad	
+pad
 If TRUE, adds empty bins at either end of x. This ensures frequency polygons touch 0. Defaults to FALSE.
 
 Details
@@ -1711,10 +1730,10 @@ geom_jitter(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1723,32 +1742,32 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-width	
+width
 Amount of vertical and horizontal jitter. The jitter is added in both positive and negative directions, so the total spread is twice the value specified here.
 
 If omitted, defaults to 40% of the resolution of the data: this means the jitter values will occupy 80% of the implied bins. Categorical data is aligned on the integers, so a width or height of 0.5 will spread the data so it's not possible to see the distinction between the categories.
 
-height	
+height
 Amount of vertical and horizontal jitter. The jitter is added in both positive and negative directions, so the total spread is twice the value specified here.
 
 If omitted, defaults to 40% of the resolution of the data: this means the jitter values will occupy 80% of the implied bins. Categorical data is aligned on the integers, so a width or height of 0.5 will spread the data so it's not possible to see the distinction between the categories.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
 Aesthetics
@@ -1836,10 +1855,10 @@ geom_step(
   ...
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1848,40 +1867,40 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-lineend	
+lineend
 Line end style (round, butt, square).
 
-linejoin	
+linejoin
 Line join style (round, mitre, bevel).
 
-linemitre	
+linemitre
 Line mitre limit (number greater than 1).
 
-arrow	
+arrow
 Arrow specification, as created by grid::arrow().
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-direction	
+direction
 direction of stairs: 'vh' for vertical then horizontal, 'hv' for horizontal then vertical, or 'mid' for step half-way between adjacent x-values.
 
 Details
@@ -1923,21 +1942,35 @@ geom_polygon(): Filled paths (polygons); geom_segment(): Line segments
 
 Examples
 
-var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
-var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
-cxp.geom_point();
-cxp.geom_line();
-
-var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
-var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
-cxp.geom_point();
-cxp.geom_line(aes({"linetype" : "supp"}));
-
+// geom_line() is suitable for time series
 var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
 cxp.geom_line();
 
-var cxp = new cxplot("canvas", ecosmall, aes("Date", "unemploy"));
+var cxp = new cxplot("canvas", economics_long, aes("date", "value01", {"color": "vari"}));
+cxp.geom_line();
+
+// geom_step() is useful when you want to highlight exactly when
+// the y value changes
+//recent <- economics[economics$date > as.Date("2013-01-01"), ]
+var cxp = new cxplot("canvas", recent, aes("Date", "unemploy"));
+cxp.geom_line();
+
+var cxp = new cxplot("canvas", recent, aes("Date", "unemploy"));
 cxp.geom_step();
+
+// Changing parameters
+var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
+cxp.geom_line({"color": "red"});
+
+var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
+var cxp = new cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
+cxp.geom_point();
+cxp.geom_line();
+
+var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
+var cxp = new cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
+cxp.geom_point();
+cxp.geom_line(aes({"linetype" : "supp"}));
 
 --
 geom_point.html
@@ -1956,10 +1989,10 @@ geom_point(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -1968,22 +2001,22 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
 Overplotting
@@ -2031,6 +2064,10 @@ cxp.geom_point(aes({"shape": {"factor": "cyl"}}));
 // A "bubblechart":
 var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
 cxp.geom_point(aes({"size": "qsec"}));
+
+// Set aesthetics to fixed value
+var cxp = new cxplot("canvas", mtcars, aes("wt", "mpg"));
+cxp.geom_point({"color": "red", "size": 3});
 
 --
 geom_qq.html
@@ -2094,10 +2131,10 @@ stat_qq(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2106,34 +2143,34 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-geom	
+geom
 The geometric object to use display the data
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-distribution	
+distribution
 Distribution function to use, if x not specified
 
-dparams	
+dparams
 Additional parameters passed on to distribution function.
 
-line.p	
+line.p
 Vector of quantiles to use when fitting the Q-Q line, defaults defaults to c(.25, .75).
 
-fullrange	
+fullrange
 Should the q-q line span the full range of the plot, or just the data
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
 Aesthetics
@@ -2224,10 +2261,10 @@ stat_quantile(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2236,43 +2273,43 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-lineend	
+lineend
 Line end style (round, butt, square).
 
-linejoin	
+linejoin
 Line join style (round, mitre, bevel).
 
-linemitre	
+linemitre
 Line mitre limit (number greater than 1).
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_quantile() and stat_quantile().
 
-quantiles	
+quantiles
 conditional quantiles of y to calculate and display
 
-formula	
+formula
 formula relating y variables to x variables
 
-method	
+method
 Quantile regression method to use. Available options are "rq" (for quantreg::rq()) and "rqss" (for quantreg::rqss()).
 
-method.args	
+method.args
 List of additional arguments passed on to the modelling function defined by method.
 
 Aesthetics
@@ -2440,10 +2477,10 @@ geom_rug(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2452,31 +2489,31 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-outside	
+outside
 logical that controls whether to move the rug tassels outside of the plot area. Default is off (FALSE). You will also need to use coord_cartesian(clip = "off"). When set to TRUE, also consider changing the sides argument to "tr". See examples.
 
-sides	
+sides
 A string that controls which sides of the plot the rugs appear on. It can be set to a string containing any of "trbl", for top, right, bottom, and left.
 
-length	
+length
 A grid::unit() object that sets the length of the rug lines. Use scale expansion to avoid overplotting of data.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
 Details
@@ -2561,10 +2598,10 @@ stat_smooth(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2573,53 +2610,53 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-method	
+method
 Smoothing method (function) to use, accepts either NULL or a character vector, e.g. "lm", "glm", "gam", "loess" or a function, e.g. MASS::rlm or mgcv::gam, stats::lm, or stats::loess. "auto" is also accepted for backwards compatibility. It is equivalent to NULL.
 
 For method = NULL the smoothing method is chosen based on the size of the largest group (across all panels). stats::loess() is used for less than 1,000 observations; otherwise mgcv::gam() is used with formula = y ~ s(x, bs = "cs") with method = "REML". Somewhat anecdotally, loess gives a better appearance, but is 𝑂(𝑁2) in memory, so does not work for larger datasets.
 
 If you have fewer than 1,000 observations but want to use the same gam() model that method = NULL would use, then set method = "gam", formula = y ~ s(x, bs = "cs").
 
-formula	
+formula
 Formula to use in smoothing function, eg. y ~ x, y ~ poly(x, 2), y ~ log(x). NULL by default, in which case method = NULL implies formula = y ~ x when there are fewer than 1,000 observations and formula = y ~ s(x, bs = "cs") otherwise.
 
-se	
+se
 Display confidence interval around smooth? (TRUE by default, see level to control.)
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_smooth() and stat_smooth().
 
-n	
+n
 Number of points at which to evaluate smoother.
 
-span	
+span
 Controls the amount of smoothing for the default loess smoother. Smaller numbers produce wigglier lines, larger numbers produce smoother lines. Only used with loess, i.e. when method = "loess", or when method = NULL (the default) and there are fewer than 1,000 observations.
 
-fullrange	
+fullrange
 Should the fit span the full range of the plot, or just the data?
 
-level	
+level
 Level of confidence interval to use (0.95 by default).
 
-method.args	
+method.args
 List of additional arguments passed on to the modelling function defined by method.
 
 Details
@@ -2679,6 +2716,22 @@ var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
 cxp.geom_point();
 cxp.geom_smooth();
 
+// Instead of a loess smooth, you can use any other modelling function
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
+cxp.geom_point();
+cxp.geom_smooth({"se":false, "method":"lm"});
+
+// Smooths are automatically fit to each group (defined by categorical
+// aesthetics or the group aesthetic) and for each facet.
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy", {"color": "class"}));
+cxp.geom_point();
+cxp.geom_smooth({"se":false, "method":"lm"});
+
+var cxp = new cxplot("canvas", mpg, aes("displ", "hwy"));
+cxp.geom_point();
+cxp.geom_smooth();
+cxp.facet_wrap("drv");
+
 --
 geom_text.html
 Text
@@ -2717,10 +2770,10 @@ geom_text(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2729,40 +2782,40 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function. Cannot be jointy specified with nudge_x or nudge_y.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-parse	
+parse
 If TRUE, the labels will be parsed into expressions and displayed as described in ?plotmath.
 
-nudge_x, nudge_y	
+nudge_x, nudge_y
 Horizontal and vertical adjustment to nudge labels by. Useful for offsetting text from points, particularly on discrete scales. Cannot be jointly specified with position.
 
-label.padding	
+label.padding
 Amount of padding around label. Defaults to 0.25 lines.
 
-label.r	
+label.r
 Radius of rounded corners. Defaults to 0.15 lines.
 
-label.size	
+label.size
 Size of label border, in mm.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-check_overlap	
+check_overlap
 If TRUE, text that overlaps previous text in the same layer will not be plotted. check_overlap happens at draw time and in the order of the data. Therefore data should be arranged by the label column before calling geom_text(). Note that this argument is not supported by geom_label().
 
 Details
@@ -2811,8 +2864,40 @@ You can modify text alignment with the vjust and hjust aesthetics. These can eit
 
 Examples
 
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_text();
+
+// Labels with background
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_label();
+
+// Change size of the label
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_text({"size": 6});
+
+// Set aesthetics to fixed value
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_point();
+cxp.geom_text({"hjust": 0});
+
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_point();
+cxp.geom_text({"vjust": 0});
+
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_point();
+cxp.geom_text({"angle": 45});
+
+// Add aesthetic mappings
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_text(aes({"color": {"factor": "cyl"}}));
+
+var cxp = new cxplot("canvas", mtcars, aes({"x": "wt", "y": "mpg", "label": "rownames(mtcars)"}));
+cxp.geom_label(aes({"fill": {"factor": "cyl"}, "color": "white", "fontface": "bold"}));
+
+
 var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
-var cxp = cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
+var cxp = new cxplot("canvas", df, aes("dose", "len", {"group": "supp"}));
 cxp.geom_point();
 cxp.geom_line();
 cxp.geom_text(aes({"label": "len", "vjust": -0.5}));
@@ -2861,10 +2946,10 @@ geom_tile(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2873,31 +2958,31 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-stat	
+stat
 The statistical transformation to use on the data for this layer, as a string.
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-hjust, vjust	
+hjust, vjust
 horizontal and vertical justification of the grob. Each justification value should be a number between 0 and 1. Defaults to 0.5 for both, centering each pixel over its data location.
 
-interpolate	
+interpolate
 If TRUE interpolate linearly, if FALSE (the default) don't interpolate.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-linejoin	
+linejoin
 Line join style (round, mitre, bevel).
 
 Aesthetics
@@ -2968,10 +3053,10 @@ stat_ydensity(
   inherit.aes = TRUE
 )
 Arguments
-mapping	
+mapping
 Set of aesthetic mappings created by aes() or aes_(). If specified and inherit.aes = TRUE (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping.
 
-data	
+data
 The data to be displayed in this layer. There are three options:
 
 If NULL, the default, the data is inherited from the plot data as specified in the call to cxplot().
@@ -2980,43 +3065,43 @@ A data.frame, or other object, will override the plot data. All objects will be 
 
 A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).
 
-position	
+position
 Position adjustment, either as a string, or the result of a call to a position adjustment function.
 
-...	
+...
 Other arguments passed on to layer(). These are often aesthetics, used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They may also be parameters to the paired geom/stat.
 
-draw_quantiles	
+draw_quantiles
 If not(NULL) (default), draw horizontal lines at the given quantiles of the density estimate.
 
-trim	
+trim
 If TRUE (default), trim the tails of the violins to the range of the data. If FALSE, don't trim the tails.
 
-scale	
+scale
 if "area" (default), all violins have the same area (before trimming the tails). If "count", areas are scaled proportionally to the number of observations. If "width", all violins have the same maximum width.
 
-na.rm	
+na.rm
 If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed.
 
-orientation	
+orientation
 The orientation of the layer. The default (NA) automatically determines the orientation from the aesthetic mapping. In the rare event that this fails it can be given explicitly by setting orientation to either "x" or "y". See the Orientation section for more detail.
 
-show.legend	
+show.legend
 logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display.
 
-inherit.aes	
+inherit.aes
 If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().
 
-geom, stat	
+geom, stat
 Use to override the default connection between geom_violin() and stat_ydensity().
 
-bw	
+bw
 The smoothing bandwidth to be used. If numeric, the standard deviation of the smoothing kernel. If character, a rule to choose the bandwidth, as listed in stats::bw.nrd().
 
-adjust	
+adjust
 A multiplicate bandwidth adjustment. This makes it possible to adjust the bandwidth while still using the a bandwidth estimator. For example, adjust = 1/2 means use half of the default bandwidth.
 
-kernel	
+kernel
 Kernel. See list of available kernels in density().
 
 Orientation

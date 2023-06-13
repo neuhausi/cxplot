@@ -200,7 +200,7 @@
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas3" width="672" height="480"></canvas></div><script>var cxp = new cxplot("canvas3", JSON.parse(JSON.stringify(mtcars)), aes("wt", "mpg"));cxp.geom_point();cxp.geom_hline({"yintercept": 20})</script></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">// Calculate slope and intercept of line of best fit using your own function</span></span>
-<span class="r-in"><span class="co">// (Intercept)          wt </span></span>
+<span class="r-in"><span class="co">// (Intercept)          wt</span></span>
 <span class="r-in"><span class="co">//   37.285126   -5.344472</span></span>
 <span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas4"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="st">"wt"</span>, <span class="st">"mpg"</span><span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
@@ -214,6 +214,14 @@
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"yintercept"</span>: <span class="st">"wt"</span><span class="op">}</span>, mean_wt<span class="op">)</span><span class="op">)</span>;</span>
 <span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cyl"</span><span class="op">)</span>;</span>
 <span class="r-in"><div class="cnv-cont"><canvas id="canvas5" width="672" height="480"></canvas></div><script>var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];var cxp = new cxplot("canvas5", JSON.parse(JSON.stringify(mtcars)), aes({"x": "mpg", "y": "wt"}));cxp.geom_point();cxp.geom_hline(aes({"yintercept": "wt"}, mean_wt));cxp.facet_wrap("cyl");</script></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">// You can also control other aesthetics</span></span>
+<span class="r-in">var mean_wt = <span class="op">[</span><span class="op">[</span><span class="st">"cyl"</span>, <span class="st">"wt"</span><span class="op">]</span>, <span class="op">[</span><span class="fl">4</span>, <span class="fl">2</span><span class="fl">.</span><span class="fl">2</span><span class="fl">8</span><span class="op">]</span>, <span class="op">[</span><span class="fl">6</span>, <span class="fl">3</span><span class="fl">.</span><span class="fl">1</span><span class="fl">1</span><span class="op">]</span>, <span class="op">[</span><span class="fl">8</span>, <span class="fl">4</span><span class="op">]</span><span class="op">]</span>;</span>
+<span class="r-in">var <span class="va">cxp</span> = new cxplot<span class="op">(</span><span class="st">"canvas6"</span>, mtcars, <span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"x"</span>: <span class="st">"mpg"</span>, <span class="st">"y"</span>: <span class="st">"wt"</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span><span class="fu"><a href="./geom_hline.html">geom_hline</a></span><span class="op">(</span><span class="fu"><a href="./aes.html">aes</a></span><span class="op">(</span><span class="op">{</span><span class="st">"yintercept"</span>: <span class="st">"wt"</span>, <span class="st">"color"</span>: <span class="st">"wt"</span><span class="op">}</span>, mean_wt<span class="op">)</span><span class="op">)</span>;</span>
+<span class="r-in"><span class="va">cxp</span><span class="fl">.</span>facet_wrap<span class="op">(</span><span class="st">"cyl"</span><span class="op">)</span>;</span>
+<span class="r-in"><div class="cnv-cont"><canvas id="canvas6" width="672" height="480"></canvas></div><script>var mean_wt = [["cyl", "wt"], [4, 2.28], [6, 3.11], [8, 4]];var cxp = new cxplot("canvas6", JSON.parse(JSON.stringify(mtcars)), aes({"x": "mpg", "y": "wt"}));cxp.geom_point();cxp.geom_hline(aes({"yintercept": "wt", "color": "wt"}, mean_wt));cxp.facet_wrap("cyl");</script></span>
 </span></code></pre>
         </div>
       </div>

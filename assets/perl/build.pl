@@ -114,6 +114,7 @@ sub copy_cx {
 
   print "\nCopying files ...\n";
   `cp ../../../canvas/js/canvasXpress.min.js ../js/canvasXpress.min.js`;
+  #`cp ../../../canvas/js/canvasXpress.debug.js ../js/canvasXpress.min.js`;
   `cp ../../../canvas/css/canvasXpress.css ../css/canvasXpress.css`;
 }
 
