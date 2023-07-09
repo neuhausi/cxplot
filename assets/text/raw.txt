@@ -1516,8 +1516,8 @@ cxp.geom_errorbar({"ymin": [1.8, 11.1, 18.7], "ymax": [19.4, 28.4, 33.5]});
 // Horizontal error bars
 
 var cxp = new cxplot("canvas", error, aes({"x": "len", "y": {"factor" : "dose"}}));
-cxp.geom_errorbarh({"xmin": [1.8, 11.1, 18.7], "xmax": [19.4, 28.4, 33.5]});
 cxp.geom_point({"color":"red"});
+cxp.geom_errorbar({"xmin": [1.8, 11.1, 18.7], "xmax": [19.4, 28.4, 33.5]});
 
 --
 geom_hex.html
