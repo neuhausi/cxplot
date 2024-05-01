@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
+  <!-- data -->
+  <script type="text/javascript" src="/assets/data/dsmall.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#toc" style="padding-top: 60px;">
+
+  <div class="row">
+    <canvas id="canvas" width="672" height="480"></canvas>
+  </div>
+  <script>
+    //var cxp = new cxplot("canvas", dsmall, aes("price", {"after_stat": "density", "color": "cut"}));
+    var cxp = new cxplot("canvas", dsmall, aes("price", { "after_stat": "density", "color": "cut" }));
+    cxp.geom_histogram({ "binwidth": 500 });
+    cxp.scale_fill_manual({
+      "cut": {
+        "Fair": "black"
+      }
+    });
+    cxp.theme_light();
+  </script>
+
+</body>
+
+</html>
