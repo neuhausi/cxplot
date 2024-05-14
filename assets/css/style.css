@@ -1,0 +1,161 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0; 
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+    margin: auto;
+    padding: auto;
+}
+.flex{
+    display: flex;
+}
+.left{
+    float: left;
+}
+.justify-content{
+    justify-content: center;
+}
+input, textarea{
+    width: 100%;
+    display: inline-block;
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+label{
+    color: #888888;
+    font-size: 15px;
+}
+.text-center{
+    text-align: center;
+    color: #ccc;
+}
+/* Header */
+
+.container{
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(243, 235, 243);
+    max-width: 500px;
+    line-height: 2;
+}
+.title img{
+    width: 100px !important;  
+    height: 100px !important;
+}
+.title h2{
+    color: rgb(51, 49, 45);
+    font-size: 30px;
+    padding: 35px 0;
+    line-height: 1.2;
+}
+.login-create-account{
+    padding: 0 25px;
+    font-size: 20px;
+    color: rgb(59, 57, 57);
+}
+.login-create-account span{
+    font-size: 18px;
+    margin: 0 3px;
+}
+.login-create-account a{
+    font-size: 22px;
+    color: #888888;
+    font-weight: 800;
+    text-decoration: none;
+}
+.login-create-account a:hover{
+    font-size: 22px;
+    font-weight: 800;
+    color: rgb(101, 116, 116);
+}
+
+
+/* Main */
+
+.main{
+    padding: 0 25px;
+    margin: 5px 0;
+}
+.main-body div{
+    margin-top: 10px;
+}
+.main-body div span{
+    display: none;
+    color: red;
+    font-size: 13px;
+}
+.forgot-password a{
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(86, 86, 235);
+}
+.main-body .login-button-part{
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+}
+.main-body .login-button-part input{
+    cursor: pointer;
+    color: rgb(83, 94, 94);
+    margin: 13px 0 10px 0;
+}
+.main-body .login-button-part input:hover{
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+
+/* contact */
+#contact{
+    display: flex;
+    justify-items: center;
+}
+.contact-container{
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(243, 235, 243);
+    max-width: 850px;
+    line-height: 2;
+}
+.touch-part{
+    max-width: 500px;
+    border-right: 1px solid #af9a9a;
+    padding-right: 30px;
+}
+.contact-main div {
+    display: flex;
+    padding: 13px 20px;
+}
+.contact-main h1{
+    padding: 0 22px;
+}
+.contact-us, .get-in-touch{
+    font-size: 30px;
+    color: rgb(83, 94, 94);
+    font-weight: 700;
+}
+.send-button{
+    cursor: pointer;
+}
+.send-button:hover{
+    cursor: pointer;
+    background-color: #ccc;
+}
+.contact-main div p strong{
+    font-size: 20px;
+    color: rgb(38, 49, 153);
+    font-weight: 900;
+}
+.contact-main div p {
+    color: rgb(110, 119, 196);
+}

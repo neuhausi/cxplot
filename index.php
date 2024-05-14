@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!$_SESSION['userEmail']){
+  header("Location: backend/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +74,9 @@
                 <a href="https://github.com/neuhausi/cxplot" class="external-link">
                   <span class="fab fa-github fa-lg"></span>
                 </a>
+              </li>
+              <li>
+                <a href="backend/logout.php">Logout</a>
               </li>
             </ul>
           </div>
