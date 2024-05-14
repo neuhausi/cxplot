@@ -19,20 +19,4 @@
 		$conn->close();
     }
 
-    if($_SERVER['REQUEST_METHOD'] == 'post') {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $message = $_POST['message'];
-
-        $to = 'Gold2003dev@gmail.com';
-        $subject = "Contact From Submission";
-        $message = "Name: $name\n Email: $email\n Message: $message";
-        $headers = 'From:' .$email;
-
-        if(mail($to, $subject, $message, $headers)) {
-            echo "Message sent successfully!";
-        } else {
-            echo "Failed to send Message. Please try again.";
-        }
-    }
 ?>
