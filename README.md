@@ -61,3 +61,17 @@ of the data. Facets are an alternative to aesthetics for displaying
 additional discrete variables.
 
 Developed by CanvasXpress
+
+### Backend installation
+
+Prerequisites
+
+PHP 7.3.33
+MySQL 5.x or higher
+Composer (for PHP dependencies)
+
+You can install xampp and composer for develop backend.
+
+You can install SQL and create new MySQL database.
+Name of new MySQL database is cxplot.
+Import cxplot.sql to new database in the MySQL.
