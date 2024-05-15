@@ -9,11 +9,11 @@ $(document).ready(function() {
         $('input#password').keydown(function () {
             $('span#password-validate').css("display", "none");
         });
+        
 
         if(userEmail == '') {
             $("span#email-validate").css("display","block");
-        } 
-        if(password == '') {
+        } else if(password == '') {
             $("span#password-validate").css("display","block");
         } else{
             $.ajax({
@@ -31,12 +31,65 @@ $(document).ready(function() {
                         location.href = "../../index.php";
                         localStorage.setItem("myString", dataResult);
                     } else if(dataResult == "Error") {
-                        $("span#password-validate").css("display","block");
+                        $("span#error-validate").css("display","block");
                     }
                 }
             })
         }
     })
+
+    $("#register-button").on('click', function(){
+        var registerName = $("#registerName").val();
+        var registerEmail = $("#registerEmail").val();
+        var registerPassword = $("#registerPassword").val();
+        var confirmRegisterPassword = $("#confirmRegisterPassword").val();
+        
+        $('input#registerName').keydown(function () {
+            $('span#name-validate').css("display", "none");
+        });
+        $('input#registerEmail').keydown(function () {
+            $('span#email-validate').css("display", "none");
+        });
+        $('input#registerPassword').keydown(function () {
+            $('span#password-validate').css("display", "none");
+        });
+        $('input#confirmRegisterPassword').keydown(function () {
+            $('span#confirm-password-validate').css("display", "none");
+        });
+        if(!registerName) {
+            $('span#name-validate').css("display", "block");
+            return;
+        }
+        if(!registerEmail) {
+            $('span#email-validate').css("display", "block");
+            return;
+        }
+        if(!registerPassword) {
+            $('span#password-validate').css("display", "block");
+            return;
+        }
+        if(registerPassword != confirmRegisterPassword){
+            $("span#confirm-password-validate").css("display","block");
+            return;
+        }
+        $.ajax({
+            url: "action.php",
+            type: "post",
+            data: {
+                type: "register",
+                registerName,
+                registerEmail,
+                registerPassword,
+            },
+            success: function(response) {
+                console.log(response);
+                if(response == "SUCCESS") {
+                    location.href = "../../backend/login.php";
+                }
+            }
+        })
+    })
+
     $("#contact-form").submit(function(e) {
         e.preventDefault();
 

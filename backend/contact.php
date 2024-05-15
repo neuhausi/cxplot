@@ -17,25 +17,27 @@
                 <input type="text" name="subject" placeholder="Subject">
                 <textarea name="message" rows="7" cols="50" placeholder="Your message..."></textarea>
                 <input type="submit" value="Send" id="send" class="send-button">
+                <a href="../index.php" class="back text-center" id="cancel">Back</a>
             </form>
         </div>
         <div class="contact-part">
             <div class="contact-main">
                 <h1 class="contact-us">Contact Us</h1>
+                <p>Welcome to our contact page!<br/> We are always here to help and look forward to hearing from you.</p>
                 <div class="address">
-                    <i class=""></i>
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
                     <p><strong>Address: </strong>198 West 21th Street, Suite 721 New York NY 10016</p>
                 </div>
                 <div class="phone">
-                    <i class=""></i>
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>
                     <p><strong>Phone: </strong>+ 1235 2355 98</p>
                 </div>
                 <div class="email">
-                    <i class=""></i>
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
                     <p><strong>E-mail: </strong>info@yoursite.com</p>
                 </div>
                 <div class="website">
-                    <i class=""></i>
+                    <i class="fa fa-globe" aria-hidden="true"></i>
                     <p><strong>Website: </strong>yoursite.com</p>
                 </div>
             </div>

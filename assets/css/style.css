@@ -17,21 +17,25 @@ body {
 .left{
     float: left;
 }
+.p-10{
+    padding: 10px 30px;
+}
 .justify-content{
     justify-content: center;
 }
 input, textarea{
-    width: 100%;
-    display: inline-block;
-    padding: 12px 10px;
-    border: 1px solid #ccc;
-    outline: none;
-    border-radius: 4px;
-    margin: 5px 0;
+    width: 100% !important;
+    display: inline-block !important;
+    padding: 10px !important;
+    border: 1px solid #ccc !important;
+    outline: none !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
 }
 label{
     color: #888888;
     font-size: 15px;
+    margin: 0;
 }
 .text-center{
     text-align: center;
@@ -39,28 +43,51 @@ label{
 }
 /* Header */
 
-.container{
+.login-image img{
+    width: 410px;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.login-image{
+    margin-right: 20px;
+}
+.login-part{
+    padding: 35px;
+}
+.login-container, .container{
+    padding: 15px;
+    margin: auto;
+    margin-top: 130px;
+    background-color: rgb(243, 235, 243);
+    max-width: 900px;
+    line-height: 2;
+    border-radius: 10px;
+}
+.register-container{
     padding: 30px;
     margin: auto;
     margin-top: 100px;
     background-color: rgb(243, 235, 243);
-    max-width: 500px;
+    max-width: 900px;
     line-height: 2;
+    border-radius: 10px;
 }
 .title img{
     width: 100px !important;  
     height: 100px !important;
 }
 .title h2{
-    color: rgb(51, 49, 45);
+    color: rgb(23, 74, 241);
     font-size: 30px;
-    padding: 35px 0;
     line-height: 1.2;
+    padding: 0 40px;
 }
 .login-create-account{
     padding: 0 25px;
-    font-size: 20px;
-    color: rgb(59, 57, 57);
+    font-size: 30px;
+    color: rgb(23, 74, 241);
+    margin: 0;
 }
 .login-create-account span{
     font-size: 18px;
@@ -98,21 +125,57 @@ label{
     font-size: 14px;
     color: rgb(86, 86, 235);
 }
-.main-body .login-button-part{
-    margin-top: 15px;
+.main-body .login-button-part, .register-button-part{
+    margin-top: 30px;
     align-items: center;
     justify-content: center;
 }
 .main-body .login-button-part input{
     cursor: pointer;
-    color: rgb(83, 94, 94);
+    color: rgb(219, 235, 235);
     margin: 13px 0 10px 0;
+    background-color: #314ef0;
 }
 .main-body .login-button-part input:hover{
     cursor: pointer;
     background-color: #ccc;
+    color: rgb(83, 94, 94);;
 }
-
+.main .register-button-part input{
+    cursor: pointer;
+    color: rgb(219, 235, 235);
+    margin: 10px 0 10px 0;
+    background-color: #314ef0;
+}
+.main .register-button-part input:hover{
+    cursor: pointer;
+    background-color: #ccc;
+    color: rgb(83, 94, 94);;
+}
+.main-part1, .main-part2{
+    width: 100%;
+    margin: 0 10px;
+}
+a.cancel, a.back{
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #746d6d;
+}
+a.cancel{
+    margin-top: 13px;
+}
+a.cancel:hover, a.back:hover{
+    background-color: #af9a9a;
+    color: red;
+}
+.register-button-part input, .register-button-part a{
+    margin: 0 10px !important;
+}
 
 /* contact */
 #contact{
@@ -124,20 +187,28 @@ label{
     margin: auto;
     margin-top: 100px;
     background-color: rgb(243, 235, 243);
-    max-width: 850px;
-    line-height: 2;
+    max-width: 900px;
+    line-height: 1.5;
+    border-radius: 10px;
 }
 .touch-part{
     max-width: 500px;
     border-right: 1px solid #af9a9a;
     padding-right: 30px;
 }
+.touch-part h1{
+    color: rgb(86, 86, 235);
+}
+#contact-form input, #contact-form textarea{
+    margin: 5px 0 !important;
+}
 .contact-main div {
     display: flex;
-    padding: 13px 20px;
+    padding: 20px;
 }
 .contact-main h1{
     padding: 0 22px;
+    color: rgb(86, 86, 235);
 }
 .contact-us, .get-in-touch{
     font-size: 30px;
@@ -145,7 +216,9 @@ label{
     font-weight: 700;
 }
 .send-button{
+    background-color: #314ef0;
     cursor: pointer;
+    color: #fff;
 }
 .send-button:hover{
     cursor: pointer;
@@ -159,6 +232,18 @@ label{
 .contact-main div p {
     color: rgb(110, 119, 196);
 }
+.contact-main p{
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(110, 119, 196);
+    padding: 0 13px 0 20px;
+    font-size: 12px;
+}
+.contact-main div i{
+    font-size: 25px;
+    margin: 5px 15px 0 0;
+    color: #2743c4;
+}
+
 
 /* blog */
 .blog-page{
@@ -221,4 +306,37 @@ label{
 #upload-trigger img {
     width: 30px;
     height: 30px;
+}
+
+@media only screen and (max-width: 900px) {
+    .login-container{
+        display: block;
+    }
+    .login-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: fill;
+        border-radius: 10px;
+    }
+}
+@media only screen and (max-width: 890px) {
+    .touch-part{
+        border: none;
+        padding: 0;
+    }
+    .contact-container {
+        max-width: 500px;
+        display: block;
+    }
+    .contact-part{
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 730px) {
+    .main-body {
+        display: block;
+    }
+    .register-button-part{
+        display: block;
+    }
 }
