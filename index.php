@@ -1,9 +1,4 @@
-<?php
-session_start();
-if(!$_SESSION['userEmail']){
-  header("Location: backend/login.php");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
