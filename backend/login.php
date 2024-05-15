@@ -56,7 +56,7 @@
                         <span id="password-validate">Password is required.</span>
                     </div>
                     <div class="forgot-password">
-                        <a href="">Forgot Your Password?</a>
+                        <a href="./forgetPassword.php">Forgot Your Password?</a>
                     </div>
                     <div class="login-button-part text-center">
                         <input type="button" value="Continue with email" id="login-button" class="login-button">

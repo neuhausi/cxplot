@@ -90,8 +90,16 @@ label{
     padding: 30px;
     margin: auto;
     margin-top: 100px;
-    background-color: rgb(243, 235, 243);
     max-width: 1200px;
+    line-height: 2;
+    border-radius: 10px;
+}
+.forget-password-container{
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(243, 235, 243);
+    max-width: 500px;
     line-height: 2;
     border-radius: 10px;
 }
@@ -177,6 +185,21 @@ label{
     cursor: pointer;
     background-color: #ccc;
     color: rgb(83, 94, 94);;
+}
+.forget-button{
+    cursor: pointer;
+    background-color: #314ef0;
+    color: rgb(219, 235, 235);
+    margin-top: 10px;
+}
+.forget-button:hover{
+    cursor: pointer;
+    background-color: #ccc;
+    color: rgb(83, 94, 94);;
+}
+.return-login{
+    font-size: 17px;
+    margin-top: 5px;
 }
 .main-part1, .main-part2{
     width: 100%;
@@ -276,14 +299,16 @@ a.cancel:hover, a.back:hover{
 /* blog */
 .blog-page{
     margin-top: 40px;
+    display: contents;
 }
 .blog-content{
-    max-width: 350px;
+    width: 340px;
     background-color: #f5f5f5;
     margin: 0 20px;
     color: #fff;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 13px;
 }
 .blog-content:hover{
     box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -357,7 +382,7 @@ a.cancel:hover, a.back:hover{
     color: rgb(83, 94, 94);
 }
 .blog-picture{
-    width: 310px;
+    width: 320px;
     object-fit: contain;
     margin-bottom: 10px;
 }

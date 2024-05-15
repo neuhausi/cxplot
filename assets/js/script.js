@@ -103,4 +103,23 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("input#forget-button").on('click', function() {
+        var forgetEmail = $("input#forgetEmail").val();
+        console.log(forgetEmail)
+        $.ajax({
+            url: "action.php",
+            type: "POST",
+            data: {
+                type: "forgetPassword",
+                forgetEmail,
+            },
+            success: function(response) {
+                console.log(response);
+                if(response == 'SUCCESS') {
+                    location.href = "../../index.php";
+                }
+            }
+        })
+    })
 })
