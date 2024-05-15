@@ -5,9 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link href="/assets/css/tidyverse.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+    <header>
+        <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom p-10" role="navigation">
+            <div class="navbar-header">
+                <div class="navbar-brand-container">
+                    <a class="navbar-brand" href="/index.php">cxplot</a>
+                </div>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="./login.php">Login</a>
+                    </li>
+                    <li>
+                        <a href="./register.php">Register</a>
+                    </li>
+                    <li>
+                        <a href="./contact.php">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     <div class="contact-container flex">
         <div class="touch-part">
             <h1 class="get-in-touch">Send us a message</h1>

@@ -1,4 +1,5 @@
 
+@charset "UTF-8";
 *{
     box-sizing: border-box;
     padding: 0; 
@@ -17,8 +18,11 @@ body {
 .left{
     float: left;
 }
+h1{
+    margin: 0 !important;
+}
 .p-10{
-    padding: 10px 30px;
+    padding: 10px 30px !important;
 }
 .justify-content{
     justify-content: center;
@@ -73,6 +77,24 @@ label{
     line-height: 2;
     border-radius: 10px;
 }
+.blog-container{
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(243, 235, 243);
+    max-width: 750px;
+    line-height: 2;
+    border-radius: 10px;
+}
+.blog-first-container{
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: rgb(243, 235, 243);
+    max-width: 1200px;
+    line-height: 2;
+    border-radius: 10px;
+}
 .title img{
     width: 100px !important;  
     height: 100px !important;
@@ -81,6 +103,10 @@ label{
     color: rgb(23, 74, 241);
     font-size: 30px;
     line-height: 1.2;
+    padding: 0 40px;
+}
+.title p.create-account-introduction{
+    color: rgb(131, 157, 243);
     padding: 0 40px;
 }
 .login-create-account{
@@ -210,15 +236,17 @@ a.cancel:hover, a.back:hover{
     padding: 0 22px;
     color: rgb(86, 86, 235);
 }
+
 .contact-us, .get-in-touch{
     font-size: 30px;
     color: rgb(83, 94, 94);
     font-weight: 700;
 }
 .send-button{
-    background-color: #314ef0;
+    background-color: rgb(103, 103, 231);
     cursor: pointer;
     color: #fff;
+    padding: 12px 0 !important;
 }
 .send-button:hover{
     cursor: pointer;
@@ -247,7 +275,7 @@ a.cancel:hover, a.back:hover{
 
 /* blog */
 .blog-page{
-    margin-top: 100px;
+    margin-top: 40px;
 }
 .blog-content{
     max-width: 350px;
@@ -258,7 +286,7 @@ a.cancel:hover, a.back:hover{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .blog-content:hover{
-    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .blog-date{
     color: #bfbf2a;
@@ -273,15 +301,20 @@ a.cancel:hover, a.back:hover{
 .blog-title{
     color: #000;
     font-size: 25px;
-    margin-top: 15px;
 }
 .blog-description{
     color: #999393;
     font-size: 15px;
     margin-top: 15px;
     font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* adjust this value to control the number of rows */
+    -webkit-box-orient: vertical;
 }
 .blog-read-button{
+    color: #222121;
     margin-top: 15px;
     padding: 5px;
     border: 1px solid #ccc;
@@ -292,21 +325,109 @@ a.cancel:hover, a.back:hover{
 .blog-read-button:hover{
     background-color: #ccc;
 }
-
-
-#upload-trigger {
+.blog-part2{
+    padding-top: 20px;
+    margin-left: 20px;
+}
+.form-group span{
+    color: red;
+    display: none;
+}
+#imageValue-validator{
+    padding-left: 30px;
+}
+.blog-title{
+    color: rgb(86, 86, 235);
+    font-size: 30px;
+}
+.blog-introduction,.blog-first-introduction{
+    color: rgb(134 136 159);
+    font-family: 'Times New Roman', Times, serif;
+}
+.blog-first-introduction{
+    margin-top: 10px;
+}
+.blog-button{
     cursor: pointer;
-    background-color: #f0f0f0;
+    background-color: #6277ef;
+    color: #fff;
+}
+.blog-button:hover{
+    background-color: #ccc;
+    color: rgb(83, 94, 94);
+}
+.blog-picture{
+    width: 310px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+.post-button{
+    padding: 10px 20px;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #6277ef;
+    border-radius: 5px;
+}
+.blog-page-button-part{
+    padding: 0 20px;
+}
+.avatar-wrapper {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 50px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 1px 1px 15px -5px black;
+    transition: all 0.3s ease;
+  }
+  .avatar-wrapper:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  .avatar-wrapper:hover .profile-pic {
+    opacity: 0.5;
+  }
+  .avatar-wrapper .profile-pic {
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  .avatar-wrapper .profile-pic:after {
+    font-family: FontAwesome;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 190px;
+    background: #ecf0f1;
+    color: #34495e;
     text-align: center;
-}
+  }
+  .avatar-wrapper .upload-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .avatar-wrapper .upload-button .fa-arrow-circle-up {
+    position: absolute;
+    font-size: 234px;
+    top: -15px;
+    left: -15px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: #34495e;
+  }
+  .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+    opacity: 0.9;
+  }
 
-#upload-trigger img {
-    width: 30px;
-    height: 30px;
-}
 
 @media only screen and (max-width: 900px) {
     .login-container{
@@ -338,5 +459,14 @@ a.cancel:hover, a.back:hover{
     }
     .register-button-part{
         display: block;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .main{
+        display: block;
+    }
+    .blog-part2 {
+        padding-top: 0;
+        margin-left: 0;
     }
 }

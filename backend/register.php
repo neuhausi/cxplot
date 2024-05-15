@@ -33,9 +33,8 @@
     <div class="register-container">
         <div class="header">
             <div class="title">
-                <div class="flex">
-                    <h2>Create a free account</h2>
-                </div>
+                <h2>Create a free account</h2>
+                <p class="create-account-introduction">Creating an account allows you to customize your experience and tailor it to your interests. Creating an account allows you to build a personalized profile, connect with others who share similar interests, and access exclusive content.With the rise of online shopping, social media, and e-commerce, having an account has become essential for staying connected and accessing exclusive content</p>
             </div>
         </div>
         <div class="main">

@@ -76,7 +76,7 @@ if(!$_SESSION['userEmail']){
                 </a>
               </li>
               <li>
-                <a href="backend/contact.php">Contact Us</a>
+                <a href="backend/blog.php">Blog</a>
               </li>
               <li>
                 <a href="backend/login.php">Download</a>
