@@ -66,9 +66,9 @@ Developed by CanvasXpress
 
 Prerequisites
 
-PHP 7.3.33
-MySQL 5.x or higher
-Composer (for PHP dependencies)
+PHP 7.3.33,
+MySQL 5.x or higher,
+Composer install (for PHP dependencies)
 
 You can install xampp and composer for develop backend.
 

@@ -42,7 +42,7 @@
                 <div class="email-address-part">
                     <label for="Email Address">Your email address</label>
                     <input type="mail" name="forgetEmail" id="forgetEmail" class="validator-none" placeholder="Email Address" >
-                    <span id="email-validate">Please enter your email address.</span>
+                    <span id="forget-email-validate">Please enter your email address.</span>
                 </div>
             </div>
             <div class="forget-button-part text-center">

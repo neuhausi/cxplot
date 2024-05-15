@@ -106,7 +106,13 @@ $(document).ready(function() {
 
     $("input#forget-button").on('click', function() {
         var forgetEmail = $("input#forgetEmail").val();
-        console.log(forgetEmail)
+        $('input#forgetEmail').keydown(function () {
+            $('span#forget-email-validate').css("display", "none");
+        });
+        if(!forgetEmail) {
+            $('span#forget-email-validate').css("display", "block");
+            return;
+        }
         $.ajax({
             url: "action.php",
             type: "POST",
@@ -115,9 +121,11 @@ $(document).ready(function() {
                 forgetEmail,
             },
             success: function(response) {
-                console.log(response);
                 if(response == 'SUCCESS') {
                     location.href = "../../index.php";
+                } else if(response == "Error") {
+                    $('span#forget-email-validate').css("display", "block");
+                    return;
                 }
             }
         })
