@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!$_SESSION['userEmail']){
-  header("Location: login.php");
+  header("Location: ../Auth/login.php");
 }
 ?>
 
@@ -11,7 +11,7 @@ if(!$_SESSION['userEmail']){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link href="/assets/css/tidyverse.css" rel="stylesheet">
 </head>
 <body>
@@ -25,10 +25,10 @@ if(!$_SESSION['userEmail']){
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="login.php">Download</a>
+                    <a href="../download.php">Download</a>
                 </li>
                 <li>
-                    <a href="logout.php">Logout</a>
+                    <a href="../Auth/logout.php">Logout</a>
                 </li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@ if(!$_SESSION['userEmail']){
         </div>
     </div>
     
-    <script src='../assets/js/jquery.min.js'></script>
-    <script src='../assets/js/blog.js'></script>
+    <script src='../../assets/js/jquery.min.js'></script>
+    <script src='../../assets/js/blog.js'></script>
 </body>
 </html>

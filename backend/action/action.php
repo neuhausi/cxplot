@@ -49,4 +49,17 @@
         }
         $conn->close();
     }
+
+    if($_POST['type'] == 'resetPassword') {
+        $resetPassword = $_POST['resetPassword'];
+        $hashedPassword = password_hash($resetPassword, PASSWORD_DEFAULT);
+        $sql = " UPDATE `users` SET `password` = '" . $hashedPassword . "' WHERE `email` = '" . $_POST['resetEmail'] . "';";
+        $result = $conn->query($sql);
+        if($result > 0) {
+            echo 'SUCCESS';
+        } else {
+            echo 'Error';
+        }
+        $conn->close();
+    }
 ?>

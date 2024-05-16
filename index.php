@@ -60,7 +60,7 @@
               <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand-container">
-              <a class="navbar-brand" href="/index.html">cxplot</a>
+              <a class="navbar-brand" href="/index.php">cxplot</a>
             </div>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
@@ -71,13 +71,16 @@
                 </a>
               </li>
               <li>
-                <a href="backend/blog.php">Blog</a>
+                <a href="backend/blog/blog.php">Blog</a>
               </li>
               <li>
-                <a href="backend/login.php">Download</a>
+                <a href="backend/blog/blog.php">Contact Us</a>
               </li>
               <li>
-                <a href="backend/login.php">Login</a>
+                <a href="backend/download.php">Download</a>
+              </li>
+              <li>
+                <a href="backend/Auth/login.php">Login</a>
               </li>
             </ul>
           </div>

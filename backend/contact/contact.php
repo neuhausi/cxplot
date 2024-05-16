@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/all.min.css">
     <link href="/assets/css/tidyverse.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <header>
@@ -19,13 +19,13 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="./login.php">Login</a>
+                        <a href="../contact/contact.php">Contact Us</a>
                     </li>
                     <li>
-                        <a href="./register.php">Register</a>
+                        <a href="../Auth/register.php">Register</a>
                     </li>
                     <li>
-                        <a href="./contact.php">Contact Us</a>
+                        <a href="../Auth/login.php">Login</a>
                     </li>
                 </ul>
             </div>
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div id="response"></div>
-    <script src='../assets/js/jquery.min.js'></script>
-    <script src='../assets/js/script.js'></script>
+    <script src='../../assets/js/jquery.min.js'></script>
+    <script src='../../assets/js/script.js'></script>
 </body>
 </html>

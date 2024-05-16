@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="/assets/css/tidyverse.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
     <header>
         <div class="navbar navbar-default navbar-fixed-top headroom headroom--top headroom--not-bottom p-10"" role="navigation">
             <div class="navbar-header">
                 <div class="navbar-brand-container">
-                    <a class="navbar-brand" href="/index.html">cxplot</a>
+                    <a class="navbar-brand" href="../../index.php">cxplot</a>
                 </div>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="./login.php">Login</a>
+                        <a href="../contact/contact.php">Contact Us</a>
                     </li>
                     <li>
                         <a href="./register.php">Register</a>
                     </li>
                     <li>
-                        <a href="./contact.php">Contact Us</a>
+                        <a href="./login.php">Login</a>
                     </li>
                 </ul>
             </div>
@@ -59,7 +59,7 @@
                         <span id="password-validate">Password is required.</span>
                     </div>
                     <div class="password-part">
-                        <label for="confirm-password">Your password confirm</label>
+                        <label for="confirm-password">Your confirm password</label>
                         <input type="password" name="confirm-register-password" id="confirmRegisterPassword" class="validator-none" placeholder="Confirm Password" >
                         <span id="confirm-password-validate">Wrong Password.</span>
                     </div>
@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    <script src='../assets/js/jquery.min.js'></script>
-    <script src='../assets/js/script.js'></script>
+    <script src='../../assets/js/jquery.min.js'></script>
+    <script src='../../assets/js/script.js'></script>
 </body>
 </html>

@@ -10,14 +10,13 @@ $(document).ready(function() {
             $('span#password-validate').css("display", "none");
         });
         
-
         if(userEmail == '') {
             $("span#email-validate").css("display","block");
         } else if(password == '') {
             $("span#password-validate").css("display","block");
         } else{
             $.ajax({
-                url: "action.php",
+                url: "../action/action.php",
                 type: "post",
                 data: {
                     type: "login",
@@ -73,7 +72,7 @@ $(document).ready(function() {
             return;
         }
         $.ajax({
-            url: "action.php",
+            url: "../action/action.php",
             type: "post",
             data: {
                 type: "register",
@@ -84,7 +83,7 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response);
                 if(response == "SUCCESS") {
-                    location.href = "../../backend/login.php";
+                    location.href = "../../backend/Auth/login.php";
                 }
             }
         })
@@ -95,7 +94,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'contact_action.php',
+            url: '../action/contact_action.php',
             data: $(this).serialize(),
             success: function(response) {
                 console.log(response);
@@ -114,7 +113,7 @@ $(document).ready(function() {
             return;
         }
         $.ajax({
-            url: "action.php",
+            url: "../action/action.php",
             type: "POST",
             data: {
                 type: "forgetPassword",
@@ -122,10 +121,58 @@ $(document).ready(function() {
             },
             success: function(response) {
                 if(response == 'SUCCESS') {
-                    location.href = "../../index.php";
+                    location.href = "../../backend/Auth/resetPassword.php";
                 } else if(response == "Error") {
                     $('span#forget-email-validate').css("display", "block");
                     return;
+                }
+            }
+        })
+    })
+
+    $("input#reset-button").on('click', function() {
+        var resetEmail = $("input#resetEmail").val();
+        var resetPassword = $("input#resetPassword").val();
+        var resetConfirmPassword = $("input#confirmResetPassword").val();
+        $('input#forgetEmail').keydown(function () {
+            $('span#reset-email-validate').css("display", "none");
+        });
+        $('input#resetPassword').keydown(function () {
+            $('span#password-validate').css("display", "none");
+        });
+        $('input#confirmResetPassword').keydown(function () {
+            $('span#confirm-password-validate').css("display", "none");
+        });
+        if(!resetEmail) {
+            $('span#reset-email-validate').css("display", "block");
+            return;
+        }
+        if(!resetPassword) {
+            $('span#password-validate').css("display", "block");
+            return;
+        }
+        if(!resetConfirmPassword) {
+            $('span#confirm-password-validate').css("display", "block");
+            return;
+        }
+        if(resetConfirmPassword != resetPassword) {
+            $('span#confirm-password-validate').css("display", "block");
+            return;
+        }
+        console.log(resetEmail, resetPassword, resetConfirmPassword);
+        $.ajax({
+            url: '../action/action.php',
+            type: 'POST',
+            data: {
+                type: 'resetPassword',
+                resetEmail,
+                resetPassword,
+                resetConfirmPassword,
+            },
+            success: function(response) {
+                console.log(response);
+                if(response == "SUCCESS") {
+                    location.href = "../../index.php";
                 }
             }
         })
