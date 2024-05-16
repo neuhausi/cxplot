@@ -1,19 +1,7 @@
 <?php
     include("db.php");
     session_start();
-    if($_POST['type'] == 'blogPost') {
-        $currentlyDate = date("F j Y H:i:s");
-        $currentlyTime = date("H:i:s");
-        $sql = "INSERT INTO `blogs` (`title`, `description`, `picture`, `created_at`) VALUES ('" . $_POST['blogTitle'] . "', '" . $_POST['blogDescription'] . "', '" . $_POST['imageValue'] . "', '" . $currentlyDate . "') ";
-        $result = $conn->query($sql);
-        if($result > 0) {
-            echo "SUCCESS";
-        }else {
-            echo "ERROR";
-        }
-    }
-
-    if($_POST['type'] == 'blog_read') {
+    if($_GET['type'] == 'blog_read') {
         $sql = "SELECT * FROM `blogs`";
         $data = [];
         $result = $conn->query($sql);

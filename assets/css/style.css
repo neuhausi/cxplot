@@ -4,8 +4,7 @@
     box-sizing: border-box;
     padding: 0; 
     margin: 0;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 16px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body {
@@ -22,7 +21,7 @@ h1{
     margin: 0 !important;
 }
 .p-10{
-    padding: 10px 30px !important;
+    padding: 10px 170px 10px 70px !important;
 }
 .justify-content{
     justify-content: center;
@@ -112,6 +111,7 @@ label{
     font-size: 30px;
     line-height: 1.2;
     padding: 0 40px;
+    margin-top: 2px !important;
 }
 .title p.create-account-introduction{
     color: rgb(131, 157, 243);
@@ -138,8 +138,6 @@ label{
     font-weight: 800;
     color: rgb(101, 116, 116);
 }
-
-
 /* Main */
 
 .main{
@@ -186,13 +184,18 @@ label{
     background-color: #ccc;
     color: rgb(83, 94, 94);;
 }
-.forget-button{
+.forget-button,.reset-button{
     cursor: pointer;
     background-color: #314ef0;
     color: rgb(219, 235, 235);
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .forget-button:hover{
+    cursor: pointer;
+    background-color: #ccc;
+    color: rgb(83, 94, 94);;
+}
+.reset-button:hover{
     cursor: pointer;
     background-color: #ccc;
     color: rgb(83, 94, 94);;
@@ -351,7 +354,6 @@ a.cancel:hover, a.back:hover{
     background-color: #ccc;
 }
 .blog-part2{
-    padding-top: 20px;
     margin-left: 20px;
 }
 .form-group span{
@@ -394,9 +396,84 @@ a.cancel:hover, a.back:hover{
     background-color: #6277ef;
     border-radius: 5px;
 }
+.form-blog-post{
+    width: 100%;
+    margin-top: 30px;
+}
 .blog-page-button-part{
     padding: 0 20px;
 }
+input[type="file"] {
+    outline: none;
+    padding: 0 !important;
+    border: none !important;
+}
+  
+input[type="file"]:focus-within::file-selector-button,
+input[type="file"]:focus::file-selector-button {
+    outline: 2px solid #0964b0;
+    outline-offset: 2px;
+}
+  
+/* ------- From Step 2 ------- */
+
+input[type="file"] {
+    position: relative;
+}
+  
+input[type="file"]::file-selector-button {
+    width: 136px;
+    color: transparent;
+}
+  
+/* Faked label styles and icon */
+input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    top: 6px !important;
+    left: 40px;
+    color: #0964b0;
+    content: "Upload File";
+}
+  
+input[type="file"]::after {
+    position: absolute;
+    pointer-events: none;
+    top: 11px !important;
+    left: 16px;
+    height: 20px;
+    width: 20px;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+}
+  
+/* ------- From Step 1 ------- */
+
+/* file upload button */
+input[type="file"]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
+}
+  
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+}
+  
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}
+
+/* ------------------------ */
+  
 .avatar-wrapper {
     position: relative;
     height: 200px;
@@ -463,6 +540,9 @@ a.cancel:hover, a.back:hover{
         height: 500px;
         object-fit: fill;
         border-radius: 10px;
+    }
+    .p-10{
+        padding: 10px 70px !important;
     }
 }
 @media only screen and (max-width: 890px) {

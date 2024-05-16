@@ -1,0 +1,55 @@
+.navbar-flex{
+    display: flex !important;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 200px;
+}
+.navtop-list ul{
+    margin-top: 10px;
+}
+.navtop-list ul li{
+    list-style: none;
+    float: left;
+    margin-right: 30px;
+}
+.navtop-list ul li a{
+    text-decoration: none;
+    color: #444;
+    line-height: inherit;
+    font-size: 16px;
+}
+a{
+    text-decoration: none !important;
+}
+.download-navbar-header {
+    margin-top: 10px !important;  
+}
+@media only screen and (max-width: 992px) {
+    .navbar-flex{
+        padding: 10px 130px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .navbar-flex{
+        padding: 10px 40px;
+    }
+    .navtop-list ul li{
+        margin-right: 20px;
+        
+    }
+    .navtop-list ul li a{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 497px) {
+    .navbar-flex{
+        padding: 10px 5px;
+    }
+    .navtop-list ul li{
+        margin-right: 10px;
+        
+    }
+    .navtop-list ul li a{
+        font-size: 12px;
+    }
+}
