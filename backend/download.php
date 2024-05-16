@@ -48,12 +48,12 @@
               </p>
               <ul class="ud-hero-buttons">
                 <li>
-                  <a href="Auth/login.php" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
+                  <a href="Auth/login.php" rel="nofollow noopener" class="ud-main-btn ud-white-btn">
                     Download Now
                   </a>
                 </li>
                 <li>
-                  <a href="#" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-link-btn">
+                  <a href="#" rel="nofollow noopener" class="ud-main-btn ud-link-btn">
                     Learn More <i class="fa fa-arrow-right" aria-hidden="true"></i>
                   </a>
                 </li>
