@@ -38,4 +38,15 @@
         }
         $conn->close();
     }
+
+    if($_POST['type'] == 'forgetPassword') {
+        $sql = "SELECT * FROM users WHERE email = '" . $_POST['forgetEmail'] . "'";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            echo 'SUCCESS';
+        } else {
+            echo 'Error';
+        }
+        $conn->close();
+    }
 ?>

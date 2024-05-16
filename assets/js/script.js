@@ -103,4 +103,31 @@ $(document).ready(function() {
             }
         });
     });
+
+    $("input#forget-button").on('click', function() {
+        var forgetEmail = $("input#forgetEmail").val();
+        $('input#forgetEmail').keydown(function () {
+            $('span#forget-email-validate').css("display", "none");
+        });
+        if(!forgetEmail) {
+            $('span#forget-email-validate').css("display", "block");
+            return;
+        }
+        $.ajax({
+            url: "action.php",
+            type: "POST",
+            data: {
+                type: "forgetPassword",
+                forgetEmail,
+            },
+            success: function(response) {
+                if(response == 'SUCCESS') {
+                    location.href = "../../index.php";
+                } else if(response == "Error") {
+                    $('span#forget-email-validate').css("display", "block");
+                    return;
+                }
+            }
+        })
+    })
 })

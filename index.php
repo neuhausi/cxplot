@@ -77,7 +77,7 @@
                 <a href="backend/login.php">Download</a>
               </li>
               <li>
-                <a href="backend/logout.php">Logout</a>
+                <a href="backend/login.php">Login</a>
               </li>
             </ul>
           </div>
