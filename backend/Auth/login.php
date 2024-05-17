@@ -32,7 +32,7 @@
     </header>
     <div class="login-container flex">
         <div class="login-image">
-            <img src="../../assets/images/login.png" alt="">
+            <img src="../../assets/css/logo.svg" alt="">
         </div>
         <div class="login-part">
             <div class="header">
