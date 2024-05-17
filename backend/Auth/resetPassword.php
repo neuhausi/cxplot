@@ -44,7 +44,7 @@
             <div class="main-body">
                 <div class="resetEmail-address-part">
                     <label for="Email Address">Your email address</label>
-                    <input type="mail" name="resetEmail" id="resetEmail" class="validator-none" placeholder="Email Address" >
+                    <input type="email" name="resetEmail" id="resetEmail" class="validator-none" placeholder="Email Address" >
                     <span id="reset-email-validate">Please enter your email address.</span>
                 </div>
                 <div class="resetPassword-part">
