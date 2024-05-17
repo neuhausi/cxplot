@@ -45,23 +45,23 @@
                 <div class="main-part1">
                     <div class="name-part">
                         <label for="name">Your name</label>
-                        <input type="mail" name="register-name" id="registerName" class="validator-none" placeholder="Name" >
+                        <input type="text" name="register-name" id="registerName" class="validator-none" placeholder="Name" >
                         <span id="name-validate">Please enter your name to register.</span>
                     </div>
-                    <div class="email-address-part">
+                    <div class="register-email-address-part">
                         <label for="Email Address">Your email address</label>
-                        <input type="mail" name="registerEmail" id="registerEmail" class="validator-none" placeholder="Email Address" >
+                        <input type="email" name="registerEmail" id="registerEmail" class="validator-none" placeholder="Email Address" >
                         <span id="email-validate">Please enter your email address to register.</span>
                     </div>
                     
                 </div>
                 <div class="main-part2">
-                    <div class="password-part">
+                    <div class="register-password-part">
                         <label for="Password">Your password</label>
                         <input type="password" name="register-password" id="registerPassword" class="validator-none" placeholder="Password" >
                         <span id="password-validate">Password is required.</span>
                     </div>
-                    <div class="password-part">
+                    <div class="register-confirmpassword-part">
                         <label for="confirm-password">Your confirm password</label>
                         <input type="password" name="confirm-register-password" id="confirmRegisterPassword" class="validator-none" placeholder="Confirm Password" >
                         <span id="confirm-password-validate">Wrong Password.</span>

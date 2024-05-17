@@ -34,7 +34,7 @@
         <div class="header">
             <div class="title">
                 <h2>Password Reset Request</h2>
-                <p class="create-account-introduction">Enter the email address you use to log in to this site. If there is an account associated with that email address, we will email you a link to reset your password. Make sure to check your spam</p>
+                <p class="create-account-introduction font-size-11">Enter the email address you use to log in to this site. If there is an account associated with that email address, we will email you a link to reset your password. Make sure to check your spam</p>
             </div>
         </div>
         <div class="main">
