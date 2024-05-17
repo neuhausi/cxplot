@@ -35,6 +35,12 @@ input, textarea{
     border-radius: 4px !important;
     font-size: 14px !important;
 }
+input[type=text], input[type=email], input[type=password]{
+    border-left: 5px solid rgb(23, 74, 241) !important;
+}
+input#userEmail, input#password{
+    border-radius: 4px 0 0 4px !important;
+}
 label{
     color: #888888;
     font-size: 15px;
@@ -47,43 +53,54 @@ label{
 /* Header */
 
 .login-image img{
-    width: 410px;
-    height: 500px;
-    object-fit: contain;
-    border-radius: 10px;
+    margin-left: -5px;
+    width: 430px;
+    height: 560px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.login-image{
-    margin-right: 20px;
+.login-user-icon, .login-password-icon{
+    width: 50px;
+    background-color: #ccc;
+    margin: 0 !important;
+    text-align: center;
+    padding: 8px;
+    border-radius: 0 4px 4px 0;
+}
+.email-address-part ,.password-part{
+    margin-top: 20px !important;
 }
 .login-part{
     padding: 35px;
 }
 .login-container, .container{
-    padding: 15px;
     margin: auto;
-    margin-top: 130px;
-    background-color: rgb(243, 235, 243);
+    margin-top: 100px;
+    background-color: rgb(247, 241, 247);
     max-width: 900px;
     line-height: 2;
     border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .register-container{
     padding: 30px;
     margin: auto;
     margin-top: 100px;
-    background-color: rgb(243, 235, 243);
+    background-color: rgb(247, 241, 247);
     max-width: 900px;
     line-height: 2;
     border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .blog-container{
     padding: 30px;
     margin: auto;
     margin-top: 100px;
-    background-color: rgb(243, 235, 243);
+    background-color: rgb(247, 241, 247);
     max-width: 750px;
     line-height: 2;
     border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .blog-first-container{
     padding: 30px;
@@ -97,10 +114,11 @@ label{
     padding: 30px;
     margin: auto;
     margin-top: 100px;
-    background-color: rgb(243, 235, 243);
+    background-color: rgb(247, 241, 247);
     max-width: 500px;
     line-height: 2;
     border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .title img{
     width: 100px !important;  
@@ -138,6 +156,9 @@ label{
     font-weight: 800;
     color: rgb(101, 116, 116);
 }
+.font-size-11{
+    font-size: 11px !important;
+}
 /* Main */
 
 .main{
@@ -145,7 +166,7 @@ label{
     margin: 5px 0;
 }
 .main-body div{
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .main-body div span{
     display: none;
@@ -238,10 +259,11 @@ a.cancel:hover, a.back:hover{
     padding: 30px;
     margin: auto;
     margin-top: 100px;
-    background-color: rgb(243, 235, 243);
+    background-color: rgb(247, 241, 247);
     max-width: 900px;
     line-height: 1.5;
     border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .touch-part{
     max-width: 500px;
@@ -267,6 +289,7 @@ a.cancel:hover, a.back:hover{
     font-size: 30px;
     color: rgb(83, 94, 94);
     font-weight: 700;
+    margin-bottom: 25px !important;
 }
 .send-button{
     background-color: rgb(103, 103, 231);
@@ -385,6 +408,7 @@ a.cancel:hover, a.back:hover{
 }
 .blog-picture{
     width: 320px;
+    height: 210px;
     object-fit: contain;
     margin-bottom: 10px;
 }

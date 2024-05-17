@@ -42,9 +42,6 @@ footer {
 footer p {
   margin-bottom: 0;
 }
-footer div {
-  flex: 1;
-}
 footer .pkgdown {
   text-align: right;
 }
@@ -181,7 +178,7 @@ a.anchor {
 /* All levels of nav */
 
 nav[data-toggle='toc'] .nav > li > a {
-  padding: 4px 20px 4px 6px;
+  padding: 4px 20px 4px 15px;
   font-size: 1.5rem;
   font-weight: 400;
   color: inherit;
@@ -189,9 +186,9 @@ nav[data-toggle='toc'] .nav > li > a {
 
 nav[data-toggle='toc'] .nav > li > a:hover,
 nav[data-toggle='toc'] .nav > li > a:focus {
-  padding-left: 5px;
+  padding-left: 7px;
   color: inherit;
-  border-left: 1px solid #878787;
+  border-left: #000;
 }
 
 nav[data-toggle='toc'] .nav > .active > a,
@@ -242,16 +239,16 @@ nav[data-toggle='toc'] .nav .nav > .active:focus > a {
 
 /* Reference index & topics ----------------------------------------------- */
 
-.ref-index th {font-weight: normal;}
+.ref-index th {font-weight: normal; padding: 0 20px;}
 
-.ref-index td {vertical-align: top; min-width: 100px}
+.ref-index td {vertical-align: top;padding: 0 20px;}
 .ref-index .icon {width: 40px;}
 .ref-index .alias {width: 40%;}
 .ref-index-icons .alias {width: calc(40% - 40px);}
 .ref-index .title {width: 60%;}
 
 .ref-arguments th {text-align: right; padding-right: 10px;}
-.ref-arguments th, .ref-arguments td {vertical-align: top; min-width: 100px}
+.ref-arguments th, .ref-arguments td {vertical-align: top;}
 .ref-arguments .name {width: 20%;}
 .ref-arguments .desc {width: 80%;}
 

@@ -30,6 +30,7 @@
   <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/homepage.css">
   <!-- Google -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
@@ -89,7 +90,7 @@
     </header>
 
     <div class="row">
-      <div class="contents col-md-9">
+      <div class="contents col-md-10">
         <div class="page-header">
           <h1>Reference</h1>
           <p>
@@ -98,10 +99,9 @@
             in JavaScript and doesn't rely on R at all. While the accompanying documentation pages may
             not be frequently updated, the library itself is actively maintained and developed. The
             documentation provides only a limited number of usage examples. For reporting bugs or
-            requesting features, please use the GitHub repository: https://github.com/neuhausi/cxplot
+            requesting features, please use the GitHub repository: <strong>https://github.com/neuhausi/cxplot</strong> 
           </p>
         </div>
-
         <table class="ref-index ref-index-icons">
           <colgroup>
             <col class="icon">
@@ -111,20 +111,22 @@
           <tbody>
             <tr>
               <th colspan="3">
-                <h2 id="section-javascript-library" class="hasAnchor">
-                  <a href="#section-javascript-library" class="anchor"></a>JavaScript Library
-                </h2>
-                <p class="section-desc"></p>
-                <p>Include the CanvasXpress JavaScript library in the <code>&lt;head&gt;&lt;/head&gt;</code>
-                  of your web page.
-                </p>
-                <p>
-                  <code>&lt;link rel="stylesheet" href="path-to-canvasXpress.css" type="text/css"/&gt;</code><br>
-                  <code>&lt;script type="text/javascript" src="path-to-canvasXpress.min.js"&gt;&lt;/script&gt;</code>
-                </p>
-                <p>
-                  Any code as decribed below should be placed in a <code>&lt;script&gt;&lt;/script&gt;</code> tag.
-                </p>
+                <div class="javascript-library-part1">
+                  <h2 id="section-javascript-library" class="hasAnchor">
+                    <a href="#section-javascript-library" class="anchor"></a>JavaScript Library
+                  </h2>
+                  <p class="section-desc"></p>
+                  <p>Include the CanvasXpress JavaScript library in the <code>&lt;head&gt;&lt;/head&gt;</code>
+                    of your web page.
+                  </p>
+                  <p class="bg-white code-description">
+                    <code>&lt;link rel="stylesheet" href="path-to-canvasXpress.css" type="text/css"/&gt;</code><br>
+                    <code>&lt;script type="text/javascript" src="path-to-canvasXpress.min.js"&gt;&lt;/script&gt;</code>
+                  </p>
+                  <p>
+                    Any code as decribed below should be placed in a <code>&lt;script&gt;&lt;/script&gt;</code> tag.
+                  </p>
+                </div>
               </th>
             </tr>
           </tbody>
@@ -146,26 +148,21 @@
           </tbody>
           <tbody>
             <tr>
-              <td></td>
-              <td>
-                <p><code><a href="/assets/html/cxplot.html">cxplot()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Create a new cxplot</p>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <p><code><a href="/assets/html/aes.html">aes()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Construct aesthetic mappings</p>
+              <td colspan="3" class="margin-left-10">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div>
+                    <code class="margin-right-10 code-color"><a href="/assets/html/cxplot.html" class="white-color">cxplot()</a></code>
+                    <code class="margin-right-10 code-color"><a href="/assets/html/aes.html" class="white-color">aes()</a></code>
+                  </div>
+                  <div>
+                    <span class="white-color">Create a new cxplot</span></br>
+                    <span class="white-color">Construct aesthetic mappings</span>
+                  </div>
+                </div>
               </td>
             </tr>
           </tbody>
+          <tbody></tbody>
           <tbody>
             <tr>
               <th colspan="3">
@@ -175,8 +172,6 @@
                 <p class="section-desc"></p>
               </th>
             </tr>
-          </tbody>
-          <tbody>
             <tr>
               <th colspan="3">
                 <h3 id="section-geoms" class="hasAnchor">
@@ -194,41 +189,46 @@
           </tbody>
           <tbody>
             <tr>
-              <td><a href="/assets/html/geom_abline.html"><img
-                    src="/assets/images/geom_abline.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_abline.html">geom_abline()</a></code>
-                  <code><a href="/assets/html/geom_abline.html">geom_hline()</a></code>
-                  <code><a href="/assets/html/geom_abline.html">geom_vline()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Reference lines: horizontal, vertical, and diagonal</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_abline.html"><img src="/assets/images/geom_abline.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_abline.html">geom_abline()</a><a href="/assets/html/geom_abline.html">geom_vline()</a></code>
+                      <code><a href="/assets/html/geom_abline.html">geom_hline()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Reference lines: horizontal, vertical, and diagonal</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_bar.html"><img
-                    src="/assets/images/geom_bar.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_bar.html">geom_bar()</a></code>
-                  <code><a href="/assets/html/geom_bar.html">geom_col()</a></code>
-                  <code><a href="/assets/html/geom_bar.html">stat_count()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Bar charts</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_bar.html"><img src="/assets/images/geom_bar.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_bar.html">geom_bar()</a></code>
+                      <code><a href="/assets/html/geom_bar.html">geom_col()</a></code>
+                      <code><a href="/assets/html/geom_bar.html">stat_count()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-m-6">Bar charts</p>
+                </div>
               </td>
             </tr>            
             <tr>
-              <td><a href="/assets/html/geom_bin_2d.html"><img
-                    src="/assets/images/geom_bin2d.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_bin_2d.html">geom_bin_2d()</a></code>
-                  <code><a href="/assets/html/geom_bin_2d.html">stat_bin_2d()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Heatmap of 2d bin counts</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_bin_2d.html"><img src="/assets/images/geom_bin2d.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_bin_2d.html">geom_bin_2d()</a></code>
+                      <code><a href="/assets/html/geom_bin_2d.html">stat_bin_2d()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Heatmap of 2d bin counts</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -245,29 +245,34 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/geom_boxplot.html"><img
-                    src="/assets/images/geom_boxplot.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_boxplot.html">geom_boxplot()</a></code>
-                  <code><a href="/assets/html/geom_boxplot.html">stat_boxplot()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>A box and whiskers plot (in the style of Tukey)</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_boxplot.html"><img src="/assets/images/geom_boxplot.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_boxplot.html">geom_boxplot()</a></code>
+                      <code><a href="/assets/html/geom_boxplot.html">stat_boxplot()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">A box and whiskers plot (in the style of Tukey)</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_contour.html"><img
-                    src="/assets/images/geom_contour.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_contour.html">geom_contour()</a></code>
-                  <code><a href="/assets/html/geom_contour.html">geom_contour_filled()</a></code>
-                  <code><a href="/assets/html/geom_contour.html">stat_contour()</a></code>
-                  <code><a href="/assets/html/geom_contour.html">stat_contour_filled()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>2D contours of a 3D surface</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_contour.html"><img
+                        src="/assets/images/geom_contour.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_contour.html">geom_contour()</a></code>
+                      <code><a href="/assets/html/geom_contour.html">geom_contour_filled()</a></code>
+                      <code><a href="/assets/html/geom_contour.html">stat_contour()</a></code>
+                      <code><a href="/assets/html/geom_contour.html">stat_contour_filled()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">2D contours of a 3D surface</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -285,51 +290,59 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/geom_density.html"><img
-                    src="/assets/images/geom_density.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_density.html">geom_density()</a></code>
-                  <code><a href="/assets/html/geom_density.html">stat_density()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Smoothed density estimates</p>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <p>
-                  <code><a href="/assets/html/geom_density_2d.html">geom_density_2d()</a></code>
-                  <code><a href="/assets/html/geom_density_2d.html">geom_density_2d_filled()</a></code>
-                  <code><a href="/assets/html/geom_density_2d.html">stat_density_2d()</a></code>
-                  <code><a href="/assets/html/geom_density_2d.html">stat_density_2d_filled()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Contours of a 2D density estimate</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_density.html"><img
+                        src="/assets/images/geom_density.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_density.html">geom_density()</a></code>
+                      <code><a href="/assets/html/geom_density.html">stat_density()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Smoothed density estimates</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_dotplot.html"><img
-                    src="/assets/images/geom_dotplot.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_dotplot.html">geom_dotplot()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Dot plot</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 padding-left-45">
+                    <p class="column">
+                      <code><a href="/assets/html/geom_density_2d.html">geom_density_2d()</a></code>
+                      <code><a href="/assets/html/geom_density_2d.html">geom_density_2d_filled()</a></code>
+                      <code><a href="/assets/html/geom_density_2d.html">stat_density_2d()</a></code>
+                      <code><a href="/assets/html/geom_density_2d.html">stat_density_2d_filled()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Contours of a 2D density estimate</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td></td>
-              <td>
-                <p>
-                  <code><a href="/assets/html/geom_errorbarh.html">geom_errorbarh()</a></code>
-                </p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_dotplot.html"><img
+                        src="/assets/images/geom_dotplot.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_dotplot.html">geom_dotplot()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Dot plot</p>
+                </div>
               </td>
-              <td>
-                <p>Horizontal error bars</p>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 padding-left-45"> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_errorbarh.html">geom_errorbarh()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Horizontal error bars</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -346,40 +359,48 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/geom_hex.html"><img
-                    src="/assets/images/geom_hex.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_hex.html">geom_hex()</a></code>
-                  <code><a href="/assets/html/geom_hex.html">stat_bin_hex()</a></code>
-                </p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 ">
+                    <a href="/assets/html/geom_hex.html"><img
+                        src="/assets/images/geom_hex.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_hex.html">geom_hex()</a></code>
+                      <code><a href="/assets/html/geom_hex.html">stat_bin_hex()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Hexagonal heatmap of 2d bin counts</p>
               </td>
-              <td>
-                <p>Hexagonal heatmap of 2d bin counts</p>
+              </div>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 ">
+                    <a href="/assets/html/geom_histogram.html"><img
+                        src="/assets/images/geom_freqpoly.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_histogram.html">geom_freqpoly()</a></code>
+                      <code><a href="/assets/html/geom_histogram.html">geom_histogram()</a></code>
+                      <code><a href="/assets/html/geom_histogram.html">stat_bin()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Histograms and frequency polygons</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_histogram.html"><img
-                    src="/assets/images/geom_freqpoly.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p>
-                  <!--<code><a href="/assets/html/geom_histogram.html">geom_freqpoly()</a></code>-->
-                  <code><a href="/assets/html/geom_histogram.html">geom_histogram()</a></code>
-                  <code><a href="/assets/html/geom_histogram.html">stat_bin()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Histograms and frequency polygons</p>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="/assets/html/geom_jitter.html"><img
-                    src="/assets/images/geom_jitter.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_jitter.html">geom_jitter()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Jittered points</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 ">
+                    <a href="/assets/html/geom_jitter.html"><img
+                        src="/assets/images/geom_jitter.png" width="30" height="30" alt=""></a>
+                    <p class="column">
+                      <code><a href="/assets/html/geom_jitter.html">geom_jitter()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Jittered points</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -411,27 +432,33 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/geom_path.html"><img
-                    src="/assets/images/geom_path.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_path.html">geom_path()</a></code>
-                  <code><a href="/assets/html/geom_path.html">geom_line()</a></code>
-                  <code><a href="/assets/html/geom_path.html">geom_step()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Connect observations</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_path.html"><img
+                        src="/assets/images/geom_path.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_path.html">geom_path()</a></code>
+                      <code><a href="/assets/html/geom_path.html">geom_line()</a></code>
+                      <code><a href="/assets/html/geom_path.html">geom_step()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Connect observations</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_point.html"><img
-                    src="/assets/images/geom_point.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_point.html">geom_point()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Points</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_point.html"><img
+                        src="/assets/images/geom_point.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_point.html">geom_point()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Points</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -448,52 +475,62 @@
             </tr>
             -->
             <tr>
-              <td></td>
-              <td>
-                <p><code><a href="/assets/html/geom_qq.html">geom_qq_line()</a></code>
-                  <code><a href="/assets/html/geom_qq.html">stat_qq_line()</a></code>
-                  <code><a href="/assets/html/geom_qq.html">geom_qq()</a></code>
-                  <code><a href="/assets/html/geom_qq.html">stat_qq()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>A quantile-quantile plot</p>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="/assets/html/geom_quantile.html"><img
-                    src="/assets/images/geom_quantile.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_quantile.html">geom_quantile()</a></code>
-                  <code><a href="/assets/html/geom_quantile.html">stat_quantile()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Quantile regression</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 padding-left-45">
+                    <p class="column">
+                      <code><a href="/assets/html/geom_qq.html">geom_qq_line()</a></code>
+                      <code><a href="/assets/html/geom_qq.html">stat_qq_line()</a></code>
+                      <code><a href="/assets/html/geom_qq.html">geom_qq()</a></code>
+                      <code><a href="/assets/html/geom_qq.html">stat_qq()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">A quantile-quantile plot</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_ribbon.html"><img
-                    src="/assets/images/geom_ribbon.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p>
-                  <code><a href="/assets/html/geom_ribbon.html">geom_ribbon()</a></code>
-                  <code><a href="/assets/html/geom_ribbon.html">geom_area()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Ribbons and area plots</p>
+              <td colspan="3">
+                <div  class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_quantile.html"><img
+                        src="/assets/images/geom_quantile.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_quantile.html">geom_quantile()</a></code>
+                      <code><a href="/assets/html/geom_quantile.html">stat_quantile()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Quantile regression</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_rug.html"><img
-                    src="/assets/images/geom_rug.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_rug.html">geom_rug()</a></code>
-                </p>
+              <td colspan="3">
+                <div  class="bg-white padding-10 code-description d-flex" >
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_ribbon.html"><img
+                        src="/assets/images/geom_ribbon.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_ribbon.html">geom_ribbon()</a></code>
+                      <code><a href="/assets/html/geom_ribbon.html">geom_area()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Ribbons and area plots</p>
+                </div>
               </td>
-              <td>
-                <p>Rug plots in the margins</p>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div  class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_rug.html"><img
+                        src="/assets/images/geom_rug.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_rug.html">geom_rug()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Rug plots in the margins</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -511,15 +548,18 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/geom_smooth.html"><img
-                    src="/assets/images/geom_smooth.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_smooth.html">geom_smooth()</a></code>
-                  <code><a href="/assets/html/geom_smooth.html">stat_smooth()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Smoothed conditional means</p>
+              <td colspan="3">
+                <div  class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_smooth.html"><img
+                        src="/assets/images/geom_smooth.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_smooth.html">geom_smooth()</a></code>
+                      <code><a href="/assets/html/geom_smooth.html">stat_smooth()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Smoothed conditional means</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -536,43 +576,51 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/geom_text.html"><img
-                    src="/assets/images/geom_text.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p>
-                  <!--<code><a href="/assets/html/geom_text.html">geom_label()</a></code>-->
-                  <code><a href="/assets/html/geom_text.html">geom_text()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Text</p>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="/assets/html/geom_tile.html"><img
-                    src="/assets/images/geom_raster.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_tile.html">geom_raster()</a></code>
-                  <!--
-                  <code><a href="/assets/html/geom_tile.html">geom_rect()</a></code>
-                  <code><a href="/assets/html/geom_tile.html">geom_tile()</a></code>
-                  -->
-                </p>
-              </td>
-              <td>
-                <p>Rectangles</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_text.html"><img
+                        src="/assets/images/geom_text.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <!--<code><a href="/assets/html/geom_text.html">geom_label()</a></code>-->
+                      <code><a href="/assets/html/geom_text.html">geom_text()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Text</p>
+                </div>
               </td>
             </tr>
             <tr>
-              <td><a href="/assets/html/geom_violin.html"><img
-                    src="/assets/images/geom_violin.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/geom_violin.html">geom_violin()</a></code>
-                  <code><a href="/assets/html/geom_violin.html">stat_ydensity()</a></code>
-                </p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_tile.html"><img
+                        src="/assets/images/geom_raster.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_tile.html">geom_raster()</a></code>
+                      <!--
+                      <code><a href="/assets/html/geom_tile.html">geom_rect()</a></code>
+                      <code><a href="/assets/html/geom_tile.html">geom_tile()</a></code>
+                      -->
+                    </p>
+                  </div>
+                  <p class="col-md-6">Rectangles</p>
+                </div>
               </td>
-              <td>
-                <p>Violin plot</p>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6">
+                    <a href="/assets/html/geom_violin.html"><img
+                        src="/assets/images/geom_violin.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/geom_violin.html">geom_violin()</a></code>
+                      <code><a href="/assets/html/geom_violin.html">stat_ydensity()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Violin plot</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -979,29 +1027,28 @@
           </tbody>
           <tbody>
             <tr>
-              <td></td>
-              <td>
-                <p><code><a href="/assets/html/labs.html">labs()</a></code>
-                  <code><a href="/assets/html/labs.html">xlab()</a></code>
-                  <code><a href="/assets/html/labs.html">ylab()</a></code>
-                  <code><a href="/assets/html/labs.html">ggtitle()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Modify axis, legend, and plot labels</p>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                <p>
-                  <!--<code><a href="/assets/html/lims.html">lims()</a></code>-->
-                  <code><a href="/assets/html/lims.html">xlim()</a></code>
-                  <code><a href="/assets/html/lims.html">ylim()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Set scale limits</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 padding-left-45">
+                    <div class="column">
+                      <p>
+                        <code><a href="/assets/html/labs.html">labs()</a></code>
+                        <code><a href="/assets/html/labs.html">xlab()</a></code>
+                        <code><a href="/assets/html/labs.html">ylab()</a></code>
+                        <code><a href="/assets/html/labs.html">ggtitle()</a></code>
+                      </p>
+                      <p>
+                        <!--<code><a href="/assets/html/lims.html">lims()</a></code>-->
+                        <code><a href="/assets/html/lims.html">xlim()</a></code>
+                        <code><a href="/assets/html/lims.html">ylim()</a></code>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p>Set scale limits</p>
+                    <p>Modify axis, legend, and plot labels</p>
+                  </div>
+                </div>
               </td>
             </tr>
             <!--
@@ -1478,14 +1525,17 @@
             </tr>
             -->
             <tr>
-              <td><a href="/assets/html/facet_wrap.html"><img
-                    src="/assets/images/facet_wrap.png" width="30" height="30" alt=""></a></td>
-              <td>
-                <p><code><a href="/assets/html/facet_wrap.html">facet_wrap()</a></code>
-                </p>
-              </td>
-              <td>
-                <p>Wrap a 1d ribbon of panels into 2d</p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex">
+                  <div class="d-flex col-md-6 ">
+                    <a href="/assets/html/facet_wrap.html"><img
+                        src="/assets/images/facet_wrap.png" width="30" height="30" alt=""></a> 
+                    <p class="column">
+                      <code><a href="/assets/html/facet_wrap.html">facet_wrap()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Wrap a 1d ribbon of panels into 2d</p>
+                </div>
               </td>
             </tr>
             <!--
@@ -1687,16 +1737,16 @@
           </tbody>          
           <tbody>
             <tr>
-              <td></td>
-              <td>
-                <p><code><a href="/assets/html/theme.html">theme()</a></code>
-                </p>
+              <td colspan="3">
+                <div class="bg-white padding-10 code-description d-flex" >
+                  <div class="d-flex col-md-6 padding-left-45">
+                    <p class="column">
+                      <code><a href="/assets/html/theme.html">theme()</a></code>
+                    </p>
+                  </div>
+                  <p class="col-md-6">Modify components of a theme</p>
+                </div>
               </td>
-              <!--
-              <td>
-                <p>Modify components of a theme</p>
-              </td>
-              -->
             </tr>
             <!--
             <tr>
@@ -2087,10 +2137,15 @@
             </tr>
           </tbody>
         -->
+        <tbody>
+          <tr>
+            <td colspan="3">&nbsp;</td>
+          </tr>
+        </tbody>
         </table>
       </div>
 
-      <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+      <div class="col-md-2 hidden-xs hidden-sm" id="pkgdown-sidebar">
         <nav id="toc" data-toggle="toc" class="sticky-top">
           <h2 data-toc-skip="">Contents</h2>
           <ul class="nav">
@@ -2157,12 +2212,11 @@
 
 
     <footer>
-      <div class="tidyverse">
-        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics. 
-          Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
+      <div class="col-md-9" >
+        <p>cxplot is a part of <strong>CanvasXpress</strong>, a Javascript library for data analytics. </p>
+        <p class="font-size-20">Learn more at <a href="https://canvasxpress.org/" class="external-link">canvasxpress.org</a>.</p>
       </div>
-
-      <div class="author">
+      <div class="col-md-3 text-right">
         <p>
           Developed by CanvasXpress
         </p>

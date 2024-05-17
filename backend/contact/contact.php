@@ -43,7 +43,7 @@
                 <input type="text" name="subject" placeholder="Subject">
                 <textarea name="message" rows="7" cols="50" placeholder="Your message..."></textarea>
                 <input type="submit" value="Send" id="send" class="send-button">
-                <a href="../index.php" class="back text-center" id="cancel">Back</a>
+                <a href="../Auth/login.php" class="back text-center" id="cancel">Back</a>
             </form>
         </div>
         <div class="contact-part">

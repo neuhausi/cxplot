@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    setTimeout(function() {
+    setInterval(() => {
         console.log("SUCCESS")
         $.ajax({
             url: '../action/blog_action.php',
-            type: 'GET',
+            type: 'POST',
             data: {
                 type: "blog_read", 
             },
@@ -12,7 +12,8 @@ $(document).ready(function() {
                 display(response);
             }
         })
-    }, 2000);
+    }, 1000);
+
     $('input#blog-title').keydown(function () {
         $("span#blogTitle-validator").css('display', 'none')
     });
@@ -20,8 +21,8 @@ $(document).ready(function() {
         $("span#blogDescription-validator").css('display', 'none')
     });
 })
-dataHtml = '';
 function display(response) {
+    dataHtml = '';
     response.map((value, index) => {
         dataHtml += "<div id='" + value.id + "' class='blog-content left'>";
         dataHtml += "<img src='" + value.picture + "' class='blog-picture'>" +

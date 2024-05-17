@@ -1,7 +1,7 @@
 <?php
     include("db.php");
     session_start();
-    if($_GET['type'] == 'blog_read') {
+    if($_POST['type'] == 'blog_read') {
         $sql = "SELECT * FROM `blogs`";
         $data = [];
         $result = $conn->query($sql);
