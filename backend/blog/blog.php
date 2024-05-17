@@ -1,10 +1,3 @@
-<?php
-session_start();
-if(!$_SESSION['userEmail']){
-  header("Location: ../Auth/login.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +21,7 @@ if(!$_SESSION['userEmail']){
                     <a href="../download.php">Download</a>
                 </li>
                 <li>
-                    <a href="../Auth/logout.php">Logout</a>
+                    <a href="../Auth/login.php">Login</a>
                 </li>
                 </ul>
             </div>

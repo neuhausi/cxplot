@@ -22,6 +22,9 @@
                         <a href="../contact/contact.php">Contact Us</a>
                     </li>
                     <li>
+                        <a href="../blog/blog.php">Blog</a>
+                    </li>
+                    <li>
                         <a href="../Auth/register.php">Register</a>
                     </li>
                     <li>
