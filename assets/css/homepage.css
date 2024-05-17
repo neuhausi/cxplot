@@ -34,7 +34,7 @@ a{
     text-align: right;
 }
 tbody{
-    background-color: #e5f7f7;
+    background-color: #e9f3ef;
 }
 td p{
     color: #2e2b2b;
@@ -43,7 +43,6 @@ td p{
 }
 .code-description{
     padding: 10px;
-    border-left: 5px solid #cc0303;
 }
 .code-description code, .code-color{
     background-color: #fff;
