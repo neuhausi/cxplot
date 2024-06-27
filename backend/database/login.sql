@@ -30,8 +30,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`password`) values 
-(2,'test','test1@gmail.com','test1');
+/*insert  into `users`(`id`,`name`,`email`,`password`) values (2,'test','test1@gmail.com','test1'); */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

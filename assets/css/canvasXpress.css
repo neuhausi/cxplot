@@ -70,6 +70,7 @@
   --cx-background-widgets-color: var(--cx-color-ui-background);
   --cx-background-color: var(--cx-color-widgets);
   --cx-background-hover-color: var(--cx-color-widgets-hover);
+  --cx-background-border-hover-color: var(--cx-color-white);
   --cx-background-accent-color: var(--cx-color-widgets-hover);
   --cx-background-contrast-color: var(--cx-background-color);
   /* Border */
@@ -460,7 +461,10 @@ span.cX-bin::selection {
 .customizerLeftPanelTop,
 .customizerLeftPanelBottom {
   background: var(--cx-background-color);
-  border: var(--cx-border) !important;
+  border-top: var(--cx-border) !important;
+  border-left: var(--cx-border) !important;
+  border-bottom: var(--cx-border) !important;
+  border-right: none !important;
 }
 
 .customizerLeftPanelTop {
@@ -505,7 +509,8 @@ span.cX-bin::selection {
  */
 
 .customizerLeftItem,
-.customizerLeftItemActive {
+.customizerLeftItemActive,
+.customizerLeftItemNB {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
@@ -531,6 +536,11 @@ span.cX-bin::selection {
   background: rgb(255, 255, 255);
 }
 
+.customizerLeftItemNB:hover svg {
+  border-color: var(--cx-background-border-hover-color) !important;
+  background: var(--cx-background-hover-color) !important;
+}
+
 .customizerLeftItemTop {
   grid-area: 1 / 1 / 2 / 2;
   margin: auto;
@@ -542,10 +552,20 @@ span.cX-bin::selection {
   margin: auto;
 }
 
-.customizerLeftIcon {
+.customizerLeftIcon,
+.customizerLeftIconNB {
   padding: 5px;
-  border: var(--cx-border) !important;
   border-radius: 5px;
+}
+
+.customizerLeftIconNB {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--cx-background-color);
+}
+
+.customizerLeftIcon {
+  border: var(--cx-border) !important;
 }
 
 /*
@@ -1553,6 +1573,25 @@ div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
   margin: 5px 8px 0px 0px;
 }
 
+/*************
+ *  Tooltip  *
+ *************/
+div.CanvasXpressAltTooltip {
+  background-color: var(--cx-background-widgets-color);
+  border: var(--cx-border);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--cx-color-transparent);
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  font-size: 12px;
+  line-height: 100%;
+  padding: 5px;
+  position: absolute;
+  display: none;
+  text-wrap: nowrap;
+  z-index: 1000000;
+}
+
 /******************
  * Data Table DOE *
  ******************/
@@ -1785,6 +1824,7 @@ div.CanvasXpressTableCellLink {
   position: relative;
   text-overflow: ellipsis;
   text-align: left;
+  white-space: nowrap;
 }
 
 div.CanvasXpressTableCell:hover {

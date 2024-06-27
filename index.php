@@ -27,10 +27,12 @@
   <!-- headroom.js -->
   <script src="/assets/js/headroom.min.js" crossorigin="anonymous"></script>
   <script src="/assets/js/jQuery.headroom.min.js" crossorigin="anonymous"></script>
-  <link href="/assets/css/tidyverse-2.css" rel="stylesheet">
   <!-- pkgdown -->
   <link href="/assets/css/pkgdown.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/homepage.css">
+  <!-- CanvasXpress -->
+  <link rel="stylesheet" href="/assets/css/canvasXpress.css" type="text/css" />
+  <script type="text/javascript" src="/assets/js/canvasXpress.min.js"></script>
   <!-- Google -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XWN5F9X8DS"></script>
@@ -72,16 +74,16 @@
                 </a>
               </li>
               <li>
-                <a href="backend/blog/blog.php">Blog</a>
+                <a href="/backend/blog/blog.php">Blog</a>
               </li>
               <li>
-                <a href="backend/blog/blog.php">Contact Us</a>
+                <a href="/backend/contact/contact.php">Contact Us</a>
               </li>
               <li>
-                <a href="backend/download.php">Download</a>
+                <a href="/backend/download.php">Download</a>
               </li>
               <li>
-                <a href="backend/Auth/login.php">Login</a>
+                <a href="/backend/Auth/login.php">Login</a>
               </li>
             </ul>
           </div>
@@ -216,7 +218,7 @@
                   <p class="col-m-6">Bar charts</p>
                 </div>
               </td>
-            </tr>            
+            </tr>
             <tr>
               <td colspan="3">
                 <div class="bg-white padding-10 code-description d-flex">

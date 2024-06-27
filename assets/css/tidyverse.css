@@ -1060,7 +1060,8 @@ body {
   font-size: 15px;
   line-height: 1.846;
   color: #444;
-  background-color: #e9f3ef; }
+  /*background-color: #e9f3ef;*/
+}
 
 input,
 button,
