@@ -2030,7 +2030,7 @@ geom_polygon(): Filled paths (polygons); geom_segment(): Line segments
 Examples
 
 // geom_line() is suitable for time series
-var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
+var cxp = new cxplot("canvas", economics, aes("date", "unemploy"));
 cxp.geom_line();
 
 var cxp = new cxplot("canvas", economics_long, aes("date", "value01", {"color": "vari"}));
@@ -2039,14 +2039,14 @@ cxp.geom_line();
 // geom_step() is useful when you want to highlight exactly when
 // the y value changes
 //recent <- economics[economics$date > as.Date("2013-01-01"), ]
-var cxp = new cxplot("canvas", recent, aes("Date", "unemploy"));
+var cxp = new cxplot("canvas", recent, aes("date", "unemploy"));
 cxp.geom_line();
 
-var cxp = new cxplot("canvas", recent, aes("Date", "unemploy"));
+var cxp = new cxplot("canvas", recent, aes("date", "unemploy"));
 cxp.geom_step();
 
 // Changing parameters
-var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
+var cxp = new cxplot("canvas", economics, aes("date", "unemploy"));
 cxp.geom_line({"color": "red"});
 
 var df = [["supp", "dose", "len"], ["VC", "D0.5", 6.8], ["VC", "D1", 15.0], ["VC", "D2", 33], ["OJ", "D0.5", 4.2], ["OJ", "D1", 10.0], ["OJ", "D2", 29.5]];
@@ -2548,7 +2548,7 @@ cxp.geom_ribbon({
 });
 
 // A simple example
-var cxp = new cxplot("canvas", economics, aes("Date", "unemploy"));
+var cxp = new cxplot("canvas", economics, aes("date", "unemploy"));
 cxp.geom_line();
 cxp.geom_ribbon(aes({"ymin": "ulow", "ymax": "uhigh"}), {"fill": "blue"});
 
